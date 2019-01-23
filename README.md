@@ -1,4 +1,4 @@
-# Webis.de Website Common
+# Webis.de Website Commons
 
 This repository contains common reusable Jekyll templates and Sass
 style sheets. It is meant to be used as a submodule in the Webis.de

@@ -28,6 +28,10 @@ $global-color: #222;
 $global-muted-color: #666;
 $base-code-color: #454545;
 
+// Paddings
+$global-small-padding: 15px;
+$navbar-dropdown-grid-gutter-horizontal: 2 * $global-small-padding;
+
 // Tables
 $table-small-cell-padding-vertical: 5px;
 

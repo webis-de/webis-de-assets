@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Update thirdparty dependencies.
-# You can include this script inside your own update-dependencies script.name
+# You can call this script inside your own update-dependencies script.name
 
 maintenance=$(realpath $(dirname $0))
 cd ${maintenance}/..
@@ -19,6 +19,7 @@ npm update
 rsync -a --delete node_modules/uikit/src/scss/ _sass/uikit/
 
 rsync -a --delete node_modules/uikit/dist/js/ js/thirdparty/uikit/
+rsync -a --delete node_modules/code-prettify/loader/ js/thirdparty/code-prettify/
 rsync -a --delete node_modules/@fortawesome/fontawesome-free/js/ js/thirdparty/fontawesome/
 rsync -a --delete node_modules/jquery/dist/ js/thirdparty/jquery/
 rsync -a --delete node_modules/datatables.net-dt/js/ js/thirdparty/datatables.net/

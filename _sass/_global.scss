@@ -15,8 +15,55 @@ html {
     }
 }
 
+em {
+    color: $global-emphasis-color;
+}
+
+iframe {
+    max-width: 100%;
+}
+
+svg.text-logo text {
+    width: 100%;
+}
+
 :not(pre) > code {
     white-space: normal;
+}
+
+.list-inline li {
+    display: inline-block;
+}
+
+.background-secondary-lighter {
+    background-color: $global-secondary-background-lighter;
+}
+
+.background-muted-darker {
+    background-color: darken($global-muted-background, 5);
+}
+
+.background-muted-striped {
+    &:nth-child(2n + 1) {
+        background-color: $global-muted-background;
+    }
+
+    &:nth-child(2n) {
+        background-color: darken($global-muted-background, 5);
+    }
+}
+
+.vertical-inline-divider {
+    margin: 0 1rem;
+    width: 0;
+    border-left: $global-border-width solid lighten($global-muted-color, 23);
+}
+
+@media (max-width: $breakpoint-medium) {
+    .video-container {
+        margin-left: -$global-small-gutter;
+        margin-right: -$global-small-gutter;
+    }
 }
 
 .global-nav {
@@ -39,6 +86,14 @@ html {
 .desktop-nav {
     // made visible by media query later
     display: none;
+}
+
+.uk-tab {
+    line-height: $text-meta-line-height;
+
+    .uk-icon {
+        height: 1em;    // fix for vertically shifted .uk-active highlight
+    }
 }
 
 .uk-navbar-nav {

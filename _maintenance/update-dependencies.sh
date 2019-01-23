@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Update thirdparty dependencies.
-# You can call this script inside your own update-dependencies script.name
+#
 
 maintenance=$(realpath $(dirname $0))
 cd ${maintenance}/..

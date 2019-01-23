@@ -1,7 +1,7 @@
 {
   "name": "webis.de-commons",
   "version": "1.0.0",
-  "main": "_layouts/index.html",
+  "main": "",
   "author": "Janek Bevendorff",
   "license": "MIT",
   "dependencies": {

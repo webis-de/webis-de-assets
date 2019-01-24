@@ -246,7 +246,9 @@ a:target {
     .footer-link-column .uk-nav-header {
         min-height: 3em;
     }
+}
 
+@media (min-width: $navbar-breakpoint) {
     .mobile-nav {
         display: none;
     }

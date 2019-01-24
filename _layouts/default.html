@@ -20,21 +20,20 @@
 <script src="{{ '/commons/js/thirdparty/uikit/uikit.min.js' | relative_url }}"></script>
 <script src="{{ '/commons/js/thirdparty/uikit/uikit-icons.min.js' | relative_url }}"></script>
 
-<div id="offcanvas-nav" class="uk-hidden@m" data-uk-offcanvas="overlay: true; flip: true;">
+<!-- Off-canvas mobile navigation -->
+<div id="offcanvas-nav" class="mobile-nav" data-uk-offcanvas="overlay: true; flip: true;">
     <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
 
-        <!-- Mobile navigation -->
         <nav class="uk-margin-large-top">
             <ul class="uk-nav uk-nav-primary uk-nav-parent-icon" data-uk-nav>
-                <!-- Mobile nav content -->
+                <!-- Mobile navigation content -->
             </ul>
         </nav>
     </div>
 </div>
 
-<div class="uk-background-secondary desktop-nav global-nav">
-    <!-- Desktop navigation -->
+<div class="uk-background-secondary global-nav" data-uk-sticky>
     <nav class="uk-navbar-container uk-navbar-transparent uk-container uk-light" data-uk-navbar="mode: click">
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
@@ -44,29 +43,19 @@
             </ul>
         </div>
 
-        <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav">
-                <!-- Desktop nav content -->
-            </ul>
-        </div>
-    </nav>
-</div>
-
-<div class="uk-background-secondary mobile-nav global-nav">
-    <div class="uk-navbar-container uk-navbar-transparent uk-container uk-light mobile-nav-toggle" data-uk-navbar>
-        <div class="uk-navbar-left">
-            <ul class="uk-navbar-nav">
-                <li{% if page.nav_active == "index" %} class="uk-active"{% endif %}>
-                    <!-- Logo -->
-                </li>
-            </ul>
-        </div>
-
-        <div class="uk-navbar-right">
+        <!-- Mobile navigation toggle button -->
+        <div class="uk-navbar-right mobile-nav">
             <button class="uk-button uk-navbar-item uk-light uk-button-large" type="button" data-uk-icon="icon: menu"
                     data-uk-toggle="target: #offcanvas-nav"></button>
         </div>
-    </div>
+
+        <!-- Desktop navigation -->
+        <div class="uk-navbar-right desktop-nav">
+            <ul class="uk-navbar-nav">
+                <!-- Desktop navigation content -->
+            </ul>
+        </div>
+    </nav>
 </div>
 
 <div data-uk-height-viewport="expand: true">

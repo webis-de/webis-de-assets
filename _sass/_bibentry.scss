@@ -34,6 +34,11 @@
         font-family: Consolas, Hack, MonacoB, monospace;
         resize: none;
         border: none;
+        background-color: #f8f8f8;
+    }
+
+    .bibtex:focus {
+        background-color: #f8f8f8;
     }
 }
 

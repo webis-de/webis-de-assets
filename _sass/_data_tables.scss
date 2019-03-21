@@ -88,35 +88,29 @@
         .sorting, .sorting_asc, .sorting_desc,
         .sorting_asc_disabled, .sorting_desc_disabled {
             cursor: pointer;
-            position: relative;
-            padding-right: 30px;
-
-            &:before, &:after {
-                position: absolute;
-                bottom: 1.2em;
-                display: block;
-                opacity: 0.3;
-            }
-
-            &:before {
-                right: 1em;
-                content: "\2191";
-            }
-
-            &:after {
-                right: 0.5em;
-                content: "\2193";
-            }
         }
     
-        .sorting_asc:before, .sorting_desc:after {
-            opacity: 1;
-        }
-    
-        .sorting_asc_disabled:before, .sorting_desc_disabled:after {
+        .sorting_asc_disabled:after, .sorting_desc_disabled:after {
             opacity: 0;
         }
     }
+}
+
+.dataTable thead .sorting span:after,
+.dataTable thead .sorting_desc span:after,
+.dataTable thead .sorting_asc span:after {
+  margin-left: 0.5em;
+}
+
+.dataTable thead .sorting span:after {
+  opacity: 0.3;
+  content: "\2195";
+}
+.dataTable thead .sorting_desc span:after {
+  content: "\2193";
+}
+.dataTable thead .sorting_asc span:after {
+  content: "\2191";
 }
 
 .dataTables_scrollHead .dataTable {

@@ -203,7 +203,7 @@ a:target {
 }
 
 h1 a, h1 a:hover {
-  color: $global-color;
+  color: inherit;
 }
 
 .section-header {

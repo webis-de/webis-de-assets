@@ -202,6 +202,10 @@ a:target {
     margin-top: 1px;
 }
 
+h1 a, h1 a:hover {
+  color: $global-color;
+}
+
 .section-header {
     text-transform: $section-header-text-transform;
 }

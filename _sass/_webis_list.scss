@@ -11,6 +11,10 @@
         @extend .uk-padding-small;
     }
 
+    .entry:target {
+      background-color: #d9e7f7 !important;
+    }
+
     .image {
         display: table-cell;
         vertical-align: middle;

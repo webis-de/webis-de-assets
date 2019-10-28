@@ -71,18 +71,32 @@
 }
 
 table.sortable thead th span:after {
-  margin-left: 0.5em;
-  opacity: 0.3;
-  content: "\2195";
+    margin-left: 0.5em;
+    opacity: 0.3;
+    content: "\2195";
 }
 
 table.sortable thead th.sort-descending span:after {
-  opacity: 1;
-  content: "\2193";
+    opacity: 1;
+    content: "\2193";
 }
 table.sortable thead th.sort-ascending span:after {
-  opacity: 1;
-  content: "\2191";
+    opacity: 1;
+    content: "\2191";
+}
+
+table.targetable th:first-child,
+table.targetable td:first-child {
+    width: 0px;
+    padding: 0px;
+    position: relative;
+    top: -$target-offset;
+}
+
+table.targetable th:target ~ th,
+table.targetable td:target ~ td {
+    background-color: $table-header-target-color !important;
+    color: $global-color;
 }
 
 // jQuery DataTables adjustments

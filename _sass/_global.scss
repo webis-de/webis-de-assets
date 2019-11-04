@@ -190,8 +190,12 @@ svg.text-logo text {
 a:target {
     display: block;
     position: relative;
-    top: -$navbar-nav-item-height;
+    top: -$target-offset;
     visibility: hidden;
+}
+
+a:target + p {
+    background-color: #d9e7f7 !important;
 }
 
 .uk-navbar-dropdown-nav > li > a {

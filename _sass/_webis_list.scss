@@ -1,5 +1,8 @@
+*:not(.uk-hidden) ~ .webis-list {
+    margin-top: 40px;
+}
+
 .webis-list {
-    @extend .uk-margin-medium;
 
     .date {
         color: $text-muted-color;

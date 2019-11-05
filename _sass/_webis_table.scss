@@ -8,7 +8,7 @@
         border-bottom: 2px solid darken($background-muted-background, 7) !important;
     }
 
-    tr:first-child th {
+    thead tr:first-child th {
         background-color: darken($background-muted-background, 40);
         color: $global-inverse-color;
     }

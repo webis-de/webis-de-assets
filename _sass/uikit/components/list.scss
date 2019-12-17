@@ -80,11 +80,8 @@ $internal-list-bullet-image: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D
  * Style
  */
 
-main li:nth-child(n+2),
 .uk-list > li:nth-child(n+2),
 .uk-list > li > ul { margin-top: $list-margin-top; }
-// fix for first element margin in navigation style lists
-nav > ul > li { margin-top: $list-margin-top; }
 
 
 /* Style modifiers

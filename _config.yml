@@ -9,9 +9,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Webis
+title: Webis Common Website Assets
 baseurl: ""
-url: "https://webis.de"
+url: "https://assets.webis.de"
 
 # Build settings
 markdown: kramdown
@@ -31,6 +31,3 @@ exclude:
   - commons/README.md
   - commons/package.json
   - commons/package-lock.json
-
-plugins:
-  - jekyll-sitemap

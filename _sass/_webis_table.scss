@@ -91,6 +91,7 @@ table.targetable td:first-child {
     padding: 0px;
     position: relative;
     top: -$target-offset;
+    visibility: hidden;
 }
 
 table.targetable th:target ~ th,

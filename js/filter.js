@@ -81,6 +81,8 @@ function filterByQuery(query, groupSelector, elementSelector, root = document) {
 
     if (query.trim() !== "") {
       document.location.hash = "#?q=" + query;
+    } else {
+      document.location.hash = "";
     }
 
     if (root === document) { // webis.de page

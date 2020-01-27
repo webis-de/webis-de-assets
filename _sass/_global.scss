@@ -194,7 +194,7 @@ a:target {
     visibility: hidden;
 }
 
-a:target + p {
+a:target + p, a:target + div {
     background-color: #d9e7f7 !important;
 }
 

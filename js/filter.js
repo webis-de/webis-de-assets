@@ -81,7 +81,7 @@ function filterByQuery(query, groupSelector, elementSelector, root = document) {
 
     if (query.trim() !== "") {
       document.location.hash = "#?q=" + query;
-    } else {
+    } else if (document.location.hash.startsWith("#?q=")){
       document.location.hash = "";
     }
 

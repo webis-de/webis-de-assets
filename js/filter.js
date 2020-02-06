@@ -118,7 +118,7 @@ function removeHyphenationPossibilities(value) {
  */
 function initFiltering(groupSelector, elementSelector, populateDataAttributes, root = document) {
   // populate data- attributes
-  const groups = root.querySelectorAll(groupSelector);
+  const groups = groupSelector === null ? [ root ] : root.querySelectorAll(groupSelector);
   for (let g = 0; g < groups.length; ++g) {
       const elements = groups[g].querySelectorAll(elementSelector);
       for (let e = 0; e < elements.length; ++e) {
@@ -212,27 +212,29 @@ if (document.location.hash.startsWith("#filter:")) {
 ////////////////////////////////////////////////////
 
 function initWebisListFiltering(root = document) {
-    initFiltering(".webis-list", ".entry", entry => {
+    const filterFunction = initFiltering(".webis-list", ".entry", entry => {
         const attributes = entry.dataset;
         attributes['text'] = normalize(entry.textContent);
         return attributes;
     }, root);
+    return filterFunction;
 }
 
 function initWebisParagraphsFiltering(root = document) {
-    initFiltering(".webis-paragraphs", "p", paragraph => {
+    const filterFunction = initFiltering(".webis-paragraphs", "p", paragraph => {
         const attributes = paragraph.dataset;
         attributes['text'] = normalize(paragraph.textContent);
         return attributes;
-    });
+    }, root);
+    return filterFunction;
 }
 
 ////////////////////////////////////////////////////
 // Specific code for data
 ////////////////////////////////////////////////////
 
-function initWebisDataFiltering(root = document) {
-    initFiltering(".targetable", "tbody tr", entry => {
+function initWebisDataFiltering(root = document, groupSelector = ".targetable") {
+    const filterFunction = initFiltering(groupSelector, "tbody tr", entry => {
         const attributes = entry.dataset;
         attributes['name'] = normalize(entry.children[1].textContent);
         attributes['publisher'] = normalize(entry.children[2].textContent);
@@ -240,7 +242,12 @@ function initWebisDataFiltering(root = document) {
         attributes['units'] = normalize(entry.children[6].textContent);
         attributes['task'] = normalize(entry.children[7].textContent);
         return attributes;
-    });
+    }, root);
+    return filterFunction;
+}
+
+function initWebisDataFilteringOnTable(table) {
+  return initWebisDataFiltering(table, null);
 }
 
 // include from other page
@@ -249,7 +256,7 @@ function initWebisDataFiltering(root = document) {
 //   query:          filter query as used on the webis.de page
 //   source:         URL of the page the contains the bibentries
 function includeDataTable(parentElement, sourceSelector, query = "", source = "https://webis.de/data.html") {
-  includeWebis(parentElement, source, sourceSelector, initWebisDataFiltering, query);
+  includeWebis(parentElement, source, sourceSelector, initWebisDataFilteringOnTable, query);
 }
 
 ////////////////////////////////////////////////////

@@ -169,6 +169,38 @@ function initFiltering(groupSelector, elementSelector, populateDataAttributes, r
   return filterFunction;
 };
 
+
+// include from other page
+//   parentElement:         DOM element to which the list of included elements should be added
+//   source:                URL of the page the contains the elements to be added
+//   sourceSelector:        query selector to select the list of all elements in the source
+//   initFilteringFunction: function that takes the selected list from the source and initializes the filtering
+//   query:                 filter query as used on the source page
+function includeWebis(parentElement, source, sourceSelector, initFilteringFunction, query = "") {
+    parentElement.innerText = "Loading...";
+
+    /* add style sheet if not added already */
+    if (document.querySelector('link[href="https://webis.de/css/style.css"]') == null) {
+        var linkElement = document.createElement('link');
+        linkElement.setAttribute('rel', 'stylesheet');
+        linkElement.setAttribute('href', 'https://webis.de/css/style.css');
+        document.getElementsByTagName('head')[0].appendChild(linkElement);
+    }
+
+    const request = new XMLHttpRequest();
+    request.onload = function() {
+        const completeElementsList = this.response.documentElement.querySelector(sourceSelector);
+        const filterFunction = initFilteringFunction(completeElementsList);
+        filterFunction(query);
+        completeElementsList.classList.remove("uk-container", "uk-margin-medium");
+        parentElement.innerText = "";
+        parentElement.appendChild(completeElementsList);
+    }
+    request.open("GET", source);
+    request.responseType = "document";
+    request.send();
+}
+
 // update legacy 'filter:' option
 if (document.location.hash.startsWith("#filter:")) {
     const query = decodeURIComponent(document.location.hash.substr(8));
@@ -193,6 +225,31 @@ function initWebisParagraphsFiltering(root = document) {
         attributes['text'] = normalize(paragraph.textContent);
         return attributes;
     });
+}
+
+////////////////////////////////////////////////////
+// Specific code for data
+////////////////////////////////////////////////////
+
+function initWebisDataFiltering(root = document) {
+    initFiltering(".targetable", "tbody tr", entry => {
+        const attributes = entry.dataset;
+        attributes['name'] = normalize(entry.children[1].textContent);
+        attributes['publisher'] = normalize(entry.children[2].textContent);
+        attributes['year'] = normalize(entry.children[3].textContent);
+        attributes['units'] = normalize(entry.children[6].textContent);
+        attributes['task'] = normalize(entry.children[7].textContent);
+        return attributes;
+    });
+}
+
+// include from other page
+//   parentElement:  element to which the data table should be added
+//   sourceSelector: query selector to select the table
+//   query:          filter query as used on the webis.de page
+//   source:         URL of the page the contains the bibentries
+function includeDataTable(parentElement, sourceSelector, query = "", source = "https://webis.de/data.html") {
+  includeWebis(parentElement, source, sourceSelector, initWebisDataFiltering, query);
 }
 
 ////////////////////////////////////////////////////
@@ -239,28 +296,7 @@ function initPublicationsFiltering(publicationsList = document) {
 //   query:         filter query as used on the webis.de page
 //   source:        URL of the page the contains the bibentries
 function includeBibentries(parentElement, query = "", source = "https://webis.de/publications.html") {
-    parentElement.innerText = "Loading...";
-
-    /* add style sheet if not added already */
-    if (document.querySelector('link[href="https://webis.de/css/style.css"]') == null) {
-        var linkElement = document.createElement('link');
-        linkElement.setAttribute('rel', 'stylesheet');
-        linkElement.setAttribute('href', 'https://webis.de/css/style.css');
-        document.getElementsByTagName('head')[0].appendChild(linkElement);
-    }
-
-    const request = new XMLHttpRequest();
-    request.onload = function() {
-        const publicationsList = this.response.documentElement.querySelector(".publications-list");
-        const filterFunction = initPublicationsFiltering(publicationsList);
-        filterFunction(query);
-        publicationsList.classList.remove("uk-container", "uk-margin-medium");
-        parentElement.innerText = "";
-        parentElement.appendChild(publicationsList);
-    }
-    request.open("GET", source);
-    request.responseType = "document";
-    request.send();
+  includeWebis(parentElement, source, '.publications-list', initPublicationsFiltering, query);
 }
 
 

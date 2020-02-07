@@ -1,0 +1,120 @@
+---
+layout: event
+nav_active: organization
+title: Event Title
+description: Short description of the Event
+---
+
+<script type="application/ld+json">
+{
+    "@context":"http://schema.org/",
+    "@type":"Event",
+    "name":"*name of the event",
+    "description":"*synopsis, short description of the event",
+    "text":"*event, any other text",
+    "url":"*link that leads to this HTML web page.",
+    "sameAs":"*is there an id link, e.g. from zenodo?",
+    "keywords":[
+        "*some", 
+        "*key", 
+        "*words", 
+        "*to describe the event"
+    ], 
+    "creator":[
+        {
+            "@type":"Organization",
+            "url":"https://webis.de/",
+            "name":"The Web Technology & Information Systems Network",
+            "alternateName":"Webis"
+        },
+        {
+            "@id":"*orcid id if available", 
+            "@type":"Person", 
+            "url":"*https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/people/#name",
+            "affiliation":"*Bauhaus-Universit\u00e4t Weimar", 
+            "name":"*last name, first name"
+        },
+        {
+            "@id":"*orcid id if available", 
+            "@type":"Person", 
+            "url":"*https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/people/#name",
+            "affiliation":"*Bauhaus-Universit\u00e4t Weimar", 
+            "name":"*last name, first name"
+        }
+    ],
+    "includedInDataCatalog":{
+    },
+    "distribution":[
+    ]
+}
+</script>
+
+<main class="uk-section uk-section-default">
+    <div class="uk-container">
+        <h1>Organization</h1>
+
+        <ul class="uk-list">
+            <!-- Comment out sections you do not provide -->
+            <li><span data-uk-icon="chevron-down"></span> <a href="#contact">Contact and Communication</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#submission">Submission details</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#policy">Policy</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#resources">Resources</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#organizing-committee">Organizing Committee</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#program-committee">Program Committee</a></li>
+        </ul>
+    </div>
+
+    <div class="uk-container uk-margin-medium">
+        <!--
+        SECTION Contact and Communication
+        -->
+        <h2 id="contact">Contact and Communication</h2>
+        <ul>
+            <li>Primary contact email</li>
+            <li>Mailing lists</li>
+            <li>Social media accounts</li>
+            <li>...</li>
+        </ul>
+
+        <!--
+        SECTION Submission details
+        -->
+        <h2 id="submission">Submission</h2>
+        <p>Details about how to submit for this event should be provided here.</p>
+        <p>If participation requires working on a dataset, you should link to it: [<a href="{{ '/templates/data.html' | relative_url }}">data</a>]</p>
+
+        <!--
+        SECTION Policy
+        -->
+        <h2 id="policy">Policy</h2>
+        <p>We abide by <a>&lt;link to policy here&gt;</a>.</p>
+
+        <!--
+        SECTION Resources
+        -->
+        <h2 id="resources">Resources</h2>
+        <ul>
+            <li><a>External links</a>, e.g. to code repositories</li>
+            <li>...</li>
+        </ul>
+
+        <!--
+        SECTION Organizing Committee
+        -->
+        <!-- Use _includes/templates/people-card.html as a template for these cards. They do not need to be parametrized, this is just a demonstration. -->
+        <h2 id="organizing-committee">Organizing Committee</h2>
+        <div data-uk-grid class="uk-grid uk-grid-match uk-grid-small thumbnail-card-grid">
+            {% include templates/people-card.html gender="female" %}
+            {% include templates/people-card.html gender="male" %}
+        </div>
+
+        <!--
+        SECTION Program Committee
+        -->
+        <h2 id="program-committee">Program Committee</h2>
+        <ul>
+            <li>&lt;First&gt; &lt;Last&gt;, &lt;Affiliation&gt;</li>
+            <li>...</li>
+        </ul>
+    </div>
+</main>

@@ -1,0 +1,185 @@
+---
+layout: default
+nav_active: resources
+title: Event Title
+description: Short description of the Event
+---
+
+<script type="application/ld+json">
+{
+    "@context":"http://schema.org/",
+    "@type":"Event",
+    "name":"*name of the event",
+    "description":"*synopsis, short description of the event",
+    "text":"*event, any other text",
+    "url":"*link that leads to this HTML web page.",
+    "sameAs":"*is there an id link, e.g. from zenodo?",
+    "keywords":[
+        "*some", 
+        "*key", 
+        "*words", 
+        "*to describe the event"
+    ], 
+    "creator":[
+        {
+            "@type":"Organization",
+            "url":"https://webis.de/",
+            "name":"The Web Technology & Information Systems Network",
+            "alternateName":"Webis"
+        },
+        {
+            "@id":"*orcid id if available", 
+            "@type":"Person", 
+            "url":"*https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/people/#name",
+            "affiliation":"*Bauhaus-Universit\u00e4t Weimar", 
+            "name":"*last name, first name"
+        },
+        {
+            "@id":"*orcid id if available", 
+            "@type":"Person", 
+            "url":"*https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/people/#name",
+            "affiliation":"*Bauhaus-Universit\u00e4t Weimar", 
+            "name":"*last name, first name"
+        }
+    ],
+    "includedInDataCatalog":{
+    },
+    "distribution":[
+    ]
+}
+</script>
+
+<main class="uk-section uk-section-default">
+    <div class="uk-container">
+        <h1>Shared Task Title</h1>
+
+        <ul class="uk-list">
+            <!-- Comment out sections you do not provide -->
+            <li><span data-uk-icon="chevron-down"></span> <a href="#synopsis">Synopsis</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#task">Task</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#data">Data</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#evaluation">Evaluation</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#submission">Submission</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#results">Results</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#related-work">Related Work</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#task-committee">Task Committee</a></li>
+        </ul>
+    </div>
+
+    <div class="uk-container uk-margin-medium">
+        <!--
+        SECTION Synopsis
+        -->
+        <h2 id="synopsis">Synopsis</h2>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <p>You may provide links to associated resources, like so: [<a>link</a>]</p>
+
+
+        <!--
+        SECTION Task
+        -->
+        <h2 id="task">Task</h2>
+
+        <p>More detailed task description.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+        <!--
+        SECTION Data
+        -->
+        <h2 id="data">Data</h2>
+        <p>Dataset descriptions. For example:</p>
+
+        <h3 class="uk-margin-small-top">Input Format</h3>
+        <p>Input format description.</p>
+
+        <h3 class="uk-margin-small-top">Output Format</h3>
+        <p>Output format description.</p>
+
+
+        <!--
+        SECTION Evaluation
+        -->
+        <h2 id="evaluation">Evaluation</h2>
+        <p>Description of evaluation setup and criteria.</p>
+
+
+        <!--
+        SECTION Submission
+        -->
+        <h2 id="submission">Submission</h2>
+        <p>Description of submission requirements.</p>
+
+        <!--
+        SECTION Results
+        -->
+        <h2 id="results">Results</h2>
+        <table class="uk-table uk-table-divider uk-table-small uk-table-hover">
+            <thead>
+                <tr>
+                    <th>team</th>
+                    <th colspan="3" align="center">results</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>precision</th>
+                    <th>recall</th>
+                    <th>f-score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>lorem</td>
+                    <td>0.35</td>
+                    <td>0.70</td>
+                    <td>0.47</td>
+                </tr>
+                <tr>
+                    <td>ipsum</td>
+                    <td>0.46</td>
+                    <td>0.36</td>
+                    <td>0.40</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!--
+        SECTION Related Work
+        -->
+        <h2 id="related-work">Related Work</h2>
+        <div id="publications-list">
+        <!--
+        You do not need to add anything here. Just change "event-title" below.
+        -->
+        </div>
+
+
+        <!--
+        SECTION Task Committee
+        -->
+        <h2 id="task-committee">Task Committee</h2>
+        <div data-uk-grid class="uk-grid uk-grid-match uk-grid-small thumbnail-card-grid">
+            {% include templates/people-card.html gender="female" %}
+            {% include templates/people-card.html gender="male" %}
+        </div>
+    </div>
+</main>
+
+<script src="https://assets.webis.de/js/filter.js"></script>
+<script>
+includeBibentries(document.getElementById("publications-list"), "tags:event+title");
+</script>

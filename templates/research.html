@@ -1,0 +1,132 @@
+---
+layout: default
+nav_active: research
+title: Webis Research Webis-Research-Title
+description: Short description of the Research
+---
+
+<script type="application/ld+json">
+{
+    "@context":"http://schema.org/",
+    "@type":"Research",
+    "name":"*name of the research",
+    "description":"*synopsis, short description of the research",
+    "text":"*research, any other text",
+    "url":"*link that leads to this HTML web page.",
+    "sameAs":"*is there an id link, e.g. from zenodo?",
+    "keywords":[
+        "*some", 
+        "*key", 
+        "*words", 
+        "*to describe the research"
+    ], 
+    "creator":[
+        {
+            "@type":"Organization",
+            "url":"https://webis.de/",
+            "name":"The Web Technology & Information Systems Network",
+            "alternateName":"Webis"
+        },
+        {
+            "@id":"*orcid id if available", 
+            "@type":"Person", 
+            "url":"*https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/people/#name",
+            "affiliation":"*Bauhaus-Universit\u00e4t Weimar", 
+            "name":"*last name, first name"
+        },
+        {
+            "@id":"*orcid id if available", 
+            "@type":"Person", 
+            "url":"*https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/people/#name",
+            "affiliation":"*Bauhaus-Universit\u00e4t Weimar", 
+            "name":"*last name, first name"
+        }
+    ],
+    "includedInDataCatalog":{
+    },
+    "distribution":[
+    ]
+}
+</script>
+
+<main class="uk-section uk-section-default">
+    <div class="uk-container">
+        <h1>Title of Research</h1>
+
+        <ul class="uk-list">
+            <!-- Comment out sections you do not provide -->
+            <li><span data-uk-icon="chevron-down"></span> <a href="#synopsis">Synopsis</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#research">Research</a></li>
+            <li><span data-uk-icon="chevron-down"></span> <a href="#people">People</a></li>
+            <!-- OPTIONAL -->
+            <li><span data-uk-icon="chevron-down"></span> <a href="#media-coverage">Media Coverage</a></li>
+            <!---->
+            <li><span data-uk-icon="chevron-down"></span> <a href="#publications">Publications</a></li>
+        </ul>
+    </div>
+
+    <div class="uk-container uk-margin-medium">
+        <!--
+        SECTION Synopsis
+        -->
+        <h2 id="synopsis">Synopsis</h2>
+
+        <p>Your synopsis here.</p>
+
+        <p>Provide links to all associated resources (except publications, these are automatically inserted below), such as: [<a href="https://args.me/api-en.html" alt="Example: Args API">api</a>] [<a href="https://github.com/webis-de/webis-de.github.io" alt="Example: Webis Website Code">code</a>] [<a href="https://demo.webis.de/#your-demo-here" alt="Replace with demo URL">demo</a>] [<a href="https://webis.de/events.html#?q=research-title" alt="Filter events page by related events">events</a>] [<a href="https://args.me/" alt="Example: Args.me">service</a>] [<a href="https://www.youtube.com/watch?v=eNxMkZcySKs" alt="Replace with video URL">video</a>]
+
+
+        <!--
+        SECTION Research
+        -->
+        <h2 id="research">Research</h2>
+
+        <p>Your research description here.</p>
+
+
+        <!--
+        SECTION People
+        -->
+        <h2 id="people">People</h2>
+        <ul>
+            <li><a href="https://weimar.webis.de/people/#<last>">&lt;First&gt; &lt;Last&gt;</a></li>
+            <li><a href="https://weimar.webis.de/people/#<last>">&lt;First&gt; &lt;Last&gt;</a></li>
+            <li>...</li>
+        </ul>
+
+        <p>Students: &lt;First&gt; &lt;Last&gt;, &lt;First&gt; &lt;Last&gt;, ...</p>
+
+        <!-- OPTIONAL -->
+        <!--
+        SECTION Media Coverage
+        -->
+        <h2 id="media-coverage">Media Coverage</h2>
+        <ul>
+            <li>[January 6, 2020]<br/>
+            &lt;Title of Publication&gt;:&nbsp;<a href="">Link to article</a>
+            </li>
+            <li>[November 29, 2019]<br/>
+            &lt;Title of Publication&gt;:&nbsp;<a href="">Link to article</a>
+            </li>
+            <li>[May 24, 2019]<br/>
+            ...
+            </li>
+        </ul>
+
+
+        <!--
+        SECTION Publications
+        -->
+        <h2 id="publications">Publications</h2>
+        <div id="publications-list">
+        </div>
+          <!--
+          You do not need to add anything here. Just change "research+title" below.
+          -->
+        </div>
+</main>
+
+<script src="https://assets.webis.de/js/filter.js"></script>
+<script>
+includeBibentries(document.getElementById("publications-list"), "tags:research+title");
+</script>

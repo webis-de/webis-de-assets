@@ -3,9 +3,13 @@
 // Fonts
 $global-font-family: "Product Sans", "Noto Sans", "Verdana", sans-serif;
 $global-font-size: 13px;
+$global-large-font-size: 1.5rem !default;
+$global-small-font-size: 0.875rem !default;
 $global-hidpi-font-size: 14px;
 $global-line-height: 1.5;
 $global-hidpi-line-height: 1.6;
+$text-lead-font-size: $global-large-font-size !default;
+$text-small-font-size: $global-small-font-size !default;
 $text-lead-line-height: $global-hidpi-line-height;
 $text-meta-line-height: $global-hidpi-line-height;
 $text-small-line-height: 1.7;
@@ -31,6 +35,7 @@ $base-code-color: #454545;
 // Paddings
 $global-small-padding: 15px;
 $navbar-dropdown-grid-gutter-horizontal: 2 * $global-small-padding;
+$global-medium-gutter: 40px !default;
 
 // Tables
 $table-small-cell-padding-vertical: 5px;

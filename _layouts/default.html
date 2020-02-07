@@ -44,7 +44,7 @@
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
                 <li{% if page.nav_active == "index" %} class="uk-active"{% endif %}>
-                <a href="{{ '/' | relative_url }}"><img src="https://assets.webis.de/img/webis-logo.png" alt="Webis Logo" class="uk-logo"> Webis.de</a>
+                <a href="{{ '/' | relative_url }}"><img src="https://assets.webis.de/img/webis-logo.png" alt="Webis Logo" class="uk-logo"> {% assign home = site.url | split: '/' %} {{ home | last }}</a>
                 </li>
             </ul>
         </div>

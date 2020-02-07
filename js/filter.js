@@ -79,13 +79,12 @@ function filterByQuery(query, groupSelector, elementSelector, root = document) {
       }
     }
 
-    if (query.trim() !== "") {
-      document.location.hash = "#?q=" + query;
-    } else if (document.location.hash.startsWith("#?q=")){
-      document.location.hash = "";
-    }
-
     if (root === document) { // webis.de page
+        if (query.trim() !== "") {
+          document.location.hash = "#?q=" + query;
+        } else if (document.location.hash.startsWith("#?q=")){
+          document.location.hash = "";
+        }
       // Force UIkit update to prevent glitches
       UIkit.update();
     }

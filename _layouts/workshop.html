@@ -15,7 +15,7 @@
     <!-- +++ You can either include the global CSS file like this or @import it inside your own CSS/Sass. +++ -->
     <link rel="stylesheet" href="https://assets.webis.de/css/style.css?{{site.time | date: '%s'}}">
     <!-- +++ Event-specific CSS +++ -->
-    <link rel="stylesheet" href="https://assets.webis.de/css/event.css?{{site.time | date: '%s'}}">
+    <link rel="stylesheet" href="https://assets.webis.de/css/workshop.css?{{site.time | date: '%s'}}">
 
     <!-- +++ These are your own CSS files, specified in the page's Jekyll front matter as "additional_css". +++ -->
     {%- for css in page.additional_css %}
@@ -36,13 +36,13 @@
         <nav class="uk-margin-large-top">
             <ul class="uk-nav uk-nav-primary uk-nav-parent-icon" data-uk-nav>
                 <li{% if page.nav_active == "overview" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/event-template/index.html' | relative_url }}">Overview</a>
+                <a href="{{ '/templates/workshop-template/index.html' | relative_url }}">Overview</a>
                 </li>
-                <li{% if page.nav_active == "schedule" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/event-template/schedule.html' | relative_url }}">Schedule</a>
+                <li{% if page.nav_active == "program" %} class="uk-active"{% endif %}>
+                <a href="{{ '/templates/workshop-template/program.html' | relative_url }}">Program</a>
                 </li>
                 <li{% if page.nav_active == "organization" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/event-template/organization.html' | relative_url }}">Organization</a>
+                <a href="{{ '/templates/workshop-template/organization.html' | relative_url }}">Organization</a>
                 </li>
             </ul>
         </nav>
@@ -71,13 +71,13 @@
         <div class="uk-navbar-right desktop-nav">
             <ul class="uk-navbar-nav">
                 <li{% if page.nav_active == "overview" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/event-template/index.html' | relative_url }}">Overview</a>
+                <a href="{{ '/templates/workshop-template/index.html' | relative_url }}">Overview</a>
                 </li>
-                <li{% if page.nav_active == "schedule" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/event-template/schedule.html' | relative_url }}">Schedule</a>
+                <li{% if page.nav_active == "program" %} class="uk-active"{% endif %}>
+                <a href="{{ '/templates/workshop-template/program.html' | relative_url }}">Program</a>
                 </li>
                 <li{% if page.nav_active == "organization" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/event-template/organization.html' | relative_url }}">Organization</a>
+                <a href="{{ '/templates/workshop-template/organization.html' | relative_url }}">Organization</a>
                 </li>
             </ul>
         </div>

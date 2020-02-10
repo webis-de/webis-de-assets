@@ -1,24 +1,24 @@
 ---
-layout: default
-nav_active: resources
-title: Event Title
-description: Short description of the Event
+layout: blank # change depending on what site this page belongs to
+# nav_active: resources # change depending on what site this page belongs to
+title: Shared Task Title
+description: Short description of the Shared Task
 ---
 
 <script type="application/ld+json">
 {
     "@context":"http://schema.org/",
-    "@type":"Event",
-    "name":"*name of the event",
-    "description":"*synopsis, short description of the event",
-    "text":"*event, any other text",
+    "@type":"Shared Task",
+    "name":"*name of the Shared Task",
+    "description":"*synopsis, short description of the Shared Task",
+    "text":"*Shared Task, any other text",
     "url":"*link that leads to this HTML web page.",
     "sameAs":"*is there an id link, e.g. from zenodo?",
     "keywords":[
         "*some", 
         "*key", 
         "*words", 
-        "*to describe the event"
+        "*to describe the Shared Task"
     ], 
     "creator":[
         {
@@ -163,7 +163,7 @@ description: Short description of the Event
         <h2 id="related-work">Related Work</h2>
         <div id="publications-list">
         <!--
-        You do not need to add anything here. Just change "event-title" below.
+        You do not need to add anything here. Just change "Shared Task-title" below.
         -->
         </div>
 
@@ -181,5 +181,5 @@ description: Short description of the Event
 
 <script src="https://assets.webis.de/js/filter.js"></script>
 <script>
-includeBibentries(document.getElementById("publications-list"), "tags:event+title");
+includeBibentries(document.getElementById("publications-list"), "tags:Shared Task+title");
 </script>

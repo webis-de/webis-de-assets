@@ -286,7 +286,7 @@ function initPublicationsFiltering(publicationsList = document) {
     const filterFunction = initFiltering(".year-entry", ".bib-entry", entry => {
         const attributes = entry.dataset;
         for (let a in attributes) {
-          if (a == "author" || a == "tags" || a == "editor") {
+          if (a == "author" || a == "tags" || a == "editor" || a == "artifacts") {
             attributes[a] = normalize(attributes[a], protectCommata = true, protectQueryModifiers = false);
           } else {
             attributes[a] = normalize(attributes[a]);

@@ -240,6 +240,12 @@ function initWebisDataFiltering(root = document, groupSelector = ".targetable") 
         attributes['year'] = normalize(entry.children[3].textContent);
         attributes['units'] = normalize(entry.children[6].textContent);
         attributes['task'] = normalize(entry.children[7].textContent);
+
+        let artifacts = Array.from(entry.children[8].querySelectorAll("a[title]")).map(aTag => normalize(aTag.getAttribute("title")));
+        if (artifacts.length > 0) {
+            attributes['artifacts'] = artifacts.join(',');
+        }
+
         return attributes;
     }, root);
     return filterFunction;

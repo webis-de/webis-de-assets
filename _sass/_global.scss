@@ -96,13 +96,29 @@ svg.text-logo text {
     }
 }
 
+.uk-navbar-left > ul > li > a {
+    padding: 0px;
+}
+
 .uk-navbar-nav {
     & > li > a {
+
         .uk-light & {
-            color: rgba(255, 255, 255, .75);
+            color: $header-link-color;
 
             &:hover, &:focus, &.uk-open[aria-expanded] {
-                color: #fff;
+                color: $header-link-hover-color;
+            }
+        }
+
+        &.path {
+            color: #fff;
+
+            &::before {
+                padding-left: 0.3rem;
+                letter-spacing: 0.3rem;
+                content: "/";
+                color: $header-link-color;
             }
         }
     }

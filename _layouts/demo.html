@@ -24,8 +24,11 @@
                     <a href="https://demo.webis.de/"><img src="https://assets.webis.de/img/webis-logo.png" alt="Webis Logo" class="uk-logo">demo.webis.de</a>
                 </li>
                 <li>
-                    <!-- Change "demo-title" to the name of the demo. -->
-                    <a class="path" href="#">demo-title</a>
+                    <!-- If using Jekyll/Liquid: Make sure to set the "path:" variable in your demo page's front matter! 
+                         If using this layout manually: Insert your demo title here. 
+                         Lowercase, hyphens as word separators.
+                    -->
+                    <a class="path" href="#">{{ page.demotitle }}</a>
                 </li>
             </ul>
         </div>

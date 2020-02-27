@@ -118,6 +118,7 @@ svg.text-logo text {
                 padding-left: 0.3rem;
                 letter-spacing: 0.3rem;
                 content: "/";
+                color: $header-link-color !important;
             }
         }
     }

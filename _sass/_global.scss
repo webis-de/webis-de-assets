@@ -112,12 +112,10 @@ svg.text-logo text {
         }
 
         &.path {
-            color: #fff;
-
             &::before {
-                padding-left: 0.3rem;
-                letter-spacing: 0.3rem;
-                content: "/";
+                padding-left: 0.5rem;
+                letter-spacing: 0.5rem;
+                content: ">";
                 color: $header-link-color !important;
             }
         }

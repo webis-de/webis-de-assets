@@ -10,6 +10,9 @@
     <link rel="icon" type="image/png" href="https://assets.webis.de/img/favicon.png">
 
     <link rel="stylesheet" href="https://assets.webis.de/css/style.css?{{site.time | date: '%s'}}">
+    {%- for css in page.additional_css %}
+    <link rel="stylesheet" href="{{ css | relative_url }}?{{site.time | date: '%s'}}">
+    {%- endfor %}
 </head>
 <body class="uk-offcanvas-content">
 <script src="https://assets.webis.de/js/hyphenate/hyphenate.min.js"></script>

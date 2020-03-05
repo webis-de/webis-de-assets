@@ -117,7 +117,7 @@ function removeHyphenationPossibilities(value) {
  */
 function initFiltering(groupSelector, elementSelector, populateDataAttributes, root = document) {
   // populate data- attributes
-  const groups = groupSelector === null ? [ root ] : root.querySelectorAll(groupSelector);
+  const groups = root.querySelectorAll(groupSelector);
   for (let g = 0; g < groups.length; ++g) {
       const elements = groups[g].querySelectorAll(elementSelector);
       for (let e = 0; e < elements.length; ++e) {
@@ -253,17 +253,13 @@ function initWebisDataFiltering(root = document, groupSelector = ".targetable") 
     return filterFunction;
 }
 
-function initWebisDataFilteringOnTable(table) {
-  return initWebisDataFiltering(table, null);
-}
-
 // include from other page
 //   parentElement:  element to which the data table should be added
 //   sourceSelector: query selector to select the table
 //   query:          filter query as used on the webis.de page
 //   source:         URL of the page the contains the bibentries
 function includeDataTable(parentElement, sourceSelector, query = "", source = "https://webis.de/data.html") {
-  includeWebis(parentElement, source, sourceSelector, initWebisDataFilteringOnTable, query);
+  includeWebis(parentElement, source, sourceSelector, initWebisDataFiltering, query);
 }
 
 ////////////////////////////////////////////////////

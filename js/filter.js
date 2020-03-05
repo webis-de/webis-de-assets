@@ -161,6 +161,9 @@ function initFiltering(groupSelector, elementSelector, populateDataAttributes, r
               filterField.value = query;
               filterFunction(query);
             }
+        } else {
+            filterField.value = "";
+            filterFunction("");
         }
     });
   }

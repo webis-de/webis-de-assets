@@ -29,9 +29,8 @@ function containQuery(attributes, queryWords) {
     return true;
 };
 
-function filterByQuery(query, groupSelector, elementSelector, root = document) {
+function filterByQuery(query, groups, elementSelector) {
     query = query.trim();
-    const groups = root.querySelectorAll(groupSelector);
     let filteredAll = true;
     if (query === "") {
         for (let g = 0; g < groups.length; ++g) {
@@ -131,7 +130,7 @@ function initFiltering(groupSelector, elementSelector, populateDataAttributes, r
 
   // make filter function
   const filterFunction = (query) => {
-      return filterByQuery(query, groupSelector, elementSelector, root);
+      return filterByQuery(query, groups, elementSelector);
   };
 
   const filterField = document.getElementById("filter-field");
@@ -253,7 +252,7 @@ function initWebisDataFiltering(root = document, groups = root.querySelectorAll(
 }
 
 function initWebisDataFilteringOnTable(table) {
-    return initWebisDataFiltering(table, table);
+    return initWebisDataFiltering(table, [ table ]);
 }
 
 // include from other page

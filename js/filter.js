@@ -115,9 +115,8 @@ function removeHyphenationPossibilities(value) {
  * elementSelector: query selector that specifies each element within a group to be filtered
  * populateDataAttributes: a function that takes the DOM node of an element and sets the data- attributes for filtering
  */
-function initFiltering(groupSelector, elementSelector, populateDataAttributes, root = document) {
+function initFiltering(groupSelector, elementSelector, populateDataAttributes, root = document, groups = root.querySelectorAll(groupSelector)) {
   // populate data- attributes
-  const groups = root.querySelectorAll(groupSelector);
   for (let g = 0; g < groups.length; ++g) {
       const elements = groups[g].querySelectorAll(elementSelector);
       for (let e = 0; e < elements.length; ++e) {
@@ -235,8 +234,8 @@ function initWebisParagraphsFiltering(root = document) {
 // Specific code for data
 ////////////////////////////////////////////////////
 
-function initWebisDataFiltering(root = document, groupSelector = ".targetable") {
-    const filterFunction = initFiltering(groupSelector, "tbody tr", entry => {
+function initWebisDataFiltering(root = document, groups = root.querySelectorAll(".targetable")) {
+    const filterFunction = initFiltering(".targetable", "tbody tr", entry => {
         const attributes = entry.dataset;
         attributes['name'] = normalize(entry.children[1].textContent);
         attributes['publisher'] = normalize(entry.children[2].textContent);
@@ -249,8 +248,12 @@ function initWebisDataFiltering(root = document, groupSelector = ".targetable") 
         }
 
         return attributes;
-    }, root);
+    }, root, groups);
     return filterFunction;
+}
+
+function initWebisDataFilteringOnTable(table) {
+    return initWebisDataFiltering(table, table);
 }
 
 // include from other page

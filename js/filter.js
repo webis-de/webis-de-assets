@@ -29,7 +29,7 @@ function containQuery(attributes, queryWords) {
     return true;
 };
 
-function filterByQuery(query, groups, elementSelector) {
+function filterByQuery(query, groups, elementSelector, root = document) {
     query = query.trim();
     let filteredAll = true;
     if (query === "") {
@@ -130,7 +130,7 @@ function initFiltering(groupSelector, elementSelector, populateDataAttributes, r
 
   // make filter function
   const filterFunction = (query) => {
-      return filterByQuery(query, groups, elementSelector);
+      return filterByQuery(query, groups, elementSelector, root);
   };
 
   const filterField = document.getElementById("filter-field");

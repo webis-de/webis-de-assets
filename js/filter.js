@@ -262,7 +262,7 @@ function initWebisDataFilteringOnTable(table) {
 //   query:          filter query as used on the webis.de page
 //   source:         URL of the page the contains the bibentries
 function includeDataTable(parentElement, sourceSelector, query = "", source = "https://webis.de/data.html") {
-  includeWebis(parentElement, source, sourceSelector, initWebisDataFiltering, query);
+  includeWebis(parentElement, source, sourceSelector, initWebisDataFilteringOnTable, query);
 }
 
 ////////////////////////////////////////////////////

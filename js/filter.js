@@ -291,7 +291,7 @@ function activateBibtexToggle(root = document) {
     }));
 };
 
-function initPublicationsFiltering(publicationsList = document, updateHash = true, groups = root.querySelectorAll(".year-entry")) {
+function initPublicationsFiltering(publicationsList = document, updateHash = true, groups = publicationsList.querySelectorAll(".year-entry")) {
     const filterFunction = initFiltering(".year-entry", ".bib-entry", entry => {
         const attributes = entry.dataset;
         for (let a in attributes) {

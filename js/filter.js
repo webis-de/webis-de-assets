@@ -29,7 +29,7 @@ function containQuery(attributes, queryWords) {
     return true;
 };
 
-function filterByQuery(query, groups, elementSelector, root = document) {
+function filterByQuery(query, groups, elementSelector, updateHash = true) {
     query = query.trim();
     let filteredAll = true;
     if (query === "") {
@@ -78,14 +78,17 @@ function filterByQuery(query, groups, elementSelector, root = document) {
       }
     }
 
-    if (root === document) { // webis.de page
+    if (updateHash) { // webis.de page
         if (query.trim() !== "") {
           document.location.hash = "#?q=" + query;
         } else if (document.location.hash.startsWith("#?q=")){
           document.location.hash = "";
         }
-      // Force UIkit update to prevent glitches
-      UIkit.update();
+    }
+
+    if (typeof UIkit !== "undefined") {
+        // Force UIkit update to prevent glitches
+        UIkit.update();
     }
 
     return filteredAll;
@@ -114,7 +117,7 @@ function removeHyphenationPossibilities(value) {
  * elementSelector: query selector that specifies each element within a group to be filtered
  * populateDataAttributes: a function that takes the DOM node of an element and sets the data- attributes for filtering
  */
-function initFiltering(groupSelector, elementSelector, populateDataAttributes, root = document, groups = root.querySelectorAll(groupSelector)) {
+function initFiltering(groupSelector, elementSelector, populateDataAttributes, root = document, updateHash = true, groups = root.querySelectorAll(groupSelector)) {
   // populate data- attributes
   for (let g = 0; g < groups.length; ++g) {
       const elements = groups[g].querySelectorAll(elementSelector);
@@ -130,7 +133,7 @@ function initFiltering(groupSelector, elementSelector, populateDataAttributes, r
 
   // make filter function
   const filterFunction = (query) => {
-      return filterByQuery(query, groups, elementSelector, root);
+      return filterByQuery(query, groups, elementSelector, updateHash);
   };
 
   const filterField = document.getElementById("filter-field");
@@ -233,7 +236,7 @@ function initWebisParagraphsFiltering(root = document) {
 // Specific code for data
 ////////////////////////////////////////////////////
 
-function initWebisDataFiltering(root = document, groups = root.querySelectorAll(".targetable")) {
+function initWebisDataFiltering(root = document, updateHash = true, groups = root.querySelectorAll(".targetable")) {
     const filterFunction = initFiltering(".targetable", "tbody tr", entry => {
         const attributes = entry.dataset;
         attributes['name'] = normalize(entry.children[1].textContent);
@@ -247,12 +250,12 @@ function initWebisDataFiltering(root = document, groups = root.querySelectorAll(
         }
 
         return attributes;
-    }, root, groups);
+    }, root, updateHash, groups);
     return filterFunction;
 }
 
 function initWebisDataFilteringOnTable(table) {
-    return initWebisDataFiltering(table, [ table ]);
+    return initWebisDataFiltering(table, true, [ table ]);
 }
 
 // include from other page
@@ -288,7 +291,7 @@ function activateBibtexToggle(root = document) {
     }));
 };
 
-function initPublicationsFiltering(publicationsList = document) {
+function initPublicationsFiltering(publicationsList = document, updateHash = true, groups = root.querySelectorAll(".year-entry")) {
     const filterFunction = initFiltering(".year-entry", ".bib-entry", entry => {
         const attributes = entry.dataset;
         for (let a in attributes) {
@@ -298,17 +301,21 @@ function initPublicationsFiltering(publicationsList = document) {
             attributes[a] = normalize(attributes[a]);
           }
         }
-    }, publicationsList);
+    }, publicationsList, updateHash, groups);
     activateBibtexToggle(publicationsList);
     return filterFunction;
 };
+
+function initPublicationsFilteringWithoutHashUpdate(publicationsList) {
+    return initPublicationsFiltering(publicationsList, false);
+}
 
 // include from other page
 //   parentElement: element to which the bibentries should be added
 //   query:         filter query as used on the webis.de page
 //   source:        URL of the page the contains the bibentries
 function includeBibentries(parentElement, query = "", source = "https://webis.de/publications.html") {
-  includeWebis(parentElement, source, '.publications-list', initPublicationsFiltering, query);
+  includeWebis(parentElement, source, '.publications-list', initPublicationsFilteringWithoutHashUpdate, query);
 }
 
 

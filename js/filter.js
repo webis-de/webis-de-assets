@@ -236,8 +236,8 @@ function initWebisParagraphsFiltering(root = document) {
 // Specific code for data
 ////////////////////////////////////////////////////
 
-function initWebisDataFiltering(root = document, updateHash = true, groups = root.querySelectorAll(".targetable")) {
-    const filterFunction = initFiltering(".targetable", "tbody tr", entry => {
+function initWebisDataFiltering(root = document, updateHash = true, groupSelector = ".targetable", groups = root.querySelectorAll(groupSelector)) {
+    const filterFunction = initFiltering(groupSelector, "tbody tr", entry => {
         const attributes = entry.dataset;
         attributes['name'] = normalize(entry.children[1].textContent);
         attributes['publisher'] = normalize(entry.children[2].textContent);
@@ -255,7 +255,7 @@ function initWebisDataFiltering(root = document, updateHash = true, groups = roo
 }
 
 function initWebisDataFilteringOnTable(table) {
-    return initWebisDataFiltering(table, true, [ table ]);
+    return initWebisDataFiltering(table, true, ".targetable", [ table ]);
 }
 
 // include from other page
@@ -291,8 +291,8 @@ function activateBibtexToggle(root = document) {
     }));
 };
 
-function initPublicationsFiltering(publicationsList = document, updateHash = true, groups = publicationsList.querySelectorAll(".year-entry")) {
-    const filterFunction = initFiltering(".year-entry", ".bib-entry", entry => {
+function initPublicationsFiltering(publicationsList = document, updateHash = true, groupSelector = ".year-entry", groups = publicationsList.querySelectorAll(groupSelector)) {
+    const filterFunction = initFiltering(groupSelector, ".bib-entry", entry => {
         const attributes = entry.dataset;
         for (let a in attributes) {
           if (a == "author" || a == "tags" || a == "editor" || a == "artifacts") {

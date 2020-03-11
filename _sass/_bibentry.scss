@@ -10,12 +10,12 @@
         font-style: italic;
     }
 
-    .year {
+    .group, .year {
         margin-top: .7rem;
         margin-bottom: 1rem;
     }
 
-    .year-entry {
+    .group-entry, .year-entry {
         margin-bottom: 3rem;
 
         &:first-child .year {

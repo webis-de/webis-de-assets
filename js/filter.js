@@ -217,6 +217,13 @@ if (document.location.hash.startsWith("#filter:")) {
 function initWebisListFiltering(root = document) {
     const filterFunction = initFiltering(".webis-list", ".entry", entry => {
         const attributes = entry.dataset;
+        for (let a in attributes) {
+          if (a == "author" || a == "tags") {
+            attributes[a] = normalize(attributes[a], protectCommata = true, protectQueryModifiers = false);
+          } else {
+            attributes[a] = normalize(attributes[a]);
+          }
+        }
         attributes['text'] = normalize(entry.textContent);
         return attributes;
     }, root);
@@ -226,6 +233,13 @@ function initWebisListFiltering(root = document) {
 function initWebisParagraphsFiltering(root = document) {
     const filterFunction = initFiltering(".webis-paragraphs", "p", paragraph => {
         const attributes = paragraph.dataset;
+        for (let a in attributes) {
+          if (a == "author" || a == "tags") {
+            attributes[a] = normalize(attributes[a], protectCommata = true, protectQueryModifiers = false);
+          } else {
+            attributes[a] = normalize(attributes[a]);
+          }
+        }
         attributes['text'] = normalize(paragraph.textContent);
         return attributes;
     }, root);
@@ -239,6 +253,13 @@ function initWebisParagraphsFiltering(root = document) {
 function initWebisDataFiltering(root = document, updateHash = true, groupSelector = ".targetable", groups = root.querySelectorAll(groupSelector)) {
     const filterFunction = initFiltering(groupSelector, "tbody tr", entry => {
         const attributes = entry.dataset;
+        for (let a in attributes) {
+          if (a == "author" || a == "tags") {
+            attributes[a] = normalize(attributes[a], protectCommata = true, protectQueryModifiers = false);
+          } else {
+            attributes[a] = normalize(attributes[a]);
+          }
+        }
         attributes['name'] = normalize(entry.children[1].textContent);
         attributes['publisher'] = normalize(entry.children[2].textContent);
         attributes['year'] = normalize(entry.children[3].textContent);

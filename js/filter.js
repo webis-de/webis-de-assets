@@ -198,6 +198,12 @@ function includeWebis(parentElement, source, sourceSelector, initFilteringFuncti
         completeElementsList.classList.remove("uk-container", "uk-margin-medium");
         parentElement.innerText = "";
         parentElement.appendChild(completeElementsList);
+        
+        // fix for chrome to jump to anchor that was just inserted:
+        const hash = window.location.hash;
+        window.location.hash = "";
+        window.location.hash = hash;
+        // end fix
     }
     request.open("GET", source);
     request.responseType = "document";
@@ -281,9 +287,6 @@ function initWebisDataFilteringOnTable(table) {
         table.querySelectorAll('th.header').forEach(
             th => th.addEventListener('click', enableColumnSorting));
     }
-    const hash = window.location.hash;
-    window.location.hash = "";
-    window.location.hash = hash; // fix for chrome to jump to anchor that was just inserted
     return initWebisDataFiltering(table, true, ".targetable", [ table ]);
 }
 

@@ -281,6 +281,9 @@ function initWebisDataFilteringOnTable(table) {
         table.querySelectorAll('th.header').forEach(
             th => th.addEventListener('click', enableColumnSorting));
     }
+    const hash = window.location.hash;
+    window.location.hash = "";
+    window.location.hash = hash; // fix for chrome to jump to anchor that was just inserted
     return initWebisDataFiltering(table, true, ".targetable", [ table ]);
 }
 

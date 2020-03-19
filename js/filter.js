@@ -272,10 +272,15 @@ function initWebisDataFiltering(root = document, updateHash = true, groupSelecto
 
         return attributes;
     }, root, updateHash, groups);
+
     return filterFunction;
 }
 
 function initWebisDataFilteringOnTable(table) {
+    if (table.classList.contains("sortable")) {
+        table.querySelectorAll('th.header').forEach(
+            th => th.addEventListener('click', enableColumnSorting));
+    }
     return initWebisDataFiltering(table, true, ".targetable", [ table ]);
 }
 

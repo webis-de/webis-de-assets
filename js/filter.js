@@ -183,12 +183,12 @@ function includeWebis(parentElement, source, sourceSelector, initFilteringFuncti
     parentElement.innerText = "Loading...";
 
     /* add style sheet if not added already */
-    if (document.querySelector('link[href="https://webis.de/css/style.css"]') == null) {
+    /*if (document.querySelector('link[href="https://webis.de/css/style.css"]') == null) {
         var linkElement = document.createElement('link');
         linkElement.setAttribute('rel', 'stylesheet');
         linkElement.setAttribute('href', 'https://webis.de/css/style.css');
         document.getElementsByTagName('head')[0].appendChild(linkElement);
-    }
+    }*/
 
     const request = new XMLHttpRequest();
     request.onload = function() {

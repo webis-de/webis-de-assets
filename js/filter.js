@@ -194,7 +194,7 @@ function includeWebis(parentElement, source, sourceSelector, initFilteringFuncti
     request.onload = function() {
         const completeElementsList = this.response.documentElement.querySelector(sourceSelector);
         const filterFunction = initFilteringFunction(completeElementsList);
-        // filterFunction(query);
+        filterFunction(query);
         completeElementsList.classList.remove("uk-container", "uk-margin-medium");
         parentElement.innerText = "";
         parentElement.appendChild(completeElementsList);

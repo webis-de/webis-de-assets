@@ -34,13 +34,13 @@
         <nav class="uk-margin-large-top">
             <ul class="uk-nav uk-nav-primary uk-nav-parent-icon" data-uk-nav>
                 <li{% if page.nav_active == "overview" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/workshop-template/index.html' | relative_url }}">Overview</a>
+                <a href="index.html">Overview</a>
                 </li>
                 <li{% if page.nav_active == "program" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/workshop-template/program.html' | relative_url }}">Program</a>
+                <a href="program.html">Program</a>
                 </li>
                 <li{% if page.nav_active == "organization" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/workshop-template/organization.html' | relative_url }}">Organization</a>
+                <a href="organization.html">Organization</a>
                 </li>
             </ul>
         </nav>
@@ -51,10 +51,19 @@
     <nav class="uk-navbar-container uk-navbar-transparent uk-container uk-light" data-uk-navbar="mode: click">
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
-                <li{% if page.nav_active == "index" %} class="uk-active"{% endif %}>
+                <li>
                 <!-- DO NOT CHANGE -->
                 <a href="{{ '/' | relative_url }}"><img src="https://assets.webis.de/img/webis-logo.png" alt="Webis Logo" class="uk-logo"> {% assign home = site.url | split: '/' %} {{ home | last }}</a>
                 </li>
+                {% assign domain = site.url | split: "/" %}
+                {% if domain[2] == "events.webis.de" %}
+                <li class="uk-active">
+                    <!-- If using Jekyll/Liquid: Make sure to set the "title:" variable in your event page's front matter. 
+                         If using this layout manually: Insert your event title here. 
+                    -->
+                    <a class="path" href="#">{{ page.title }}</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
 
@@ -69,13 +78,13 @@
         <div class="uk-navbar-right desktop-nav">
             <ul class="uk-navbar-nav">
                 <li{% if page.nav_active == "overview" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/workshop-template/index.html' | relative_url }}">Overview</a>
+                <a href="index.html">Overview</a>
                 </li>
                 <li{% if page.nav_active == "program" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/workshop-template/program.html' | relative_url }}">Program</a>
+                <a href="program.html">Program</a>
                 </li>
                 <li{% if page.nav_active == "organization" %} class="uk-active"{% endif %}>
-                <a href="{{ '/templates/workshop-template/organization.html' | relative_url }}">Organization</a>
+                <a href="organization.html">Organization</a>
                 </li>
             </ul>
         </div>

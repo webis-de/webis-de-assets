@@ -38,7 +38,9 @@ $header-link-hover-color: #fff;
 // Paddings
 $global-small-padding: 15px;
 $navbar-dropdown-grid-gutter-horizontal: 2 * $global-small-padding;
+$global-small-gutter: 15px !default;
 $global-medium-gutter: 40px !default;
+$padding-small-padding: $global-small-gutter !default;
 
 // Tables
 $table-small-cell-padding-vertical: 5px;
@@ -55,3 +57,9 @@ $navbar-nav-item-padding-horizontal: 10px;
 
 // Target / Fragment identifier
 $target-offset: $navbar-nav-item-height + 140px;
+
+// Breakpoints
+$breakpoint-small: 640px !default;
+$breakpoint-medium: 960px !default;
+$breakpoint-large: 1200px !default;
+$breakpoint-xlarge: 1600px !default;

@@ -201,8 +201,10 @@ function includeWebis(parentElement, source, sourceSelector, initFilteringFuncti
         
         // fix for chrome to jump to anchor that was just inserted:
         const hash = window.location.hash;
-        window.location.hash = "";
-        window.location.hash = hash;
+        if (hash !== "") {
+            window.location.hash = "";
+            window.location.hash = hash;
+        }
         // end fix
     }
     request.open("GET", source);

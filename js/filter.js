@@ -269,7 +269,7 @@ function initWebisListFiltering(lists = document.querySelectorAll(".webis-list")
 
 function initWebisParagraphsFiltering(paragraphs = document.querySelectorAll(".webis-paragraphs"), updateHash = true) {
   const elementSelector = "p";
-  return initWebisFiltering(groups, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
+  return initWebisFiltering(paragraphs, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
 }
 
 ////////////////////////////////////////////////////
@@ -294,7 +294,7 @@ function dataTableDataAttributesPopulationFunction(node) {
   return attributes;
 }
 
-function initWebisDataFiltering(tables = root.querySelectorAll(".targetable"), updateHash = true) {
+function initWebisDataFiltering(tables = document.querySelectorAll(".targetable"), updateHash = true) {
   const elementSelector = "tbody tr";
   return initWebisFiltering(tables, elementSelector, updateHash, dataTableDataAttributesPopulationFunction);
 }

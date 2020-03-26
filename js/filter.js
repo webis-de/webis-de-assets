@@ -247,7 +247,7 @@ function includeList(parentElement, sourceUrl, listSelector, listCallback) {
     parentElement.appendChild(list);
     updateCssTargetSelector();
   }
-  request.open("GET", source);
+  request.open("GET", sourceUrl);
   request.responseType = "document";
   request.send();
 };

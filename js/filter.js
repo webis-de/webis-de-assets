@@ -334,7 +334,7 @@ function activateBibtexToggle(root = document) {
 
 function initWebisPublicationsFiltering(groups = document.querySelectorAll(".year-entry"), updateHash = true) {
   groups.forEach(group => activateBibtexToggle(group))
-  const elementSelector = "tbody tr";
+  const elementSelector = ".bib-entry";
   return initWebisFiltering(groups, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
 }
 

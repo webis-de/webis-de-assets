@@ -9,6 +9,9 @@
     <link rel="icon" type="image/png" href="https://assets.webis.de/img/favicon.png">
 
     <link rel="stylesheet" href="https://assets.webis.de/css/style.css?{{site.time | date: '%s'}}">
+    {%- for css in page.additional_css %}
+    <link rel="stylesheet" href="{{ css }}?{{site.time | date: '%s'}}">
+    {%- endfor %}
 </head>
 <body class="uk-offcanvas-content">
 <script src="https://assets.webis.de/js/hyphenate/hyphenate.min.js"></script>
@@ -19,9 +22,18 @@
     <nav class="uk-navbar-container uk-navbar-transparent uk-container uk-light" data-uk-navbar="mode: click">
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
-                <li{% if page.nav_active == "index" %} class="uk-active"{% endif %}>
+                <li>
                 <a href="{{ '/' | relative_url }}"><img src="https://assets.webis.de/img/webis-logo.png" alt="Webis Logo" class="uk-logo"> {% assign home = site.url | split: '/' %} {{ home | last }}</a>
                 </li>
+                {% assign domain = site.url | split: "/" %}
+                {% if domain[2] == "events.webis.de" %}
+                <li class="uk-active">
+                    <!-- If using Jekyll/Liquid: Make sure to set the "title:" variable in your event page's front matter. 
+                         If using this layout manually: Insert your event title here. 
+                    -->
+                    <a class="path" href="#">{{ page.title }}</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

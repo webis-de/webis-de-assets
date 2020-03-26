@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="https://assets.webis.de/css/style.css?{{site.time | date: '%s'}}">
     {%- for css in page.additional_css %}
-    <link rel="stylesheet" href="{{ css | relative_url }}?{{site.time | date: '%s'}}">
+    <link rel="stylesheet" href="{{ css }}?{{site.time | date: '%s'}}">
     {%- endfor %}
 </head>
 <body class="uk-offcanvas-content">

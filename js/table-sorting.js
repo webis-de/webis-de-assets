@@ -74,7 +74,12 @@ const enableColumnSorting = (event) => {
         .forEach(tr => tbody.appendChild(tr));
 }
 
-$(document).ready(function() {
-    document.querySelectorAll('table.sortable th.header').forEach(
-        th => th.addEventListener('click', enableColumnSorting));
-})
+function initTableSorting(tables = document.querySelectorAll('table.sortable')) {
+  tables.forEach(table => {
+    table.querySelectorAll('th.header').forEach(th => {
+      th.addEventListener('click', enableColumnSorting)
+    });
+  });
+};
+
+$(document).ready(initTableSorting);

@@ -296,6 +296,7 @@ function dataTableDataAttributesPopulationFunction(node) {
 
 function initWebisDataFiltering(tables = document.querySelectorAll(".targetable"), updateHash = true) {
   const elementSelector = "tbody tr";
+  initTableSorting(tables);
   return initWebisFiltering(tables, elementSelector, updateHash, dataTableDataAttributesPopulationFunction);
 }
 
@@ -304,7 +305,6 @@ function includeDataTable(parentElement, sourceSelector, query = "", source = "h
     const filterFunction = initWebisDataFiltering(tables = [table], updateHash = updateHash);
     filterFunction(query);
     table.classList.remove("uk-container", "uk-margin-medium");
-    initTableSorting([table]);
   });
 }
 

@@ -82,4 +82,3 @@ function initTableSorting(tables = document.querySelectorAll('table.sortable')) 
   });
 };
 
-$(document).ready(initTableSorting);

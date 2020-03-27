@@ -300,14 +300,6 @@ function initWebisDataFiltering(tables = document.querySelectorAll(".targetable"
   return initWebisFiltering(tables, elementSelector, updateHash, dataTableDataAttributesPopulationFunction);
 }
 
-function includeDataTable(parentElement, sourceSelector, query = "", source = "https://webis.de/data.html", updateHash = true) {
-  includeList(parentElement, source, sourceSelector, table => {
-    const filterFunction = initWebisDataFiltering(tables = [table], updateHash = updateHash);
-    filterFunction(query);
-    table.classList.remove("uk-container", "uk-margin-medium");
-  });
-}
-
 ////////////////////////////////////////////////////
 // Specific code for publications
 ////////////////////////////////////////////////////
@@ -338,17 +330,45 @@ function initWebisPublicationsFiltering(groups = document.querySelectorAll(".yea
   return initWebisFiltering(groups, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
 }
 
+////////////////////////////////////////////////////
+// Specific code to include publications
+////////////////////////////////////////////////////
+
 /*
  * parentElement: element to which the bibentries should be added
  * query: filter query as used on the webis.de page
  * sourceUrl: URL of the page the contains the bibentries
+ * listCallback: function that is called on the list before it is added to the parent element
  */
-function includeBibentries(parentElement, query = "", sourceUrl = "https://webis.de/publications.html") {
+function includeBibentries(parentElement, query = "", sourceUrl = "https://webis.de/publications.html", listCallback = null) {
   includeList(parentElement, sourceUrl, '.publications-list', list => {
     const filterFunction = initWebisPublicationsFiltering(list.querySelectorAll(".year-entry"), updateHash = false);
     filterFunction(query);
     list.classList.remove("uk-container", "uk-margin-medium");
+    if (listCallback !== null) {
+      listCallback(list);
+    }
   });
+}
+
+/*
+ * Callback for includeBibentries that removes all list headings
+ */
+function bibHeadingRemoveCallback(list) {
+  list.querySelectorAll("h2").forEach(heading => {
+    heading.remove();
+  });
+}
+
+/*
+ * Returns a callback for includeBibentries that changes the headings from h2 to h<headingSize>
+ */
+function makeBibHeadingSizeCallback(headingSize) {
+  return list => {
+    list.querySelectorAll("h2").forEach(heading => {
+      heading.outerHTML = heading.outerHTML.replace(/^<h2/, "<h" + headingSize).replace(/h2>/, "h" + headingSize + ">");
+    });
+  };
 }
 
 

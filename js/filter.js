@@ -357,9 +357,21 @@ function includeBibentries(parentElement, query = "", yearHeadingSize = 3) {
  * Removes all list headings
  */
 function removeBibHeading(bibList) {
-  bibList.querySelectorAll("h2").forEach(heading => {
+  const group = document.createElement("div");
+  group.classList.add("year-entry");
+
+  bibList.querySelectorAll(".year-entry").forEach(year => {
+    for (let c = 0; c < year.children.length; ++c) {
+      const node = year.children[c];
+      group.appendChild(node);
+    }
+    year.remove();
+  });
+
+  group.querySelectorAll("h2").forEach(heading => {
     heading.remove();
   });
+  bibList.appendChild(group);
 }
 
 /*

@@ -337,16 +337,16 @@ function initWebisPublicationsFiltering(groups = document.querySelectorAll(".yea
 /*
  * parentElement: element to which the bibentries should be added
  * query: filter query as used on the webis.de page
- * sourceUrl: URL of the page the contains the bibentries
- * listCallback: function that is called on the list before it is added to the parent element
+ * bibCallback: function that is called on the bibentries list before it is added to the parent element
  */
-function includeBibentries(parentElement, query = "", sourceUrl = "https://webis.de/publications.html", listCallback = null) {
-  includeList(parentElement, sourceUrl, '.publications-list', list => {
-    const filterFunction = initWebisPublicationsFiltering(list.querySelectorAll(".year-entry"), updateHash = false);
+function includeBibentries(parentElement, query = "", bibCallback = null) {
+  const sourceUrl = "https://webis.de/publications.html";
+  includeList(parentElement, sourceUrl, '.publications-list', bibList => {
+    const filterFunction = initWebisPublicationsFiltering(bibList.querySelectorAll(".year-entry"), updateHash = false);
     filterFunction(query);
-    list.classList.remove("uk-container", "uk-margin-medium");
-    if (listCallback !== null) {
-      listCallback(list);
+    bibList.classList.remove("uk-container", "uk-margin-medium");
+    if (bibCallback !== null) {
+      bibCallback(bibList);
     }
   });
 }

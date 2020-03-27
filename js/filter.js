@@ -337,38 +337,38 @@ function initWebisPublicationsFiltering(groups = document.querySelectorAll(".yea
 /*
  * parentElement: element to which the bibentries should be added
  * query: filter query as used on the webis.de page
- * bibCallback: function that is called on the bibentries list before it is added to the parent element
+ * yearHeadingSize: changes the h2 tags of the year heading to h<yearHeadingSize>
  */
-function includeBibentries(parentElement, query = "", bibCallback = null) {
+function includeBibentries(parentElement, query = "", yearHeadingSize = 3) {
   const sourceUrl = "https://webis.de/publications.html";
   includeList(parentElement, sourceUrl, '.publications-list', bibList => {
     const filterFunction = initWebisPublicationsFiltering(bibList.querySelectorAll(".year-entry"), updateHash = false);
     filterFunction(query);
     bibList.classList.remove("uk-container", "uk-margin-medium");
-    if (bibCallback !== null) {
-      bibCallback(bibList);
+    if (yearHeadingSize === null) {
+      removeBibHeading(bibList);
+    } else if (yearHeadingSize !== 2) {
+      changeBibHeadingSize(bibList, yearHeadingSize);
     }
   });
 }
 
 /*
- * Callback for includeBibentries that removes all list headings
+ * Removes all list headings
  */
-function bibHeadingRemoveCallback(list) {
-  list.querySelectorAll("h2").forEach(heading => {
+function removeBibHeading(bibList) {
+  bibList.querySelectorAll("h2").forEach(heading => {
     heading.remove();
   });
 }
 
 /*
- * Returns a callback for includeBibentries that changes the headings from h2 to h<headingSize>
+ * Changes the headings from h2 to h<headingSize>
  */
-function makeBibHeadingSizeCallback(headingSize) {
-  return list => {
-    list.querySelectorAll("h2").forEach(heading => {
-      heading.outerHTML = heading.outerHTML.replace(/^<h2/, "<h" + headingSize).replace(/h2>/, "h" + headingSize + ">");
-    });
-  };
+function changeBibHeadingSize(bibList, headingSize) {
+  bibList.querySelectorAll("h2").forEach(heading => {
+    heading.outerHTML = heading.outerHTML.replace(/^<h2/, "<h" + headingSize).replace(/h2>/, "h" + headingSize + ">");
+  });
 }
 
 

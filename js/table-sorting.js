@@ -1,5 +1,6 @@
 
 const fileSizeMultipliers = {
+    b: 1,
     kb: 1000,
     mb: 1000000,
     gb: 1000000000,
@@ -10,7 +11,8 @@ const fileSizeMultipliers = {
 const unitSizeMultipliers = {
     k: 1000,
     m: 1000000,
-    b: 1000000000
+    b: 1000000000,
+    t: 1000000000000
 };
 
 const getCellValue = (tr, idx) => {
@@ -20,15 +22,13 @@ const getCellValue = (tr, idx) => {
         return -1;
     }
 
-    const matchesFileSize = value.match(/^(\d+(?:\.\d+)?)\s(.B)?/);
+    const matchesFileSize = value.trim().match(/^(\d+(?:\.\d+)?)\s(.?B)$/);
     if (matchesFileSize) {
-        const multiplier = matchesFileSize[2] === ""
-            ? 1
-            : fileSizeMultipliers[matchesFileSize[2].toLowerCase()];
+        const multiplier = fileSizeMultipliers[matchesFileSize[2].toLowerCase()];
         return parseFloat(matchesFileSize[1]) * multiplier;
     }
 
-    const matchesUnitSize = value.match(/^(\d+(?:\.\d+)?)([KMBT]?)/);
+    const matchesUnitSize = value.trim().match(/^(\d+(?:\.\d+)?)([KMBT]?)$/);
     if (matchesUnitSize) {
         const multiplier = matchesUnitSize[2] === ""
             ? 1

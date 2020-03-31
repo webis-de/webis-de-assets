@@ -89,15 +89,30 @@ function initTableSorting(tables = document.querySelectorAll('table.sortable')) 
 // change fragment identifier on click
 /////////////////////////////////////////////////////////////
 
+function clearHighlight() {
+  document.querySelectorAll('.target').forEach(target => {
+    target.classList.remove("target");
+  });
+}
+
+function refreshHighlight() {
+  clearHighlight();
+  const targeted = document.querySelector(":target");
+  if (targeted !== null) {
+    const row = targeted.closest("tr");
+    if (row !== null) {
+      row.classList.add("target");
+    }
+  }
+}
+
 function highlightRow(row) {
   const idCell = row.querySelector("[id]");
-  if (idCell != null) {
+  if (idCell !== null) {
     const id = idCell.getAttribute("id");
     const hash = "#" + id;
     if (window.location.hash !== hash) {
-      document.querySelectorAll('.target').forEach(target => {
-        target.classList.remove("target");
-      });
+      clearHighlight();
       history.pushState({page:1}, "", hash);
       row.classList.add("target");
     }
@@ -112,5 +127,7 @@ function initTableHighlightOnClick(tables = document.querySelectorAll('table')) 
       });
     });
   });
+  refreshHighlight();
+  window.addEventListener("hashchange", refreshHighlight);
 }
 

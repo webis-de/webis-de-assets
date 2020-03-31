@@ -18,7 +18,7 @@
     tr.target th,
     tr.target td {
         background-color: $table-header-target-color !important;
-        color: $global-color;
+        color: $global-color !important;
     }
 
     tr:hover > *[id] ~ * {

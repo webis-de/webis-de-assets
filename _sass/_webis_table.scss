@@ -14,7 +14,11 @@
         color: $global-inverse-color;
     }
 
-    &:target thead tr:first-child th, tr:target th, tr:target td {
+    &:target thead tr:first-child th,
+    tr:target th,
+    tr:target td,
+    tr.target th,
+    tr.target td {
         background-color: $table-header-target-color !important;
         color: $global-color;
     }

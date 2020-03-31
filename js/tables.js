@@ -97,10 +97,13 @@ function clearHighlight() {
 
 function refreshHighlight() {
   clearHighlight();
+  console.log("Refresh");
   const targeted = document.querySelector(":target");
   if (targeted !== null) {
+    console.log(targeted);
     const row = targeted.closest("tr");
     if (row !== null) {
+      console.log(row);
       row.classList.add("target");
     }
   }

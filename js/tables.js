@@ -116,17 +116,21 @@ function highlightRow(row) {
     const hash = "#" + id;
     if (window.location.hash !== hash) {
       clearHighlight();
+      row.classList.add("target");
+
       const filterField = document.querySelector("#filter-field");
       if (filterField !== null) {
-        filterField.value = "";
-        filterField.dispatchEvent(new Event("input"));
+        if (filterField.value !== "") {
+          filterField.value = "";
+          filterField.dispatchEvent(new Event("input"));
+          const anchorRectangle = idCell.getBoundingClientRect();
+          if (anchorRectangle.bottom > window.innerHeight || anchorRectangle.top < 0) {
+            idCell.scrollIntoView();
+          }
+        }
       }
+
       history.pushState({page:1}, "", hash);
-      row.classList.add("target");
-      const anchorRectangle = idCell.getBoundingClientRect();
-      if (anchorRectangle.bottom > window.innerHeight || anchorRectangle.top < 0) {
-        idCell.scrollIntoView();
-      }
     }
   }
 }

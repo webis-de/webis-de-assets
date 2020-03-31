@@ -1,3 +1,6 @@
+/////////////////////////////////////////////////////////////
+// sorting
+/////////////////////////////////////////////////////////////
 
 const fileSizeMultipliers = {
     b: 1,
@@ -81,4 +84,26 @@ function initTableSorting(tables = document.querySelectorAll('table.sortable')) 
     });
   });
 };
+
+/////////////////////////////////////////////////////////////
+// change fragment identifier on click
+/////////////////////////////////////////////////////////////
+
+function highlightRow(row) {
+  const idCell = row.querySelector("[id]");
+  if (idCell != null) {
+    const id = idCell.getAttribute("id");
+    window.location.hash = "#" + id;
+  }
+}
+
+function initTableHighlightOnClick(tables = document.querySelectorAll('table')) {
+  tables.forEach(table => {
+    table.querySelectorAll('tr').forEach(row => {
+      row.addEventListener("click", evt => {
+        highlightRow(evt.target.closest("tr"));
+      });
+    });
+  });
+}
 

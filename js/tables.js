@@ -95,7 +95,11 @@ function highlightRow(row) {
     const id = idCell.getAttribute("id");
     const hash = "#" + id;
     if (window.location.hash !== hash) {
-      window.location.hash = hash;
+      document.querySelectorAll('.target').forEach(target => {
+        target.classList.remove("target");
+      });
+      history.pushState({page:1}, "", hash);
+      row.classList.add("target");
     }
   }
 }

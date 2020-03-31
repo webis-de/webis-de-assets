@@ -97,14 +97,14 @@ function clearHighlight() {
 
 function refreshHighlight() {
   clearHighlight();
-  console.log("Refresh");
-  const targeted = document.querySelector(window.location.hash);
-  if (targeted !== null) {
-    console.log(targeted);
-    const row = targeted.closest("tr");
-    if (row !== null) {
-      console.log(row);
-      row.classList.add("target");
+  const hash = window.location.hash;
+  if (hash !== "" && !hash.startsWith("#?q=")) {
+    const targeted = document.querySelector(window.location.hash);
+    if (targeted !== null) {
+      const row = targeted.closest("tr");
+      if (row !== null) {
+        row.classList.add("target");
+      }
     }
   }
 }

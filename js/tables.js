@@ -123,7 +123,10 @@ function highlightRow(row) {
       }
       history.pushState({page:1}, "", hash);
       row.classList.add("target");
-      row.querySelector("[id]").scrollIntoView();
+      const anchorRectangle = idCell.getBoundingClientRect();
+      if (anchorRectangle.bottom > window.innerHeight || anchorRectangle.top < 0) {
+        idCell.scrollIntoView();
+      }
     }
   }
 }

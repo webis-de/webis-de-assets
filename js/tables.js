@@ -93,7 +93,10 @@ function highlightRow(row) {
   const idCell = row.querySelector("[id]");
   if (idCell != null) {
     const id = idCell.getAttribute("id");
-    window.location.hash = "#" + id;
+    const hash = "#" + id;
+    if (window.location.hash !== hash) {
+      window.location.hash = hash;
+    }
   }
 }
 

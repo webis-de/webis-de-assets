@@ -116,8 +116,14 @@ function highlightRow(row) {
     const hash = "#" + id;
     if (window.location.hash !== hash) {
       clearHighlight();
+      const filterField = document.querySelector("#filter-field");
+      if (filterField !== null) {
+        filterField.value = "";
+        filterField.dispatchEvent(new Event("input"));
+      }
       history.pushState({page:1}, "", hash);
       row.classList.add("target");
+      row.querySelector("[id]").scrollIntoView();
     }
   }
 }

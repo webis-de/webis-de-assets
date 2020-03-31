@@ -98,7 +98,7 @@ function clearHighlight() {
 function refreshHighlight() {
   clearHighlight();
   console.log("Refresh");
-  const targeted = document.querySelector(":target");
+  const targeted = document.querySelector(window.location.hash);
   if (targeted !== null) {
     console.log(targeted);
     const row = targeted.closest("tr");

@@ -102,12 +102,6 @@ table.targetable td:first-child {
     visibility: hidden;
 }
 
-table.targetable th:target ~ th,
-table.targetable td:target ~ td {
-    background-color: $table-header-target-color !important;
-    color: $global-color;
-}
-
 // jQuery DataTables adjustments
 .dataTables_wrapper {
     @extend .uk-margin-medium;

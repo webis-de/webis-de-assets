@@ -360,8 +360,8 @@ function activateShareLink(root = document) {
     setTimeout(function() { event.target.parentNode.removeChild(copiedSpan); event.target.hidden = false }, 500);
 
   }))
-  refreshHighlight();
-  window.addEventListener("hashchange", refreshHighlight);
+  refreshBibHighlight();
+  window.addEventListener("hashchange", refreshBibHighlight);
 }
 
 function copyStringToClipboard(str) {
@@ -383,7 +383,7 @@ function clearHighlight() {
   });
 }
 
-function refreshHighlight() {
+function refreshBibHighlight() {
   clearHighlight();
   const hash = window.location.hash;
   if (hash !== "" && !hash.startsWith("#?q=")) {

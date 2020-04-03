@@ -40,6 +40,10 @@
     .bibtex:focus {
         background-color: #f4f4f4;
     }
+
+    .target {
+        background-color: $table-header-target-color;
+    }
 }
 
 #search-control input {

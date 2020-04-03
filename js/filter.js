@@ -324,8 +324,82 @@ function activateBibtexToggle(root = document) {
   }));
 };
 
+// Highlight publication, generate fragment identifier in URL and copy URL to clipboard on click
+function activateShareLink(root = document) {
+  root.querySelectorAll('.share').forEach(el => el.addEventListener("click", (event) => {
+    const bibentry = event.target.parentElement;
+    const bibid = bibentry.previousElementSibling.id;
+
+    const hash = "#" + bibid;
+    
+    if (window.location.hash !== hash) {
+      clearHighlight();
+      bibentry.classList.add("target");
+      
+      const filterField = document.querySelector("#filter-field");
+      if (filterField !== null) {
+        if (filterField.value !== "") {
+          filterField.value = "";
+          filterField.dispatchEvent(new Event("input"));
+          const anchorRectangle = bibentry.getBoundingClientRect();
+          if (anchorRectangle.bottom > window.innerHeight || anchorRectangle.top < 0) {
+            bibentry.scrollIntoView();
+          }
+        }
+      }
+
+      history.pushState({page: 1}, "", hash);
+    }
+
+    copyStringToClipboard(window.location.href);
+    var copiedSpan = document.createElement("span");
+    const copiedText = document.createTextNode("copied");
+    copiedSpan.appendChild(copiedText);
+    event.target.hidden = true;
+    event.target.insertAdjacentElement('afterend', copiedSpan);
+    setTimeout(function() { event.target.parentNode.removeChild(copiedSpan); event.target.hidden = false }, 3000);
+
+  }))
+  refreshHighlight();
+  window.addEventListener("hashchange", refreshHighlight);
+}
+
+function copyStringToClipboard(str) {
+  var el = document.createElement('textarea');
+  
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style = { position: 'absolute', left: '-9999px' };
+  
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+}
+
+function clearHighlight() {
+  document.querySelectorAll('.target').forEach(target => {
+    target.classList.remove("target");
+  });
+}
+
+function refreshHighlight() {
+  clearHighlight();
+  const hash = window.location.hash;
+  if (hash !== "" && !hash.startsWith("#?q=")) {
+    const targeted = document.querySelector(window.location.hash);
+    if (targeted !== null) {
+      const bibentry = targeted.nextElementSibling;
+      if (bibentry !== null) {
+        bibentry.classList.add("target");
+      }
+    }
+  }
+}
+
 function initWebisPublicationsFiltering(groups = document.querySelectorAll(".year-entry"), updateHash = true) {
   groups.forEach(group => activateBibtexToggle(group))
+  groups.forEach(group => activateShareLink(group))
   const elementSelector = ".bib-entry";
   return initWebisFiltering(groups, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
 }

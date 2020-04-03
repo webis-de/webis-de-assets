@@ -357,7 +357,7 @@ function activateShareLink(root = document) {
     copiedSpan.appendChild(copiedText);
     event.target.hidden = true;
     event.target.insertAdjacentElement('afterend', copiedSpan);
-    setTimeout(function() { event.target.parentNode.removeChild(copiedSpan); event.target.hidden = false }, 3000);
+    setTimeout(function() { event.target.parentNode.removeChild(copiedSpan); event.target.hidden = false }, 500);
 
   }))
   refreshHighlight();

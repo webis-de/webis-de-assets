@@ -327,6 +327,8 @@ function activateBibtexToggle(root = document) {
 // Highlight publication, generate fragment identifier in URL and copy URL to clipboard on click
 function activateShareLink(root = document) {
   root.querySelectorAll('.share').forEach(el => el.addEventListener("click", (event) => {
+    event.preventDefault();
+
     const bibentry = event.target.parentElement;
     const bibid = bibentry.previousElementSibling.id;
 

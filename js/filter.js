@@ -333,25 +333,18 @@ function activateShareLink(root = document) {
     const hash = "#" + bibid;
     
     if (window.location.hash !== hash) {
-      clearHighlight();
-      bibentry.classList.add("target");
+      clearBibHighlight();
       
       const filterField = document.querySelector("#filter-field");
-      if (filterField !== null) {
-        if (filterField.value !== "") {
-          filterField.value = "";
-          filterField.dispatchEvent(new Event("input"));
-          const anchorRectangle = bibentry.getBoundingClientRect();
-          if (anchorRectangle.bottom > window.innerHeight || anchorRectangle.top < 0) {
-            bibentry.scrollIntoView();
-          }
-        }
+      if ((filterField !== null) && (filterField.value !== "")) {
+        copyStringToClipboard(window.location.href.split("#")[0] + hash);
+      } else {
+        bibentry.classList.add("target");
+        history.pushState({page: 1}, "", hash);
+        copyStringToClipboard(window.location.href);
       }
-
-      history.pushState({page: 1}, "", hash);
     }
 
-    copyStringToClipboard(window.location.href);
     var copiedSpan = document.createElement("span");
     const copiedText = document.createTextNode("copied");
     copiedSpan.appendChild(copiedText);
@@ -377,14 +370,14 @@ function copyStringToClipboard(str) {
   document.body.removeChild(el);
 }
 
-function clearHighlight() {
+function clearBibHighlight() {
   document.querySelectorAll('.target').forEach(target => {
     target.classList.remove("target");
   });
 }
 
 function refreshBibHighlight() {
-  clearHighlight();
+  clearBibHighlight();
   const hash = window.location.hash;
   if (hash !== "" && !hash.startsWith("#?q=")) {
     const targeted = document.querySelector(window.location.hash);

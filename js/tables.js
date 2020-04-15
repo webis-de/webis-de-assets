@@ -83,4 +83,7 @@ function initTableSorting(tables = document.querySelectorAll('table.sortable')) 
       th.addEventListener('click', enableColumnSorting)
     });
   });
+  if (typeof initTableHighlightOnClick === "function") { // selection.js included
+    initTableHighlightOnClick(tables);
+  }
 };

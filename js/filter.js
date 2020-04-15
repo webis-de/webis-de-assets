@@ -418,6 +418,9 @@ function copyStringToClipboard(str) {
 function initWebisPublicationsFiltering(groups = document.querySelectorAll(".year-entry"), updateUrlQueryParam = true) {
   groups.forEach(group => activateBibtexToggle(group))
   groups.forEach(group => activateShareLink(group))
+  if (typeof initBibHighlightOnShare === "function") {
+    initBibHighlightOnShare();
+  }
   const elementSelector = ".bib-entry";
   return initWebisFiltering(groups, elementSelector, updateUrlQueryParam, defaultDataAttributesPopulationFunction);
 }
@@ -441,6 +444,9 @@ function includeBibentries(parentElement, query = "", yearHeadingSize = 3) {
       removeBibHeading(bibList);
     } else if (yearHeadingSize !== 2) {
       changeBibHeadingSize(bibList, yearHeadingSize);
+    }
+    if (typeof initBibHighlightOnShare === "function") {
+      initBibHighlightOnShare(bibList.querySelectorAll(".share"));
     }
   });
 }

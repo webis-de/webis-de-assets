@@ -348,7 +348,9 @@ function dataTableDataAttributesPopulationFunction(node) {
 
 function initWebisDataFiltering(tables = document.querySelectorAll(".targetable"), updateUrlQueryParam = true) {
   const elementSelector = "tbody tr";
-  initTableSorting(tables);
+  if (typeof initTableSorting === "function") { // tables.js included
+    initTableSorting(tables);
+  }
   return initWebisFiltering(tables, elementSelector, updateUrlQueryParam, dataTableDataAttributesPopulationFunction);
 }
 
@@ -418,7 +420,7 @@ function copyStringToClipboard(str) {
 function initWebisPublicationsFiltering(groups = document.querySelectorAll(".year-entry"), updateUrlQueryParam = true) {
   groups.forEach(group => activateBibtexToggle(group))
   groups.forEach(group => activateShareLink(group))
-  if (typeof initBibHighlightOnShare === "function") {
+  if (typeof initBibHighlightOnShare === "function") { // selection.js included
     initBibHighlightOnShare();
   }
   const elementSelector = ".bib-entry";
@@ -445,7 +447,7 @@ function includeBibentries(parentElement, query = "", yearHeadingSize = 3) {
     } else if (yearHeadingSize !== 2) {
       changeBibHeadingSize(bibList, yearHeadingSize);
     }
-    if (typeof initBibHighlightOnShare === "function") {
+    if (typeof initBibHighlightOnShare === "function") { // selection.js included
       initBibHighlightOnShare(bibList.querySelectorAll(".share"));
     }
   });

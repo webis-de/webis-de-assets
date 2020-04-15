@@ -1,3 +1,42 @@
+////////////////////////////////////////////////////
+// Generic code for filter-based history manipulation
+////////////////////////////////////////////////////
+
+const historyNewStateThresholdMs = 1000;
+let lastHistoryChangeMs = new Date().getTime();
+
+function updateUrlQueryParameter(query) {
+  const url = new URL(document.location.href);
+  if (query.trim() === "") {
+    if (!url.searchParams.has("q")) {
+      return;
+    } else {
+      url.searchParams.delete("q");
+    }
+  } else {
+    if (url.searchParams.has("q") && url.searchParams.get("q") === query) {
+      return;
+    } else {
+      url.searchParams.set("q", query);
+    }
+  }
+
+  const now = new Date().getTime();
+  const msSinceLastHistoryChange = now - lastHistoryChangeMs;
+  lastHistoryChangeMs = now;
+
+  if (msSinceLastHistoryChange >= historyNewStateThresholdMs) {
+    history.pushState({ query: query }, "", url);
+  } else {
+    history.replaceState({ query: query }, "", url);
+  }
+}
+
+
+////////////////////////////////////////////////////
+// Generic code for filtering
+////////////////////////////////////////////////////
+
 function containQuery(attributes, queryWords) {
   for (let q = 0; q < queryWords.length; ++q) {
     let queryWord = queryWords[q].replace(/\+/g, " ");
@@ -29,7 +68,7 @@ function containQuery(attributes, queryWords) {
   return true;
 };
 
-function filterByQuery(query, groups, elementSelector, updateHash = true) {
+function filterByQuery(query, groups, elementSelector, updateUrlQueryParam = true) {
   query = query.trim();
   let filteredAll = true;
   if (query === "") {
@@ -78,12 +117,8 @@ function filterByQuery(query, groups, elementSelector, updateHash = true) {
     }
   }
 
-  if (updateHash) { // webis.de page
-    if (query.trim() !== "") {
-      document.location.hash = "#?q=" + query;
-    } else if (document.location.hash.startsWith("#?q=")) {
-      document.location.hash = "";
-    }
+  if (updateUrlQueryParam) { // webis.de page
+    updateUrlQueryParameter(query);
   }
 
   if (typeof UIkit !== "undefined") {
@@ -162,25 +197,28 @@ function defaultDataAttributesPopulationFunction(node) {
 function initializeFilterField(filterFunction, filterField = document.getElementById("filter-field")) {
   if (filterField !== null) {
     // remove spurious "\"
-    if (document.location.hash.indexOf("\\") > 0) {
-        document.location.hash = document.location.hash.replace(/\\/g, "");
+    if (document.location.search.indexOf("\\") > 0) {
+        document.location.search = document.location.search.replace(/\\/g, "");
     }
+    let params = new URLSearchParams(document.location.search);
 
     // Set up filter field
-    if (document.location.hash.startsWith("#?q=")) {
-        const query = decodeURIComponent(document.location.hash.substr(4));
+    if ((params.has("q")) && (params.get("q") !== "")) {
+        const query = params.get("q");
         filterField.value = query;
     }
     filterField.addEventListener("input", event => filterFunction(event.target.value));
     filterFunction(filterField.value);
-    if (document.location.hash.startsWith("#?q=") || document.location.hash === "") {
+    if (document.location.hash === "") { // only focus filterField if no fragment identifier present
         filterField.focus();
     }
 
-    // Update if hash in URL changed (e.g., browser back button)
-    window.addEventListener("hashchange", event => {
-      if (document.location.hash.startsWith("#?q=")) {
-        const query = decodeURIComponent(document.location.hash.substr(4));
+    // Update if query in URL changed (e.g., browser back button)
+    window.addEventListener("popstate", event => {
+      let params = new URL(document.location).searchParams;
+
+      if (params.has("q")) {
+        const query = params.get("q");
         if (query !== filterField.value) {
           filterField.value = query;
           filterFunction(query);
@@ -198,9 +236,9 @@ function initializeFilterField(filterFunction, filterField = document.getElement
  * elementSelector: query selector that specifies each element within a group to be filtered
  * updateHash: Whether to update the window.location.hash on filtering
  */
-function makeFilterFunction(groups, elementSelector, updateHash = true) {
+function makeFilterFunction(groups, elementSelector, updateUrlQueryParam = true) {
   const filterFunction = (query) => {
-    return filterByQuery(query, groups, elementSelector, updateHash);
+    return filterByQuery(query, groups, elementSelector, updateUrlQueryParam);
   };
   return filterFunction;
 }
@@ -211,10 +249,10 @@ function makeFilterFunction(groups, elementSelector, updateHash = true) {
  * updateHash: Whether to update the window.location.hash on filtering
  * dataAttributesPopulationFunction: a function that takes the DOM node of an element and sets the data-attributes of the respective node
  */
-function initWebisFiltering(groups, elementSelector, updateHash = true, dataAttributesPopulationFunction = defaultDataAttributesPopulationFunction) {
+function initWebisFiltering(groups, elementSelector, updateUrlQueryParam = true, dataAttributesPopulationFunction = defaultDataAttributesPopulationFunction) {
   populateDataAttributesForGroups(groups, elementSelector, dataAttributesPopulationFunction);
-  const filterFunction = makeFilterFunction(groups, elementSelector, updateHash);
-  initializeFilterField(filterFunction)
+  const filterFunction = makeFilterFunction(groups, elementSelector, updateUrlQueryParam);
+  initializeFilterField(filterFunction);
   return filterFunction;
 }
 
@@ -255,21 +293,35 @@ function includeList(parentElement, sourceUrl, listSelector, listCallback) {
 // update legacy 'filter:' option
 if (document.location.hash.startsWith("#filter:")) {
     const query = decodeURIComponent(document.location.hash.substr(8));
-    document.location.hash = "#?q=" + query;
+    
+    let newUrl = new URL(document.location);
+    newUrl.hash = "";
+    newUrl.searchParams.set("q", query);
+    history.replaceState({ query: query }, document.title, newUrl.href);
+}
+
+// update legacy '#?q=' option
+if (document.location.hash.startsWith("#?q=")) {
+    const query = decodeURIComponent(document.location.hash.substr(4));
+
+    let newUrl = new URL(document.location);
+    newUrl.hash = "";
+    newUrl.searchParams.set("q", query);
+    history.replaceState({ query: query }, document.title, newUrl.href);
 }
 
 ////////////////////////////////////////////////////
 // Specific code for common web page layouts
 ////////////////////////////////////////////////////
 
-function initWebisListFiltering(lists = document.querySelectorAll(".webis-list"), updateHash = true) {
+function initWebisListFiltering(lists = document.querySelectorAll(".webis-list"), updateUrlQueryParam = true) {
   const elementSelector = ".entry";
-  return initWebisFiltering(lists, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
+  return initWebisFiltering(lists, elementSelector, updateUrlQueryParam, defaultDataAttributesPopulationFunction);
 }
 
-function initWebisParagraphsFiltering(paragraphs = document.querySelectorAll(".webis-paragraphs"), updateHash = true) {
+function initWebisParagraphsFiltering(paragraphs = document.querySelectorAll(".webis-paragraphs"), updateUrlQueryParam = true) {
   const elementSelector = "p";
-  return initWebisFiltering(paragraphs, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
+  return initWebisFiltering(paragraphs, elementSelector, updateUrlQueryParam, defaultDataAttributesPopulationFunction);
 }
 
 ////////////////////////////////////////////////////
@@ -294,10 +346,10 @@ function dataTableDataAttributesPopulationFunction(node) {
   return attributes;
 }
 
-function initWebisDataFiltering(tables = document.querySelectorAll(".targetable"), updateHash = true) {
+function initWebisDataFiltering(tables = document.querySelectorAll(".targetable"), updateUrlQueryParam = true) {
   const elementSelector = "tbody tr";
   initTableSorting(tables);
-  return initWebisFiltering(tables, elementSelector, updateHash, dataTableDataAttributesPopulationFunction);
+  return initWebisFiltering(tables, elementSelector, updateUrlQueryParam, dataTableDataAttributesPopulationFunction);
 }
 
 ////////////////////////////////////////////////////
@@ -324,39 +376,30 @@ function activateBibtexToggle(root = document) {
   }));
 };
 
-// Highlight publication, generate fragment identifier in URL and copy URL to clipboard on click
+// Generate fragment identifier in URL and copy URL to clipboard on click
 function activateShareLink(root = document) {
   root.querySelectorAll('.share').forEach(el => el.addEventListener("click", (event) => {
+    // Prevent page reload for links with empty href (as needed by uni-weimar.de pages)
     event.preventDefault();
 
     const bibentry = event.target.parentElement;
     const bibid = bibentry.previousElementSibling.id;
 
     const hash = "#" + bibid;
-    
-    if (window.location.hash !== hash) {
-      clearBibHighlight();
-      
-      const filterField = document.querySelector("#filter-field");
-      if ((filterField !== null) && (filterField.value !== "")) {
-        copyStringToClipboard(window.location.href.split("#")[0] + hash);
-      } else {
-        bibentry.classList.add("target");
-        history.pushState({page: 1}, "", hash);
-        copyStringToClipboard(window.location.href);
-      }
-    }
+    history.pushState({ target: bibid }, document.title, hash);
 
+    // Always copy URL when clicking share link, even when selecting the same bibentry
+    copyStringToClipboard(window.location.href);
+
+    // Display "copied URL" for 0.5 s after clicking share link
     var copiedSpan = document.createElement("span");
-    const copiedText = document.createTextNode("copied");
+    const copiedText = document.createTextNode("copied URL");
     copiedSpan.appendChild(copiedText);
     event.target.hidden = true;
     event.target.insertAdjacentElement('afterend', copiedSpan);
     setTimeout(function() { event.target.parentNode.removeChild(copiedSpan); event.target.hidden = false }, 500);
 
-  }))
-  refreshBibHighlight();
-  window.addEventListener("hashchange", refreshBibHighlight);
+  }));
 }
 
 function copyStringToClipboard(str) {
@@ -372,31 +415,11 @@ function copyStringToClipboard(str) {
   document.body.removeChild(el);
 }
 
-function clearBibHighlight() {
-  document.querySelectorAll('.target').forEach(target => {
-    target.classList.remove("target");
-  });
-}
-
-function refreshBibHighlight() {
-  clearBibHighlight();
-  const hash = window.location.hash;
-  if (hash !== "" && !hash.startsWith("#?q=")) {
-    const targeted = document.querySelector(window.location.hash);
-    if (targeted !== null) {
-      const bibentry = targeted.nextElementSibling;
-      if (bibentry !== null) {
-        bibentry.classList.add("target");
-      }
-    }
-  }
-}
-
-function initWebisPublicationsFiltering(groups = document.querySelectorAll(".year-entry"), updateHash = true) {
+function initWebisPublicationsFiltering(groups = document.querySelectorAll(".year-entry"), updateUrlQueryParam = true) {
   groups.forEach(group => activateBibtexToggle(group))
   groups.forEach(group => activateShareLink(group))
   const elementSelector = ".bib-entry";
-  return initWebisFiltering(groups, elementSelector, updateHash, defaultDataAttributesPopulationFunction);
+  return initWebisFiltering(groups, elementSelector, updateUrlQueryParam, defaultDataAttributesPopulationFunction);
 }
 
 ////////////////////////////////////////////////////
@@ -411,7 +434,7 @@ function initWebisPublicationsFiltering(groups = document.querySelectorAll(".yea
 function includeBibentries(parentElement, query = "", yearHeadingSize = 3) {
   const sourceUrl = "https://webis.de/publications.html";
   includeList(parentElement, sourceUrl, '.publications-list', bibList => {
-    const filterFunction = initWebisPublicationsFiltering(bibList.querySelectorAll(".year-entry"), updateHash = false);
+    const filterFunction = initWebisPublicationsFiltering(bibList.querySelectorAll(".year-entry"), false);
     filterFunction(query);
     bibList.classList.remove("uk-container", "uk-margin-medium");
     if (yearHeadingSize === null) {

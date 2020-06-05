@@ -20,13 +20,11 @@ em {
 }
 
 span.preferred {
-  display: inline list-item;
+  display: list-item;
+  list-style-position: inside;
 }
 li.preferred, span.preferred {
-  list-style: disclosure-closed;
-}
-li.preferred2, span.preferred2 {
-  list-style: circle;
+  list-style-type: circle;
 }
 
 iframe {

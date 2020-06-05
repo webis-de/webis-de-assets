@@ -8,7 +8,7 @@
     "@fortawesome/fontawesome-free": "^5.12.0",
     "code-prettify": "^0.1.0",
     "datatables.net-dt": "^1.10.20",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "uikit": "3.0.0-rc.20"
   },
   "devDependencies": {},

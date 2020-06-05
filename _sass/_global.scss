@@ -19,11 +19,11 @@ em {
     color: $global-emphasis-color;
 }
 
-span.preferred {
+span.promoted {
   display: list-item;
   list-style-position: inside;
 }
-li.preferred, span.preferred {
+li.promoted, span.promoted {
   list-style-type: circle;
 }
 

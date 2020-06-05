@@ -19,6 +19,13 @@ em {
     color: $global-emphasis-color;
 }
 
+span.preferred {
+  display: inline list-item;
+}
+li.preferred, span.preferred {
+  list-style: disclosure-closed;
+}
+
 iframe {
     max-width: 100%;
 }

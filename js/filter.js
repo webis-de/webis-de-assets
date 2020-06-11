@@ -180,7 +180,7 @@ function populateDataAttributesForElements(elements, dataAttributesPopulationFun
 function defaultDataAttributesPopulationFunction(node) {
   const attributes = node.dataset;
   for (let a in attributes) {
-    if (a == "author" || a == "tags" || a == "editor" || a == "artifacts") {
+    if (a == "author" || a == "tags" || a == "editor" || a == "artifacts" || a == "mentor") {
       attributes[a] = normalize(attributes[a], protectCommata = true, protectQueryModifiers = false);
     } else {
       attributes[a] = normalize(attributes[a]);

@@ -4,6 +4,10 @@
         hyphens: none;
     }
 
+    th.empty {
+      color: #999;
+    }
+
     tr th {
         background-color: darken($background-muted-background, 2);
         border-bottom: 2px solid darken($background-muted-background, 7) !important;

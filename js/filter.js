@@ -314,6 +314,28 @@ if (document.location.hash.startsWith("#?q=")) {
 // Specific code for common web page layouts
 ////////////////////////////////////////////////////
 
+function initWebisTableFiltering(tables = document.querySelectorAll(".targetable"), updateUrlQueryParam = true, dataAttributesPopulationFunction = defaultDataAttributesPopulationFunction) {
+  const elementSelector = "tbody tr";
+  extendedDataAttributesPopulationFunction = entry => {
+    const attributes = dataAttributesPopulationFunction(entry);
+
+    // add name of table
+    attributes['table'] = normalize(entry.closest('table').querySelector('thead').querySelector('tr').textContent.trim());
+
+    // add name of table part
+    let predecessor = entry.previousElementSibling;
+    while (predecessor !== null && predecessor.querySelector('th') == null) {
+      predecessor = predecessor.previousElementSibling;
+    }
+    if (predecessor !== null) {
+      attributes['tablepart'] = normalize(predecessor.textContent.trim());
+    }
+
+    return attributes;
+  };
+  return initWebisFiltering(tables, elementSelector, updateUrlQueryParam, extendedDataAttributesPopulationFunction);
+}
+
 function initWebisListFiltering(lists = document.querySelectorAll(".webis-list"), updateUrlQueryParam = true) {
   const elementSelector = ".entry";
   return initWebisFiltering(lists, elementSelector, updateUrlQueryParam, defaultDataAttributesPopulationFunction);
@@ -347,11 +369,10 @@ function dataTableDataAttributesPopulationFunction(node) {
 }
 
 function initWebisDataFiltering(tables = document.querySelectorAll(".targetable"), updateUrlQueryParam = true) {
-  const elementSelector = "tbody tr";
   if (typeof initTableSorting === "function") { // tables.js included
     initTableSorting(tables);
   }
-  return initWebisFiltering(tables, elementSelector, updateUrlQueryParam, dataTableDataAttributesPopulationFunction);
+  return initWebisTableFiltering(tables, updateUrlQueryParam, dataTableDataAttributesPopulationFunction);
 }
 
 ////////////////////////////////////////////////////

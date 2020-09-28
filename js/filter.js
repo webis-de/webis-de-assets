@@ -68,6 +68,16 @@ function containQuery(attributes, queryWords) {
   return true;
 };
 
+function getSubGroupHeader(group, element) {
+  const subGroupId = element.dataset['subGroup'];
+  if (subGroupId === undefined) {
+    return null;
+  } else {
+    const subGroupHeader = group.querySelector('[data-sub-group-header="' + subGroupId + '"]');
+    return subGroupHeader;
+  }
+}
+
 function filterByQuery(query, groups, elementSelector, updateUrlQueryParam = true) {
   query = query.trim();
   let filteredAll = true;
@@ -85,17 +95,28 @@ function filterByQuery(query, groups, elementSelector, updateUrlQueryParam = tru
     for (let g = 0; g < groups.length; ++g) {
       const group = groups[g];
       let filteredAllOfGroup = true;
+      let visibleSubGroupHeaders = [];
       const elements = group.querySelectorAll(elementSelector);
       for (let e = 0; e < elements.length; ++e) {
         const element = elements[e];
-        const attributes = element.dataset;
-        if (containQuery(attributes, queryWords)) {
+        const subGroupHeader = getSubGroupHeader(group, element);
+        if (subGroupHeader !== null && !subGroupHeader.classList.contains("uk-hidden")) {
           element.classList.remove("uk-hidden");
           filteredAllOfGroup = false;
         } else {
-          element.classList.add("uk-hidden");
+          const attributes = element.dataset;
+          if (containQuery(attributes, queryWords)) {
+            element.classList.remove("uk-hidden");
+            filteredAllOfGroup = false;
+            if (subGroupHeader !== null) { visibleSubGroupHeaders.push(subGroupHeader) };
+          } else {
+            element.classList.add("uk-hidden");
+          }
         }
       }
+
+      visibleSubGroupHeaders.forEach(
+          subGroupHeader => subGroupHeader.classList.remove("uk-hidden"));
 
       if (filteredAllOfGroup) {
         group.classList.add("uk-hidden");
@@ -323,12 +344,17 @@ function initWebisTableFiltering(tables = document.querySelectorAll(".targetable
     attributes['table'] = normalize(entry.closest('table').querySelector('thead').querySelector('tr').textContent.trim());
 
     // add name of table part
-    let predecessor = entry.previousElementSibling;
-    while (predecessor !== null && predecessor.querySelector('th') == null) {
-      predecessor = predecessor.previousElementSibling;
-    }
-    if (predecessor !== null) {
-      attributes['tablepart'] = normalize(predecessor.textContent.trim());
+    const groupHeader = entry.querySelector('th[id]');
+    if (groupHeader !== null) {
+      attributes['subGroupHeader'] = groupHeader.id;
+    } else {
+      let predecessor = entry.previousElementSibling;
+      while (predecessor !== null && predecessor.querySelector('th[id]') == null) {
+        predecessor = predecessor.previousElementSibling;
+      }
+      if (predecessor !== null) {
+        attributes['subGroup'] = predecessor.querySelector('th[id]').id;
+      }
     }
 
     return attributes;

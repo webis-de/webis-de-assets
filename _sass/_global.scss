@@ -119,6 +119,8 @@ svg.text-logo text {
 
             &:hover, &:focus, &.uk-open[aria-expanded] {
                 color: $header-link-hover-color;
+                text-decoration: underline;
+                text-underline-position: under;
             }
         }
 
@@ -137,7 +139,9 @@ svg.text-logo text {
     }
 
     & > .uk-active > a {
-        color: #fff;
+        color: $header-link-hover-color;
+        text-decoration: underline;
+        text-underline-position: under;
     }
 
     & > li [data-uk-icon] {

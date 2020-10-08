@@ -136,15 +136,20 @@ svg.text-logo text {
         padding-left: 2.3 * $navbar-nav-item-padding-horizontal;
     }
 
-    & > .uk-active > a {
-        color: #fff;
-    }
-
     & > li [data-uk-icon] {
         color: rgba(255, 255, 255, .9);
         margin-left: 3px;
         margin-right: -5px;
     }
+}
+
+.uk-navbar-nav > .uk-active > a {
+    color: $header-link-hover-color;
+}
+
+.uk-navbar-right > .uk-navbar-nav > .uk-active > a {
+    text-decoration: underline;
+    text-underline-position: under;
 }
 
 .uk-navbar-dropdown {

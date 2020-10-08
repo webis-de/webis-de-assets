@@ -211,6 +211,10 @@ svg.text-logo text {
     }
 }
 
+.uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before {
+  content: "»";
+}
+
 // Scroll fix for anchors
 a:target {
     display: block;

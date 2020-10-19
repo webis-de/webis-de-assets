@@ -52,17 +52,8 @@
             <ul class="uk-navbar-nav">
                 <li>
                 <!-- DO NOT CHANGE -->
-                <a href="{{ '/' | relative_url }}"><img src="https://assets.webis.de/img/webis-logo.png" alt="Webis Logo" class="uk-logo"> {% assign home = site.url | split: '/' %} {{ home | last }}</a>
+                <a href="https://webis.de"><img src="https://assets.webis.de/img/webis-logo.png" alt="Webis Logo" class="uk-logo"> Webis.de</a>
                 </li>
-                {% assign domain = site.url | split: "/" %}
-                {% if domain[2] == "events.webis.de" %}
-                <li class="uk-active">
-                    <!-- If using Jekyll/Liquid: Make sure to set the "title:" variable in your event page's front matter. 
-                         If using this layout manually: Insert your event title here. 
-                    -->
-                    <a class="path" href="#">{{ page.title }}</a>
-                </li>
-                {% endif %}
             </ul>
         </div>
 

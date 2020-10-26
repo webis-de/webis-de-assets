@@ -216,9 +216,15 @@ svg.text-logo text {
     }
 }
 
+.uk-breadcrumb {
+  margin-top: 5px;
+}
 .uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before {
   content: "›";
   margin: 0 5px;
+}
+main.uk-section {
+  padding-top: 40px;
 }
 
 // Scroll fix for anchors

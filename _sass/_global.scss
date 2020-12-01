@@ -282,6 +282,10 @@ h1 a, h1 a:hover {
         text-decoration: underline;
     }
 
+    a svg {
+      color: $footer-icon-color;
+    }
+
     .uk-nav a {
         padding-top: 2px;
     }

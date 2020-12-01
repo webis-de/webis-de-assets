@@ -286,6 +286,10 @@ h1 a, h1 a:hover {
       color: $footer-icon-color;
     }
 
+    a + a svg {
+      margin-left: 3px;
+    }
+
     .uk-nav a {
         padding-top: 2px;
     }

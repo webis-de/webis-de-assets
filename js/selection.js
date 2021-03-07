@@ -20,6 +20,7 @@ function refreshHighlight(type) {
           break;
         case "bibentry":
           var el = targeted.nextElementSibling;
+          while (el.tagName == "A") { el = el.nextElementSibling; }
           break;
       }
 

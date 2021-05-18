@@ -427,7 +427,7 @@ function activateBibtexToggle(root = document) {
 
 // Generate fragment identifier in URL and copy URL to clipboard on click
 function activateShareLink(root = document) {
-  root.querySelectorAll('.share').forEach(el => el.addEventListener("click", (event) => {
+  root.querySelectorAll('.copylink').forEach(el => el.addEventListener("click", (event) => {
     // Prevent page reload for links with empty href (as needed by uni-weimar.de pages)
     event.preventDefault();
 
@@ -437,11 +437,11 @@ function activateShareLink(root = document) {
     const hash = "#" + bibid;
     history.pushState({ target: bibid }, document.title, hash);
 
-    // Always copy URL when clicking share link, even when selecting the same bibentry
+    // Always copy URL when clicking copylink link, even when selecting the same bibentry
     const urlWithoutFilter = window.location.href.replace(window.location.search, "");
     copyStringToClipboard(urlWithoutFilter);
 
-    // Display "copied to clipboard" for 1 s after clicking share link
+    // Display "copied to clipboard" for 1 s after clicking copylink link
     var copiedSpan = document.createElement("span");
     const copiedText = document.createTextNode("copied to clipboard");
     copiedSpan.appendChild(copiedText);
@@ -496,7 +496,7 @@ function includeBibentries(parentElement, query = "", yearHeadingSize = 3) {
       changeBibHeadingSize(bibList, yearHeadingSize);
     }
     if (typeof initBibHighlightOnShare === "function") { // selection.js included
-      initBibHighlightOnShare(bibList.querySelectorAll(".share"));
+      initBibHighlightOnShare(bibList.querySelectorAll(".copylink"));
     }
   });
 }

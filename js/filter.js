@@ -438,15 +438,16 @@ function activateShareLink(root = document) {
     history.pushState({ target: bibid }, document.title, hash);
 
     // Always copy URL when clicking share link, even when selecting the same bibentry
-    copyStringToClipboard(window.location.href);
+    const urlWithoutFilter = window.location.href.replace(window.location.search, "");
+    copyStringToClipboard(urlWithoutFilter);
 
-    // Display "copied URL" for 0.5 s after clicking share link
+    // Display "copied to clipboard" for 1 s after clicking share link
     var copiedSpan = document.createElement("span");
-    const copiedText = document.createTextNode("copied URL");
+    const copiedText = document.createTextNode("copied to clipboard");
     copiedSpan.appendChild(copiedText);
     event.target.hidden = true;
     event.target.insertAdjacentElement('afterend', copiedSpan);
-    setTimeout(function() { event.target.parentNode.removeChild(copiedSpan); event.target.hidden = false }, 500);
+    setTimeout(function() { event.target.parentNode.removeChild(copiedSpan); event.target.hidden = false }, 1000);
 
   }));
 }

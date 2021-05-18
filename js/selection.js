@@ -35,8 +35,8 @@ function refreshHighlight(type) {
 // Specific code for publications
 /////////////////////////////////////////////////////////////
 
-function initBibHighlightOnShare(shareLinks = document.querySelectorAll('.share')) {
-  shareLinks.forEach(el => el.addEventListener("click", (event) => {
+function initBibHighlightOnCopyLink(copyLinkLinks = document.querySelectorAll('.copylink')) {
+  copyLinkLinks.forEach(el => el.addEventListener("click", (event) => {
     const bibentry = event.target.parentElement;
     clearHighlight();
     bibentry.classList.add("target");

@@ -44,7 +44,8 @@ function containQuery(attributes, queryWords) {
 
     const attributeSpecificatorPos = queryWord.indexOf(":");
     if (attributeSpecificatorPos >= 0) {
-      const attribute = queryWord.substr(0, attributeSpecificatorPos);
+      let attribute = queryWord.substr(0, attributeSpecificatorPos);
+      if (attribute == "tags") { attribute = "keywords"; } // legacy attribute name
       queryWord = queryWord.substr(attributeSpecificatorPos + 1);
       if (attributes.hasOwnProperty(attribute)) {
         const attributeValue = attributes[attribute];

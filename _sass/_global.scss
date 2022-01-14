@@ -251,6 +251,12 @@ h1 a, h1 a:hover {
   color: inherit;
 }
 
+a.disabled {
+    @extend .uk-link-muted;
+    text-decoration: none;
+    cursor: default;
+}
+
 .section-header {
     text-transform: $section-header-text-transform;
 }

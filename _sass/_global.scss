@@ -251,9 +251,9 @@ h1 a, h1 a:hover {
   color: inherit;
 }
 
-a.disabled {
-    @extend .uk-link-muted;
-    text-decoration: none;
+.footer-section a.disabled {
+    color: #999 !important;
+    text-decoration: none !important;
     cursor: default;
 }
 

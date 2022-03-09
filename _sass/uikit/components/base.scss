@@ -42,7 +42,7 @@ $base-heading-font-weight:                       normal !default;
 $base-heading-color:                             $global-emphasis-color !default;
 $base-heading-text-transform:                    none !default;
 $base-heading-margin-top:                        $global-medium-margin !default;
-$base-h1-font-size-m:                            $global-xxlarge-font-size !default;
+$base-h1-font-size-m:                            $global-2xlarge-font-size !default;
 $base-h1-font-size:                              $base-h1-font-size-m * 0.85 !default;
 $base-h1-line-height:                            1.2 !default;
 $base-h2-font-size-m:                            $global-xlarge-font-size !default;
@@ -75,6 +75,11 @@ $base-pre-font-size:                             $global-small-font-size !defaul
 $base-pre-line-height:                           1.5 !default;
 $base-pre-font-family:                           $base-code-font-family !default;
 $base-pre-color:                                 $global-color !default;
+
+$base-focus-outline-width:                       2px !default;
+$base-focus-outline-style:                       dotted !default;
+$base-focus-outline:                             $global-emphasis-color !default;
+$base-focus-outline-offset:                      1px !default;
 
 $base-selection-background:                      #39f !default;
 $base-selection-color:                           $global-inverse-color !default;
@@ -116,19 +121,6 @@ body { margin: 0; }
  ========================================================================== */
 
 /*
- * Remove gaps in links underline in iOS 8+ and Safari 8+.
- */
-
-a { -webkit-text-decoration-skip: objects; }
-
-/*
- * Remove the outline on focused links when they are also active or hovered
- */
-
-a:active,
-a:hover { outline: none; }
-
-/*
  * Style
  */
 
@@ -141,7 +133,8 @@ a,
 }
 
 a:hover,
-.uk-link:hover {
+.uk-link:hover,
+.uk-link-toggle:hover .uk-link {
     color: $base-link-hover-color;
     text-decoration: $base-link-hover-text-decoration;
     @if(mixin-exists(hook-base-link-hover)) {@include hook-base-link-hover();}
@@ -152,14 +145,13 @@ a:hover,
  ========================================================================== */
 
 /*
- * 1. Add an underline text decoration in Safari, Edge and IE.
- * 2. Add `dotted` style in Safari.
- * Note: The shorthand declaration `underline dotted` is not supported in Safari, Edge and IE.
+ * 1. Add the correct text decoration in Edge.
+ * 2. The shorthand declaration `underline dotted` is not supported in Safari.
  */
 
 abbr[title] {
     /* 1 */
-    text-decoration: underline;
+    text-decoration: underline dotted;
     /* 2 */
     -webkit-text-decoration-style: dotted;
 }
@@ -264,7 +256,6 @@ video { vertical-align: middle; }
  * 4. Exclude SVGs for IE11 because they don't preserve their aspect ratio.
  */
 
-audio,
 canvas,
 img,
 video {
@@ -294,11 +285,17 @@ video {
 svg:not(:root) { overflow: hidden; }
 
 /*
- * Hide `alt` text for lazy load images
- * Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
+ * 1. Fix lazy loading images if parent element is set to `display: inline` and has `overflow: hidden`.
+ * 2. Hide `alt` text for lazy loading images.
+ * Note: Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
  */
 
-img:not([src]) { visibility: hidden; }
+img:not([src]) {
+    /* 1 */
+    min-width: 1px;
+    /* 2 */
+    visibility: hidden;
+}
 
 /*
  * Iframe
@@ -343,7 +340,12 @@ h2, .uk-h2,
 h3, .uk-h3,
 h4, .uk-h4,
 h5, .uk-h5,
-h6, .uk-h6 {
+h6, .uk-h6,
+.uk-heading-small,
+.uk-heading-medium,
+.uk-heading-large,
+.uk-heading-xlarge,
+.uk-heading-2xlarge {
     margin: 0 0 $base-margin-vertical 0;
     font-family: $base-heading-font-family;
     font-weight: $base-heading-font-weight;
@@ -358,7 +360,12 @@ h6, .uk-h6 {
 * + h3, * + .uk-h3,
 * + h4, * + .uk-h4,
 * + h5, * + .uk-h5,
-* + h6, * + .uk-h6 { margin-top: $base-heading-margin-top; }
+* + h6, * + .uk-h6,
+* + .uk-heading-small,
+* + .uk-heading-medium,
+* + .uk-heading-large,
+* + .uk-heading-xlarge,
+* + .uk-heading-2xlarge { margin-top: $base-heading-margin-top; }
 
 /*
  * Sizes
@@ -436,21 +443,17 @@ dd { margin-left: 0; }
  ========================================================================== */
 
 /*
- * 1. Add the correct box sizing and height in Firefox.
- * 2. Show the overflow in Edge and IE.
- * 3. Add the correct text-align in Edge and IE.
- * 4. Style
+ * 1. Show the overflow in Chrome, Edge and IE.
+ * 2. Add the correct text-align in Edge and IE.
+ * 3. Style
  */
 
 hr, .uk-hr {
     /* 1 */
-    box-sizing: content-box;
-    height: 0;
-    /* 2 */
     overflow: visible;
-    /* 3 */
+    /* 2 */
     text-align: inherit;
-    /* 4 */
+    /* 3 */
     margin: 0 0 $base-hr-margin-vertical 0;
     border: 0;
     border-top: $base-hr-border-width solid $base-hr-border;
@@ -516,6 +519,33 @@ pre {
 pre code { font-family: $base-pre-font-family; }
 
 
+/* Focus
+ ========================================================================== */
+
+/*
+ * Safari doesn't support `:focus-visible` yet. It also doesn't set focus if clicking a button or anchor.
+ * 1. Fallback: Remove `:focus` for a negative tabindexes.
+ * 2. Fallback: Set `:focus` style but not for negative tabindexes.
+ * 3. Fallback: Remove `:focus` style for browsers which support `:focus-visible`.
+ * 4. Set `:focus-visible` style for browsers which support it.
+ */
+
+/* 1 */
+:focus { outline: none; }
+
+/* 2 */
+:focus:not([tabindex^='-']) {
+    outline: $base-focus-outline-width $base-focus-outline-style $base-focus-outline;
+    outline-offset: $base-focus-outline-offset;
+}
+
+/* 3 */
+:focus:not(:focus-visible) { outline: none; }
+
+/* 4 */
+:focus-visible { outline: $base-focus-outline-width $base-focus-outline-style $base-focus-outline; }
+
+
 /* Selection pseudo-element
  ========================================================================== */
 
@@ -565,10 +595,10 @@ template { display: none; }
 .uk-breakpoint-xl::before { content: '#{$breakpoint-xlarge}'; }
 
 :root {
-    --uk-breakpoint-s: $breakpoint-small;
-    --uk-breakpoint-m: $breakpoint-medium;
-    --uk-breakpoint-l: $breakpoint-large;
-    --uk-breakpoint-xl: $breakpoint-xlarge;
+    --uk-breakpoint-s: #{$breakpoint-small};
+    --uk-breakpoint-m: #{$breakpoint-medium};
+    --uk-breakpoint-l: #{$breakpoint-large};
+    --uk-breakpoint-xl: #{$breakpoint-xlarge};
 }
 
 // Hooks
@@ -604,6 +634,7 @@ $inverse-base-code-color:                       $inverse-global-color !default;
 $inverse-base-em-color:                         $inverse-global-emphasis-color !default;
 $inverse-base-heading-color:                    $inverse-global-emphasis-color !default;
 $inverse-base-hr-border:                        $inverse-global-border !default;
+$inverse-base-focus-outline:                    $inverse-global-emphasis-color !default;
 
 
 

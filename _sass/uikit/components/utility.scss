@@ -40,6 +40,7 @@ $border-rounded-border-radius:                   5px !default;
 $box-shadow-duration:                            0.1s !default;
 
 $box-shadow-bottom-height:                       30px !default;
+$box-shadow-bottom-bottom:                       (-$box-shadow-bottom-height) !default;
 $box-shadow-bottom-border-radius:                100% !default;
 $box-shadow-bottom-background:                   #444 !default;
 $box-shadow-bottom-blur:                         20px !default;
@@ -49,8 +50,8 @@ $dropcap-font-size:                              (($global-line-height * 3) * 1e
 
 $logo-font-size:                                 $global-large-font-size !default;
 $logo-font-family:                               $global-font-family !default;
-$logo-color:                                     $global-color !default;
-$logo-hover-color:                               $global-color !default;
+$logo-color:                                     $global-emphasis-color !default;
+$logo-hover-color:                               $global-emphasis-color !default;
 
 $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) !default;
 
@@ -64,21 +65,10 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
  ========================================================================== */
 
 .uk-panel {
+    display: flow-root;
     position: relative;
     box-sizing: border-box;
 }
-
-/*
- * Micro clearfix
- */
-
-.uk-panel::before,
-.uk-panel::after {
-    content: "";
-    display: table;
-}
-
-.uk-panel::after { clear: both; }
 
 /*
  * Remove margin from the last-child
@@ -180,7 +170,7 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
  * 2. Create position context
  * 3. Prevent content overflow
  * 4. Behave like most inline-block elements
- * 5. Force hardware acceleration without creating a new stacking context
+ * 5. Force new layer without creating a new stacking context
  *    to fix 1px glitch when combined with overlays and transitions in Webkit
  * 6. Clip child elements
  */
@@ -213,7 +203,6 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
  */
 
 .uk-preserve-width,
-.uk-preserve-width audio,
 .uk-preserve-width canvas,
 .uk-preserve-width img,
 .uk-preserve-width svg,
@@ -253,6 +242,13 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
     /* 3 */
     max-width: none;
 }
+
+/*
+ * Fix initial iframe width. Without the viewport is expanded on iOS devices
+ */
+
+[uk-responsive],
+[data-uk-responsive] { max-width: 100%; }
 
 
 /* Border
@@ -295,8 +291,7 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
 /*
  * 1. Set position.
  * 2. Set style
- * 3. Blur doesn't work on pseudo elements with negative `z-index` in Edge.
- *    Solved by using `before` and add position context to child elements.
+ * 3. Fix shadow being clipped in Safari if container is animated
  */
 
 @supports (filter: blur(0)) {
@@ -304,27 +299,28 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
     .uk-box-shadow-bottom {
         display: inline-block;
         position: relative;
+        z-index: 0;
         max-width: 100%;
         vertical-align: middle;
     }
 
-    .uk-box-shadow-bottom::before {
-        content: '';
+    .uk-box-shadow-bottom::after {
+        content: "";
         /* 1 */
         position: absolute;
-        bottom: (-$box-shadow-bottom-height);
+        bottom: $box-shadow-bottom-bottom;
         left: 0;
         right: 0;
+        z-index: -1;
         /* 2 */
         height: $box-shadow-bottom-height;
         border-radius: $box-shadow-bottom-border-radius;
         background: $box-shadow-bottom-background;
         filter: blur($box-shadow-bottom-blur);
+        /* 3 */
+        will-change: filter;
         @if(mixin-exists(hook-box-shadow-bottom)) {@include hook-box-shadow-bottom();}
     }
-
-    /* 3 */
-    .uk-box-shadow-bottom > * { position: relative; }
 
 }
 
@@ -384,15 +380,15 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
     @if(mixin-exists(hook-logo)) {@include hook-logo();}
 }
 
-/* Hover + Focus */
-.uk-logo:hover,
-.uk-logo:focus {
+/* Hover */
+.uk-logo:hover {
     color: $logo-hover-color;
-    outline: none;
     /* 1 */
     text-decoration: none;
     @if(mixin-exists(hook-logo-hover)) {@include hook-logo-hover();}
 }
+
+.uk-logo > :where(img, svg, video) { display: block; }
 
 .uk-logo-inverse { display: none; }
 
@@ -484,8 +480,8 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
 // Inverse
 // ========================================================================
 
-$inverse-logo-color:                            $inverse-global-color !default;
-$inverse-logo-hover-color:                      $inverse-global-color !default;
+$inverse-logo-color:                            $inverse-global-emphasis-color !default;
+$inverse-logo-hover-color:                      $inverse-global-emphasis-color !default;
 
 
 

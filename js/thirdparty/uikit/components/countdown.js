@@ -1,10 +1,10 @@
-/*! UIkit 3.0.0-rc.20 | http://www.getuikit.com | (c) 2014 - 2018 YOOtheme | MIT License */
+/*! UIkit 3.11.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitcountdown', ['uikit-util'], factory) :
-    (global.UIkitCountdown = factory(global.UIkit.util));
-}(this, (function (uikitUtil) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.UIkitCountdown = factory(global.UIkit.util));
+})(this, (function (uikitUtil) { 'use strict';
 
     var Class = {
 
@@ -61,9 +61,9 @@
             },
 
             units: function() {
-                var this$1 = this;
+                var this$1$1 = this;
 
-                return ['days', 'hours', 'minutes', 'seconds'].filter(function (unit) { return this$1[unit]; });
+                return ['days', 'hours', 'minutes', 'seconds'].filter(function (unit) { return this$1$1[unit]; });
             }
 
         },
@@ -73,10 +73,10 @@
         },
 
         disconnected: function() {
-            var this$1 = this;
+            var this$1$1 = this;
 
             this.stop();
-            this.units.forEach(function (unit) { return uikitUtil.empty(this$1[unit]); });
+            this.units.forEach(function (unit) { return uikitUtil.empty(this$1$1[unit]); });
         },
 
         events: [
@@ -85,7 +85,9 @@
 
                 name: 'visibilitychange',
 
-                el: document,
+                el: function() {
+                    return document;
+                },
 
                 handler: function() {
                     if (document.hidden) {
@@ -102,7 +104,7 @@
         update: {
 
             write: function() {
-                var this$1 = this;
+                var this$1$1 = this;
 
 
                 var timespan = getTimeSpan(this.date);
@@ -124,7 +126,7 @@
 
                     digits = digits.length < 2 ? ("0" + digits) : digits;
 
-                    var el = this$1[unit];
+                    var el = this$1$1[unit];
                     if (el.textContent !== digits) {
                         digits = digits.split('');
 
@@ -144,14 +146,12 @@
         methods: {
 
             start: function() {
-                var this$1 = this;
-
 
                 this.stop();
 
                 if (this.date && this.units.length) {
-                    this.$emit();
-                    this.timer = setInterval(function () { return this$1.$emit(); }, 1000);
+                    this.$update();
+                    this.timer = setInterval(this.$update, 1000);
                 }
 
             },
@@ -182,12 +182,10 @@
         };
     }
 
-    /* global UIkit, 'countdown' */
-
     if (typeof window !== 'undefined' && window.UIkit) {
         window.UIkit.component('countdown', Component);
     }
 
     return Component;
 
-})));
+}));

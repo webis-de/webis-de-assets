@@ -1,10 +1,10 @@
-/*! UIkit 3.0.0-rc.20 | http://www.getuikit.com | (c) 2014 - 2018 YOOtheme | MIT License */
+/*! UIkit 3.11.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitslider', ['uikit-util'], factory) :
-    (global.UIkitSlider = factory(global.UIkit.util));
-}(this, (function (uikitUtil) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.UIkitSlider = factory(global.UIkit.util));
+})(this, (function (uikitUtil) { 'use strict';
 
     var Class = {
 
@@ -29,11 +29,15 @@
         },
 
         connected: function() {
-            this.startAutoplay();
+            this.autoplay && this.startAutoplay();
         },
 
         disconnected: function() {
             this.stopAutoplay();
+        },
+
+        update: function() {
+            uikitUtil.attr(this.slides, 'tabindex', '-1');
         },
 
         events: [
@@ -42,7 +46,13 @@
 
                 name: 'visibilitychange',
 
-                el: document,
+                el: function() {
+                    return document;
+                },
+
+                filter: function() {
+                    return this.autoplay;
+                },
 
                 handler: function() {
                     if (document.hidden) {
@@ -52,41 +62,6 @@
                     }
                 }
 
-            },
-
-            {
-
-                name: uikitUtil.pointerDown,
-                handler: 'stopAutoplay'
-
-            },
-
-            {
-
-                name: 'mouseenter',
-
-                filter: function() {
-                    return this.autoplay;
-                },
-
-                handler: function() {
-                    this.isHovering = true;
-                }
-
-            },
-
-            {
-
-                name: 'mouseleave',
-
-                filter: function() {
-                    return this.autoplay;
-                },
-
-                handler: function() {
-                    this.isHovering = false;
-                }
-
             }
 
         ],
@@ -94,24 +69,23 @@
         methods: {
 
             startAutoplay: function() {
-                var this$1 = this;
+                var this$1$1 = this;
 
 
                 this.stopAutoplay();
 
-                if (this.autoplay) {
-                    this.interval = setInterval(
-                        function () { return !(this$1.isHovering && this$1.pauseOnHover) && !this$1.stack.length && this$1.show('next'); },
-                        this.autoplayInterval
-                    );
-                }
+                this.interval = setInterval(
+                    function () { return (!this$1$1.draggable || !uikitUtil.$(':focus', this$1$1.$el))
+                        && (!this$1$1.pauseOnHover || !uikitUtil.matches(this$1$1.$el, ':hover'))
+                        && !this$1$1.stack.length
+                        && this$1$1.show('next'); },
+                    this.autoplayInterval
+                );
 
             },
 
             stopAutoplay: function() {
-                if (this.interval) {
-                    clearInterval(this.interval);
-                }
+                this.interval && clearInterval(this.interval);
             }
 
         }
@@ -120,24 +94,28 @@
 
     var SliderDrag = {
 
+        props: {
+            draggable: Boolean
+        },
+
         data: {
-            threshold: 10,
-            preventCatch: false
+            draggable: true,
+            threshold: 10
         },
 
         created: function() {
-            var this$1 = this;
+            var this$1$1 = this;
 
 
             ['start', 'move', 'end'].forEach(function (key) {
 
-                var fn = this$1[key];
-                this$1[key] = function (e) {
+                var fn = this$1$1[key];
+                this$1$1[key] = function (e) {
 
-                    var pos = uikitUtil.getPos(e).x * (uikitUtil.isRtl ? -1 : 1);
+                    var pos = uikitUtil.getEventPos(e).x * (uikitUtil.isRtl ? -1 : 1);
 
-                    this$1.prevPos = pos !== this$1.pos ? this$1.pos : this$1.prevPos;
-                    this$1.pos = pos;
+                    this$1$1.prevPos = pos !== this$1$1.pos ? this$1$1.pos : this$1$1.prevPos;
+                    this$1$1.pos = pos;
 
                     fn(e);
                 };
@@ -153,33 +131,21 @@
                 name: uikitUtil.pointerDown,
 
                 delegate: function() {
-                    return this.slidesSelector;
+                    return this.selSlides;
                 },
 
                 handler: function(e) {
 
-                    if (!uikitUtil.isTouch(e) && hasTextNodesOnly(e.target)
+                    if (!this.draggable
+                        || !uikitUtil.isTouch(e) && hasTextNodesOnly(e.target)
+                        || uikitUtil.closest(e.target, uikitUtil.selInput)
                         || e.button > 0
                         || this.length < 2
-                        || this.preventCatch
                     ) {
                         return;
                     }
 
                     this.start(e);
-                }
-
-            },
-
-            {
-
-                // Workaround for iOS 11 bug: https://bugs.webkit.org/show_bug.cgi?id=184250
-
-                name: 'touchmove',
-                passive: false,
-                handler: 'move',
-                delegate: function() {
-                    return this.slidesSelector;
                 }
 
             },
@@ -197,8 +163,6 @@
         methods: {
 
             start: function() {
-                var this$1 = this;
-
 
                 this.drag = this.pos;
 
@@ -218,31 +182,27 @@
                     this.prevIndex = this.index;
                 }
 
-                // See above workaround notice
-                var off = uikitUtil.on(document, uikitUtil.pointerMove.replace(' touchmove', ''), this.move, {passive: false});
-                this.unbindMove = function () {
-                    off();
-                    this$1.unbindMove = null;
-                };
-                uikitUtil.on(window, 'scroll', this.unbindMove);
-                uikitUtil.on(document, uikitUtil.pointerUp, this.end, true);
+                uikitUtil.on(document, uikitUtil.pointerMove, this.move, {passive: false});
+
+                // 'input' event is triggered by video controls
+                uikitUtil.on(document, (uikitUtil.pointerUp + " " + uikitUtil.pointerCancel + " input"), this.end, true);
+
+                uikitUtil.css(this.list, 'userSelect', 'none');
 
             },
 
             move: function(e) {
-                var this$1 = this;
+                var this$1$1 = this;
 
-
-                // See above workaround notice
-                if (!this.unbindMove) {
-                    return;
-                }
 
                 var distance = this.pos - this.drag;
 
                 if (distance === 0 || this.prevPos === this.pos || !this.dragging && Math.abs(distance) < this.threshold) {
                     return;
                 }
+
+                // prevent click event
+                uikitUtil.css(this.list, 'pointerEvents', 'none');
 
                 e.cancelable && e.preventDefault();
 
@@ -259,12 +219,12 @@
 
                 while (nextIndex !== prevIndex && dis > width) {
 
-                    this$1.drag -= width * this$1.dir;
+                    this.drag -= width * this.dir;
 
                     prevIndex = nextIndex;
                     dis -= width;
-                    nextIndex = this$1.getIndex(prevIndex + this$1.dir, prevIndex);
-                    width = this$1._getDistance(prevIndex, nextIndex) || slides[prevIndex].offsetWidth;
+                    nextIndex = this.getIndex(prevIndex + this.dir, prevIndex);
+                    width = this._getDistance(prevIndex, nextIndex) || slides[prevIndex].offsetWidth;
 
                 }
 
@@ -278,11 +238,11 @@
                 var itemShown;
 
                 [this.index, this.prevIndex].filter(function (i) { return !uikitUtil.includes([nextIndex, prevIndex], i); }).forEach(function (i) {
-                    uikitUtil.trigger(slides[i], 'itemhidden', [this$1]);
+                    uikitUtil.trigger(slides[i], 'itemhidden', [this$1$1]);
 
                     if (edge) {
                         itemShown = true;
-                        this$1.prevIndex = prevIndex;
+                        this$1$1.prevIndex = prevIndex;
                     }
 
                 });
@@ -310,9 +270,8 @@
 
             end: function() {
 
-                uikitUtil.off(window, 'scroll', this.unbindMove);
-                this.unbindMove && this.unbindMove();
-                uikitUtil.off(document, uikitUtil.pointerUp, this.end, true);
+                uikitUtil.off(document, uikitUtil.pointerMove, this.move, {passive: false});
+                uikitUtil.off(document, (uikitUtil.pointerUp + " " + uikitUtil.pointerCancel + " input"), this.end, true);
 
                 if (this.dragging) {
 
@@ -335,9 +294,9 @@
                         this.show(this.dir > 0 && !dirChange || this.dir < 0 && dirChange ? 'next' : 'previous', true);
                     }
 
-                    uikitUtil.preventClick();
-
                 }
+
+                uikitUtil.css(this.list, {userSelect: '', pointerEvents: ''});
 
                 this.drag
                     = this.percent
@@ -367,14 +326,14 @@
                 return uikitUtil.$(selNav, $el);
             },
 
-            navItemSelector: function(ref) {
+            selNavItem: function(ref) {
                 var attrItem = ref.attrItem;
 
                 return ("[" + attrItem + "],[data-" + attrItem + "]");
             },
 
             navItems: function(_, $el) {
-                return uikitUtil.$$(this.navItemSelector, $el);
+                return uikitUtil.$$(this.selNavItem, $el);
             }
 
         },
@@ -382,20 +341,20 @@
         update: {
 
             write: function() {
-                var this$1 = this;
+                var this$1$1 = this;
 
 
                 if (this.nav && this.length !== this.nav.children.length) {
-                    uikitUtil.html(this.nav, this.slides.map(function (_, i) { return ("<li " + (this$1.attrItem) + "=\"" + i + "\"><a href=\"#\"></a></li>"); }).join(''));
+                    uikitUtil.html(this.nav, this.slides.map(function (_, i) { return ("<li " + (this$1$1.attrItem) + "=\"" + i + "\"><a href></a></li>"); }).join(''));
                 }
 
-                uikitUtil.toggleClass(uikitUtil.$$(this.navItemSelector, this.$el).concat(this.nav), 'uk-hidden', !this.maxIndex);
+                this.navItems.concat(this.nav).forEach(function (el) { return el && (el.hidden = !this$1$1.maxIndex); });
 
                 this.updateNav();
 
             },
 
-            events: ['load', 'resize']
+            events: ['resize']
 
         },
 
@@ -406,12 +365,11 @@
                 name: 'click',
 
                 delegate: function() {
-                    return this.navItemSelector;
+                    return this.selNavItem;
                 },
 
                 handler: function(e) {
                     e.preventDefault();
-                    e.current.blur();
                     this.show(uikitUtil.data(e.current, this.attrItem));
                 }
 
@@ -429,16 +387,16 @@
         methods: {
 
             updateNav: function() {
-                var this$1 = this;
+                var this$1$1 = this;
 
 
                 var i = this.getValidIndex();
                 this.navItems.forEach(function (el) {
 
-                    var cmd = uikitUtil.data(el, this$1.attrItem);
+                    var cmd = uikitUtil.data(el, this$1$1.attrItem);
 
-                    uikitUtil.toggleClass(el, this$1.clsActive, uikitUtil.toNumber(cmd) === i);
-                    uikitUtil.toggleClass(el, 'uk-invisible', this$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1.maxIndex));
+                    uikitUtil.toggleClass(el, this$1$1.clsActive, uikitUtil.toNumber(cmd) === i);
+                    uikitUtil.toggleClass(el, 'uk-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
                 });
 
             }
@@ -456,7 +414,8 @@
             easing: String,
             index: Number,
             finite: Boolean,
-            velocity: Number
+            velocity: Number,
+            selSlides: String
         },
 
         data: function () { return ({
@@ -464,6 +423,7 @@
             finite: false,
             velocity: 1,
             index: 0,
+            prevIndex: -1,
             stack: [],
             percent: 0,
             clsActive: 'uk-active',
@@ -472,16 +432,22 @@
             transitionOptions: {}
         }); },
 
+        connected: function() {
+            this.prevIndex = -1;
+            this.index = this.getValidIndex(this.$props.index);
+            this.stack = [];
+        },
+
+        disconnected: function() {
+            uikitUtil.removeClass(this.slides, this.clsActive);
+        },
+
         computed: {
 
             duration: function(ref, $el) {
                 var velocity = ref.velocity;
 
                 return speedUp($el.offsetWidth / velocity);
-            },
-
-            length: function() {
-                return this.slides.length;
             },
 
             list: function(ref, $el) {
@@ -494,14 +460,27 @@
                 return this.length - 1;
             },
 
-            slidesSelector: function(ref) {
+            selSlides: function(ref) {
                 var selList = ref.selList;
+                var selSlides = ref.selSlides;
 
-                return (selList + " > *");
+                return (selList + " " + (selSlides || '> *'));
             },
 
-            slides: function() {
-                return uikitUtil.toNodes(this.list.children);
+            slides: {
+
+                get: function() {
+                    return uikitUtil.$$(this.selSlides, this.$el);
+                },
+
+                watch: function() {
+                    this.$reset();
+                }
+
+            },
+
+            length: function() {
+                return this.slides.length;
             }
 
         },
@@ -517,7 +496,7 @@
         methods: {
 
             show: function(index, force) {
-                var this$1 = this;
+                var this$1$1 = this;
                 if ( force === void 0 ) force = false;
 
 
@@ -532,7 +511,7 @@
                     stack.splice(queueIndex, 1);
 
                     if (stack.length) {
-                        this$1.show(stack.shift(), true);
+                        this$1$1.show(stack.shift(), true);
                     }
                 };
 
@@ -547,7 +526,7 @@
                     return;
                 }
 
-                var prevIndex = this.index;
+                var prevIndex = this.getIndex(this.index);
                 var prev = uikitUtil.hasClass(this.slides, this.clsActive) && this.slides[prevIndex];
                 var nextIndex = this.getIndex(index, this.index);
                 var next = this.slides[nextIndex];
@@ -561,8 +540,9 @@
                 this.prevIndex = prevIndex;
                 this.index = nextIndex;
 
-                prev && uikitUtil.trigger(prev, 'beforeitemhide', [this]);
-                if (!uikitUtil.trigger(next, 'beforeitemshow', [this, prev])) {
+                if (prev && !uikitUtil.trigger(prev, 'beforeitemhide', [this])
+                    || !uikitUtil.trigger(next, 'beforeitemshow', [this, prev])
+                ) {
                     this.index = this.prevIndex;
                     reset();
                     return;
@@ -570,16 +550,16 @@
 
                 var promise = this._show(prev, next, force).then(function () {
 
-                    prev && uikitUtil.trigger(prev, 'itemhidden', [this$1]);
-                    uikitUtil.trigger(next, 'itemshown', [this$1]);
+                    prev && uikitUtil.trigger(prev, 'itemhidden', [this$1$1]);
+                    uikitUtil.trigger(next, 'itemshown', [this$1$1]);
 
                     return new uikitUtil.Promise(function (resolve) {
                         uikitUtil.fastdom.write(function () {
                             stack.shift();
                             if (stack.length) {
-                                this$1.show(stack.shift(), true);
+                                this$1$1.show(stack.shift(), true);
                             } else {
-                                this$1._transitioner = null;
+                                this$1$1._transitioner = null;
                             }
                             resolve();
                         });
@@ -624,7 +604,7 @@
                 );
 
                 if (!force && !prev) {
-                    this._transitioner.translate(1);
+                    this._translate(1);
                     return uikitUtil.Promise.resolve();
                 }
 
@@ -635,7 +615,7 @@
             },
 
             _getDistance: function(prev, next) {
-                return new this._getTransitioner(prev, prev !== next && next).getDistance();
+                return this._getTransitioner(prev, prev !== next && next).getDistance();
             },
 
             _translate: function(percent, prev, next) {
@@ -689,14 +669,15 @@
                     return;
                 }
 
-                var index = this.getValidIndex();
-                delete this.index;
-                uikitUtil.removeClass(this.slides, this.clsActive, this.clsActivated);
-                this.show(index);
+                var index = this.getValidIndex(this.index);
+
+                if (!~this.prevIndex || this.index !== index) {
+                    this.show(index);
+                }
 
             },
 
-            events: ['load', 'resize']
+            events: ['resize']
 
         }
 
@@ -706,7 +687,8 @@
         if ( value === void 0 ) value = 0;
         if ( unit === void 0 ) unit = '%';
 
-        return ("translateX(" + value + (value ? unit : '') + ")"); // currently not translate3d to support IE, translate3d within translate3d does not work while transitioning
+        value += value ? unit : '';
+        return uikitUtil.isIE ? ("translateX(" + value + ")") : ("translate3d(" + value + ", 0, 0)"); // currently, not translate3d in IE, translate3d within translate3d does not work while transitioning
     }
 
     function Transitioner (prev, next, dir, ref) {
@@ -719,10 +701,10 @@
 
         var from = prev
             ? getLeft(prev, list, center)
-            : getLeft(next, list, center) + bounds(next).width * dir;
+            : getLeft(next, list, center) + uikitUtil.dimensions(next).width * dir;
         var to = next
             ? getLeft(next, list, center)
-            : from + bounds(prev).width * dir * (uikitUtil.isRtl ? -1 : 1);
+            : from + uikitUtil.dimensions(prev).width * dir * (uikitUtil.isRtl ? -1 : 1);
 
         return {
 
@@ -737,7 +719,6 @@
 
                 this.translate(percent);
 
-                prev && this.updateTranslates();
                 percent = prev ? percent : uikitUtil.clamp(percent, 0, 1);
                 triggerUpdate(this.getItemIn(), 'itemin', {percent: percent, duration: duration, timing: timing, dir: dir});
                 prev && triggerUpdate(this.getItemIn(true), 'itemout', {percent: 1 - percent, duration: duration, timing: timing, dir: dir});
@@ -748,10 +729,6 @@
 
                 return deferred.promise;
 
-            },
-
-            stop: function() {
-                return uikitUtil.Transition.stop(list);
             },
 
             cancel: function() {
@@ -776,16 +753,32 @@
                 uikitUtil.css(list, 'transform', translate(uikitUtil.clamp(
                     -to + (distance - distance * percent),
                     -getWidth(list),
-                    bounds(list).width
+                    uikitUtil.dimensions(list).width
                 ) * (uikitUtil.isRtl ? -1 : 1), 'px'));
 
-                this.updateTranslates();
+                var actives = this.getActives();
+                var itemIn = this.getItemIn();
+                var itemOut = this.getItemIn(true);
 
-                if (prev) {
-                    percent = uikitUtil.clamp(percent, -1, 1);
-                    triggerUpdate(this.getItemIn(), 'itemtranslatein', {percent: percent, dir: dir});
-                    triggerUpdate(this.getItemIn(true), 'itemtranslateout', {percent: 1 - percent, dir: dir});
-                }
+                percent = prev ? uikitUtil.clamp(percent, -1, 1) : 0;
+
+                uikitUtil.children(list).forEach(function (slide) {
+                    var isActive = uikitUtil.includes(actives, slide);
+                    var isIn = slide === itemIn;
+                    var isOut = slide === itemOut;
+                    var translateIn = isIn || !isOut && (isActive || dir * (uikitUtil.isRtl ? -1 : 1) === -1 ^ getElLeft(slide, list) > getElLeft(prev || next));
+
+                    triggerUpdate(slide, ("itemtranslate" + (translateIn ? 'in' : 'out')), {
+                        dir: dir,
+                        percent: isOut
+                            ? 1 - percent
+                            : isIn
+                                ? percent
+                                : isActive
+                                    ? 1
+                                    : 0
+                    });
+                });
 
             },
 
@@ -802,36 +795,20 @@
 
 
                 var actives = this.getActives();
-                var all = uikitUtil.sortBy(slides(list), 'offsetLeft');
-                var i = uikitUtil.index(all, actives[dir * (out ? -1 : 1) > 0 ? actives.length - 1 : 0]);
+                var nextActives = inView(list, getLeft(next || prev, list, center));
 
-                return ~i && all[i + (prev && !out ? dir : 0)];
+                if (out) {
+                    var temp = actives;
+                    actives = nextActives;
+                    nextActives = temp;
+                }
+
+                return nextActives[uikitUtil.findIndex(nextActives, function (el) { return !uikitUtil.includes(actives, el); })];
 
             },
 
             getActives: function() {
-
-                var left = getLeft(prev || next, list, center);
-
-                return uikitUtil.sortBy(slides(list).filter(function (slide) {
-                    var slideLeft = getElLeft(slide, list);
-                    return slideLeft >= left && slideLeft + bounds(slide).width <= bounds(list).width + left;
-                }), 'offsetLeft');
-
-            },
-
-            updateTranslates: function() {
-
-                var actives = this.getActives();
-
-                slides(list).forEach(function (slide) {
-                    var isActive = uikitUtil.includes(actives, slide);
-
-                    triggerUpdate(slide, ("itemtranslate" + (isActive ? 'in' : 'out')), {
-                        percent: isActive ? 1 : 0,
-                        dir: slide.offsetLeft <= next.offsetLeft ? 1 : -1
-                    });
-                });
+                return inView(list, getLeft(prev || next, list, center));
             }
 
         };
@@ -849,35 +826,37 @@
     }
 
     function getMax(list) {
-        return Math.max(0, getWidth(list) - bounds(list).width);
+        return Math.max(0, getWidth(list) - uikitUtil.dimensions(list).width);
     }
 
     function getWidth(list) {
-        return slides(list).reduce(function (right, el) { return bounds(el).width + right; }, 0);
-    }
-
-    function getMaxWidth(list) {
-        return slides(list).reduce(function (right, el) { return Math.max(right, bounds(el).width); }, 0);
+        return uikitUtil.children(list).reduce(function (right, el) { return uikitUtil.dimensions(el).width + right; }, 0);
     }
 
     function centerEl(el, list) {
-        return bounds(list).width / 2 - bounds(el).width / 2;
+        return uikitUtil.dimensions(list).width / 2 - uikitUtil.dimensions(el).width / 2;
     }
 
     function getElLeft(el, list) {
-        return (uikitUtil.position(el).left + (uikitUtil.isRtl ? bounds(el).width - bounds(list).width : 0)) * (uikitUtil.isRtl ? -1 : 1);
+        return el && (uikitUtil.position(el).left + (uikitUtil.isRtl ? uikitUtil.dimensions(el).width - uikitUtil.dimensions(list).width : 0)) * (uikitUtil.isRtl ? -1 : 1) || 0;
     }
 
-    function bounds(el) {
-        return el.getBoundingClientRect();
+    function inView(list, listLeft) {
+
+        listLeft -= 1;
+        var listWidth = uikitUtil.dimensions(list).width;
+        var listRight = listLeft + listWidth + 2;
+
+        return uikitUtil.children(list).filter(function (slide) {
+            var slideLeft = getElLeft(slide, list);
+            var slideRight = slideLeft + Math.min(uikitUtil.dimensions(slide).width, listWidth);
+
+            return slideLeft >= listLeft && slideRight <= listRight;
+        });
     }
 
     function triggerUpdate(el, type, data) {
         uikitUtil.trigger(el, uikitUtil.createEvent(type, false, false, data));
-    }
-
-    function slides(list) {
-        return uikitUtil.toNodes(list.children);
     }
 
     var Component = {
@@ -886,7 +865,7 @@
 
         props: {
             center: Boolean,
-            sets: Boolean,
+            sets: Boolean
         },
 
         data: {
@@ -908,67 +887,69 @@
             finite: function(ref) {
                 var finite = ref.finite;
 
-                return finite || getWidth(this.list) < bounds(this.list).width + getMaxWidth(this.list) + this.center;
+                return finite || Math.ceil(getWidth(this.list)) < uikitUtil.dimensions(this.list).width + getMaxElWidth(this.list) + this.center;
             },
 
             maxIndex: function() {
-                var this$1 = this;
-
 
                 if (!this.finite || this.center && !this.sets) {
                     return this.length - 1;
                 }
 
                 if (this.center) {
-                    return this.sets[this.sets.length - 1];
+                    return uikitUtil.last(this.sets);
                 }
 
-                uikitUtil.css(this.slides, 'order', '');
-
+                var lft = 0;
                 var max = getMax(this.list);
-                var i = this.length;
+                var index = uikitUtil.findIndex(this.slides, function (el) {
 
-                while (i--) {
-                    if (getElLeft(this$1.list.children[i], this$1.list) < max) {
-                        return Math.min(i + 1, this$1.length - 1);
+                    if (lft >= max) {
+                        return true;
                     }
-                }
 
-                return 0;
+                    lft += uikitUtil.dimensions(el).width;
+
+                });
+
+                return ~index ? index : this.length - 1;
             },
 
             sets: function(ref) {
-                var this$1 = this;
+                var this$1$1 = this;
                 var sets = ref.sets;
 
 
-                var width = bounds(this.list).width / (this.center ? 2 : 1);
+                if (!sets) {
+                    return;
+                }
+
+                var width = uikitUtil.dimensions(this.list).width / (this.center ? 2 : 1);
 
                 var left = 0;
                 var leftCenter = width;
                 var slideLeft = 0;
 
-                sets = sets && this.slides.reduce(function (sets, slide, i) {
+                sets = uikitUtil.sortBy(this.slides, 'offsetLeft').reduce(function (sets, slide, i) {
 
-                    var ref = bounds(slide);
-                    var slideWidth = ref.width;
+                    var slideWidth = uikitUtil.dimensions(slide).width;
                     var slideRight = slideLeft + slideWidth;
 
                     if (slideRight > left) {
 
-                        if (!this$1.center && i > this$1.maxIndex) {
-                            i = this$1.maxIndex;
+                        if (!this$1$1.center && i > this$1$1.maxIndex) {
+                            i = this$1$1.maxIndex;
                         }
 
                         if (!uikitUtil.includes(sets, i)) {
 
-                            var cmp = this$1.slides[i + 1];
-                            if (this$1.center && cmp && slideWidth < leftCenter - bounds(cmp).width / 2) {
+                            var cmp = this$1$1.slides[i + 1];
+                            if (this$1$1.center && cmp && slideWidth < leftCenter - uikitUtil.dimensions(cmp).width / 2) {
                                 leftCenter -= slideWidth;
                             } else {
                                 leftCenter = width;
                                 sets.push(i);
-                                left = slideLeft + width + (this$1.center ? slideWidth / 2 : 0);
+                                left = slideLeft + width + (this$1$1.center ? slideWidth / 2 : 0);
                             }
 
                         }
@@ -980,7 +961,7 @@
 
                 }, []);
 
-                return sets && sets.length && sets;
+                return !uikitUtil.isEmpty(sets) && sets;
 
             },
 
@@ -1000,25 +981,35 @@
         update: {
 
             write: function() {
-                var this$1 = this;
+                var this$1$1 = this;
 
-
-                uikitUtil.$$(("[" + (this.attrItem) + "],[data-" + (this.attrItem) + "]"), this.$el).forEach(function (el) {
-                    var index = uikitUtil.data(el, this$1.attrItem);
-                    this$1.maxIndex && uikitUtil.toggleClass(el, 'uk-hidden', uikitUtil.isNumeric(index) && (this$1.sets && !uikitUtil.includes(this$1.sets, uikitUtil.toFloat(index)) || index > this$1.maxIndex));
+                this.navItems.forEach(function (el) {
+                    var index = uikitUtil.toNumber(uikitUtil.data(el, this$1$1.attrItem));
+                    if (index !== false) {
+                        el.hidden = !this$1$1.maxIndex || index > this$1$1.maxIndex || this$1$1.sets && !uikitUtil.includes(this$1$1.sets, index);
+                    }
                 });
 
+                if (this.length && !this.dragging && !this.stack.length) {
+                    this.reorder();
+                    this._translate(1);
+                }
+
+                var actives = this._getTransitioner(this.index).getActives();
+                this.slides.forEach(function (slide) { return uikitUtil.toggleClass(slide, this$1$1.clsActive, uikitUtil.includes(actives, slide)); });
+
+                if (this.clsActivated && (!this.sets || uikitUtil.includes(this.sets, uikitUtil.toFloat(this.index)))) {
+                    this.slides.forEach(function (slide) { return uikitUtil.toggleClass(slide, this$1$1.clsActivated || '', uikitUtil.includes(actives, slide)); });
+                }
             },
 
-            events: ['load', 'resize']
+            events: ['resize']
 
         },
 
         events: {
 
             beforeitemshow: function(e) {
-                var this$1 = this;
-
 
                 if (!this.dragging && this.sets && this.stack.length < 2 && !uikitUtil.includes(this.sets, this.index)) {
                     this.index = this.getValidIndex();
@@ -1033,34 +1024,24 @@
                 if (!this.dragging && diff > 1) {
 
                     for (var i = 0; i < diff; i++) {
-                        this$1.stack.splice(1, 0, this$1.dir > 0 ? 'next' : 'previous');
+                        this.stack.splice(1, 0, this.dir > 0 ? 'next' : 'previous');
                     }
 
                     e.preventDefault();
                     return;
                 }
 
-                this.duration = speedUp(this.avgWidth / this.velocity)
-                    * (bounds(
-                        this.dir < 0 || !this.slides[this.prevIndex]
-                            ? this.slides[this.index]
-                            : this.slides[this.prevIndex]
-                    ).width / this.avgWidth);
+                var index = this.dir < 0 || !this.slides[this.prevIndex] ? this.index : this.prevIndex;
+                this.duration = speedUp(this.avgWidth / this.velocity) * (uikitUtil.dimensions(this.slides[index]).width / this.avgWidth);
 
                 this.reorder();
 
             },
 
             itemshow: function() {
-                !uikitUtil.isUndefined(this.prevIndex) && uikitUtil.addClass(this._getTransitioner().getItemIn(), this.clsActive);
-            },
-
-            itemshown: function() {
-                var this$1 = this;
-
-                var actives = this._getTransitioner(this.index).getActives();
-                this.slides.forEach(function (slide) { return uikitUtil.toggleClass(slide, this$1.clsActive, uikitUtil.includes(actives, slide)); });
-                (!this.sets || uikitUtil.includes(this.sets, uikitUtil.toFloat(this.index))) && this.slides.forEach(function (slide) { return uikitUtil.toggleClass(slide, this$1.clsActivated, uikitUtil.includes(actives, slide)); });
+                if (~this.prevIndex) {
+                    uikitUtil.addClass(this._getTransitioner().getItemIn(), this.clsActive);
+                }
             }
 
         },
@@ -1068,20 +1049,19 @@
         methods: {
 
             reorder: function() {
-                var this$1 = this;
+                var this$1$1 = this;
 
-
-                uikitUtil.css(this.slides, 'order', '');
 
                 if (this.finite) {
+                    uikitUtil.css(this.slides, 'order', '');
                     return;
                 }
 
                 var index = this.dir > 0 && this.slides[this.prevIndex] ? this.prevIndex : this.index;
 
-                this.slides.forEach(function (slide, i) { return uikitUtil.css(slide, 'order', this$1.dir > 0 && i < index
+                this.slides.forEach(function (slide, i) { return uikitUtil.css(slide, 'order', this$1$1.dir > 0 && i < index
                         ? 1
-                        : this$1.dir < 0 && i >= this$1.index
+                        : this$1$1.dir < 0 && i >= this$1$1.index
                             ? -1
                             : ''
                     ); }
@@ -1092,21 +1072,20 @@
                 }
 
                 var next = this.slides[index];
-                var width = bounds(this.list).width / 2 - bounds(next).width / 2;
+                var width = uikitUtil.dimensions(this.list).width / 2 - uikitUtil.dimensions(next).width / 2;
                 var j = 0;
 
                 while (width > 0) {
-                    var slideIndex = this$1.getIndex(--j + index, index);
-                    var slide = this$1.slides[slideIndex];
+                    var slideIndex = this.getIndex(--j + index, index);
+                    var slide = this.slides[slideIndex];
 
                     uikitUtil.css(slide, 'order', slideIndex > index ? -2 : -1);
-                    width -= bounds(slide).width;
+                    width -= uikitUtil.dimensions(slide).width;
                 }
 
             },
 
             getValidIndex: function(index, prevIndex) {
-                var this$1 = this;
                 if ( index === void 0 ) index = this.index;
                 if ( prevIndex === void 0 ) prevIndex = this.prevIndex;
 
@@ -1121,12 +1100,12 @@
 
                 do {
 
-                    if (uikitUtil.includes(this$1.sets, index)) {
+                    if (uikitUtil.includes(this.sets, index)) {
                         return index;
                     }
 
                     prev = index;
-                    index = this$1.getIndex(index + this$1.dir, prevIndex);
+                    index = this.getIndex(index + this.dir, prevIndex);
 
                 } while (index !== prev);
 
@@ -1137,7 +1116,9 @@
 
     };
 
-    /* global UIkit, 'slider' */
+    function getMaxElWidth(list) {
+        return Math.max.apply(Math, [ 0 ].concat( uikitUtil.children(list).map(function (el) { return uikitUtil.dimensions(el).width; }) ));
+    }
 
     if (typeof window !== 'undefined' && window.UIkit) {
         window.UIkit.component('slider', Component);
@@ -1145,4 +1126,4 @@
 
     return Component;
 
-})));
+}));

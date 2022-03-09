@@ -1,10 +1,10 @@
-/*! UIkit 3.0.0-rc.20 | http://www.getuikit.com | (c) 2014 - 2018 YOOtheme | MIT License */
+/*! UIkit 3.11.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitupload', ['uikit-util'], factory) :
-    (global.UIkitUpload = factory(global.UIkit.util));
-}(this, (function (uikitUtil) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.UIkitUpload = factory(global.UIkit.util));
+})(this, (function (uikitUtil) { 'use strict';
 
     var Component = {
 
@@ -22,7 +22,7 @@
             name: String,
             params: Object,
             type: String,
-            url: String,
+            url: String
         },
 
         data: {
@@ -103,7 +103,7 @@
         methods: {
 
             upload: function(files) {
-                var this$1 = this;
+                var this$1$1 = this;
 
 
                 if (!files.length) {
@@ -114,18 +114,18 @@
 
                 for (var i = 0; i < files.length; i++) {
 
-                    if (this$1.maxSize && this$1.maxSize * 1000 < files[i].size) {
-                        this$1.fail(this$1.msgInvalidSize.replace('%s', this$1.maxSize));
+                    if (this.maxSize && this.maxSize * 1000 < files[i].size) {
+                        this.fail(this.msgInvalidSize.replace('%s', this.maxSize));
                         return;
                     }
 
-                    if (this$1.allow && !match(this$1.allow, files[i].name)) {
-                        this$1.fail(this$1.msgInvalidName.replace('%s', this$1.allow));
+                    if (this.allow && !match(this.allow, files[i].name)) {
+                        this.fail(this.msgInvalidName.replace('%s', this.allow));
                         return;
                     }
 
-                    if (this$1.mime && !match(this$1.mime, files[i].type)) {
-                        this$1.fail(this$1.msgInvalidMime.replace('%s', this$1.mime));
+                    if (this.mime && !match(this.mime, files[i].type)) {
+                        this.fail(this.msgInvalidMime.replace('%s', this.mime));
                         return;
                     }
 
@@ -142,39 +142,39 @@
 
                     var data = new FormData();
 
-                    files.forEach(function (file) { return data.append(this$1.name, file); });
+                    files.forEach(function (file) { return data.append(this$1$1.name, file); });
 
-                    for (var key in this$1.params) {
-                        data.append(key, this$1.params[key]);
+                    for (var key in this$1$1.params) {
+                        data.append(key, this$1$1.params[key]);
                     }
 
-                    uikitUtil.ajax(this$1.url, {
+                    uikitUtil.ajax(this$1$1.url, {
                         data: data,
-                        method: this$1.method,
-                        responseType: this$1.type,
+                        method: this$1$1.method,
+                        responseType: this$1$1.type,
                         beforeSend: function (env) {
 
                             var xhr = env.xhr;
-                            xhr.upload && uikitUtil.on(xhr.upload, 'progress', this$1.progress);
-                            ['loadStart', 'load', 'loadEnd', 'abort'].forEach(function (type) { return uikitUtil.on(xhr, type.toLowerCase(), this$1[type]); }
+                            xhr.upload && uikitUtil.on(xhr.upload, 'progress', this$1$1.progress);
+                            ['loadStart', 'load', 'loadEnd', 'abort'].forEach(function (type) { return uikitUtil.on(xhr, type.toLowerCase(), this$1$1[type]); }
                             );
 
-                            this$1.beforeSend(env);
+                            return this$1$1.beforeSend(env);
 
                         }
                     }).then(
                         function (xhr) {
 
-                            this$1.complete(xhr);
+                            this$1$1.complete(xhr);
 
                             if (chunks.length) {
                                 upload(chunks.shift());
                             } else {
-                                this$1.completeAll(xhr);
+                                this$1$1.completeAll(xhr);
                             }
 
                         },
-                        function (e) { return this$1.error(e); }
+                        function (e) { return this$1$1.error(e); }
                     );
 
                 };
@@ -208,12 +208,10 @@
         e.stopPropagation();
     }
 
-    /* global UIkit, 'upload' */
-
     if (typeof window !== 'undefined' && window.UIkit) {
         window.UIkit.component('upload', Component);
     }
 
     return Component;
 
-})));
+}));

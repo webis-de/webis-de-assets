@@ -1,107 +1,232 @@
-/*! UIkit 3.0.0-rc.20 | http://www.getuikit.com | (c) 2014 - 2018 YOOtheme | MIT License */
+/*! UIkit 3.11.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitsortable', ['uikit-util'], factory) :
-    (global.UIkitSortable = factory(global.UIkit.util));
-}(this, (function (uikitUtil) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.UIkitSortable = factory(global.UIkit.util));
+})(this, (function (uikitUtil) { 'use strict';
 
-    var targetClass = 'uk-animation-target';
+    function getRows(items) {
+        return sortBy(items, 'top', 'bottom');
+    }
 
-    var Animate = {
+    function sortBy(items, startProp, endProp) {
 
-        props: {
-            animation: Number
-        },
+        var sorted = [[]];
 
-        data: {
-            animation: 150
-        },
+        for (var i = 0; i < items.length; i++) {
 
-        computed: {
+            var el = items[i];
 
-            target: function() {
-                return this.$el;
+            if (!uikitUtil.isVisible(el)) {
+                continue;
             }
 
-        },
+            var dim = getOffset(el);
 
-        methods: {
+            for (var j = sorted.length - 1; j >= 0; j--) {
 
-            animate: function(action) {
-                var this$1 = this;
+                var current = sorted[j];
+
+                if (!current[0]) {
+                    current.push(el);
+                    break;
+                }
+
+                var startDim = (void 0);
+                if (current[0].offsetParent === el.offsetParent) {
+                    startDim = getOffset(current[0]);
+                } else {
+                    dim = getOffset(el, true);
+                    startDim = getOffset(current[0], true);
+                }
+
+                if (dim[startProp] >= startDim[endProp] - 1 && dim[startProp] !== startDim[startProp]) {
+                    sorted.push([el]);
+                    break;
+                }
+
+                if (dim[endProp] - 1 > startDim[startProp] || dim[startProp] === startDim[startProp]) {
+                    current.push(el);
+                    break;
+                }
+
+                if (j === 0) {
+                    sorted.unshift([el]);
+                    break;
+                }
+
+            }
+
+        }
+
+        return sorted;
+    }
+
+    function getOffset(element, offset) {
+        var assign;
+
+        if ( offset === void 0 ) offset = false;
+
+        var offsetTop = element.offsetTop;
+        var offsetLeft = element.offsetLeft;
+        var offsetHeight = element.offsetHeight;
+        var offsetWidth = element.offsetWidth;
+
+        if (offset) {
+            (assign = uikitUtil.offsetPosition(element), offsetTop = assign[0], offsetLeft = assign[1]);
+        }
+
+        return {
+            top: offsetTop,
+            left: offsetLeft,
+            bottom: offsetTop + offsetHeight,
+            right: offsetLeft + offsetWidth
+        };
+    }
+
+    var clsLeave = 'uk-transition-leave';
+    var clsEnter = 'uk-transition-enter';
+
+    function fade(action, target, duration, stagger) {
+        if ( stagger === void 0 ) stagger = 0;
 
 
-                addStyle();
+        var index = transitionIndex(target, true);
+        var propsIn = {opacity: 1};
+        var propsOut = {opacity: 0};
 
-                var children = uikitUtil.toNodes(this.target.children);
-                var propsFrom = children.map(function (el) { return getProps(el, true); });
+        var wrapIndexFn = function (fn) { return function () { return index === transitionIndex(target) ? fn() : uikitUtil.Promise.reject(); }; };
 
-                var oldHeight = uikitUtil.height(this.target);
-                var oldScrollY = window.pageYOffset;
+        var leaveFn = wrapIndexFn(function () {
 
-                action();
+            uikitUtil.addClass(target, clsLeave);
 
-                uikitUtil.Transition.cancel(this.target);
-                children.forEach(uikitUtil.Transition.cancel);
+            return uikitUtil.Promise.all(getTransitionNodes(target).map(function (child, i) { return new uikitUtil.Promise(function (resolve) { return setTimeout(function () { return uikitUtil.Transition.start(child, propsOut, duration / 2, 'ease').then(resolve); }, i * stagger); }
+                ); }
+            )).then(function () { return uikitUtil.removeClass(target, clsLeave); });
 
-                reset(this.target);
-                this.$update(this.target);
-                uikitUtil.fastdom.flush();
+        });
 
-                var newHeight = uikitUtil.height(this.target);
+        var enterFn = wrapIndexFn(function () {
 
-                children = children.concat(uikitUtil.toNodes(this.target.children).filter(function (el) { return !uikitUtil.includes(children, el); }));
+            var oldHeight = uikitUtil.height(target);
 
-                var propsTo = children.map(function (el, i) { return el.parentNode && i in propsFrom
-                        ? propsFrom[i]
-                        ? uikitUtil.isVisible(el)
-                            ? getPositionWithMargin(el)
-                            : {opacity: 0}
-                        : {opacity: uikitUtil.isVisible(el) ? 1 : 0}
-                        : false; }
-                );
+            uikitUtil.addClass(target, clsEnter);
+            action();
 
-                propsFrom = propsTo.map(function (props, i) {
-                    var from = children[i].parentNode === this$1.target
-                        ? propsFrom[i] || getProps(children[i])
-                        : false;
+            uikitUtil.css(uikitUtil.children(target), {opacity: 0});
 
-                    if (from) {
-                        if (!props) {
-                            delete from.opacity;
-                        } else if (!('opacity' in props)) {
-                            var opacity = from.opacity;
+            // Ensure UIkit updates have propagated
+            return new uikitUtil.Promise(function (resolve) { return requestAnimationFrame(function () {
 
-                            if (opacity % 1) {
-                                props.opacity = 1;
-                            } else {
-                                delete from.opacity;
-                            }
-                        }
+                    var nodes = uikitUtil.children(target);
+                    var newHeight = uikitUtil.height(target);
+
+                    // Ensure Grid cells do not stretch when height is applied
+                    uikitUtil.css(target, 'alignContent', 'flex-start');
+                    uikitUtil.height(target, oldHeight);
+
+                    var transitionNodes = getTransitionNodes(target);
+                    uikitUtil.css(nodes, propsOut);
+
+                    var transitions = transitionNodes.map(function (child, i) { return new uikitUtil.Promise(function (resolve) { return setTimeout(function () { return uikitUtil.Transition.start(child, propsIn, duration / 2, 'ease').then(resolve); }, i * stagger); }
+                        ); }
+                    );
+
+                    if (oldHeight !== newHeight) {
+                        transitions.push(uikitUtil.Transition.start(target, {height: newHeight}, duration / 2 + transitionNodes.length * stagger, 'ease'));
                     }
 
-                    return from;
-                });
+                    uikitUtil.Promise.all(transitions).then(function () {
+                        uikitUtil.removeClass(target, clsEnter);
+                        if (index === transitionIndex(target)) {
+                            uikitUtil.css(target, {height: '', alignContent: ''});
+                            uikitUtil.css(nodes, {opacity: ''});
+                            delete target.dataset.transition;
+                        }
+                        resolve();
+                    });
+                }); }
+            );
+        });
 
-                uikitUtil.addClass(this.target, targetClass);
-                children.forEach(function (el, i) { return propsFrom[i] && uikitUtil.css(el, propsFrom[i]); });
-                uikitUtil.css(this.target, 'height', oldHeight);
-                uikitUtil.scrollTop(window, oldScrollY);
+        return uikitUtil.hasClass(target, clsLeave)
+            ? waitTransitionend(target).then(enterFn)
+            : uikitUtil.hasClass(target, clsEnter)
+                ? waitTransitionend(target).then(leaveFn).then(enterFn)
+                : leaveFn().then(enterFn);
+    }
 
-                return uikitUtil.Promise.all(children.map(function (el, i) { return propsFrom[i] && propsTo[i]
-                        ? uikitUtil.Transition.start(el, propsTo[i], this$1.animation, 'ease')
-                        : uikitUtil.Promise.resolve(); }
-                ).concat(uikitUtil.Transition.start(this.target, {height: newHeight}, this.animation, 'ease'))).then(function () {
-                    children.forEach(function (el, i) { return uikitUtil.css(el, {display: propsTo[i].opacity === 0 ? 'none' : '', zIndex: ''}); });
-                    reset(this$1.target);
-                    this$1.$update(this$1.target);
-                    uikitUtil.fastdom.flush(); // needed for IE11
-                }, uikitUtil.noop);
-
-            }
+    function transitionIndex(target, next) {
+        if (next) {
+            target.dataset.transition = 1 + transitionIndex(target);
         }
-    };
+
+        return uikitUtil.toNumber(target.dataset.transition) || 0;
+    }
+
+    function waitTransitionend(target) {
+        return uikitUtil.Promise.all(uikitUtil.children(target).filter(uikitUtil.Transition.inProgress).map(function (el) { return new uikitUtil.Promise(function (resolve) { return uikitUtil.once(el, 'transitionend transitioncanceled', resolve); }); }
+        ));
+    }
+
+    function getTransitionNodes(target) {
+        return getRows(uikitUtil.children(target)).reduce(function (nodes, row) { return nodes.concat(uikitUtil.sortBy(row.filter(function (el) { return uikitUtil.isInView(el); }), 'offsetLeft')); }, []);
+    }
+
+    function slide (action, target, duration) {
+
+        return new uikitUtil.Promise(function (resolve) { return requestAnimationFrame(function () {
+
+                var nodes = uikitUtil.children(target);
+
+                // Get current state
+                var currentProps = nodes.map(function (el) { return getProps(el, true); });
+                var targetProps = uikitUtil.css(target, ['height', 'padding']);
+
+                // Cancel previous animations
+                uikitUtil.Transition.cancel(target);
+                nodes.forEach(uikitUtil.Transition.cancel);
+                reset(target);
+
+                // Adding, sorting, removing nodes
+                action();
+
+                // Find new nodes
+                nodes = nodes.concat(uikitUtil.children(target).filter(function (el) { return !uikitUtil.includes(nodes, el); }));
+
+                // Wait for update to propagate
+                uikitUtil.Promise.resolve().then(function () {
+
+                    // Force update
+                    uikitUtil.fastdom.flush();
+
+                    // Get new state
+                    var targetPropsTo = uikitUtil.css(target, ['height', 'padding']);
+                    var ref = getTransitionProps(target, nodes, currentProps);
+                    var propsTo = ref[0];
+                    var propsFrom = ref[1];
+
+                    // Reset to previous state
+                    nodes.forEach(function (el, i) { return propsFrom[i] && uikitUtil.css(el, propsFrom[i]); });
+                    uikitUtil.css(target, uikitUtil.assign({display: 'block'}, targetProps));
+
+                    // Start transitions on next frame
+                    requestAnimationFrame(function () {
+
+                        var transitions = nodes.map(function (el, i) { return uikitUtil.parent(el) === target && uikitUtil.Transition.start(el, propsTo[i], duration, 'ease'); }
+                            ).concat(uikitUtil.Transition.start(target, targetPropsTo, duration, 'ease'));
+
+                        uikitUtil.Promise.all(transitions).then(function () {
+                            nodes.forEach(function (el, i) { return uikitUtil.parent(el) === target && uikitUtil.css(el, 'display', propsTo[i].opacity === 0 ? 'none' : ''); });
+                            reset(target);
+                        }, uikitUtil.noop).then(resolve);
+
+                    });
+                });
+            }); });
+    }
 
     function getProps(el, opacity) {
 
@@ -118,6 +243,42 @@
             : false;
     }
 
+    function getTransitionProps(target, nodes, currentProps) {
+
+        var propsTo = nodes.map(function (el, i) { return uikitUtil.parent(el) && i in currentProps
+                ? currentProps[i]
+                ? uikitUtil.isVisible(el)
+                    ? getPositionWithMargin(el)
+                    : {opacity: 0}
+                : {opacity: uikitUtil.isVisible(el) ? 1 : 0}
+                : false; });
+
+        var propsFrom = propsTo.map(function (props, i) {
+
+            var from = uikitUtil.parent(nodes[i]) === target && (currentProps[i] || getProps(nodes[i]));
+
+            if (!from) {
+                return false;
+            }
+
+            if (!props) {
+                delete from.opacity;
+            } else if (!('opacity' in props)) {
+                var opacity = from.opacity;
+
+                if (opacity % 1) {
+                    props.opacity = 1;
+                } else {
+                    delete from.opacity;
+                }
+            }
+
+            return from;
+        });
+
+        return [propsTo, propsFrom];
+    }
+
     function reset(el) {
         uikitUtil.css(el.children, {
             height: '',
@@ -126,34 +287,71 @@
             pointerEvents: '',
             position: '',
             top: '',
-            width: ''
+            marginTop: '',
+            marginLeft: '',
+            transform: '',
+            width: '',
+            zIndex: ''
         });
-        uikitUtil.removeClass(el, targetClass);
-        uikitUtil.css(el, 'height', '');
+        uikitUtil.css(el, {height: '', display: '', padding: ''});
     }
 
     function getPositionWithMargin(el) {
-        var ref = el.getBoundingClientRect();
+        var ref = uikitUtil.offset(el);
         var height = ref.height;
         var width = ref.width;
         var ref$1 = uikitUtil.position(el);
         var top = ref$1.top;
         var left = ref$1.left;
-        top += uikitUtil.toFloat(uikitUtil.css(el, 'marginTop'));
+        var ref$2 = uikitUtil.css(el, ['marginTop', 'marginLeft']);
+        var marginLeft = ref$2.marginLeft;
+        var marginTop = ref$2.marginTop;
 
-        return {top: top, left: left, height: height, width: width};
+        return {top: top, left: left, height: height, width: width, marginLeft: marginLeft, marginTop: marginTop, transform: ''};
     }
 
-    var style;
+    var Animate = {
 
-    function addStyle() {
-        if (!style) {
-            style = uikitUtil.append(document.head, '<style>').sheet;
-            style.insertRule(
-                ("." + targetClass + " > * {\n                    margin-top: 0 !important;\n                    transform: none !important;\n                }"), 0
-            );
+        props: {
+            duration: Number,
+            animation: Boolean
+        },
+
+        data: {
+            duration: 150,
+            animation: 'slide'
+        },
+
+        methods: {
+
+            animate: function(action, target) {
+                var this$1$1 = this;
+                if ( target === void 0 ) target = this.$el;
+
+
+                var name = this.animation;
+                var animationFn = name === 'fade'
+                    ? fade
+                    : name === 'delayed-fade'
+                        ? function () {
+                            var args = [], len = arguments.length;
+                            while ( len-- ) args[ len ] = arguments[ len ];
+
+                            return fade.apply(void 0, args.concat( [40] ));
+                }
+                        : name
+                            ? slide
+                            : function () {
+                                action();
+                                return uikitUtil.Promise.resolve();
+                            };
+
+                return animationFn(action, target, this.duration)
+                    .then(function () { return this$1$1.$update(target, 'resize'); }, uikitUtil.noop);
+            }
+
         }
-    }
+    };
 
     var Class = {
 
@@ -162,8 +360,6 @@
         }
 
     };
-
-    var obj;
 
     var Component = {
 
@@ -194,58 +390,137 @@
             clsNoDrag: 'uk-sortable-nodrag',
             clsEmpty: 'uk-sortable-empty',
             clsCustom: '',
-            handle: false
+            handle: false,
+            pos: {}
         },
 
         created: function() {
-            var this$1 = this;
+            var this$1$1 = this;
 
             ['init', 'start', 'move', 'end'].forEach(function (key) {
-                var fn = this$1[key];
-                this$1[key] = function (e) {
-                    this$1.scrollY = window.pageYOffset;
-                    var ref = uikitUtil.getPos(e);
-                    var x = ref.x;
-                    var y = ref.y;
-                    this$1.pos = {x: x, y: y};
-
+                var fn = this$1$1[key];
+                this$1$1[key] = function (e) {
+                    uikitUtil.assign(this$1$1.pos, uikitUtil.getEventPos(e));
                     fn(e);
                 };
             });
         },
 
-        events: ( obj = {}, obj[uikitUtil.pointerDown] = 'init', obj ),
+        events: {
+
+            name: uikitUtil.pointerDown,
+            passive: false,
+            handler: 'init'
+
+        },
+
+        computed: {
+
+            target: function() {
+                return (this.$el.tBodies || [this.$el])[0];
+            },
+
+            items: function() {
+                return uikitUtil.children(this.target);
+            },
+
+            isEmpty: {
+
+                get: function() {
+                    return uikitUtil.isEmpty(this.items);
+                },
+
+                watch: function(empty) {
+                    uikitUtil.toggleClass(this.target, this.clsEmpty, empty);
+                },
+
+                immediate: true
+
+            },
+
+            handles: {
+
+                get: function(ref, el) {
+                    var handle = ref.handle;
+
+                    return handle ? uikitUtil.$$(handle, el) : this.items;
+                },
+
+                watch: function(handles, prev) {
+                    uikitUtil.css(prev, {touchAction: '', userSelect: ''});
+                    uikitUtil.css(handles, {touchAction: uikitUtil.hasTouch ? 'none' : '', userSelect: 'none'}); // touchAction set to 'none' causes a performance drop in Chrome 80
+                },
+
+                immediate: true
+
+            }
+
+        },
 
         update: {
 
-            write: function() {
+            write: function(data) {
 
-                if (this.clsEmpty) {
-                    uikitUtil.toggleClass(this.$el, this.clsEmpty, !this.$el.children.length);
-                }
-
-                uikitUtil.css(this.handle ? uikitUtil.$$(this.handle, this.$el) : this.$el.children, 'touchAction', 'none');
-
-                if (!this.drag) {
+                if (!this.drag || !uikitUtil.parent(this.placeholder)) {
                     return;
                 }
 
-                uikitUtil.offset(this.drag, {top: this.pos.y + this.origin.top, left: this.pos.x + this.origin.left});
+                var ref = this;
+                var ref_pos = ref.pos;
+                var x = ref_pos.x;
+                var y = ref_pos.y;
+                var ref_origin = ref.origin;
+                var offsetTop = ref_origin.offsetTop;
+                var offsetLeft = ref_origin.offsetLeft;
+                var placeholder = ref.placeholder;
 
-                var ref = uikitUtil.offset(this.drag);
-                var top = ref.top;
-                var offsetHeight = ref.height;
-                var bottom = top + offsetHeight;
-                var scroll;
+                uikitUtil.css(this.drag, {
+                    top: y - offsetTop,
+                    left: x - offsetLeft
+                });
 
-                if (top > 0 && top < this.scrollY) {
-                    scroll = this.scrollY - 5;
-                } else if (bottom < uikitUtil.height(document) && bottom > uikitUtil.height(window) + this.scrollY) {
-                    scroll = this.scrollY + 5;
+                var sortable = this.getSortable(document.elementFromPoint(x, y));
+
+                if (!sortable) {
+                    return;
                 }
 
-                scroll && setTimeout(function () { return uikitUtil.scrollTop(window, scroll); }, 5);
-            }
+                var items = sortable.items;
+
+                if (items.some(uikitUtil.Transition.inProgress)) {
+                    return;
+                }
+
+                var target = findTarget(items, {x: x, y: y});
+
+                if (items.length && (!target || target === placeholder)) {
+                    return;
+                }
+
+                var previous = this.getSortable(placeholder);
+                var insertTarget = findInsertTarget(sortable.target, target, placeholder, x, y, sortable === previous && data.moved !== target);
+
+                if (insertTarget === false) {
+                    return;
+                }
+
+                if (insertTarget && placeholder === insertTarget) {
+                    return;
+                }
+
+                if (sortable !== previous) {
+                    previous.remove(placeholder);
+                    data.moved = target;
+                } else {
+                    delete data.moved;
+                }
+
+                sortable.insert(placeholder, insertTarget);
+
+                this.touched.add(sortable);
+            },
+
+            events: ['move']
 
         },
 
@@ -256,28 +531,27 @@
                 var target = e.target;
                 var button = e.button;
                 var defaultPrevented = e.defaultPrevented;
-                var ref = uikitUtil.toNodes(this.$el.children).filter(function (el) { return uikitUtil.within(target, el); });
+                var ref = this.items.filter(function (el) { return uikitUtil.within(target, el); });
                 var placeholder = ref[0];
 
                 if (!placeholder
-                    || uikitUtil.isInput(e.target)
-                    || this.handle && !uikitUtil.within(target, this.handle)
-                    || button > 0
-                    || uikitUtil.within(target, ("." + (this.clsNoDrag)))
                     || defaultPrevented
+                    || button > 0
+                    || uikitUtil.isInput(target)
+                    || uikitUtil.within(target, ("." + (this.clsNoDrag)))
+                    || this.handle && !uikitUtil.within(target, this.handle)
                 ) {
                     return;
                 }
 
                 e.preventDefault();
 
-                this.touched = [this];
+                this.touched = new Set([this]);
                 this.placeholder = placeholder;
                 this.origin = uikitUtil.assign({target: target, index: uikitUtil.index(placeholder)}, this.pos);
 
                 uikitUtil.on(document, uikitUtil.pointerMove, this.move);
                 uikitUtil.on(document, uikitUtil.pointerUp, this.end);
-                uikitUtil.on(window, 'scroll', this.scroll);
 
                 if (!this.threshold) {
                     this.start(e);
@@ -287,87 +561,47 @@
 
             start: function(e) {
 
-                this.drag = uikitUtil.append(this.$container, this.placeholder.outerHTML.replace(/^<li/i, '<div').replace(/li>$/i, 'div>'));
-
-                uikitUtil.css(this.drag, uikitUtil.assign({
-                    boxSizing: 'border-box',
-                    width: this.placeholder.offsetWidth,
-                    height: this.placeholder.offsetHeight
-                }, uikitUtil.css(this.placeholder, ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom'])));
-                uikitUtil.attr(this.drag, 'uk-no-boot', '');
-                uikitUtil.addClass(this.drag, this.clsDrag, this.clsCustom);
-
-                uikitUtil.height(this.drag.firstElementChild, uikitUtil.height(this.placeholder.firstElementChild));
-
-                var ref = uikitUtil.offset(this.placeholder);
+                this.drag = appendDrag(this.$container, this.placeholder);
+                var ref = this.placeholder.getBoundingClientRect();
                 var left = ref.left;
                 var top = ref.top;
-                uikitUtil.assign(this.origin, {left: left - this.pos.x, top: top - this.pos.y});
+                uikitUtil.assign(this.origin, {offsetLeft: this.pos.x - left, offsetTop: this.pos.y - top});
 
+                uikitUtil.addClass(this.drag, this.clsDrag, this.clsCustom);
                 uikitUtil.addClass(this.placeholder, this.clsPlaceholder);
-                uikitUtil.addClass(this.$el.children, this.clsItem);
+                uikitUtil.addClass(this.items, this.clsItem);
                 uikitUtil.addClass(document.documentElement, this.clsDragState);
 
                 uikitUtil.trigger(this.$el, 'start', [this, this.placeholder]);
+
+                trackScroll(this.pos);
 
                 this.move(e);
             },
 
             move: function(e) {
 
-                if (!this.drag) {
-
-                    if (Math.abs(this.pos.x - this.origin.x) > this.threshold || Math.abs(this.pos.y - this.origin.y) > this.threshold) {
-                        this.start(e);
-                    }
-
-                    return;
-                }
-
-                this.$emit();
-
-                var target = e.type === 'mousemove' ? e.target : document.elementFromPoint(this.pos.x - window.pageXOffset, this.pos.y - window.pageYOffset);
-
-                var sortable = this.getSortable(target);
-                var previous = this.getSortable(this.placeholder);
-                var move = sortable !== previous;
-
-                if (!sortable || uikitUtil.within(target, this.placeholder) || move && (!sortable.group || sortable.group !== previous.group)) {
-                    return;
-                }
-
-                target = sortable.$el === target.parentNode && target || uikitUtil.toNodes(sortable.$el.children).filter(function (element) { return uikitUtil.within(target, element); })[0];
-
-                if (move) {
-                    previous.remove(this.placeholder);
-                } else if (!target) {
-                    return;
-                }
-
-                sortable.insert(this.placeholder, target);
-
-                if (!uikitUtil.includes(this.touched, sortable)) {
-                    this.touched.push(sortable);
+                if (this.drag) {
+                    this.$emit('move');
+                } else if (Math.abs(this.pos.x - this.origin.x) > this.threshold || Math.abs(this.pos.y - this.origin.y) > this.threshold) {
+                    this.start(e);
                 }
 
             },
 
-            end: function(e) {
+            end: function() {
+                var this$1$1 = this;
+
 
                 uikitUtil.off(document, uikitUtil.pointerMove, this.move);
                 uikitUtil.off(document, uikitUtil.pointerUp, this.end);
                 uikitUtil.off(window, 'scroll', this.scroll);
 
                 if (!this.drag) {
-
-                    if (e.type !== 'mouseup' && uikitUtil.within(e.target, 'a[href]')) {
-                        location.href = uikitUtil.closest(e.target, 'a[href]').href;
-                    }
-
                     return;
                 }
 
-                uikitUtil.preventClick();
+                untrackScroll();
 
                 var sortable = this.getSortable(this.placeholder);
 
@@ -385,79 +619,196 @@
                 uikitUtil.remove(this.drag);
                 this.drag = null;
 
-                var classes = this.touched.map(function (sortable) { return ((sortable.clsPlaceholder) + " " + (sortable.clsItem)); }).join(' ');
-                this.touched.forEach(function (sortable) { return uikitUtil.removeClass(sortable.$el.children, classes); });
+                this.touched.forEach(function (ref) {
+                        var clsPlaceholder = ref.clsPlaceholder;
+                        var clsItem = ref.clsItem;
 
+                        return this$1$1.touched.forEach(function (sortable) { return uikitUtil.removeClass(sortable.items, clsPlaceholder, clsItem); }
+                    );
+                }
+                );
+                this.touched = null;
                 uikitUtil.removeClass(document.documentElement, this.clsDragState);
 
             },
 
-            scroll: function() {
-                var scroll = window.pageYOffset;
-                if (scroll !== this.scrollY) {
-                    this.pos.y += scroll - this.scrollY;
-                    this.scrollY = scroll;
-                    this.$emit();
-                }
-            },
-
             insert: function(element, target) {
-                var this$1 = this;
+                var this$1$1 = this;
 
 
-                uikitUtil.addClass(this.$el.children, this.clsItem);
+                uikitUtil.addClass(this.items, this.clsItem);
 
-                var insert = function () {
+                var insert = function () { return target
+                    ? uikitUtil.before(target, element)
+                    : uikitUtil.append(this$1$1.target, element); };
 
-                    if (target) {
-
-                        if (!uikitUtil.within(element, this$1.$el) || isPredecessor(element, target)) {
-                            uikitUtil.before(target, element);
-                        } else {
-                            uikitUtil.after(target, element);
-                        }
-
-                    } else {
-                        uikitUtil.append(this$1.$el, element);
-                    }
-
-                };
-
-                if (this.animation) {
-                    this.animate(insert);
-                } else {
-                    insert();
-                }
+                this.animate(insert);
 
             },
 
             remove: function(element) {
 
-                if (!uikitUtil.within(element, this.$el)) {
+                if (!uikitUtil.within(element, this.target)) {
                     return;
                 }
 
-                if (this.animation) {
-                    this.animate(function () { return uikitUtil.remove(element); });
-                } else {
-                    uikitUtil.remove(element);
-                }
+                this.animate(function () { return uikitUtil.remove(element); });
 
             },
 
             getSortable: function(element) {
-                return element && (this.$getComponent(element, 'sortable') || this.getSortable(element.parentNode));
+                do {
+                    var sortable = this.$getComponent(element, 'sortable');
+
+                    if (sortable && (sortable === this || this.group !== false && sortable.group === this.group)) {
+                        return sortable;
+                    }
+                } while ((element = uikitUtil.parent(element)));
             }
 
         }
 
     };
 
-    function isPredecessor(element, target) {
-        return element.parentNode === target.parentNode && uikitUtil.index(element) > uikitUtil.index(target);
+    var trackTimer;
+    function trackScroll(pos) {
+
+        var last = Date.now();
+        trackTimer = setInterval(function () {
+
+            var x = pos.x;
+            var y = pos.y;
+            y += window.pageYOffset;
+
+            var dist = (Date.now() - last) * .3;
+            last = Date.now();
+
+            uikitUtil.scrollParents(document.elementFromPoint(x, pos.y), /auto|scroll/).reverse().some(function (scrollEl) {
+
+                var scroll = scrollEl.scrollTop;
+                var scrollHeight = scrollEl.scrollHeight;
+
+                var ref = uikitUtil.offset(uikitUtil.getViewport(scrollEl));
+                var top = ref.top;
+                var bottom = ref.bottom;
+                var height = ref.height;
+
+                if (top < y && top + 35 > y) {
+                    scroll -= dist;
+                } else if (bottom > y && bottom - 35 < y) {
+                    scroll += dist;
+                } else {
+                    return;
+                }
+
+                if (scroll > 0 && scroll < scrollHeight - height) {
+                    uikitUtil.scrollTop(scrollEl, scroll);
+                    return true;
+                }
+
+            });
+
+        }, 15);
+
     }
 
-    /* global UIkit, 'sortable' */
+    function untrackScroll() {
+        clearInterval(trackTimer);
+    }
+
+    function appendDrag(container, element) {
+        var clone = uikitUtil.append(container, element.outerHTML.replace(/(^<)(?:li|tr)|(?:li|tr)(\/>$)/g, '$1div$2'));
+
+        uikitUtil.css(clone, 'margin', '0', 'important');
+        uikitUtil.css(clone, uikitUtil.assign({
+            boxSizing: 'border-box',
+            width: element.offsetWidth,
+            height: element.offsetHeight
+        }, uikitUtil.css(element, ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom'])));
+
+        uikitUtil.height(clone.firstElementChild, uikitUtil.height(element.firstElementChild));
+
+        return clone;
+    }
+
+    function findTarget(items, point) {
+        return items[uikitUtil.findIndex(items, function (item) { return uikitUtil.pointInRect(point, item.getBoundingClientRect()); })];
+    }
+
+    function findInsertTarget(list, target, placeholder, x, y, sameList) {
+
+        if (!uikitUtil.children(list).length) {
+            return;
+        }
+
+        var rect = target.getBoundingClientRect();
+        if (!sameList) {
+
+            if (!isHorizontal(list, placeholder)) {
+                return y < rect.top + rect.height / 2
+                    ? target
+                    : target.nextElementSibling;
+            }
+
+            return target;
+        }
+
+        var placeholderRect = placeholder.getBoundingClientRect();
+        var sameRow = linesIntersect(
+            [rect.top, rect.bottom],
+            [placeholderRect.top, placeholderRect.bottom]
+        );
+
+        var pointerPos = sameRow ? x : y;
+        var lengthProp = sameRow ? 'width' : 'height';
+        var startProp = sameRow ? 'left' : 'top';
+        var endProp = sameRow ? 'right' : 'bottom';
+
+        var diff = placeholderRect[lengthProp] < rect[lengthProp] ? rect[lengthProp] - placeholderRect[lengthProp] : 0;
+
+        if (placeholderRect[startProp] < rect[startProp]) {
+
+            if (diff && pointerPos < rect[startProp] + diff) {
+                return false;
+            }
+
+            return target.nextElementSibling;
+        }
+
+        if (diff && pointerPos > rect[endProp] - diff) {
+            return false;
+        }
+
+        return target;
+    }
+
+    function isHorizontal(list, placeholder) {
+
+        var single = uikitUtil.children(list).length === 1;
+
+        if (single) {
+            uikitUtil.append(list, placeholder);
+        }
+
+        var items = uikitUtil.children(list);
+        var isHorizontal = items.some(function (el, i) {
+            var rectA = el.getBoundingClientRect();
+            return items.slice(i + 1).some(function (el) {
+                var rectB = el.getBoundingClientRect();
+                return !linesIntersect([rectA.left, rectA.right], [rectB.left, rectB.right]);
+            });
+        });
+
+        if (single) {
+            uikitUtil.remove(placeholder);
+        }
+
+        return isHorizontal;
+    }
+
+    function linesIntersect(lineA, lineB) {
+        return lineA[1] > lineB[0] && lineB[1] > lineA[0];
+    }
 
     if (typeof window !== 'undefined' && window.UIkit) {
         window.UIkit.component('sortable', Component);
@@ -465,4 +816,4 @@
 
     return Component;
 
-})));
+}));

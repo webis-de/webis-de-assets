@@ -80,7 +80,7 @@ const enableColumnSorting = (event) => {
 function initTableSorting(tables = document.querySelectorAll('table.sortable')) {
   tables.forEach(table => {
     table.querySelectorAll('th.header').forEach(th => {
-      th.addEventListener('click', enableColumnSorting)
+      if (th.classList.contains("non-sortable") == false) th.addEventListener('click', enableColumnSorting);
     });
   });
 };

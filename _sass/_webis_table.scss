@@ -84,7 +84,7 @@
     font-size: .9rem;
 }
 
-table.sortable thead th span:after {
+table.sortable thead th:not(.non-sortable) span:after {
     margin-left: 0.5em;
     opacity: 0.3;
     content: "\2195";

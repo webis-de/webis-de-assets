@@ -209,6 +209,7 @@ function defaultDataAttributesPopulationFunction(node) {
     }
   }
   attributes['text'] = normalize(node.textContent);
+  attributes['fields'] = Object.keys(attributes).join(" ");
   return attributes;
 }
 

@@ -210,6 +210,7 @@ function defaultDataAttributesPopulationFunction(node) {
   }
   attributes['text'] = normalize(node.textContent);
   attributes['fields'] = Object.keys(attributes).join(" ");
+  attributes['links'] = Array.from(node.querySelectorAll("a")).map(link => link.getAttribute("href")).join(" ");
   return attributes;
 }
 

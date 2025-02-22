@@ -35,83 +35,26 @@
 // Variables
 // ========================================================================
 
-$form-height:                                    $global-control-height !default;
-$form-line-height:                               $form-height !default;
-$form-padding-horizontal:                        10px !default;
-$form-padding-vertical:                          round($form-padding-horizontal * 0.6) !default;
 
-$form-background:                                $global-muted-background !default;
-$form-color:                                     $global-color !default;
 
-$form-focus-background:                          darken($form-background, 5%) !default;
-$form-focus-color:                               $global-color !default;
 
-$form-disabled-background:                       $global-muted-background !default;
-$form-disabled-color:                            $global-muted-color !default;
 
-$form-placeholder-color:                         $global-muted-color !default;
 
-$form-small-height:                              $global-control-small-height !default;
-$form-small-padding-horizontal:                  8px !default;
-$form-small-padding-vertical:                    round($form-small-padding-horizontal * 0.6) !default;
-$form-small-line-height:                         $form-small-height !default;
-$form-small-font-size:                           $global-small-font-size !default;
 
-$form-large-height:                              $global-control-large-height !default;
-$form-large-padding-horizontal:                  12px !default;
-$form-large-padding-vertical:                    round($form-large-padding-horizontal * 0.6) !default;
-$form-large-line-height:                         $form-large-height !default;
-$form-large-font-size:                           $global-medium-font-size !default;
 
-$form-danger-color:                              $global-danger-background !default;
-$form-success-color:                             $global-success-background !default;
 
-$form-width-xsmall:                              50px !default;
-$form-width-small:                               130px !default;
-$form-width-medium:                              200px !default;
-$form-width-large:                               500px !default;
 
-$form-select-padding-right:                      20px !default;
-$form-select-icon-color:                         $global-color !default;
-$form-select-option-color:                       $global-color !default;
-$form-select-disabled-icon-color:                $global-muted-color !default;
 
-$form-datalist-padding-right:                    20px !default;
-$form-datalist-icon-color:                       $global-color !default;
 
-$form-radio-size:                                16px !default;
-$form-radio-margin-top:                          -4px !default;
-$form-radio-background:                          darken($global-muted-background, 5%) !default;
 
-$form-radio-focus-background:                    darken($form-radio-background, 5%) !default;
 
-$form-radio-checked-background:                  $global-primary-background !default;
-$form-radio-checked-icon-color:                  $global-inverse-color !default;
 
-$form-radio-checked-focus-background:            darken($global-primary-background, 10%) !default;
 
-$form-radio-disabled-background:                 $global-muted-background !default;
-$form-radio-disabled-icon-color:                 $global-muted-color !default;
 
-$form-legend-font-size:                          $global-large-font-size !default;
-$form-legend-line-height:                        1.4 !default;
 
-$form-stacked-margin-bottom:                     $global-small-margin !default;
 
-$form-horizontal-label-width:                    200px !default;
-$form-horizontal-label-margin-top:               7px !default;
-$form-horizontal-controls-margin-left:           215px !default;
-$form-horizontal-controls-text-padding-top:      7px !default;
 
-$form-icon-width:                                $form-height !default;
-$form-icon-color:                                $global-muted-color !default;
-$form-icon-hover-color:                          $global-color !default;
 
-$internal-form-select-image: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22#000%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22#000%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A" !default;
-$internal-form-datalist-image: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22#000%22%20points%3D%2212%2012%208%206%2016%206%22%20%2F%3E%0A%3C%2Fsvg%3E%0A" !default;
-$internal-form-radio-image: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22#000%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E" !default;
-$internal-form-checkbox-image: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22#000%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0A%3C%2Fsvg%3E%0A" !default;
-$internal-form-checkbox-indeterminate-image: "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Crect%20fill%3D%22#000%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0A%3C%2Fsvg%3E" !default;
 
 
 /* ========================================================================
@@ -182,13 +125,25 @@ $internal-form-checkbox-indeterminate-image: "data:image/svg+xml;charset=UTF-8,%
 .uk-input[type="search"]::-webkit-search-cancel-button,
 .uk-input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
 
-
 /*
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
 .uk-input[type="number"]::-webkit-inner-spin-button,
 .uk-input[type="number"]::-webkit-outer-spin-button { height: auto; }
+
+/*
+ * Correct vertical alignment in Safari.
+ */
+
+.uk-input[type="date"]::-webkit-datetime-edit,
+.uk-input[type="time"]::-webkit-datetime-edit,
+.uk-input[type="datetime-local"]::-webkit-datetime-edit {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+}
 
 /*
  * Removes placeholder transparency in Firefox.
@@ -206,17 +161,20 @@ $internal-form-checkbox-indeterminate-image: "data:image/svg+xml;charset=UTF-8,%
 
 /*
  * Define consistent border, margin, and padding.
+ * 1. Reset `min-width`
  */
 
 .uk-fieldset {
     border: none;
     margin: 0;
     padding: 0;
+    /* 1 */
+    min-width: 0;
 }
 
 
 /* Input, select and textarea
- * Allowed: `text`, `password`, `datetime`, `datetime-local`, `date`,  `month`,
+ * Allowed: `text`, `password`, `datetime-local`, `date`,  `month`,
             `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`
  * Disallowed: `range`, `radio`, `checkbox`, `file`, `submit`, `reset` and `image`
  ========================================================================== */
@@ -310,10 +268,8 @@ $internal-form-checkbox-indeterminate-image: "data:image/svg+xml;charset=UTF-8,%
  * Placeholder
  */
 
-.uk-input::-ms-input-placeholder { color: $form-placeholder-color !important; }
 .uk-input::placeholder { color: $form-placeholder-color; }
 
-.uk-textarea::-ms-input-placeholder { color: $form-placeholder-color !important; }
 .uk-textarea::placeholder { color: $form-placeholder-color; }
 
 
@@ -379,7 +335,7 @@ textarea.uk-form-large,
  */
 
 .uk-form-success,
-.uk-form-success:focus  {
+.uk-form-success:focus {
     color: $form-success-color;
     @if(mixin-exists(hook-form-success)) {@include hook-form-success();}
 }
@@ -423,8 +379,7 @@ select.uk-form-width-xsmall { width: ($form-width-xsmall + 25px); }
 /*
  * 1. Remove default style. Also works in Firefox
  * 2. Style
- * 3. Remove default style in IE 10/11
- * 4. Set `color` for options in the select dropdown, because the inherited `color` might be too light.
+ * 3. Set `color` for options in the select dropdown, because the inherited `color` might be too light.
  */
 
 .uk-select:not([multiple]):not([size]) {
@@ -439,9 +394,6 @@ select.uk-form-width-xsmall { width: ($form-width-xsmall + 25px); }
 }
 
 /* 3 */
-.uk-select:not([multiple]):not([size])::-ms-expand { display: none; }
-
-/* 4 */
 .uk-select:not([multiple]):not([size]) option { color: $form-select-option-color; }
 
 /*
@@ -472,7 +424,6 @@ select.uk-form-width-xsmall { width: ($form-width-xsmall + 25px); }
 
 
 /* Radio and checkbox
- * Note: Does not work in IE11
  ========================================================================== */
 
 /*
@@ -608,7 +559,7 @@ select.uk-form-width-xsmall { width: ($form-width-xsmall + 25px); }
  * 1. Position and resize the form control to always cover its container
  * 2. Required for Firefox for positioning to the left
  * 3. Required for Webkit to make `height` work
- * 4. Hide controle and show cursor
+ * 4. Hide controls and show cursor
  * 5. Needed for the cursor
  * 6. Clip height caused by 5. Needed for Webkit only
  */
@@ -717,6 +668,7 @@ select.uk-form-width-xsmall { width: ($form-width-xsmall + 25px); }
     align-items: center;
     /* 4 */
     color: $form-icon-color;
+    @if(mixin-exists(hook-form-icon)) {@include hook-form-icon();}
 }
 
 /*
@@ -772,33 +724,20 @@ select.uk-form-width-xsmall { width: ($form-width-xsmall + 25px); }
 // @mixin hook-form-label(){}
 // @mixin hook-form-stacked-label(){}
 // @mixin hook-form-horizontal-label(){}
+// @mixin hook-form-icon(){}
 // @mixin hook-form-misc(){}
 
 
 // Inverse
 // ========================================================================
 
-$inverse-form-background:                       $inverse-global-muted-background !default;
-$inverse-form-color:                            $inverse-global-color !default;
-$inverse-form-focus-background:                 fadein($inverse-form-background, 5%) !default;
-$inverse-form-focus-color:                      $inverse-global-color !default;
-$inverse-form-placeholder-color:                $inverse-global-muted-color !default;
 
-$inverse-form-select-icon-color:                $inverse-global-color !default;
 
-$inverse-form-datalist-icon-color:              $inverse-global-color !default;
 
-$inverse-form-radio-background:                 $inverse-global-muted-background !default;
 
-$inverse-form-radio-focus-background:           fadein($inverse-form-radio-background, 5%) !default;
 
-$inverse-form-radio-checked-background:         $inverse-global-primary-background !default;
-$inverse-form-radio-checked-icon-color:         $inverse-global-inverse-color !default;
 
-$inverse-form-radio-checked-focus-background:   fadein($inverse-global-primary-background, 10%) !default;
 
-$inverse-form-icon-color:                       $inverse-global-muted-color !default;
-$inverse-form-icon-hover-color:                 $inverse-global-color !default;
 
 
 
@@ -809,3 +748,4 @@ $inverse-form-icon-hover-color:                 $inverse-global-color !default;
 // @mixin hook-inverse-form-radio-checked(){}
 // @mixin hook-inverse-form-radio-checked-focus(){}
 // @mixin hook-inverse-form-label(){}
+// @mixin hook-inverse-form-icon(){}

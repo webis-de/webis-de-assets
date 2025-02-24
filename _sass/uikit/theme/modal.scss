@@ -7,14 +7,21 @@
 // Variables
 // ========================================================================
 
+$modal-header-background:                        $modal-dialog-background !default;
+$modal-footer-background:                        $modal-dialog-background !default;
 
 //
 // New
 //
 
+$modal-header-border-width:                     $global-border-width !default;
+$modal-header-border:                           $global-border !default;
 
+$modal-footer-border-width:                     $global-border-width !default;
+$modal-footer-border:                           $global-border !default;
 
-
+$modal-close-full-padding:                      $global-margin !default;
+$modal-close-full-background:                   $modal-dialog-background !default;
 
 
 // Component
@@ -74,4 +81,4 @@
 // Miscellaneous
 // ========================================================================
 
-
+// @mixin hook-modal-misc(){}

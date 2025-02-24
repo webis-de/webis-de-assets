@@ -11,16 +11,78 @@
 // Variables
 // ========================================================================
 
+$base-body-background:                           $global-background !default;
+$base-body-font-family:                          $global-font-family !default;
+$base-body-font-weight:                          normal !default;
+$base-body-font-size:                            $global-font-size !default;
+$base-body-line-height:                          $global-line-height !default;
+$base-body-color:                                $global-color !default;
 
+$base-link-color:                                $global-link-color !default;
+$base-link-text-decoration:                      none !default;
+$base-link-hover-color:                          $global-link-hover-color !default;
+$base-link-hover-text-decoration:                underline !default;
 
+$base-strong-font-weight:                        bolder !default;
+$base-code-font-size:                            $global-small-font-size !default;
+$base-code-font-family:                          Consolas, monaco, monospace !default;
+$base-code-color:                                $global-danger-background !default;
+$base-em-color:                                  $global-danger-background !default;
+$base-ins-background:                            #ffd !default;
+$base-ins-color:                                 $global-color !default;
+$base-mark-background:                           #ffd !default;
+$base-mark-color:                                $global-color !default;
+$base-quote-font-style:                          italic !default;
+$base-small-font-size:                           80% !default;
 
+$base-margin-vertical:                           $global-margin !default;
 
+$base-heading-font-family:                       $global-font-family !default;
+$base-heading-font-weight:                       normal !default;
+$base-heading-color:                             $global-emphasis-color !default;
+$base-heading-text-transform:                    none !default;
+$base-heading-margin-top:                        $global-medium-margin !default;
+$base-h1-font-size-m:                            $global-2xlarge-font-size !default;
+$base-h1-font-size:                              $base-h1-font-size-m * 0.85 !default;
+$base-h1-line-height:                            1.2 !default;
+$base-h2-font-size-m:                            $global-xlarge-font-size !default;
+$base-h2-font-size:                              $base-h2-font-size-m * 0.85 !default;
+$base-h2-line-height:                            1.3 !default;
+$base-h3-font-size:                              $global-large-font-size !default;
+$base-h3-line-height:                            1.4 !default;
+$base-h4-font-size:                              $global-medium-font-size !default;
+$base-h4-line-height:                            1.4 !default;
+$base-h5-font-size:                              $global-font-size !default;
+$base-h5-line-height:                            1.4 !default;
+$base-h6-font-size:                              $global-small-font-size !default;
+$base-h6-line-height:                            1.4 !default;
 
+$base-list-padding-left:                         30px !default;
 
+$base-hr-margin-vertical:                        $global-margin !default;
+$base-hr-border-width:                           $global-border-width !default;
+$base-hr-border:                                 $global-border !default;
 
+$base-blockquote-font-size:                      $global-medium-font-size !default;
+$base-blockquote-line-height:                    1.5 !default;
+$base-blockquote-font-style:                     italic !default;
+$base-blockquote-margin-vertical:                $global-margin !default;
+$base-blockquote-footer-margin-top:              $global-small-margin !default;
+$base-blockquote-footer-font-size:               $global-small-font-size !default;
+$base-blockquote-footer-line-height:             1.5 !default;
 
+$base-pre-font-size:                             $global-small-font-size !default;
+$base-pre-line-height:                           1.5 !default;
+$base-pre-font-family:                           $base-code-font-family !default;
+$base-pre-color:                                 $global-color !default;
 
+$base-focus-outline-width:                       2px !default;
+$base-focus-outline-style:                       dotted !default;
+$base-focus-outline:                             $global-emphasis-color !default;
+$base-focus-outline-offset:                      1px !default;
 
+$base-selection-background:                      #39f !default;
+$base-selection-color:                           $global-inverse-color !default;
 
 
 /* ========================================================================
@@ -29,6 +91,7 @@
 
 /*
  * 1. Set `font-size` to support `rem` units
+ *    Not using `font` property because a leading hyphen (e.g. -apple-system) causes the font to break in IE11 and Edge
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  * 3. Style
  */
@@ -176,7 +239,7 @@ sub { bottom: -0.25em; }
  ========================================================================== */
 
 /*
- * Remove the gap between the element and the bottom of its parent container.
+ * Remove the gap between embedded content and the bottom of their containers.
  */
 
 audio,
@@ -187,14 +250,14 @@ svg,
 video { vertical-align: middle; }
 
 /*
- * 1. Constrain the element to its parent width.
- * 2. Preserve the intrinsic aspect ratio and auto-scale the height of an image if the `height` attribute is present.
- * 3. Take border and padding into account.
+ * 1. Add responsiveness.
+ * 2. Auto-scale the height. Only needed if `height` attribute is present.
+ * 3. Corrects responsive `max-width` behavior if padding and border are used.
+ * 4. Exclude SVGs for IE11 because they don't preserve their aspect ratio.
  */
 
 canvas,
 img,
-svg,
 video {
     /* 1 */
     max-width: 100%;
@@ -204,17 +267,34 @@ video {
     box-sizing: border-box;
 }
 
+/* 4 */
+@supports (display: block) {
+
+   svg {
+        max-width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+}
+
 /*
- * Deprecated: only needed for `img` elements with `uk-img`
- * 1. Hide `alt` text for lazy load images.
- * 2. Fix lazy loading images if parent element is set to `display: inline` and has `overflow: hidden`.
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) { overflow: hidden; }
+
+/*
+ * 1. Fix lazy loading images if parent element is set to `display: inline` and has `overflow: hidden`.
+ * 2. Hide `alt` text for lazy loading images.
+ * Note: Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
  */
 
 img:not([src]) {
     /* 1 */
-    visibility: hidden;
-    /* 2 */
     min-width: 1px;
+    /* 2 */
+    visibility: hidden;
 }
 
 /*
@@ -265,8 +345,7 @@ h6, .uk-h6,
 .uk-heading-medium,
 .uk-heading-large,
 .uk-heading-xlarge,
-.uk-heading-2xlarge,
-.uk-heading-3xlarge {
+.uk-heading-2xlarge {
     margin: 0 0 $base-margin-vertical 0;
     font-family: $base-heading-font-family;
     font-weight: $base-heading-font-weight;
@@ -286,8 +365,7 @@ h6, .uk-h6,
 * + .uk-heading-medium,
 * + .uk-heading-large,
 * + .uk-heading-xlarge,
-* + .uk-heading-2xlarge,
-* + .uk-heading-3xlarge { margin-top: $base-heading-margin-top; }
+* + .uk-heading-2xlarge { margin-top: $base-heading-margin-top; }
 
 /*
  * Sizes
@@ -384,7 +462,7 @@ hr, .uk-hr {
 
 /* Add margin if adjacent element */
 * + hr,
-* + .uk-hr { margin-top: $base-hr-margin-vertical; }
+* + .uk-hr { margin-top: $base-hr-margin-vertical }
 
 
 /* Address
@@ -414,7 +492,7 @@ blockquote {
 blockquote p:last-of-type { margin-bottom: 0; }
 
 blockquote footer {
-    margin-top: $base-blockquote-footer-margin-top;
+    margin-top:  $base-blockquote-footer-margin-top;
     font-size: $base-blockquote-footer-font-size;
     line-height: $base-blockquote-footer-line-height;
     @if(mixin-exists(hook-base-blockquote-footer)) {@include hook-base-blockquote-footer();}
@@ -444,8 +522,27 @@ pre code { font-family: $base-pre-font-family; }
 /* Focus
  ========================================================================== */
 
+/*
+ * Safari doesn't support `:focus-visible` yet. It also doesn't set focus if clicking a button or anchor.
+ * 1. Fallback: Remove `:focus` for a negative tabindexes.
+ * 2. Fallback: Set `:focus` style but not for negative tabindexes.
+ * 3. Fallback: Remove `:focus` style for browsers which support `:focus-visible`.
+ * 4. Set `:focus-visible` style for browsers which support it.
+ */
+
+/* 1 */
 :focus { outline: none; }
 
+/* 2 */
+:focus:not([tabindex^='-']) {
+    outline: $base-focus-outline-width $base-focus-outline-style $base-focus-outline;
+    outline-offset: $base-focus-outline-offset;
+}
+
+/* 3 */
+:focus:not(:focus-visible) { outline: none; }
+
+/* 4 */
 :focus-visible { outline: $base-focus-outline-width $base-focus-outline-style $base-focus-outline; }
 
 
@@ -492,6 +589,11 @@ template { display: none; }
  * Breakpoints
  */
 
+.uk-breakpoint-s::before  { content: '#{$breakpoint-small}'; }
+.uk-breakpoint-m::before  { content: '#{$breakpoint-medium}'; }
+.uk-breakpoint-l::before  { content: '#{$breakpoint-large}'; }
+.uk-breakpoint-xl::before { content: '#{$breakpoint-xlarge}'; }
+
 :root {
     --uk-breakpoint-s: #{$breakpoint-small};
     --uk-breakpoint-m: #{$breakpoint-medium};
@@ -525,6 +627,14 @@ template { display: none; }
 // Inverse
 // ========================================================================
 
+$inverse-base-color:                            $inverse-global-color !default;
+$inverse-base-link-color:                       $inverse-global-emphasis-color !default;
+$inverse-base-link-hover-color:                 $inverse-global-emphasis-color !default;
+$inverse-base-code-color:                       $inverse-global-color !default;
+$inverse-base-em-color:                         $inverse-global-emphasis-color !default;
+$inverse-base-heading-color:                    $inverse-global-emphasis-color !default;
+$inverse-base-hr-border:                        $inverse-global-border !default;
+$inverse-base-focus-outline:                    $inverse-global-emphasis-color !default;
 
 
 

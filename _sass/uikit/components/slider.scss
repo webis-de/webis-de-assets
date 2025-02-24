@@ -14,6 +14,10 @@
 // Variables
 // ========================================================================
 
+$slider-container-margin-top:                        -11px !default;
+$slider-container-margin-bottom:                     -39px !default;
+$slider-container-margin-left:                       -25px !default;
+$slider-container-margin-right:                      -25px !default;
 
 
 /* ========================================================================
@@ -35,16 +39,10 @@
  ========================================================================== */
 
 /*
- * 1. Clip child elements
- * 2. Prevent accidental scrolling through elements in slide getting focused
+ * Clip child elements
  */
 
-.uk-slider-container {
-    /* 1 */
-    overflow: hidden;
-    /* 2 */
-    overflow: clip;
-}
+.uk-slider-container { overflow: hidden; }
 
 /*
  * Widen container to prevent box-shadows from clipping, `large-box-shadow`
@@ -61,7 +59,6 @@
 /*
  * 1. Optimize animation
  * 2. Create a containing block. In Safari it's neither created by `transform` nor `will-change`.
- * 3. Disable horizontal panning gestures
  */
 
 .uk-slider-items {
@@ -69,8 +66,6 @@
     will-change: transform;
     /* 2 */
     position: relative;
-    /* 3 */
-    touch-action: pan-y;
 }
 
 /*
@@ -97,16 +92,18 @@
 /*
  * 1. Let items take content dimensions (0 0 auto)
  *    `max-width` needed to keep image responsiveness and prevent content overflow
- * 2. Create position context
+ * 3. Create position context
+ * 4. Disable horizontal panning gestures in IE11 and Edge
  */
 
 .uk-slider-items > * {
     /* 1 */
-    flex: none !important;
-    box-sizing: border-box;
+    flex: none;
     max-width: 100%;
-    /* 2 */
+    /* 3 */
     position: relative;
+    /* 4 */
+    touch-action: pan-y;
 }
 
 

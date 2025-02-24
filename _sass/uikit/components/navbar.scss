@@ -10,7 +10,6 @@
 //                  `uk-navbar-center-left`
 //                  `uk-navbar-center-right`
 //                  `uk-navbar-nav`
-//                  `uk-navbar-parent-icon`
 //                  `uk-navbar-item`
 //                  `uk-navbar-toggle`
 //                  `uk-navbar-subtitle`
@@ -18,15 +17,18 @@
 //
 // Adopted:         `uk-navbar-dropdown` + Modifiers
 //                  `uk-navbar-dropdown-nav`
+//                  `uk-navbar-dropdown-grid`
 //                  `uk-navbar-toggle-icon`
 //
 // Modifiers:       `uk-navbar-primary`
 //                  `uk-navbar-transparent`
 //                  `uk-navbar-sticky`
+//                  `uk-navbar-dropdown-stack`
 //
 // States:          `uk-active`
 //                  `uk-parent`
 //                  `uk-open`
+//
 //
 // ========================================================================
 
@@ -34,19 +36,49 @@
 // Variables
 // ========================================================================
 
-$navbar-gap:                                     0px !default; // Must have a unit because of `calc`
+$navbar-background:                              $global-muted-background !default;
+$navbar-color-mode:                              none !default;
 
-$navbar-nav-gap:                                 0px !default; // Must have a unit because of `calc`
+$navbar-nav-item-height:                         80px !default;
+$navbar-nav-item-padding-horizontal:             15px !default;
+$navbar-nav-item-color:                          $global-muted-color !default;
+$navbar-nav-item-font-size:                      $global-font-size !default;
+$navbar-nav-item-font-family:                    $global-font-family !default;
+$navbar-nav-item-hover-color:                    $global-color !default;
+$navbar-nav-item-onclick-color:                  $global-emphasis-color !default;
+$navbar-nav-item-active-color:                   $global-emphasis-color !default;
 
+$navbar-item-color:                              $global-color !default;
 
+$navbar-toggle-color:                            $global-muted-color !default;
+$navbar-toggle-hover-color:                      $global-color !default;
 
+$navbar-subtitle-font-size:                      $global-small-font-size !default;
 
+$navbar-dropdown-z-index:                        $global-z-index + 20 !default;
+$navbar-dropdown-width:                          200px !default;
+$navbar-dropdown-margin:                         0 !default;
+$navbar-dropdown-padding:                        15px !default;
+$navbar-dropdown-background:                     $global-muted-background !default;
+$navbar-dropdown-color:                          $global-color !default;
+$navbar-dropdown-grid-gutter-horizontal:         $global-gutter !default;
+$navbar-dropdown-grid-gutter-vertical:           $navbar-dropdown-grid-gutter-horizontal !default;
 
+$navbar-dropdown-dropbar-margin-top:             0 !default;
+$navbar-dropdown-dropbar-margin-bottom:          $navbar-dropdown-dropbar-margin-top !default;
 
+$navbar-dropdown-nav-item-color:                 $global-muted-color !default;
+$navbar-dropdown-nav-item-hover-color:           $global-color !default;
+$navbar-dropdown-nav-item-active-color:          $global-emphasis-color !default;
+$navbar-dropdown-nav-header-color:               $global-emphasis-color !default;
+$navbar-dropdown-nav-divider-border-width:       $global-border-width !default;
+$navbar-dropdown-nav-divider-border:             $global-border !default;
+$navbar-dropdown-nav-sublist-item-color:         $global-muted-color !default;
+$navbar-dropdown-nav-sublist-item-hover-color:   $global-color !default;
+$navbar-dropdown-nav-sublist-item-active-color:  $global-emphasis-color !default;
 
-
-
-
+$navbar-dropbar-background:                      $navbar-dropdown-background !default;
+$navbar-dropbar-z-index:                         $global-z-index - 20 !default;
 
 
 /* ========================================================================
@@ -77,19 +109,29 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
 @if ( $navbar-color-mode == light ) { .uk-navbar-container:not(.uk-navbar-transparent) { @extend .uk-light !optional;} }
 @if ( $navbar-color-mode == dark ) { .uk-navbar-container:not(.uk-navbar-transparent) { @extend .uk-dark !optional;} }
 
+/*
+ * Remove pseudo elements created by micro clearfix as precaution (if Container component is used)
+ */
+
+.uk-navbar-container > ::before,
+.uk-navbar-container > ::after { display: none !important; }
+
 
 /* Groups
  ========================================================================== */
 
 /*
  * 1. Align navs and items vertically if they have a different height
+ * 2. Note: IE 11 requires an extra `div` which affects the center selector
  */
 
 .uk-navbar-left,
 .uk-navbar-right,
-[class*="uk-navbar-center"] {
+// 2. [class*='uk-navbar-center'],
+.uk-navbar-center,
+.uk-navbar-center-left > *,
+.uk-navbar-center-right > * {
     display: flex;
-    gap: $navbar-gap;
     /* 1 */
     align-items: center;
 }
@@ -116,7 +158,7 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     /* 2 */
     width: max-content;
     box-sizing: border-box;
@@ -131,10 +173,10 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
    top: 0;
 }
 
-.uk-navbar-center-left { right: unquote('calc(100% + #{$navbar-gap})'); }
-.uk-navbar-center-right { left: unquote('calc(100% + #{$navbar-gap})'); }
+.uk-navbar-center-left { right: 100%; }
+.uk-navbar-center-right { left: 100%; }
 
-[class*="uk-navbar-center-"] {
+[class*='uk-navbar-center-'] {
     width: max-content;
     box-sizing: border-box;
 }
@@ -149,7 +191,6 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
 
 .uk-navbar-nav {
     display: flex;
-    gap: $navbar-nav-gap;
     /* 1 */
     margin: 0;
     padding: 0;
@@ -186,6 +227,7 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
     /* 3 */
     box-sizing: border-box;
     min-height: $navbar-nav-item-height;
+    padding: 0 $navbar-nav-item-padding-horizontal;
     /* 4 */
     font-size: $navbar-nav-item-font-size;
     font-family: $navbar-nav-item-font-family;
@@ -198,7 +240,6 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
  */
 
 .uk-navbar-nav > li > a {
-    padding: 0 $navbar-nav-item-padding-horizontal;
     color: $navbar-nav-item-color;
     @if(mixin-exists(hook-navbar-nav-item)) {@include hook-navbar-nav-item();}
 }
@@ -227,22 +268,10 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
 }
 
 
-/* Parent icon modifier
- ========================================================================== */
-
-.uk-navbar-parent-icon {
-    margin-left: $navbar-parent-icon-margin-left;
-    transition: transform 0.3s ease-out;
-}
-
-.uk-navbar-nav > li > a[aria-expanded="true"] .uk-navbar-parent-icon { transform: rotateX(180deg); }
-
-
 /* Item
  ========================================================================== */
 
 .uk-navbar-item {
-    padding: 0 $navbar-item-padding-horizontal;
     color: $navbar-item-color;
     @if(mixin-exists(hook-navbar-item)) {@include hook-navbar-item();}
 }
@@ -258,7 +287,6 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
  ========================================================================== */
 
 .uk-navbar-toggle {
-    padding: 0 $navbar-item-padding-horizontal;
     color: $navbar-toggle-color;
     @if(mixin-exists(hook-navbar-toggle)) {@include hook-navbar-toggle();}
 }
@@ -294,17 +322,6 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
 }
 
 
-/* Justify modifier
- ========================================================================== */
-
-.uk-navbar-justify .uk-navbar-left,
-.uk-navbar-justify .uk-navbar-right,
-.uk-navbar-justify .uk-navbar-nav,
-.uk-navbar-justify .uk-navbar-nav > li,        // Nav item
-.uk-navbar-justify .uk-navbar-item,            // Content item
-.uk-navbar-justify .uk-navbar-toggle { flex-grow: 1; }
-
-
 /* Style modifiers
  ========================================================================== */
 
@@ -325,40 +342,41 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
  ========================================================================== */
 
 /*
- * Adopts `uk-drop`
- * 1. Set a default width
- * 2. Style
+ * Adopts `uk-dropdown`
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Set a default width
+ * 4. Style
  */
 
 .uk-navbar-dropdown {
-    --uk-position-offset: #{$navbar-dropdown-margin};
-    --uk-position-shift-offset: #{$navbar-dropdown-shift-margin};
-    --uk-position-viewport-offset: #{$navbar-dropdown-viewport-margin};
-    --uk-inverse: #{$navbar-dropdown-color-mode};
     /* 1 */
-    width: $navbar-dropdown-width;
+    display: none;
     /* 2 */
+    position: absolute;
+    z-index: $navbar-dropdown-z-index;
+    /* 3 */
+    box-sizing: border-box;
+    width: $navbar-dropdown-width;
+    /* 4 */
     padding: $navbar-dropdown-padding;
     background: $navbar-dropdown-background;
     color: $navbar-dropdown-color;
     @if(mixin-exists(hook-navbar-dropdown)) {@include hook-navbar-dropdown();}
 }
 
+/* Show */
+.uk-navbar-dropdown.uk-open { display: block; }
+
 /*
- * Remove margin from the last-child
+ * Direction / Alignment modifiers
  */
 
-.uk-navbar-dropdown > :last-child { margin-bottom: 0; }
-
-// Color Mode
-@if ( $navbar-dropdown-color-mode == light ) { .uk-navbar-dropdown { @extend .uk-light !optional;} }
-@if ( $navbar-dropdown-color-mode == dark ) { .uk-navbar-dropdown { @extend .uk-dark !optional;} }
-
-@if ($navbar-dropdown-color-mode != $inverse-global-color-mode) {
-.uk-navbar-dropdown :focus-visible {
-    outline-color: $navbar-dropdown-focus-outline !important;
-}
-}
+/* Direction */
+[class*='uk-navbar-dropdown-top'] { margin-top: (-$navbar-dropdown-margin); }
+[class*='uk-navbar-dropdown-bottom'] { margin-top: $navbar-dropdown-margin; }
+[class*='uk-navbar-dropdown-left'] { margin-left: (-$navbar-dropdown-margin); }
+[class*='uk-navbar-dropdown-right'] { margin-left: $navbar-dropdown-margin; }
 
 /*
  * Grid
@@ -366,70 +384,32 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
  */
 
 /* Gutter Horizontal */
-.uk-navbar-dropdown .uk-drop-grid { margin-left: (-$navbar-dropdown-grid-gutter-horizontal); }
-.uk-navbar-dropdown .uk-drop-grid > * { padding-left: $navbar-dropdown-grid-gutter-horizontal; }
+.uk-navbar-dropdown-grid { margin-left: (-$navbar-dropdown-grid-gutter-horizontal); }
+.uk-navbar-dropdown-grid > * { padding-left: $navbar-dropdown-grid-gutter-horizontal; }
 
 /* Gutter Vertical */
-.uk-navbar-dropdown .uk-drop-grid > .uk-grid-margin { margin-top: $navbar-dropdown-grid-gutter-vertical; }
+.uk-navbar-dropdown-grid > .uk-grid-margin { margin-top: $navbar-dropdown-grid-gutter-vertical; }
+
+/* Stack */
+.uk-navbar-dropdown-stack .uk-navbar-dropdown-grid > * { width: 100% !important; }
 
 /*
  * Width modifier
  */
 
-.uk-navbar-dropdown-width-2:not(.uk-drop-stack) { width: ($navbar-dropdown-width * 2); }
-.uk-navbar-dropdown-width-3:not(.uk-drop-stack) { width: ($navbar-dropdown-width * 3); }
-.uk-navbar-dropdown-width-4:not(.uk-drop-stack) { width: ($navbar-dropdown-width * 4); }
-.uk-navbar-dropdown-width-5:not(.uk-drop-stack) { width: ($navbar-dropdown-width * 5); }
-
-/*
- * Size modifier
- */
-
-.uk-navbar-dropdown-large {
-    --uk-position-shift-offset: #{$navbar-dropdown-large-shift-margin};
-    padding: $navbar-dropdown-large-padding;
-    @if(mixin-exists(hook-navbar-dropdown-large)) {@include hook-navbar-dropdown-large();}
-}
+.uk-navbar-dropdown-width-2:not(.uk-navbar-dropdown-stack) { width: ($navbar-dropdown-width * 2); }
+.uk-navbar-dropdown-width-3:not(.uk-navbar-dropdown-stack) { width: ($navbar-dropdown-width * 3); }
+.uk-navbar-dropdown-width-4:not(.uk-navbar-dropdown-stack) { width: ($navbar-dropdown-width * 4); }
+.uk-navbar-dropdown-width-5:not(.uk-navbar-dropdown-stack) { width: ($navbar-dropdown-width * 5); }
 
 /*
  * Dropbar modifier
- * 1. Reset dropdown width to prevent to early shifting
- * 2. Reset style
- * 3. Padding
  */
 
 .uk-navbar-dropdown-dropbar {
-    /* 1 */
-    width: auto;
-    /* 2 */
-    background: transparent;
-    /* 3 */
-    padding: $navbar-dropdown-dropbar-padding-top 0 $navbar-dropdown-dropbar-padding-bottom 0;
-    --uk-position-offset: #{$navbar-dropdown-dropbar-margin};
-    --uk-position-shift-offset: #{$navbar-dropdown-dropbar-shift-margin};
-    --uk-position-viewport-offset: #{$navbar-dropdown-dropbar-viewport-margin};
+    margin-top: $navbar-dropdown-dropbar-margin-top;
+    margin-bottom: $navbar-dropdown-dropbar-margin-bottom;
     @if(mixin-exists(hook-navbar-dropdown-dropbar)) {@include hook-navbar-dropdown-dropbar();}
-}
-
-/* Phone landscape and bigger */
-@media (min-width: $breakpoint-small) {
-
-    .uk-navbar-dropdown-dropbar { --uk-position-viewport-offset: #{$navbar-dropdown-dropbar-viewport-margin-s}; }
-
-}
-
-/* Tablet landscape and bigger */
-@media (min-width: $breakpoint-medium) {
-
-    .uk-navbar-dropdown-dropbar { --uk-position-viewport-offset: #{$navbar-dropdown-dropbar-viewport-margin-m}; }
-
-}
-
-.uk-navbar-dropdown-dropbar-large {
-    --uk-position-shift-offset: #{$navbar-dropdown-dropbar-large-shift-margin};
-    padding-top: $navbar-dropdown-dropbar-large-padding-top;
-    padding-bottom: $navbar-dropdown-dropbar-large-padding-bottom;
-    @if(mixin-exists(hook-navbar-dropdown-dropbar-large)) {@include hook-navbar-dropdown-dropbar-large();}
 }
 
 
@@ -460,15 +440,6 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
 .uk-navbar-dropdown-nav > li.uk-active > a {
     color: $navbar-dropdown-nav-item-active-color;
     @if(mixin-exists(hook-navbar-dropdown-nav-item-active)) {@include hook-navbar-dropdown-nav-item-active();}
-}
-
-/*
- * Subtitle
- */
-
-.uk-navbar-dropdown-nav .uk-nav-subtitle {
-    font-size: $navbar-dropdown-nav-subtitle-font-size;
-    @if(mixin-exists(hook-navbar-dropdown-nav-subtitle)) {@include hook-navbar-dropdown-nav-subtitle();}
 }
 
 /*
@@ -503,12 +474,21 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
 /* Dropbar
  ========================================================================== */
 
+.uk-navbar-dropbar {
+    background: $navbar-dropbar-background;
+    @if(mixin-exists(hook-navbar-dropbar)) {@include hook-navbar-dropbar();}
+}
+
 /*
- * Adopts `uk-dropnav-dropbar`
+ * Slide modifier
  */
 
-.uk-navbar-dropbar {
-    @if(mixin-exists(hook-navbar-dropbar)) {@include hook-navbar-dropbar();}
+.uk-navbar-dropbar-slide {
+    position: absolute;
+    z-index: $navbar-dropbar-z-index;
+    left: 0;
+    right: 0;
+    @if(mixin-exists(hook-navbar-dropbar-slide)) {@include hook-navbar-dropbar-slide();}
 }
 
 
@@ -533,23 +513,28 @@ $navbar-nav-gap:                                 0px !default; // Must have a un
 // @mixin hook-navbar-transparent(){}
 // @mixin hook-navbar-sticky(){}
 // @mixin hook-navbar-dropdown(){}
-// @mixin hook-navbar-dropdown-large(){}
 // @mixin hook-navbar-dropdown-dropbar(){}
-// @mixin hook-navbar-dropdown-dropbar-large(){}
 // @mixin hook-navbar-dropdown-nav(){}
 // @mixin hook-navbar-dropdown-nav-item(){}
 // @mixin hook-navbar-dropdown-nav-item-hover(){}
 // @mixin hook-navbar-dropdown-nav-item-active(){}
-// @mixin hook-navbar-dropdown-nav-subtitle(){}
 // @mixin hook-navbar-dropdown-nav-header(){}
 // @mixin hook-navbar-dropdown-nav-divider(){}
 // @mixin hook-navbar-dropbar(){}
+// @mixin hook-navbar-dropbar-slide(){}
 // @mixin hook-navbar-misc(){}
 
 
 // Inverse
 // ========================================================================
 
+$inverse-navbar-nav-item-color:                 $inverse-global-muted-color !default;
+$inverse-navbar-nav-item-hover-color:           $inverse-global-color !default;
+$inverse-navbar-nav-item-onclick-color:         $inverse-global-emphasis-color !default;
+$inverse-navbar-nav-item-active-color:          $inverse-global-emphasis-color !default;
+$inverse-navbar-item-color:                     $inverse-global-color !default;
+$inverse-navbar-toggle-color:                   $inverse-global-muted-color !default;
+$inverse-navbar-toggle-hover-color:             $inverse-global-color !default;
 
 
 

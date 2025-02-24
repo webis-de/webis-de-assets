@@ -11,7 +11,8 @@
 // New
 //
 
-
+$text-meta-link-color:                           $text-meta-color !default;
+$text-meta-link-hover-color:                     $global-color !default;
 
 
 // Style modifiers
@@ -33,7 +34,7 @@
 // Background modifier
 // ========================================================================
 
-
+// @mixin hook-text-background(){}
 
 
 // Miscellaneous

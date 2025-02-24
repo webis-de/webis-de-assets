@@ -11,7 +11,16 @@
 // Variables
 // ========================================================================
 
+$breadcrumb-item-font-size:                          $global-small-font-size !default;
+$breadcrumb-item-color:                              $global-muted-color !default;
+$breadcrumb-item-hover-color:                        $global-color !default;
+$breadcrumb-item-hover-text-decoration:              none !default;
+$breadcrumb-item-active-color:                       $global-color !default;
 
+$breadcrumb-divider:                                 "/" !default;
+$breadcrumb-divider-margin-horizontal:               20px !default;
+$breadcrumb-divider-font-size:                       $breadcrumb-item-font-size !default;
+$breadcrumb-divider-color:                           $global-muted-color !default;
 
 
 /* ========================================================================
@@ -19,16 +28,12 @@
  ========================================================================== */
 
 /*
- * 1. Reset list
- * 2. Remove space between elements
+ * Reset list
  */
 
 .uk-breadcrumb {
-    /* 1 */
     padding: 0;
     list-style: none;
-    /* 2 */
-    font-size: 0;
     @if(mixin-exists(hook-breadcrumb)) {@include hook-breadcrumb();}
 }
 
@@ -78,7 +83,7 @@
     content: $breadcrumb-divider;
     display: inline-block;
     /* 1 */
-    margin: 0 $breadcrumb-divider-margin-horizontal;
+    margin: 0 $breadcrumb-divider-margin-horizontal 0 unquote('calc(#{$breadcrumb-divider-margin-horizontal} - 4px)');
     /* 2 */
     font-size: $breadcrumb-divider-font-size;
     color: $breadcrumb-divider-color;
@@ -103,6 +108,10 @@
 // Inverse
 // ========================================================================
 
+$inverse-breadcrumb-item-color:                 $inverse-global-muted-color !default;
+$inverse-breadcrumb-item-hover-color:           $inverse-global-color !default;
+$inverse-breadcrumb-item-active-color:          $inverse-global-color !default;
+$inverse-breadcrumb-divider-color:              $inverse-global-muted-color !default;
 
 
 

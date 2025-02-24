@@ -11,7 +11,10 @@
 // Variables
 // ========================================================================
 
+$align-margin-horizontal:                        $global-gutter !default;
+$align-margin-vertical:                          $global-gutter !default;
 
+$align-margin-horizontal-l:                      $global-medium-gutter !default;
 
 
 /* ========================================================================
@@ -22,12 +25,12 @@
  * Default
  */
 
-[class*="uk-align"] {
+[class*='uk-align'] {
     display: block;
     margin-bottom: $align-margin-vertical;
 }
 
-* + [class*="uk-align"] { margin-top: $align-margin-vertical; }
+* + [class*='uk-align'] { margin-top: $align-margin-vertical; }
 
 /*
  * Center

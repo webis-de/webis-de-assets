@@ -23,11 +23,22 @@
 // Variables
 // ========================================================================
 
+$offcanvas-z-index:                              $global-z-index !default;
 
+$offcanvas-bar-width:                            270px !default;
+$offcanvas-bar-padding-vertical:                 $global-margin !default;
+$offcanvas-bar-padding-horizontal:               $global-margin !default;
+$offcanvas-bar-background:                       $global-secondary-background !default;
+$offcanvas-bar-color-mode:                       light !default;
 
+$offcanvas-bar-width-m:                          350px !default;
+$offcanvas-bar-padding-vertical-m:               $global-medium-gutter !default;
+$offcanvas-bar-padding-horizontal-m:             $global-medium-gutter !default;
 
+$offcanvas-close-position:                       20px !default;
+$offcanvas-close-padding:                        5px !default;
 
-
+$offcanvas-overlay-background:                   rgba(0,0,0,0.1) !default;
 
 
 /* ========================================================================
@@ -70,7 +81,6 @@
  */
 
 .uk-offcanvas-bar {
-    --uk-inverse: #{$offcanvas-bar-color-mode};
     /* 1 */
     position: absolute;
     top: 0;
@@ -83,16 +93,17 @@
     background: $offcanvas-bar-background;
     /* 3 */
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     @if(mixin-exists(hook-offcanvas-bar)) {@include hook-offcanvas-bar();}
 }
 
-/* Phone landscape and bigger */
-@media (min-width: $breakpoint-small) {
+/* Tablet landscape and bigger */
+@media (min-width: $breakpoint-medium) {
 
     .uk-offcanvas-bar {
-        left: (-$offcanvas-bar-width-s);
-        width: $offcanvas-bar-width-s;
-        padding: $offcanvas-bar-padding-vertical-s $offcanvas-bar-padding-horizontal-s;
+        left: (-$offcanvas-bar-width-m);
+        width: $offcanvas-bar-width-m;
+        padding: $offcanvas-bar-padding-vertical-m $offcanvas-bar-padding-horizontal-m;
     }
 
 }
@@ -108,9 +119,9 @@
 }
 
 /* Tablet landscape and bigger */
-@media (min-width: $breakpoint-small) {
+@media (min-width: $breakpoint-medium) {
 
-    .uk-offcanvas-flip .uk-offcanvas-bar { right: (-$offcanvas-bar-width-s); }
+    .uk-offcanvas-flip .uk-offcanvas-bar { right: (-$offcanvas-bar-width-m); }
 
 }
 
@@ -166,9 +177,9 @@
 .uk-open > .uk-offcanvas-reveal { width: $offcanvas-bar-width; }
 
 /* Tablet landscape and bigger */
-@media (min-width: $breakpoint-small) {
+@media (min-width: $breakpoint-medium) {
 
-    .uk-open > .uk-offcanvas-reveal { width: $offcanvas-bar-width-s; }
+    .uk-open > .uk-offcanvas-reveal { width: $offcanvas-bar-width-m; }
 
 }
 
@@ -194,22 +205,6 @@
     padding: $offcanvas-close-padding;
     @if(mixin-exists(hook-offcanvas-close)) {@include hook-offcanvas-close();}
 }
-
-/* Tablet landscape and bigger */
-@media (min-width: $breakpoint-small) {
-
-    .uk-offcanvas-close {
-        top: $offcanvas-close-position-s;
-        right: $offcanvas-close-position-s;
-    }
-
-}
-
-/*
- * Remove margin from adjacent element
- */
-
-.uk-offcanvas-close:first-child + * { margin-top: 0; }
 
 
 /* Overlay
@@ -257,15 +252,10 @@
 /*
  * Prevent horizontal scrollbar when the content is slide-out
  * Has to be on the `html` element too to make it work on the `body`
- * 1. `clip` is needed for `position: sticky` elements to keep their position
  */
 
 .uk-offcanvas-page,
-.uk-offcanvas-container {
-    overflow-x: hidden;
-    /* 1 */
-    overflow-x: clip;
-}
+.uk-offcanvas-container { overflow-x: hidden; }
 
 
 /* Container
@@ -296,11 +286,11 @@
 .uk-offcanvas-flip.uk-offcanvas-container-animation { left: (-$offcanvas-bar-width); }
 
 /* Tablet landscape and bigger */
-@media (min-width: $breakpoint-small) {
+@media (min-width: $breakpoint-medium) {
 
-    :not(.uk-offcanvas-flip).uk-offcanvas-container-animation { left: $offcanvas-bar-width-s; }
+    :not(.uk-offcanvas-flip).uk-offcanvas-container-animation { left: $offcanvas-bar-width-m; }
 
-    .uk-offcanvas-flip.uk-offcanvas-container-animation { left: (-$offcanvas-bar-width-s); }
+    .uk-offcanvas-flip.uk-offcanvas-container-animation { left: (-$offcanvas-bar-width-m); }
 
 }
 

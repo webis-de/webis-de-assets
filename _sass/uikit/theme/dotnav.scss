@@ -7,12 +7,18 @@
 // Variables
 // ========================================================================
 
+$dotnav-item-background:                              transparent !default;
 
 //
 // New
 //
 
+$dotnav-item-border-width:                            1px !default;
 
+$dotnav-item-border:                                  rgba($global-color, 0.4) !default;
+$dotnav-item-hover-border:                            transparent !default;
+$dotnav-item-onclick-border:                          transparent !default;
+$dotnav-item-active-border:                           transparent !default;
 
 
 // Component
@@ -38,9 +44,9 @@
 // Inverse
 // ========================================================================
 
+$inverse-dotnav-item-background:                      transparent !default;
 
 // @mixin hook-inverse-dotnav(){}
-
 
 
 

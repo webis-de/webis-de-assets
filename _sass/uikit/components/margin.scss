@@ -15,11 +15,17 @@
 // Variables
 // ========================================================================
 
+$margin-margin:                                         $global-margin !default;
 
+$margin-small-margin:                                   $global-small-margin !default;
 
+$margin-medium-margin:                                  $global-medium-margin !default;
 
+$margin-large-margin:                                   $global-medium-margin !default;
+$margin-large-margin-l:                                 $global-large-margin !default;
 
-
+$margin-xlarge-margin:                                  $global-large-margin !default;
+$margin-xlarge-margin-l:                                $global-xlarge-margin !default;
 
 
 /* ========================================================================
@@ -37,18 +43,6 @@
 .uk-margin-bottom { margin-bottom: $margin-margin !important; }
 .uk-margin-left { margin-left: $margin-margin !important; }
 .uk-margin-right { margin-right: $margin-margin !important; }
-
-
-/* XSmall
- ========================================================================== */
-
-.uk-margin-xsmall { margin-bottom: $margin-xsmall-margin; }
-* + .uk-margin-xsmall { margin-top: $margin-xsmall-margin !important; }
-
-.uk-margin-xsmall-top { margin-top: $margin-xsmall-margin !important; }
-.uk-margin-xsmall-bottom { margin-bottom: $margin-xsmall-margin !important; }
-.uk-margin-xsmall-left { margin-left: $margin-xsmall-margin !important; }
-.uk-margin-xsmall-right { margin-right: $margin-xsmall-margin !important; }
 
 
 /* Small
@@ -199,20 +193,20 @@
 /* Remove
  ========================================================================== */
 
-.uk-margin-remove { margin: 0 !important; }
-.uk-margin-remove-top { margin-top: 0 !important; }
-.uk-margin-remove-bottom { margin-bottom: 0 !important; }
-.uk-margin-remove-left { margin-left: 0 !important; }
-.uk-margin-remove-right { margin-right: 0 !important; }
+ .uk-margin-remove { margin: 0 !important; }
+ .uk-margin-remove-top { margin-top: 0 !important; }
+ .uk-margin-remove-bottom { margin-bottom: 0 !important; }
+ .uk-margin-remove-left { margin-left: 0 !important; }
+ .uk-margin-remove-right { margin-right: 0 !important; }
 
-.uk-margin-remove-vertical {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
+ .uk-margin-remove-vertical {
+     margin-top: 0 !important;
+     margin-bottom: 0 !important;
+ }
 
-.uk-margin-remove-adjacent + *,
-.uk-margin-remove-first-child > :first-child { margin-top: 0 !important; }
-.uk-margin-remove-last-child > :last-child { margin-bottom: 0 !important; }
+ .uk-margin-remove-adjacent + *,
+ .uk-margin-remove-first-child > :first-child { margin-top: 0 !important; }
+ .uk-margin-remove-last-child > :last-child { margin-bottom: 0 !important; }
 
 /* Phone landscape and bigger */
 @media (min-width: $breakpoint-small) {
@@ -245,6 +239,7 @@
     .uk-margin-remove-right\@xl { margin-right: 0 !important; }
 
 }
+
 
 
 // Hooks

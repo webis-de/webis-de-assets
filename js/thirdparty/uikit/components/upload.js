@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.11.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -6,228 +6,210 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.UIkitUpload = factory(global.UIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
-    var I18n = {
-      props: {
-        i18n: Object
-      },
-      data: {
-        i18n: null
-      },
-      methods: {
-        t(key, ...params) {
-          var _a, _b, _c;
-          let i = 0;
-          return ((_c = ((_a = this.i18n) == null ? void 0 : _a[key]) || ((_b = this.$options.i18n) == null ? void 0 : _b[key])) == null ? void 0 : _c.replace(
-            /%s/g,
-            () => params[i++] || ""
-          )) || "";
-        }
-      }
-    };
-
     var Component = {
-      mixins: [I18n],
-      i18n: {
-        invalidMime: "Invalid File Type: %s",
-        invalidName: "Invalid File Name: %s",
-        invalidSize: "Invalid File Size: %s Kilobytes Max"
-      },
-      props: {
-        allow: String,
-        clsDragover: String,
-        concurrent: Number,
-        maxSize: Number,
-        method: String,
-        mime: String,
-        multiple: Boolean,
-        name: String,
-        params: Object,
-        type: String,
-        url: String
-      },
-      data: {
-        allow: false,
-        clsDragover: "uk-dragover",
-        concurrent: 1,
-        maxSize: 0,
-        method: "POST",
-        mime: false,
-        multiple: false,
-        name: "files[]",
-        params: {},
-        type: "",
-        url: "",
-        abort: uikitUtil.noop,
-        beforeAll: uikitUtil.noop,
-        beforeSend: uikitUtil.noop,
-        complete: uikitUtil.noop,
-        completeAll: uikitUtil.noop,
-        error: uikitUtil.noop,
-        fail: uikitUtil.noop,
-        load: uikitUtil.noop,
-        loadEnd: uikitUtil.noop,
-        loadStart: uikitUtil.noop,
-        progress: uikitUtil.noop
-      },
-      events: {
-        change(e) {
-          if (!uikitUtil.matches(e.target, 'input[type="file"]')) {
-            return;
-          }
-          e.preventDefault();
-          if (e.target.files) {
-            this.upload(e.target.files);
-          }
-          e.target.value = "";
+
+        props: {
+            allow: String,
+            clsDragover: String,
+            concurrent: Number,
+            maxSize: Number,
+            method: String,
+            mime: String,
+            msgInvalidMime: String,
+            msgInvalidName: String,
+            msgInvalidSize: String,
+            multiple: Boolean,
+            name: String,
+            params: Object,
+            type: String,
+            url: String
         },
-        drop(e) {
-          stop(e);
-          const transfer = e.dataTransfer;
-          if (!(transfer == null ? void 0 : transfer.files)) {
-            return;
-          }
-          uikitUtil.removeClass(this.$el, this.clsDragover);
-          this.upload(transfer.files);
+
+        data: {
+            allow: false,
+            clsDragover: 'uk-dragover',
+            concurrent: 1,
+            maxSize: 0,
+            method: 'POST',
+            mime: false,
+            msgInvalidMime: 'Invalid File Type: %s',
+            msgInvalidName: 'Invalid File Name: %s',
+            msgInvalidSize: 'Invalid File Size: %s Kilobytes Max',
+            multiple: false,
+            name: 'files[]',
+            params: {},
+            type: '',
+            url: '',
+            abort: uikitUtil.noop,
+            beforeAll: uikitUtil.noop,
+            beforeSend: uikitUtil.noop,
+            complete: uikitUtil.noop,
+            completeAll: uikitUtil.noop,
+            error: uikitUtil.noop,
+            fail: uikitUtil.noop,
+            load: uikitUtil.noop,
+            loadEnd: uikitUtil.noop,
+            loadStart: uikitUtil.noop,
+            progress: uikitUtil.noop
         },
-        dragenter(e) {
-          stop(e);
-        },
-        dragover(e) {
-          stop(e);
-          uikitUtil.addClass(this.$el, this.clsDragover);
-        },
-        dragleave(e) {
-          stop(e);
-          uikitUtil.removeClass(this.$el, this.clsDragover);
-        }
-      },
-      methods: {
-        async upload(files) {
-          files = uikitUtil.toArray(files);
-          if (!files.length) {
-            return;
-          }
-          uikitUtil.trigger(this.$el, "upload", [files]);
-          for (const file of files) {
-            if (this.maxSize && this.maxSize * 1e3 < file.size) {
-              this.fail(this.t("invalidSize", this.maxSize));
-              return;
-            }
-            if (this.allow && !match(this.allow, file.name)) {
-              this.fail(this.t("invalidName", this.allow));
-              return;
-            }
-            if (this.mime && !match(this.mime, file.type)) {
-              this.fail(this.t("invalidMime", this.mime));
-              return;
-            }
-          }
-          if (!this.multiple) {
-            files = files.slice(0, 1);
-          }
-          this.beforeAll(this, files);
-          const chunks = chunk(files, this.concurrent);
-          const upload = async (files2) => {
-            const data = new FormData();
-            files2.forEach((file) => data.append(this.name, file));
-            for (const key in this.params) {
-              data.append(key, this.params[key]);
-            }
-            try {
-              const xhr = await ajax(this.url, {
-                data,
-                method: this.method,
-                responseType: this.type,
-                beforeSend: (env) => {
-                  const { xhr: xhr2 } = env;
-                  uikitUtil.on(xhr2.upload, "progress", this.progress);
-                  for (const type of ["loadStart", "load", "loadEnd", "abort"]) {
-                    uikitUtil.on(xhr2, type.toLowerCase(), this[type]);
-                  }
-                  return this.beforeSend(env);
+
+        events: {
+
+            change: function(e) {
+
+                if (!uikitUtil.matches(e.target, 'input[type="file"]')) {
+                    return;
                 }
-              });
-              this.complete(xhr);
-              if (chunks.length) {
-                await upload(chunks.shift());
-              } else {
-                this.completeAll(xhr);
-              }
-            } catch (e) {
-              this.error(e);
+
+                e.preventDefault();
+
+                if (e.target.files) {
+                    this.upload(e.target.files);
+                }
+
+                e.target.value = '';
+            },
+
+            drop: function(e) {
+                stop(e);
+
+                var transfer = e.dataTransfer;
+
+                if (!transfer || !transfer.files) {
+                    return;
+                }
+
+                uikitUtil.removeClass(this.$el, this.clsDragover);
+
+                this.upload(transfer.files);
+            },
+
+            dragenter: function(e) {
+                stop(e);
+            },
+
+            dragover: function(e) {
+                stop(e);
+                uikitUtil.addClass(this.$el, this.clsDragover);
+            },
+
+            dragleave: function(e) {
+                stop(e);
+                uikitUtil.removeClass(this.$el, this.clsDragover);
             }
-          };
-          await upload(chunks.shift());
+
+        },
+
+        methods: {
+
+            upload: function(files) {
+                var this$1$1 = this;
+
+
+                if (!files.length) {
+                    return;
+                }
+
+                uikitUtil.trigger(this.$el, 'upload', [files]);
+
+                for (var i = 0; i < files.length; i++) {
+
+                    if (this.maxSize && this.maxSize * 1000 < files[i].size) {
+                        this.fail(this.msgInvalidSize.replace('%s', this.maxSize));
+                        return;
+                    }
+
+                    if (this.allow && !match(this.allow, files[i].name)) {
+                        this.fail(this.msgInvalidName.replace('%s', this.allow));
+                        return;
+                    }
+
+                    if (this.mime && !match(this.mime, files[i].type)) {
+                        this.fail(this.msgInvalidMime.replace('%s', this.mime));
+                        return;
+                    }
+
+                }
+
+                if (!this.multiple) {
+                    files = [files[0]];
+                }
+
+                this.beforeAll(this, files);
+
+                var chunks = chunk(files, this.concurrent);
+                var upload = function (files) {
+
+                    var data = new FormData();
+
+                    files.forEach(function (file) { return data.append(this$1$1.name, file); });
+
+                    for (var key in this$1$1.params) {
+                        data.append(key, this$1$1.params[key]);
+                    }
+
+                    uikitUtil.ajax(this$1$1.url, {
+                        data: data,
+                        method: this$1$1.method,
+                        responseType: this$1$1.type,
+                        beforeSend: function (env) {
+
+                            var xhr = env.xhr;
+                            xhr.upload && uikitUtil.on(xhr.upload, 'progress', this$1$1.progress);
+                            ['loadStart', 'load', 'loadEnd', 'abort'].forEach(function (type) { return uikitUtil.on(xhr, type.toLowerCase(), this$1$1[type]); }
+                            );
+
+                            return this$1$1.beforeSend(env);
+
+                        }
+                    }).then(
+                        function (xhr) {
+
+                            this$1$1.complete(xhr);
+
+                            if (chunks.length) {
+                                upload(chunks.shift());
+                            } else {
+                                this$1$1.completeAll(xhr);
+                            }
+
+                        },
+                        function (e) { return this$1$1.error(e); }
+                    );
+
+                };
+
+                upload(chunks.shift());
+
+            }
+
         }
-      }
+
     };
+
     function match(pattern, path) {
-      return path.match(
-        new RegExp(
-          `^${pattern.replace(/\//g, "\\/").replace(/\*\*/g, "(\\/[^\\/]+)*").replace(/\*/g, "[^\\/]+").replace(/((?!\\))\?/g, "$1.")}$`,
-          "i"
-        )
-      );
-    }
-    function chunk(files, size) {
-      const chunks = [];
-      for (let i = 0; i < files.length; i += size) {
-        chunks.push(files.slice(i, i + size));
-      }
-      return chunks;
-    }
-    function stop(e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    async function ajax(url, options) {
-      const env = {
-        data: null,
-        method: "GET",
-        headers: {},
-        xhr: new XMLHttpRequest(),
-        beforeSend: uikitUtil.noop,
-        responseType: "",
-        ...options
-      };
-      await env.beforeSend(env);
-      return send(url, env);
-    }
-    function send(url, env) {
-      return new Promise((resolve, reject) => {
-        const { xhr } = env;
-        for (const prop in env) {
-          if (prop in xhr) {
-            try {
-              xhr[prop] = env[prop];
-            } catch (e) {
-            }
-          }
-        }
-        xhr.open(env.method.toUpperCase(), url);
-        for (const header in env.headers) {
-          xhr.setRequestHeader(header, env.headers[header]);
-        }
-        uikitUtil.on(xhr, "load", () => {
-          if (xhr.status === 0 || xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-            resolve(xhr);
-          } else {
-            reject(
-              uikitUtil.assign(Error(xhr.statusText), {
-                xhr,
-                status: xhr.status
-              })
-            );
-          }
-        });
-        uikitUtil.on(xhr, "error", () => reject(uikitUtil.assign(Error("Network Error"), { xhr })));
-        uikitUtil.on(xhr, "timeout", () => reject(uikitUtil.assign(Error("Network Timeout"), { xhr })));
-        xhr.send(env.data);
-      });
+        return path.match(new RegExp(("^" + (pattern.replace(/\//g, '\\/').replace(/\*\*/g, '(\\/[^\\/]+)*').replace(/\*/g, '[^\\/]+').replace(/((?!\\))\?/g, '$1.')) + "$"), 'i'));
     }
 
-    if (typeof window !== "undefined" && window.UIkit) {
-      window.UIkit.component("upload", Component);
+    function chunk(files, size) {
+        var chunks = [];
+        for (var i = 0; i < files.length; i += size) {
+            var chunk = [];
+            for (var j = 0; j < size; j++) {
+                chunk.push(files[i + j]);
+            }
+            chunks.push(chunk);
+        }
+        return chunks;
+    }
+
+    function stop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    if (typeof window !== 'undefined' && window.UIkit) {
+        window.UIkit.component('upload', Component);
     }
 
     return Component;

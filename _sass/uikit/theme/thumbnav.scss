@@ -11,6 +11,9 @@
 // New
 //
 
+$thumbnav-item-background:                       rgba($global-background, 0.4) !default;
+$thumbnav-item-hover-background:                 transparent !default;
+$thumbnav-item-active-background:                transparent !default;
 
 
 // Component
@@ -34,7 +37,6 @@
 // Inverse
 // ========================================================================
 
-
-
+// @mixin hook-inverse-thumbnav-item(){}
 // @mixin hook-inverse-thumbnav-item-hover(){}
 // @mixin hook-inverse-thumbnav-item-active(){}

@@ -7,11 +7,14 @@
 // Variables
 // ========================================================================
 
+$placeholder-background:                         transparent !default;
 
 //
 // New
 //
 
+$placeholder-border-width:                       $global-border-width !default;
+$placeholder-border:                             $global-border !default;
 
 
 // Component

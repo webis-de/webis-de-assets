@@ -13,19 +13,23 @@
 // Variables
 // ========================================================================
 
+$column-gutter:                                  $global-gutter !default;
+$column-gutter-l:                                $global-medium-gutter !default;
 
+$column-divider-rule-color:                      $global-border !default;
+$column-divider-rule-width:                      1px !default;
 
 
 /* ========================================================================
    Component: Column
  ========================================================================== */
 
-[class*="uk-column-"] { column-gap: $column-gutter; }
+[class*='uk-column-'] { column-gap: $column-gutter; }
 
 /* Desktop and bigger */
 @media (min-width: $breakpoint-large) {
 
-    [class*="uk-column-"] { column-gap: $column-gutter-l; }
+    [class*='uk-column-'] { column-gap: $column-gutter-l; }
 
 }
 
@@ -33,7 +37,7 @@
  * Fix image 1px line wrapping into the next column in Chrome
  */
 
-[class*="uk-column-"] img { transform: translate3d(0, 0, 0); }
+[class*='uk-column-'] img { transform: translate3d(0,0,0); }
 
 
 /* Divider
@@ -130,5 +134,6 @@
 // Inverse
 // ========================================================================
 
+$inverse-column-divider-rule-color:                     $inverse-global-border !default;
 
 

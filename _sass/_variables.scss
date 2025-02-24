@@ -1,5 +1,5 @@
 // UIkit layout variable overrides
-$global-margin: 20px !default;
+//$global-margin: 20px !default;
 
 // Fonts
 $global-font-family: "Product Sans", "Noto Sans", "Verdana", sans-serif;
@@ -62,12 +62,10 @@ $navbar-nav-item-padding-horizontal: 0.1px;
 $offcanvas-bar-width: 270px;
 $offcanvas-bar-padding-vertical: 20px;
 $offcanvas-bar-padding-horizontal: 20px;
-$offcanvas-close-position: 20px;
-$offcanvas-close-padding: 5px;
 
 $offcanvas-bar-width-s: 270px;
-$offcanvas-bar-padding-vertical-s: 30px;
-$offcanvas-bar-padding-horizontal-s: 30px;
+$offcanvas-bar-padding-vertical-s: 20px;
+$offcanvas-bar-padding-horizontal-s: 20px;
 
 $offcanvas-close-position: 20px;
 $offcanvas-close-padding: 5px;

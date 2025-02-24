@@ -1,4 +1,4 @@
-/*! UIkit 3.11.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -7,487 +7,630 @@
 })(this, (function (uikitUtil) { 'use strict';
 
     var Media = {
-
-        props: {
-            media: Boolean
-        },
-
-        data: {
-            media: false
-        },
-
-        computed: {
-
-            matchMedia: function() {
-                var media = toMedia(this.media);
-                return !media || window.matchMedia(media).matches;
-            }
-
+      props: {
+        media: Boolean
+      },
+      data: {
+        media: false
+      },
+      connected() {
+        const media = toMedia(this.media, this.$el);
+        this.matchMedia = true;
+        if (media) {
+          this.mediaObj = window.matchMedia(media);
+          const handler = () => {
+            this.matchMedia = this.mediaObj.matches;
+            uikitUtil.trigger(this.$el, uikitUtil.createEvent("mediachange", false, true, [this.mediaObj]));
+          };
+          this.offMediaObj = uikitUtil.on(this.mediaObj, "change", () => {
+            handler();
+            this.$emit("resize");
+          });
+          handler();
         }
-
+      },
+      disconnected() {
+        var _a;
+        (_a = this.offMediaObj) == null ? void 0 : _a.call(this);
+      }
     };
-
-    function toMedia(value) {
-
-        if (uikitUtil.isString(value)) {
-            if (value[0] === '@') {
-                var name = "breakpoint-" + (value.substr(1));
-                value = uikitUtil.toFloat(uikitUtil.getCssVar(name));
-            } else if (isNaN(value)) {
-                return value;
-            }
+    function toMedia(value, element) {
+      if (uikitUtil.isString(value)) {
+        if (uikitUtil.startsWith(value, "@")) {
+          value = uikitUtil.toFloat(uikitUtil.css(element, `--uk-breakpoint-${value.slice(1)}`));
+        } else if (isNaN(value)) {
+          return value;
         }
-
-        return value && !isNaN(value) ? ("(min-width: " + value + "px)") : false;
+      }
+      return value && uikitUtil.isNumeric(value) ? `(min-width: ${value}px)` : "";
     }
 
-    uikitUtil.memoize(function (src) { return new uikitUtil.Promise(function (resolve, reject) {
+    function startsWith(str, search) {
+      var _a;
+      return (_a = str == null ? void 0 : str.startsWith) == null ? void 0 : _a.call(str, search);
+    }
+    const { from: toArray } = Array;
+    function isFunction(obj) {
+      return typeof obj === "function";
+    }
+    function isObject(obj) {
+      return obj !== null && typeof obj === "object";
+    }
+    function isWindow(obj) {
+      return isObject(obj) && obj === obj.window;
+    }
+    function isDocument(obj) {
+      return nodeType(obj) === 9;
+    }
+    function isNode(obj) {
+      return nodeType(obj) >= 1;
+    }
+    function nodeType(obj) {
+      return !isWindow(obj) && isObject(obj) && obj.nodeType;
+    }
+    function isString(value) {
+      return typeof value === "string";
+    }
+    function isUndefined(value) {
+      return value === void 0;
+    }
+    function toNode(element) {
+      return element && toNodes(element)[0];
+    }
+    function toNodes(element) {
+      return isNode(element) ? [element] : Array.from(element || []).filter(isNode);
+    }
+    function memoize(fn) {
+      const cache = /* @__PURE__ */ Object.create(null);
+      return (key, ...args) => cache[key] || (cache[key] = fn(key, ...args));
+    }
 
-            if (!src) {
-                reject();
-                return;
-            }
+    function attr(element, name, value) {
+      var _a;
+      if (isObject(name)) {
+        for (const key in name) {
+          attr(element, key, name[key]);
+        }
+        return;
+      }
+      if (isUndefined(value)) {
+        return (_a = toNode(element)) == null ? void 0 : _a.getAttribute(name);
+      } else {
+        for (const el of toNodes(element)) {
+          if (isFunction(value)) {
+            value = value.call(el, attr(el, name));
+          }
+          if (value === null) {
+            removeAttr(el, name);
+          } else {
+            el.setAttribute(name, value);
+          }
+        }
+      }
+    }
+    function removeAttr(element, name) {
+      toNodes(element).forEach((element2) => element2.removeAttribute(name));
+    }
 
-            if (uikitUtil.startsWith(src, 'data:')) {
-                resolve(decodeURIComponent(src.split(',')[1]));
-            } else {
+    const inBrowser = typeof window !== "undefined";
 
-                uikitUtil.ajax(src).then(
-                    function (xhr) { return resolve(xhr.response); },
-                    function () { return reject('SVG not found.'); }
-                );
+    const isVisibleFn = inBrowser && Element.prototype.checkVisibility || function() {
+      return this.offsetWidth || this.offsetHeight || this.getClientRects().length;
+    };
+    function isVisible(element) {
+      return toNodes(element).some((element2) => isVisibleFn.call(element2));
+    }
+    function parent(element) {
+      var _a;
+      return (_a = toNode(element)) == null ? void 0 : _a.parentElement;
+    }
+    function filter(element, selector) {
+      return toNodes(element).filter((element2) => matches(element2, selector));
+    }
+    function matches(element, selector) {
+      return toNodes(element).some((element2) => element2.matches(selector));
+    }
+    function children(element, selector) {
+      element = toNode(element);
+      const children2 = element ? toArray(element.children) : [];
+      return selector ? filter(children2, selector) : children2;
+    }
+    function index(element, ref) {
+      return children(parent(element)).indexOf(element);
+    }
 
-            }
-        }); }
-    );
+    function findAll(selector, context) {
+      return toNodes(_query(selector, toNode(context), "querySelectorAll"));
+    }
+    const addStarRe = /([!>+~-])(?=\s+[!>+~-]|\s*$)/g;
+    const splitSelectorRe = /(\([^)]*\)|[^,])+/g;
+    const parseSelector = memoize((selector) => {
+      let isContextSelector = false;
+      if (!selector || !isString(selector)) {
+        return {};
+      }
+      const selectors = [];
+      for (let sel of selector.match(splitSelectorRe)) {
+        sel = sel.trim().replace(addStarRe, "$1 *");
+        isContextSelector || (isContextSelector = ["!", "+", "~", "-", ">"].includes(sel[0]));
+        selectors.push(sel);
+      }
+      return {
+        selector: selectors.join(","),
+        selectors,
+        isContextSelector
+      };
+    });
+    const positionRe = /(\([^)]*\)|\S)*/;
+    const parsePositionSelector = memoize((selector) => {
+      selector = selector.slice(1).trim();
+      const [position] = selector.match(positionRe);
+      return [position, selector.slice(position.length + 1)];
+    });
+    function _query(selector, context = document, queryFn) {
+      const parsed = parseSelector(selector);
+      if (!parsed.isContextSelector) {
+        return parsed.selector ? _doQuery(context, queryFn, parsed.selector) : selector;
+      }
+      selector = "";
+      const isSingle = parsed.selectors.length === 1;
+      for (let sel of parsed.selectors) {
+        let positionSel;
+        let ctx = context;
+        if (sel[0] === "!") {
+          [positionSel, sel] = parsePositionSelector(sel);
+          ctx = context.parentElement.closest(positionSel);
+          if (!sel && isSingle) {
+            return ctx;
+          }
+        }
+        if (ctx && sel[0] === "-") {
+          [positionSel, sel] = parsePositionSelector(sel);
+          ctx = ctx.previousElementSibling;
+          ctx = matches(ctx, positionSel) ? ctx : null;
+          if (!sel && isSingle) {
+            return ctx;
+          }
+        }
+        if (!ctx) {
+          continue;
+        }
+        if (isSingle) {
+          if (sel[0] === "~" || sel[0] === "+") {
+            sel = `:scope > :nth-child(${index(ctx) + 1}) ${sel}`;
+            ctx = ctx.parentElement;
+          } else if (sel[0] === ">") {
+            sel = `:scope ${sel}`;
+          }
+          return _doQuery(ctx, queryFn, sel);
+        }
+        selector += `${selector ? "," : ""}${domPath(ctx)} ${sel}`;
+      }
+      if (!isDocument(context)) {
+        context = context.ownerDocument;
+      }
+      return _doQuery(context, queryFn, selector);
+    }
+    function _doQuery(context, queryFn, selector) {
+      try {
+        return context[queryFn](selector);
+      } catch (e) {
+        return null;
+      }
+    }
+    function domPath(element) {
+      const names = [];
+      while (element.parentNode) {
+        const id = attr(element, "id");
+        if (id) {
+          names.unshift(`#${escape(id)}`);
+          break;
+        } else {
+          let { tagName } = element;
+          if (tagName !== "HTML") {
+            tagName += `:nth-child(${index(element) + 1})`;
+          }
+          names.unshift(tagName);
+          element = element.parentNode;
+        }
+      }
+      return names.join(" > ");
+    }
+    function escape(css) {
+      return isString(css) ? CSS.escape(css) : "";
+    }
+
+    const singleTagRe = /^<(\w+)\s*\/?>(?:<\/\1>)?$/;
+    function fragment(html2) {
+      const matches = singleTagRe.exec(html2);
+      if (matches) {
+        return document.createElement(matches[1]);
+      }
+      const container = document.createElement("template");
+      container.innerHTML = html2.trim();
+      return unwrapSingle(container.content.childNodes);
+    }
+    function unwrapSingle(nodes) {
+      return nodes.length > 1 ? nodes : nodes[0];
+    }
+    function $$(selector, context) {
+      return isHtml(selector) ? toNodes(fragment(selector)) : findAll(selector, context);
+    }
+    function isHtml(str) {
+      return isString(str) && startsWith(str.trim(), "<");
+    }
 
     function getMaxPathLength(el) {
-        return Math.ceil(Math.max.apply(Math, [ 0 ].concat( uikitUtil.$$('[stroke]', el).map(function (stroke) {
-            try {
-                return stroke.getTotalLength();
-            } catch (e) {
-                return 0;
-            }
-        }) )));
+      return isVisible(el) ? Math.ceil(
+        Math.max(0, ...$$("[stroke]", el).map((stroke) => {
+          var _a;
+          return ((_a = stroke.getTotalLength) == null ? void 0 : _a.call(stroke)) || 0;
+        }))
+      ) : 0;
     }
 
-    var props = {
-        x: transformFn,
-        y: transformFn,
-        rotate: transformFn,
-        scale: transformFn,
-        color: colorFn,
-        backgroundColor: colorFn,
-        borderColor: colorFn,
-        blur: filterFn,
-        hue: filterFn,
-        fopacity: filterFn,
-        grayscale: filterFn,
-        invert: filterFn,
-        saturate: filterFn,
-        sepia: filterFn,
-        opacity: cssPropFn,
-        stroke: strokeFn,
-        bgx: backgroundFn,
-        bgy: backgroundFn
+    const props = {
+      x: transformFn,
+      y: transformFn,
+      rotate: transformFn,
+      scale: transformFn,
+      color: colorFn,
+      backgroundColor: colorFn,
+      borderColor: colorFn,
+      blur: filterFn,
+      hue: filterFn,
+      fopacity: filterFn,
+      grayscale: filterFn,
+      invert: filterFn,
+      saturate: filterFn,
+      sepia: filterFn,
+      opacity: cssPropFn,
+      stroke: strokeFn,
+      bgx: backgroundFn,
+      bgy: backgroundFn
     };
-
-    var keys = Object.keys;
-
+    const { keys } = Object;
     var Parallax = {
-
-        mixins: [Media],
-
-        props: fillObject(keys(props), 'list'),
-
-        data: fillObject(keys(props), undefined),
-
-        computed: {
-
-            props: function(properties, $el) {
-                var this$1$1 = this;
-
-                return keys(props).reduce(function (result, prop) {
-                    if (!uikitUtil.isUndefined(properties[prop])) {
-                        result[prop] = props[prop].call(this$1$1, prop, $el, properties[prop].slice());
-                    }
-                    return result;
-                }, {});
+      mixins: [Media],
+      props: fillObject(keys(props), "list"),
+      data: fillObject(keys(props), void 0),
+      computed: {
+        props(properties, $el) {
+          const stops = {};
+          for (const prop in properties) {
+            if (prop in props && !uikitUtil.isUndefined(properties[prop])) {
+              stops[prop] = properties[prop].slice();
             }
-
+          }
+          const result = {};
+          for (const prop in stops) {
+            result[prop] = props[prop](prop, $el, stops[prop], stops);
+          }
+          return result;
+        }
+      },
+      events: {
+        load() {
+          this.$emit();
+        }
+      },
+      methods: {
+        reset() {
+          for (const prop in this.getCss(0)) {
+            uikitUtil.css(this.$el, prop, "");
+          }
         },
-
-        methods: {
-
-            reset: function() {
-                var this$1$1 = this;
-
-                uikitUtil.each(this.getCss(0), function (_, prop) { return uikitUtil.css(this$1$1.$el, prop, ''); });
-            },
-
-            getCss: function(percent) {
-                var this$1$1 = this;
-
-                return keys(this.props).reduce(function (css, prop) {
-                    this$1$1.props[prop](css, percent);
-                    return css;
-                }, {transform: '', filter: ''});
-            }
-
+        getCss(percent) {
+          const css2 = {};
+          for (const prop in this.props) {
+            this.props[prop](css2, uikitUtil.clamp(percent));
+          }
+          css2.willChange = Object.keys(css2).map(uikitUtil.propName).join(",");
+          return css2;
         }
-
+      }
     };
-
-    function transformFn(prop, el, steps) {
-
-        var unit = getUnit(steps) || {x: 'px', y: 'px', rotate: 'deg'}[prop] || '';
-
-        if (prop === 'x' || prop === 'y') {
-            prop = "translate" + (uikitUtil.ucfirst(prop));
-        }
-
-        steps = steps.map(uikitUtil.toFloat);
-
-        if (steps.length === 1) {
-            steps.unshift(prop === 'scale' ? 1 : 0);
-        }
-
-        return function (css, percent) {
-            var value = getValue(steps, percent);
-
-            if (uikitUtil.startsWith(prop, 'translate')) {
-                value = uikitUtil.toFloat(value).toFixed(unit === 'px' ? 0 : 6);
-            }
-
-            css.transform += " " + prop + "(" + value + unit + ")";
+    function transformFn(prop, el, stops) {
+      let unit = getUnit(stops) || { x: "px", y: "px", rotate: "deg" }[prop] || "";
+      let transformFn2;
+      if (prop === "x" || prop === "y") {
+        prop = `translate${uikitUtil.ucfirst(prop)}`;
+        transformFn2 = (stop) => uikitUtil.toFloat(uikitUtil.toFloat(stop).toFixed(unit === "px" ? 0 : 6));
+      } else if (prop === "scale") {
+        unit = "";
+        transformFn2 = (stop) => {
+          var _a;
+          return getUnit([stop]) ? uikitUtil.toPx(stop, "width", el, true) / el[`offset${((_a = stop.endsWith) == null ? void 0 : _a.call(stop, "vh")) ? "Height" : "Width"}`] : uikitUtil.toFloat(stop);
         };
+      }
+      if (stops.length === 1) {
+        stops.unshift(prop === "scale" ? 1 : 0);
+      }
+      stops = parseStops(stops, transformFn2);
+      return (css2, percent) => {
+        css2.transform = `${css2.transform || ""} ${prop}(${getValue(stops, percent)}${unit})`;
+      };
     }
-
-    function colorFn(prop, el, steps) {
-
-        if (steps.length === 1) {
-            steps.unshift(getCssValue(el, prop, ''));
-        }
-
-        steps = steps.map(function (step) { return parseColor(el, step); });
-
-        return function (css, percent) {
-
-            var ref = getStep(steps, percent);
-            var start = ref[0];
-            var end = ref[1];
-            var p = ref[2];
-            var value = start.map(function (value, i) {
-                value += p * (end[i] - value);
-                return i === 3 ? uikitUtil.toFloat(value) : parseInt(value, 10);
-            }).join(',');
-            css[prop] = "rgba(" + value + ")";
-        };
+    function colorFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(getCssValue(el, prop, ""));
+      }
+      stops = parseStops(stops, (stop) => parseColor(el, stop));
+      return (css2, percent) => {
+        const [start, end, p] = getStop(stops, percent);
+        const value = start.map((value2, i) => {
+          value2 += p * (end[i] - value2);
+          return i === 3 ? uikitUtil.toFloat(value2) : parseInt(value2, 10);
+        }).join(",");
+        css2[prop] = `rgba(${value})`;
+      };
     }
-
     function parseColor(el, color) {
-        return getCssValue(el, 'color', color)
-            .split(/[(),]/g)
-            .slice(1, -1)
-            .concat(1)
-            .slice(0, 4)
-            .map(uikitUtil.toFloat);
+      return getCssValue(el, "color", color).split(/[(),]/g).slice(1, -1).concat(1).slice(0, 4).map(uikitUtil.toFloat);
     }
-
-    function filterFn(prop, el, steps) {
-
-        if (steps.length === 1) {
-            steps.unshift(0);
+    function filterFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(0);
+      }
+      const unit = getUnit(stops) || { blur: "px", hue: "deg" }[prop] || "%";
+      prop = { fopacity: "opacity", hue: "hue-rotate" }[prop] || prop;
+      stops = parseStops(stops);
+      return (css2, percent) => {
+        const value = getValue(stops, percent);
+        css2.filter = `${css2.filter || ""} ${prop}(${value + unit})`;
+      };
+    }
+    function cssPropFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(getCssValue(el, prop, ""));
+      }
+      stops = parseStops(stops);
+      return (css2, percent) => {
+        css2[prop] = getValue(stops, percent);
+      };
+    }
+    function strokeFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(0);
+      }
+      const unit = getUnit(stops);
+      const length = getMaxPathLength(el);
+      stops = parseStops(stops.reverse(), (stop) => {
+        stop = uikitUtil.toFloat(stop);
+        return unit === "%" ? stop * length / 100 : stop;
+      });
+      if (!stops.some(([value]) => value)) {
+        return uikitUtil.noop;
+      }
+      uikitUtil.css(el, "strokeDasharray", length);
+      return (css2, percent) => {
+        css2.strokeDashoffset = getValue(stops, percent);
+      };
+    }
+    function backgroundFn(prop, el, stops, props2) {
+      if (stops.length === 1) {
+        stops.unshift(0);
+      }
+      const attr = prop === "bgy" ? "height" : "width";
+      props2[prop] = parseStops(stops, (stop) => uikitUtil.toPx(stop, attr, el));
+      const bgProps = ["bgx", "bgy"].filter((prop2) => prop2 in props2);
+      if (bgProps.length === 2 && prop === "bgx") {
+        return uikitUtil.noop;
+      }
+      if (getCssValue(el, "backgroundSize", "") === "cover") {
+        return backgroundCoverFn(prop, el, stops, props2);
+      }
+      const positions = {};
+      for (const prop2 of bgProps) {
+        positions[prop2] = getBackgroundPos(el, prop2);
+      }
+      return setBackgroundPosFn(bgProps, positions, props2);
+    }
+    function backgroundCoverFn(prop, el, stops, props2) {
+      const dimImage = getBackgroundImageDimensions(el);
+      if (!dimImage.width) {
+        return uikitUtil.noop;
+      }
+      const dimEl = {
+        width: el.offsetWidth,
+        height: el.offsetHeight
+      };
+      const bgProps = ["bgx", "bgy"].filter((prop2) => prop2 in props2);
+      const positions = {};
+      for (const prop2 of bgProps) {
+        const values = props2[prop2].map(([value]) => value);
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        const down = values.indexOf(min) < values.indexOf(max);
+        const diff = max - min;
+        positions[prop2] = `${(down ? -diff : 0) - (down ? min : max)}px`;
+        dimEl[prop2 === "bgy" ? "height" : "width"] += diff;
+      }
+      const dim = uikitUtil.Dimensions.cover(dimImage, dimEl);
+      for (const prop2 of bgProps) {
+        const attr = prop2 === "bgy" ? "height" : "width";
+        const overflow = dim[attr] - dimEl[attr];
+        positions[prop2] = `max(${getBackgroundPos(el, prop2)},-${overflow}px) + ${positions[prop2]}`;
+      }
+      const fn = setBackgroundPosFn(bgProps, positions, props2);
+      return (css2, percent) => {
+        fn(css2, percent);
+        css2.backgroundSize = `${dim.width}px ${dim.height}px`;
+        css2.backgroundRepeat = "no-repeat";
+      };
+    }
+    function getBackgroundPos(el, prop) {
+      return getCssValue(el, `background-position-${prop.slice(-1)}`, "");
+    }
+    function setBackgroundPosFn(bgProps, positions, props2) {
+      return function(css2, percent) {
+        for (const prop of bgProps) {
+          const value = getValue(props2[prop], percent);
+          css2[`background-position-${prop.slice(-1)}`] = `calc(${positions[prop]} + ${value}px)`;
         }
-
-        var unit = getUnit(steps) || {blur: 'px', hue: 'deg'}[prop] || '%';
-        prop = {fopacity: 'opacity', hue: 'hue-rotate'}[prop] || prop;
-        steps = steps.map(uikitUtil.toFloat);
-
-        return function (css, percent) {
-            var value = getValue(steps, percent);
-            css.filter += " " + prop + "(" + (value + unit) + ")";
-        };
+      };
     }
-
-    function cssPropFn(prop, el, steps) {
-
-        if (steps.length === 1) {
-            steps.unshift(getCssValue(el, prop, ''));
+    const loading = {};
+    const dimensions = {};
+    function getBackgroundImageDimensions(el) {
+      const src = uikitUtil.css(el, "backgroundImage").replace(/^none|url\(["']?(.+?)["']?\)$/, "$1");
+      if (dimensions[src]) {
+        return dimensions[src];
+      }
+      const image = new Image();
+      if (src) {
+        image.src = src;
+        if (!image.naturalWidth && !loading[src]) {
+          uikitUtil.once(image, "error load", () => {
+            dimensions[src] = toDimensions(image);
+            uikitUtil.trigger(el, uikitUtil.createEvent("load", false));
+          });
+          loading[src] = true;
+          return toDimensions(image);
         }
-
-        steps = steps.map(uikitUtil.toFloat);
-
-        return function (css, percent) {
-            css[prop] = getValue(steps, percent);
-        };
+      }
+      return dimensions[src] = toDimensions(image);
     }
-
-    function strokeFn(prop, el, steps) {
-
-        if (steps.length === 1) {
-            steps.unshift(0);
+    function toDimensions(image) {
+      return {
+        width: image.naturalWidth,
+        height: image.naturalHeight
+      };
+    }
+    function parseStops(stops, fn = uikitUtil.toFloat) {
+      const result = [];
+      const { length } = stops;
+      let nullIndex = 0;
+      for (let i = 0; i < length; i++) {
+        let [value, percent] = uikitUtil.isString(stops[i]) ? stops[i].trim().split(/ (?![^(]*\))/) : [stops[i]];
+        value = fn(value);
+        percent = percent ? uikitUtil.toFloat(percent) / 100 : null;
+        if (i === 0) {
+          if (percent === null) {
+            percent = 0;
+          } else if (percent) {
+            result.push([value, 0]);
+          }
+        } else if (i === length - 1) {
+          if (percent === null) {
+            percent = 1;
+          } else if (percent !== 1) {
+            result.push([value, percent]);
+            percent = 1;
+          }
         }
-
-        var unit = getUnit(steps);
-        steps = steps.map(uikitUtil.toFloat);
-
-        if (!steps.some(function (step) { return step; })) {
-            return uikitUtil.noop;
+        result.push([value, percent]);
+        if (percent === null) {
+          nullIndex++;
+        } else if (nullIndex) {
+          const leftPercent = result[i - nullIndex - 1][1];
+          const p = (percent - leftPercent) / (nullIndex + 1);
+          for (let j = nullIndex; j > 0; j--) {
+            result[i - j][1] = leftPercent + p * (nullIndex - j + 1);
+          }
+          nullIndex = 0;
         }
-
-        var length = getMaxPathLength(el);
-        uikitUtil.css(el, 'strokeDasharray', length);
-
-        if (unit === '%') {
-            steps = steps.map(function (step) { return step * length / 100; });
+      }
+      return result;
+    }
+    function getStop(stops, percent) {
+      const index = uikitUtil.findIndex(stops.slice(1), ([, targetPercent]) => percent <= targetPercent) + 1;
+      return [
+        stops[index - 1][0],
+        stops[index][0],
+        (percent - stops[index - 1][1]) / (stops[index][1] - stops[index - 1][1])
+      ];
+    }
+    function getValue(stops, percent) {
+      const [start, end, p] = getStop(stops, percent);
+      return start + Math.abs(start - end) * p * (start < end ? 1 : -1);
+    }
+    const unitRe = /^-?\d+(?:\.\d+)?(\S+)?/;
+    function getUnit(stops, defaultUnit) {
+      var _a;
+      for (const stop of stops) {
+        const match = (_a = stop.match) == null ? void 0 : _a.call(stop, unitRe);
+        if (match) {
+          return match[1];
         }
-
-        steps = steps.reverse();
-
-        return function (css, percent) {
-            css.strokeDashoffset = getValue(steps, percent);
-        };
+      }
+      return defaultUnit;
     }
-
-    function backgroundFn(prop, el, steps) {
-
-        if (steps.length === 1) {
-            steps.unshift(0);
-        }
-
-        prop = prop.substr(-1);
-        var attr = prop === 'y' ? 'height' : 'width';
-        steps = steps.map(function (step) { return uikitUtil.toPx(step, attr, el); });
-
-        uikitUtil.css(el, ("background-position-" + prop), '');
-        var bgPos = uikitUtil.css(el, 'backgroundPosition').split(' ')[prop === 'x' ? 0 : 1]; // IE 11 can't read background-position-[x|y]
-
-        return getCssValue(el, 'backgroundSize', '') === 'cover'
-            ? backgroundCoverFn.call(this, prop, el, steps, bgPos, attr)
-            : setBackgroundPosFn(prop, steps, bgPos);
-    }
-
-    function backgroundCoverFn(prop, el, steps, bgPos, attr) {
-
-        var image = getBackgroundImage.call(this, el);
-
-        if (!image.naturalWidth) {
-            return uikitUtil.noop;
-        }
-
-        var min = Math.min.apply(Math, steps);
-        var max = Math.max.apply(Math, steps);
-        var down = steps.indexOf(min) < steps.indexOf(max);
-
-        var diff = max - min;
-        var pos = (down ? -diff : 0) - (down ? min : max);
-
-        var dimEl = {
-            width: el.offsetWidth,
-            height: el.offsetHeight
-        };
-
-        var dimImage = {
-            width: image.naturalWidth,
-            height: image.naturalHeight
-        };
-
-        var baseDim = uikitUtil.Dimensions.cover(dimImage, dimEl);
-        var span = baseDim[attr] - dimEl[attr];
-
-        if (span < diff) {
-            dimEl[attr] = baseDim[attr] + diff - span;
-        } else if (span > diff) {
-
-            var posPercentage = dimEl[attr] / uikitUtil.toPx(bgPos, attr, el, true);
-
-            if (posPercentage) {
-                pos -= (span - diff) / posPercentage;
-            }
-        }
-
-        var dim = uikitUtil.Dimensions.cover(dimImage, dimEl);
-
-        var fn = setBackgroundPosFn(prop, steps, (pos + "px"));
-        return function (css, percent) {
-            fn(css, percent);
-            css.backgroundSize = (dim.width) + "px " + (dim.height) + "px";
-            css.backgroundRepeat = 'no-repeat';
-        };
-    }
-
-    function setBackgroundPosFn(prop, steps, pos) {
-        return function (css, percent) {
-            css[("background-position-" + prop)] = "calc(" + pos + " + " + (getValue(steps, percent)) + "px)";
-        };
-    }
-
-    function getBackgroundImage(el) {
-        var this$1$1 = this;
-
-        var src = uikitUtil.css(el, 'backgroundImage').replace(/^none|url\(["']?(.+?)["']?\)$/, '$1');
-
-        var data = this._data;
-
-        if (data[src]) {
-            return data[src];
-        }
-
-        if (src) {
-            var img = new Image();
-            img.src = src;
-            if (!img.naturalWidth) {
-                img.onload = function () { return this$1$1.$update(); };
-            }
-
-            return data[src] = img;
-        }
-    }
-
-    function getStep(steps, percent) {
-        var count = steps.length - 1;
-        var index = Math.min(Math.floor(count * percent), count - 1);
-
-        return steps
-            .slice(index, index + 2)
-            .concat(percent === 1 ? 1 : percent % (1 / count) * count);
-    }
-
-    function getValue(steps, percent) {
-        var ref = getStep(steps, percent);
-        var start = ref[0];
-        var end = ref[1];
-        var p = ref[2];
-        return uikitUtil.isNumber(start)
-            ? start + Math.abs(start - end) * p * (start < end ? 1 : -1)
-            : +end;
-    }
-
-    function getUnit(steps, defaultUnit) {
-        return steps.reduce(function (unit, step) { return unit || uikitUtil.isString(step) && step.replace(/[\d-]/g, '').trim(); }, '') || defaultUnit;
-    }
-
     function getCssValue(el, prop, value) {
-        var prev = el.style[prop];
-        var val = uikitUtil.css(uikitUtil.css(el, prop, value), prop);
-        el.style[prop] = prev;
-        return val;
+      const prev = el.style[prop];
+      const val = uikitUtil.css(uikitUtil.css(el, prop, value), prop);
+      el.style[prop] = prev;
+      return val;
     }
-
-    function fillObject(keys, value) {
-        return keys.reduce(function (data, prop) {
-            data[prop] = value;
-            return data;
-        }, {});
+    function fillObject(keys2, value) {
+      return keys2.reduce((data, prop) => {
+        data[prop] = value;
+        return data;
+      }, {});
     }
 
     var Component = {
-
-        mixins: [Parallax],
-
-        data: {
-            selItem: '!li'
+      mixins: [Parallax],
+      beforeConnect() {
+        this.item = this.$el.closest(`.${this.$options.id.replace("parallax", "items")} > *`);
+      },
+      disconnected() {
+        this.item = null;
+      },
+      events: [
+        {
+          name: "itemin itemout",
+          self: true,
+          el: ({ item }) => item,
+          handler({ type, detail: { percent, duration, timing, dir } }) {
+            uikitUtil.fastdom.read(() => {
+              if (!this.matchMedia) {
+                return;
+              }
+              const propsFrom = this.getCss(getCurrentPercent(type, dir, percent));
+              const propsTo = this.getCss(isIn(type) ? 0.5 : dir > 0 ? 1 : 0);
+              uikitUtil.fastdom.write(() => {
+                uikitUtil.css(this.$el, propsFrom);
+                uikitUtil.Transition.start(this.$el, propsTo, duration, timing).catch(uikitUtil.noop);
+              });
+            });
+          }
         },
-
-        computed: {
-
-            item: function(ref, $el) {
-                var selItem = ref.selItem;
-
-                return uikitUtil.query(selItem, $el);
-            }
-
+        {
+          name: "transitioncanceled transitionend",
+          self: true,
+          el: ({ item }) => item,
+          handler() {
+            uikitUtil.Transition.cancel(this.$el);
+          }
         },
-
-        events: [
-
-            {
-                name: 'itemin itemout',
-
-                self: true,
-
-                el: function() {
-                    return this.item;
-                },
-
-                handler: function(ref) {
-                    var this$1$1 = this;
-                    var type = ref.type;
-                    var ref_detail = ref.detail;
-                    var percent = ref_detail.percent;
-                    var duration = ref_detail.duration;
-                    var timing = ref_detail.timing;
-                    var dir = ref_detail.dir;
-
-
-                    uikitUtil.fastdom.read(function () {
-                        var propsFrom = this$1$1.getCss(getCurrentPercent(type, dir, percent));
-                        var propsTo = this$1$1.getCss(isIn(type) ? .5 : dir > 0 ? 1 : 0);
-                        uikitUtil.fastdom.write(function () {
-                            uikitUtil.css(this$1$1.$el, propsFrom);
-                            uikitUtil.Transition.start(this$1$1.$el, propsTo, duration, timing).catch(uikitUtil.noop);
-                        });
-                    });
-
-                }
-            },
-
-            {
-                name: 'transitioncanceled transitionend',
-
-                self: true,
-
-                el: function() {
-                    return this.item;
-                },
-
-                handler: function() {
-                    uikitUtil.Transition.cancel(this.$el);
-                }
-
-            },
-
-            {
-                name: 'itemtranslatein itemtranslateout',
-
-                self: true,
-
-                el: function() {
-                    return this.item;
-                },
-
-                handler: function(ref) {
-                    var this$1$1 = this;
-                    var type = ref.type;
-                    var ref_detail = ref.detail;
-                    var percent = ref_detail.percent;
-                    var dir = ref_detail.dir;
-
-                    uikitUtil.fastdom.read(function () {
-                        var props = this$1$1.getCss(getCurrentPercent(type, dir, percent));
-                        uikitUtil.fastdom.write(function () { return uikitUtil.css(this$1$1.$el, props); });
-                    });
-                }
-            }
-
-        ]
-
+        {
+          name: "itemtranslatein itemtranslateout",
+          self: true,
+          el: ({ item }) => item,
+          handler({ type, detail: { percent, dir } }) {
+            uikitUtil.fastdom.read(() => {
+              if (!this.matchMedia) {
+                this.reset();
+                return;
+              }
+              const props = this.getCss(getCurrentPercent(type, dir, percent));
+              uikitUtil.fastdom.write(() => uikitUtil.css(this.$el, props));
+            });
+          }
+        }
+      ]
     };
-
     function isIn(type) {
-        return uikitUtil.endsWith(type, 'in');
+      return uikitUtil.endsWith(type, "in");
     }
-
     function getCurrentPercent(type, dir, percent) {
-
-        percent /= 2;
-
-        return isIn(type) ^ dir < 0 ? percent : 1 - percent;
+      percent /= 2;
+      return isIn(type) ^ dir < 0 ? percent : 1 - percent;
     }
 
-    if (typeof window !== 'undefined' && window.UIkit) {
-        window.UIkit.component('slideshowParallax', Component);
+    if (typeof window !== "undefined" && window.UIkit) {
+      window.UIkit.component("slideshowParallax", Component);
     }
 
     return Component;

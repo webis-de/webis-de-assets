@@ -39,7 +39,8 @@
 // JavaScript
 @import "accordion.scss";
 @import "drop.scss"; // After: Card
-@import "dropdown.scss"; // After: Card
+@import "dropbar.scss";
+@import "dropnav.scss"; // After: Dropbar
 @import "modal.scss"; // After: Close
 @import "slideshow.scss";
 @import "slider.scss";
@@ -55,7 +56,10 @@
 // Toggle
 // Scroll
 
-@import "grid.scss";
+@import "thumbnav.scss";
+@import "iconnav.scss";
+
+@import "grid.scss"; // After: Thumbnav, Iconnav
 
 // Navs
 @import "nav.scss";
@@ -66,9 +70,7 @@
 @import "tab.scss";
 @import "slidenav.scss"; // After: Icon
 @import "dotnav.scss";
-@import "thumbnav.scss";
-@import "iconnav.scss";
-
+@import "dropdown.scss"; // After: Card, Nav
 @import "lightbox.scss"; // After: Close, Slidenav
 
 // Utilities

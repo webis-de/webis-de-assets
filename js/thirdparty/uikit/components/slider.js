@@ -1,1127 +1,1717 @@
-/*! UIkit 3.11.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitslider', ['uikit-util'], factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.UIkitSlider = factory(global.UIkit.util));
-})(this, (function (uikitUtil) { 'use strict';
+})(this, (function (util) { 'use strict';
+
+    function callUpdate(instance, e = "update") {
+      if (!instance._connected) {
+        return;
+      }
+      if (!instance._updates.length) {
+        return;
+      }
+      if (!instance._queued) {
+        instance._queued = /* @__PURE__ */ new Set();
+        util.fastdom.read(() => {
+          if (instance._connected) {
+            runUpdates(instance, instance._queued);
+          }
+          instance._queued = null;
+        });
+      }
+      instance._queued.add(e.type || e);
+    }
+    function runUpdates(instance, types) {
+      for (const { read, write, events = [] } of instance._updates) {
+        if (!types.has("update") && !events.some((type) => types.has(type))) {
+          continue;
+        }
+        let result;
+        if (read) {
+          result = read.call(instance, instance._data, types);
+          if (result && util.isPlainObject(result)) {
+            util.assign(instance._data, result);
+          }
+        }
+        if (write && result !== false) {
+          util.fastdom.write(() => {
+            if (instance._connected) {
+              write.call(instance, instance._data, types);
+            }
+          });
+        }
+      }
+    }
+
+    function resize(options) {
+      return observe(util.observeResize, options, "resize");
+    }
+    function intersection(options) {
+      return observe(util.observeIntersection, options);
+    }
+    function lazyload(options = {}) {
+      return intersection({
+        handler: function(entries, observer) {
+          const { targets = this.$el, preload = 5 } = options;
+          for (const el of util.toNodes(util.isFunction(targets) ? targets(this) : targets)) {
+            util.$$('[loading="lazy"]', el).slice(0, preload - 1).forEach((el2) => util.removeAttr(el2, "loading"));
+          }
+          for (const el of entries.filter(({ isIntersecting }) => isIntersecting).map(({ target }) => target)) {
+            observer.unobserve(el);
+          }
+        },
+        ...options
+      });
+    }
+    function scroll(options) {
+      return observe(
+        (target, handler) => ({
+          disconnect: util.on(toScrollTargets(target), "scroll", handler, { passive: true })
+        }),
+        options,
+        "scroll"
+      );
+    }
+    function observe(observe2, options, emit) {
+      return {
+        observe: observe2,
+        handler() {
+          callUpdate(this, emit);
+        },
+        ...options
+      };
+    }
+    function toScrollTargets(elements) {
+      return util.toNodes(elements).map((node) => {
+        const { ownerDocument } = node;
+        const parent2 = util.scrollParent(node, true);
+        return parent2 === ownerDocument.scrollingElement ? ownerDocument : parent2;
+      });
+    }
 
     var Class = {
+      connected() {
+        util.addClass(this.$el, this.$options.id);
+      }
+    };
 
-        connected: function() {
-            !uikitUtil.hasClass(this.$el, this.$name) && uikitUtil.addClass(this.$el, this.$name);
+    var I18n = {
+      props: {
+        i18n: Object
+      },
+      data: {
+        i18n: null
+      },
+      methods: {
+        t(key, ...params) {
+          var _a, _b, _c;
+          let i = 0;
+          return ((_c = ((_a = this.i18n) == null ? void 0 : _a[key]) || ((_b = this.$options.i18n) == null ? void 0 : _b[key])) == null ? void 0 : _c.replace(
+            /%s/g,
+            () => params[i++] || ""
+          )) || "";
         }
-
+      }
     };
 
     var SliderAutoplay = {
-
-        props: {
-            autoplay: Boolean,
-            autoplayInterval: Number,
-            pauseOnHover: Boolean
-        },
-
-        data: {
-            autoplay: false,
-            autoplayInterval: 7000,
-            pauseOnHover: true
-        },
-
-        connected: function() {
-            this.autoplay && this.startAutoplay();
-        },
-
-        disconnected: function() {
-            this.stopAutoplay();
-        },
-
-        update: function() {
-            uikitUtil.attr(this.slides, 'tabindex', '-1');
-        },
-
-        events: [
-
-            {
-
-                name: 'visibilitychange',
-
-                el: function() {
-                    return document;
-                },
-
-                filter: function() {
-                    return this.autoplay;
-                },
-
-                handler: function() {
-                    if (document.hidden) {
-                        this.stopAutoplay();
-                    } else {
-                        this.startAutoplay();
-                    }
-                }
-
+      props: {
+        autoplay: Boolean,
+        autoplayInterval: Number,
+        pauseOnHover: Boolean
+      },
+      data: {
+        autoplay: false,
+        autoplayInterval: 7e3,
+        pauseOnHover: true
+      },
+      connected() {
+        util.attr(this.list, "aria-live", this.autoplay ? "off" : "polite");
+        this.autoplay && this.startAutoplay();
+      },
+      disconnected() {
+        this.stopAutoplay();
+      },
+      update() {
+        util.attr(this.slides, "tabindex", "-1");
+      },
+      events: [
+        {
+          name: "visibilitychange",
+          el: () => document,
+          filter: ({ autoplay }) => autoplay,
+          handler() {
+            if (document.hidden) {
+              this.stopAutoplay();
+            } else {
+              this.startAutoplay();
             }
-
-        ],
-
-        methods: {
-
-            startAutoplay: function() {
-                var this$1$1 = this;
-
-
-                this.stopAutoplay();
-
-                this.interval = setInterval(
-                    function () { return (!this$1$1.draggable || !uikitUtil.$(':focus', this$1$1.$el))
-                        && (!this$1$1.pauseOnHover || !uikitUtil.matches(this$1$1.$el, ':hover'))
-                        && !this$1$1.stack.length
-                        && this$1$1.show('next'); },
-                    this.autoplayInterval
-                );
-
-            },
-
-            stopAutoplay: function() {
-                this.interval && clearInterval(this.interval);
-            }
-
+          }
         }
-
+      ],
+      methods: {
+        startAutoplay() {
+          this.stopAutoplay();
+          this.interval = setInterval(() => {
+            if (!(this.stack.length || this.draggable && util.matches(this.$el, ":focus-within") && !util.matches(this.$el, ":focus") || this.pauseOnHover && util.matches(this.$el, ":hover"))) {
+              this.show("next");
+            }
+          }, this.autoplayInterval);
+        },
+        stopAutoplay() {
+          clearInterval(this.interval);
+        }
+      }
     };
 
+    const pointerOptions = { passive: false, capture: true };
+    const pointerUpOptions = { passive: true, capture: true };
+    const pointerDown = "touchstart mousedown";
+    const pointerMove = "touchmove mousemove";
+    const pointerUp = "touchend touchcancel mouseup click input scroll";
     var SliderDrag = {
-
-        props: {
-            draggable: Boolean
-        },
-
-        data: {
-            draggable: true,
-            threshold: 10
-        },
-
-        created: function() {
-            var this$1$1 = this;
-
-
-            ['start', 'move', 'end'].forEach(function (key) {
-
-                var fn = this$1$1[key];
-                this$1$1[key] = function (e) {
-
-                    var pos = uikitUtil.getEventPos(e).x * (uikitUtil.isRtl ? -1 : 1);
-
-                    this$1$1.prevPos = pos !== this$1$1.pos ? this$1$1.pos : this$1$1.prevPos;
-                    this$1$1.pos = pos;
-
-                    fn(e);
-                };
-
-            });
-
-        },
-
-        events: [
-
-            {
-
-                name: uikitUtil.pointerDown,
-
-                delegate: function() {
-                    return this.selSlides;
-                },
-
-                handler: function(e) {
-
-                    if (!this.draggable
-                        || !uikitUtil.isTouch(e) && hasTextNodesOnly(e.target)
-                        || uikitUtil.closest(e.target, uikitUtil.selInput)
-                        || e.button > 0
-                        || this.length < 2
-                    ) {
-                        return;
-                    }
-
-                    this.start(e);
-                }
-
-            },
-
-            {
-                name: 'dragstart',
-
-                handler: function(e) {
-                    e.preventDefault();
-                }
-            }
-
-        ],
-
-        methods: {
-
-            start: function() {
-
-                this.drag = this.pos;
-
-                if (this._transitioner) {
-
-                    this.percent = this._transitioner.percent();
-                    this.drag += this._transitioner.getDistance() * this.percent * this.dir;
-
-                    this._transitioner.cancel();
-                    this._transitioner.translate(this.percent);
-
-                    this.dragging = true;
-
-                    this.stack = [];
-
-                } else {
-                    this.prevIndex = this.index;
-                }
-
-                uikitUtil.on(document, uikitUtil.pointerMove, this.move, {passive: false});
-
-                // 'input' event is triggered by video controls
-                uikitUtil.on(document, (uikitUtil.pointerUp + " " + uikitUtil.pointerCancel + " input"), this.end, true);
-
-                uikitUtil.css(this.list, 'userSelect', 'none');
-
-            },
-
-            move: function(e) {
-                var this$1$1 = this;
-
-
-                var distance = this.pos - this.drag;
-
-                if (distance === 0 || this.prevPos === this.pos || !this.dragging && Math.abs(distance) < this.threshold) {
-                    return;
-                }
-
-                // prevent click event
-                uikitUtil.css(this.list, 'pointerEvents', 'none');
-
-                e.cancelable && e.preventDefault();
-
-                this.dragging = true;
-                this.dir = (distance < 0 ? 1 : -1);
-
-                var ref = this;
-                var slides = ref.slides;
-                var ref$1 = this;
-                var prevIndex = ref$1.prevIndex;
-                var dis = Math.abs(distance);
-                var nextIndex = this.getIndex(prevIndex + this.dir, prevIndex);
-                var width = this._getDistance(prevIndex, nextIndex) || slides[prevIndex].offsetWidth;
-
-                while (nextIndex !== prevIndex && dis > width) {
-
-                    this.drag -= width * this.dir;
-
-                    prevIndex = nextIndex;
-                    dis -= width;
-                    nextIndex = this.getIndex(prevIndex + this.dir, prevIndex);
-                    width = this._getDistance(prevIndex, nextIndex) || slides[prevIndex].offsetWidth;
-
-                }
-
-                this.percent = dis / width;
-
-                var prev = slides[prevIndex];
-                var next = slides[nextIndex];
-                var changed = this.index !== nextIndex;
-                var edge = prevIndex === nextIndex;
-
-                var itemShown;
-
-                [this.index, this.prevIndex].filter(function (i) { return !uikitUtil.includes([nextIndex, prevIndex], i); }).forEach(function (i) {
-                    uikitUtil.trigger(slides[i], 'itemhidden', [this$1$1]);
-
-                    if (edge) {
-                        itemShown = true;
-                        this$1$1.prevIndex = prevIndex;
-                    }
-
-                });
-
-                if (this.index === prevIndex && this.prevIndex !== prevIndex || itemShown) {
-                    uikitUtil.trigger(slides[this.index], 'itemshown', [this]);
-                }
-
-                if (changed) {
-                    this.prevIndex = prevIndex;
-                    this.index = nextIndex;
-
-                    !edge && uikitUtil.trigger(prev, 'beforeitemhide', [this]);
-                    uikitUtil.trigger(next, 'beforeitemshow', [this]);
-                }
-
-                this._transitioner = this._translate(Math.abs(this.percent), prev, !edge && next);
-
-                if (changed) {
-                    !edge && uikitUtil.trigger(prev, 'itemhide', [this]);
-                    uikitUtil.trigger(next, 'itemshow', [this]);
-                }
-
-            },
-
-            end: function() {
-
-                uikitUtil.off(document, uikitUtil.pointerMove, this.move, {passive: false});
-                uikitUtil.off(document, (uikitUtil.pointerUp + " " + uikitUtil.pointerCancel + " input"), this.end, true);
-
-                if (this.dragging) {
-
-                    this.dragging = null;
-
-                    if (this.index === this.prevIndex) {
-                        this.percent = 1 - this.percent;
-                        this.dir *= -1;
-                        this._show(false, this.index, true);
-                        this._transitioner = null;
-                    } else {
-
-                        var dirChange = (uikitUtil.isRtl ? this.dir * (uikitUtil.isRtl ? 1 : -1) : this.dir) < 0 === this.prevPos > this.pos;
-                        this.index = dirChange ? this.index : this.prevIndex;
-
-                        if (dirChange) {
-                            this.percent = 1 - this.percent;
-                        }
-
-                        this.show(this.dir > 0 && !dirChange || this.dir < 0 && dirChange ? 'next' : 'previous', true);
-                    }
-
-                }
-
-                uikitUtil.css(this.list, {userSelect: '', pointerEvents: ''});
-
-                this.drag
-                    = this.percent
-                    = null;
-
-            }
-
+      props: {
+        draggable: Boolean
+      },
+      data: {
+        draggable: true,
+        threshold: 10
+      },
+      created() {
+        for (const key of ["start", "move", "end"]) {
+          const fn = this[key];
+          this[key] = (e) => {
+            const pos = util.getEventPos(e).x * (util.isRtl ? -1 : 1);
+            this.prevPos = pos === this.pos ? this.prevPos : this.pos;
+            this.pos = pos;
+            fn(e);
+          };
         }
-
+      },
+      events: [
+        {
+          name: pointerDown,
+          passive: true,
+          delegate: ({ selList }) => `${selList} > *`,
+          handler(e) {
+            if (!this.draggable || this.parallax || !util.isTouch(e) && hasSelectableText(e.target) || e.target.closest(util.selInput) || e.button > 0 || this.length < 2) {
+              return;
+            }
+            this.start(e);
+          }
+        },
+        {
+          name: "dragstart",
+          handler(e) {
+            e.preventDefault();
+          }
+        },
+        {
+          // iOS workaround for slider stopping if swiping fast
+          name: pointerMove,
+          el: ({ list }) => list,
+          handler: util.noop,
+          ...pointerOptions
+        }
+      ],
+      methods: {
+        start() {
+          this.drag = this.pos;
+          if (this._transitioner) {
+            this.percent = this._transitioner.percent();
+            this.drag += this._transitioner.getDistance() * this.percent * this.dir;
+            this._transitioner.cancel();
+            this._transitioner.translate(this.percent);
+            this.dragging = true;
+            this.stack = [];
+          } else {
+            this.prevIndex = this.index;
+          }
+          util.on(document, pointerMove, this.move, pointerOptions);
+          util.on(document, pointerUp, this.end, pointerUpOptions);
+          util.css(this.list, "userSelect", "none");
+        },
+        move(e) {
+          const distance = this.pos - this.drag;
+          if (distance === 0 || this.prevPos === this.pos || !this.dragging && Math.abs(distance) < this.threshold) {
+            return;
+          }
+          e.cancelable && e.preventDefault();
+          this.dragging = true;
+          this.dir = distance < 0 ? 1 : -1;
+          let { slides, prevIndex } = this;
+          let dis = Math.abs(distance);
+          let nextIndex = this.getIndex(prevIndex + this.dir);
+          let width = getDistance.call(this, prevIndex, nextIndex);
+          while (nextIndex !== prevIndex && dis > width) {
+            this.drag -= width * this.dir;
+            prevIndex = nextIndex;
+            dis -= width;
+            nextIndex = this.getIndex(prevIndex + this.dir);
+            width = getDistance.call(this, prevIndex, nextIndex);
+          }
+          this.percent = dis / width;
+          const prev = slides[prevIndex];
+          const next = slides[nextIndex];
+          const changed = this.index !== nextIndex;
+          const edge = prevIndex === nextIndex;
+          let itemShown;
+          for (const i of [this.index, this.prevIndex]) {
+            if (!util.includes([nextIndex, prevIndex], i)) {
+              util.trigger(slides[i], "itemhidden", [this]);
+              if (edge) {
+                itemShown = true;
+                this.prevIndex = prevIndex;
+              }
+            }
+          }
+          if (this.index === prevIndex && this.prevIndex !== prevIndex || itemShown) {
+            util.trigger(slides[this.index], "itemshown", [this]);
+          }
+          if (changed) {
+            this.prevIndex = prevIndex;
+            this.index = nextIndex;
+            if (!edge) {
+              util.trigger(prev, "beforeitemhide", [this]);
+              util.trigger(prev, "itemhide", [this]);
+            }
+            util.trigger(next, "beforeitemshow", [this]);
+            util.trigger(next, "itemshow", [this]);
+          }
+          this._transitioner = this._translate(Math.abs(this.percent), prev, !edge && next);
+        },
+        end() {
+          util.off(document, pointerMove, this.move, pointerOptions);
+          util.off(document, pointerUp, this.end, pointerUpOptions);
+          if (this.dragging) {
+            setTimeout(util.on(this.list, "click", (e) => e.preventDefault(), pointerOptions));
+            this.dragging = null;
+            if (this.index === this.prevIndex) {
+              this.percent = 1 - this.percent;
+              this.dir *= -1;
+              this._show(false, this.index, true);
+              this._transitioner = null;
+            } else {
+              const dirChange = (util.isRtl ? this.dir * (util.isRtl ? 1 : -1) : this.dir) < 0 === this.prevPos > this.pos;
+              this.index = dirChange ? this.index : this.prevIndex;
+              if (dirChange) {
+                util.trigger(this.slides[this.prevIndex], "itemhidden", [this]);
+                util.trigger(this.slides[this.index], "itemshown", [this]);
+                this.percent = 1 - this.percent;
+              }
+              this.show(
+                this.dir > 0 && !dirChange || this.dir < 0 && dirChange ? "next" : "previous",
+                true
+              );
+            }
+          }
+          util.css(this.list, { userSelect: "" });
+          this.drag = this.percent = null;
+        }
+      }
     };
-
-    function hasTextNodesOnly(el) {
-        return !el.children.length && el.childNodes.length;
+    function getDistance(prev, next) {
+      return this._getTransitioner(prev, prev !== next && next).getDistance() || this.slides[prev].offsetWidth;
     }
+    function hasSelectableText(el) {
+      return util.css(el, "userSelect") !== "none" && util.toArray(el.childNodes).some((el2) => el2.nodeType === 3 && el2.textContent.trim());
+    }
+
+    util.memoize((id, props) => {
+      const attributes = Object.keys(props);
+      const filter = attributes.concat(id).map((key) => [util.hyphenate(key), `data-${util.hyphenate(key)}`]).flat();
+      return { attributes, filter };
+    });
+
+    let id = 1;
+    function generateId(instance, el = null) {
+      return (el == null ? void 0 : el.id) || `${instance.$options.id}-${id++}`;
+    }
+
+    const keyMap = {
+      SPACE: 32,
+      END: 35,
+      HOME: 36,
+      LEFT: 37,
+      RIGHT: 39};
 
     var SliderNav = {
-
-        data: {
-            selNav: false
+      i18n: {
+        next: "Next slide",
+        previous: "Previous slide",
+        slideX: "Slide %s",
+        slideLabel: "%s of %s",
+        role: "String"
+      },
+      data: {
+        selNav: false,
+        role: "region"
+      },
+      computed: {
+        nav: ({ selNav }, $el) => util.$(selNav, $el),
+        navChildren() {
+          return util.children(this.nav);
         },
-
-        computed: {
-
-            nav: function(ref, $el) {
-                var selNav = ref.selNav;
-
-                return uikitUtil.$(selNav, $el);
-            },
-
-            selNavItem: function(ref) {
-                var attrItem = ref.attrItem;
-
-                return ("[" + attrItem + "],[data-" + attrItem + "]");
-            },
-
-            navItems: function(_, $el) {
-                return uikitUtil.$$(this.selNavItem, $el);
-            }
-
-        },
-
-        update: {
-
-            write: function() {
-                var this$1$1 = this;
-
-
-                if (this.nav && this.length !== this.nav.children.length) {
-                    uikitUtil.html(this.nav, this.slides.map(function (_, i) { return ("<li " + (this$1$1.attrItem) + "=\"" + i + "\"><a href></a></li>"); }).join(''));
-                }
-
-                this.navItems.concat(this.nav).forEach(function (el) { return el && (el.hidden = !this$1$1.maxIndex); });
-
-                this.updateNav();
-
-            },
-
-            events: ['resize']
-
-        },
-
-        events: [
-
-            {
-
-                name: 'click',
-
-                delegate: function() {
-                    return this.selNavItem;
-                },
-
-                handler: function(e) {
-                    e.preventDefault();
-                    this.show(uikitUtil.data(e.current, this.attrItem));
-                }
-
-            },
-
-            {
-
-                name: 'itemshow',
-                handler: 'updateNav'
-
-            }
-
-        ],
-
-        methods: {
-
-            updateNav: function() {
-                var this$1$1 = this;
-
-
-                var i = this.getValidIndex();
-                this.navItems.forEach(function (el) {
-
-                    var cmd = uikitUtil.data(el, this$1$1.attrItem);
-
-                    uikitUtil.toggleClass(el, this$1$1.clsActive, uikitUtil.toNumber(cmd) === i);
-                    uikitUtil.toggleClass(el, 'uk-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
-                });
-
-            }
-
+        selNavItem: ({ attrItem }) => `[${attrItem}],[data-${attrItem}]`,
+        navItems(_, $el) {
+          return util.$$(this.selNavItem, $el);
         }
-
+      },
+      watch: {
+        nav(nav, prev) {
+          util.attr(nav, "role", "tablist");
+          this.padNavitems();
+          if (prev) {
+            this.$emit();
+          }
+        },
+        list(list) {
+          if (util.isTag(list, "ul")) {
+            util.attr(list, "role", "presentation");
+          }
+        },
+        navChildren(children2) {
+          util.attr(children2, "role", "presentation");
+          this.padNavitems();
+          this.updateNav();
+        },
+        navItems(items) {
+          for (const el of items) {
+            const cmd = util.data(el, this.attrItem);
+            const button = util.$("a,button", el) || el;
+            let ariaLabel;
+            let ariaControls = null;
+            if (util.isNumeric(cmd)) {
+              const item = util.toNumber(cmd);
+              const slide = this.slides[item];
+              if (slide) {
+                if (!slide.id) {
+                  slide.id = generateId(this, slide);
+                }
+                ariaControls = slide.id;
+              }
+              ariaLabel = this.t("slideX", util.toFloat(cmd) + 1);
+              util.attr(button, "role", "tab");
+            } else {
+              if (this.list) {
+                if (!this.list.id) {
+                  this.list.id = generateId(this, this.list);
+                }
+                ariaControls = this.list.id;
+              }
+              ariaLabel = this.t(cmd);
+            }
+            util.attr(button, {
+              "aria-controls": ariaControls,
+              "aria-label": util.attr(button, "aria-label") || ariaLabel
+            });
+          }
+        },
+        slides(slides) {
+          slides.forEach(
+            (slide, i) => util.attr(slide, {
+              role: this.nav ? "tabpanel" : "group",
+              "aria-label": this.t("slideLabel", i + 1, this.length),
+              "aria-roledescription": this.nav ? null : "slide"
+            })
+          );
+          this.padNavitems();
+        }
+      },
+      connected() {
+        util.attr(this.$el, {
+          role: this.role,
+          "aria-roledescription": "carousel"
+        });
+      },
+      update: [
+        {
+          write() {
+            this.navItems.concat(this.nav).forEach((el) => el && (el.hidden = !this.maxIndex));
+            this.updateNav();
+          },
+          events: ["resize"]
+        }
+      ],
+      events: [
+        {
+          name: "click keydown",
+          delegate: ({ selNavItem }) => selNavItem,
+          filter: ({ parallax }) => !parallax,
+          handler(e) {
+            if (e.target.closest("a,button") && (e.type === "click" || e.keyCode === keyMap.SPACE)) {
+              e.preventDefault();
+              this.show(util.data(e.current, this.attrItem));
+            }
+          }
+        },
+        {
+          name: "itemshow",
+          handler() {
+            this.updateNav();
+          }
+        },
+        {
+          name: "keydown",
+          delegate: ({ selNavItem }) => selNavItem,
+          filter: ({ parallax }) => !parallax,
+          handler(e) {
+            const { current, keyCode } = e;
+            const cmd = util.data(current, this.attrItem);
+            if (!util.isNumeric(cmd)) {
+              return;
+            }
+            let i = keyCode === keyMap.HOME ? 0 : keyCode === keyMap.END ? "last" : keyCode === keyMap.LEFT ? "previous" : keyCode === keyMap.RIGHT ? "next" : -1;
+            if (~i) {
+              e.preventDefault();
+              this.show(i);
+            }
+          }
+        }
+      ],
+      methods: {
+        updateNav() {
+          const index = this.getValidIndex();
+          for (const el of this.navItems) {
+            const cmd = util.data(el, this.attrItem);
+            const button = util.$("a,button", el) || el;
+            if (util.isNumeric(cmd)) {
+              const item = util.toNumber(cmd);
+              const active = item === index;
+              util.toggleClass(el, this.clsActive, active);
+              util.toggleClass(button, "uk-disabled", !!this.parallax);
+              util.attr(button, {
+                "aria-selected": active,
+                tabindex: active && !this.parallax ? null : -1
+              });
+              if (active && button && util.matches(util.parent(el), ":focus-within")) {
+                button.focus();
+              }
+            } else {
+              util.toggleClass(
+                el,
+                "uk-invisible",
+                this.finite && (cmd === "previous" && index === 0 || cmd === "next" && index >= this.maxIndex)
+              );
+            }
+          }
+        },
+        padNavitems() {
+          if (!this.nav) {
+            return;
+          }
+          const children2 = [];
+          for (let i = 0; i < this.length; i++) {
+            const attr2 = `${this.attrItem}="${i}"`;
+            children2[i] = this.navChildren.findLast((el) => el.matches(`[${attr2}]`)) || util.$(`<li ${attr2}><a href></a></li>`);
+          }
+          if (!util.isEqual(children2, this.navChildren)) {
+            util.html(this.nav, children2);
+          }
+        }
+      }
     };
 
+    const easeOutQuad = "cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    const easeOutQuart = "cubic-bezier(0.165, 0.84, 0.44, 1)";
     var Slider = {
-
-        mixins: [SliderAutoplay, SliderDrag, SliderNav],
-
-        props: {
-            clsActivated: Boolean,
-            easing: String,
-            index: Number,
-            finite: Boolean,
-            velocity: Number,
-            selSlides: String
+      mixins: [SliderAutoplay, SliderDrag, SliderNav, I18n],
+      props: {
+        clsActivated: String,
+        easing: String,
+        index: Number,
+        finite: Boolean,
+        velocity: Number
+      },
+      data: () => ({
+        easing: "ease",
+        finite: false,
+        velocity: 1,
+        index: 0,
+        prevIndex: -1,
+        stack: [],
+        percent: 0,
+        clsActive: "uk-active",
+        clsActivated: "",
+        clsEnter: "uk-slide-enter",
+        clsLeave: "uk-slide-leave",
+        clsSlideActive: "uk-slide-active",
+        Transitioner: false,
+        transitionOptions: {}
+      }),
+      connected() {
+        this.prevIndex = -1;
+        this.index = this.getValidIndex(this.$props.index);
+        this.stack = [];
+      },
+      disconnected() {
+        util.removeClass(this.slides, this.clsActive);
+      },
+      computed: {
+        duration: ({ velocity }, $el) => speedUp($el.offsetWidth / velocity),
+        list: ({ selList }, $el) => util.$(selList, $el),
+        maxIndex() {
+          return this.length - 1;
         },
-
-        data: function () { return ({
-            easing: 'ease',
-            finite: false,
-            velocity: 1,
-            index: 0,
-            prevIndex: -1,
-            stack: [],
-            percent: 0,
-            clsActive: 'uk-active',
-            clsActivated: false,
-            Transitioner: false,
-            transitionOptions: {}
-        }); },
-
-        connected: function() {
-            this.prevIndex = -1;
-            this.index = this.getValidIndex(this.$props.index);
-            this.stack = [];
+        slides() {
+          return util.children(this.list);
         },
-
-        disconnected: function() {
-            uikitUtil.removeClass(this.slides, this.clsActive);
-        },
-
-        computed: {
-
-            duration: function(ref, $el) {
-                var velocity = ref.velocity;
-
-                return speedUp($el.offsetWidth / velocity);
-            },
-
-            list: function(ref, $el) {
-                var selList = ref.selList;
-
-                return uikitUtil.$(selList, $el);
-            },
-
-            maxIndex: function() {
-                return this.length - 1;
-            },
-
-            selSlides: function(ref) {
-                var selList = ref.selList;
-                var selSlides = ref.selSlides;
-
-                return (selList + " " + (selSlides || '> *'));
-            },
-
-            slides: {
-
-                get: function() {
-                    return uikitUtil.$$(this.selSlides, this.$el);
-                },
-
-                watch: function() {
-                    this.$reset();
-                }
-
-            },
-
-            length: function() {
-                return this.slides.length;
-            }
-
-        },
-
-        events: {
-
-            itemshown: function() {
-                this.$update(this.list);
-            }
-
-        },
-
-        methods: {
-
-            show: function(index, force) {
-                var this$1$1 = this;
-                if ( force === void 0 ) force = false;
-
-
-                if (this.dragging || !this.length) {
-                    return;
-                }
-
-                var ref = this;
-                var stack = ref.stack;
-                var queueIndex = force ? 0 : stack.length;
-                var reset = function () {
-                    stack.splice(queueIndex, 1);
-
-                    if (stack.length) {
-                        this$1$1.show(stack.shift(), true);
-                    }
-                };
-
-                stack[force ? 'unshift' : 'push'](index);
-
-                if (!force && stack.length > 1) {
-
-                    if (stack.length === 2) {
-                        this._transitioner.forward(Math.min(this.duration, 200));
-                    }
-
-                    return;
-                }
-
-                var prevIndex = this.getIndex(this.index);
-                var prev = uikitUtil.hasClass(this.slides, this.clsActive) && this.slides[prevIndex];
-                var nextIndex = this.getIndex(index, this.index);
-                var next = this.slides[nextIndex];
-
-                if (prev === next) {
-                    reset();
-                    return;
-                }
-
-                this.dir = getDirection(index, prevIndex);
-                this.prevIndex = prevIndex;
-                this.index = nextIndex;
-
-                if (prev && !uikitUtil.trigger(prev, 'beforeitemhide', [this])
-                    || !uikitUtil.trigger(next, 'beforeitemshow', [this, prev])
-                ) {
-                    this.index = this.prevIndex;
-                    reset();
-                    return;
-                }
-
-                var promise = this._show(prev, next, force).then(function () {
-
-                    prev && uikitUtil.trigger(prev, 'itemhidden', [this$1$1]);
-                    uikitUtil.trigger(next, 'itemshown', [this$1$1]);
-
-                    return new uikitUtil.Promise(function (resolve) {
-                        uikitUtil.fastdom.write(function () {
-                            stack.shift();
-                            if (stack.length) {
-                                this$1$1.show(stack.shift(), true);
-                            } else {
-                                this$1$1._transitioner = null;
-                            }
-                            resolve();
-                        });
-                    });
-
-                });
-
-                prev && uikitUtil.trigger(prev, 'itemhide', [this]);
-                uikitUtil.trigger(next, 'itemshow', [this]);
-
-                return promise;
-
-            },
-
-            getIndex: function(index, prev) {
-                if ( index === void 0 ) index = this.index;
-                if ( prev === void 0 ) prev = this.index;
-
-                return uikitUtil.clamp(uikitUtil.getIndex(index, this.slides, prev, this.finite), 0, this.maxIndex);
-            },
-
-            getValidIndex: function(index, prevIndex) {
-                if ( index === void 0 ) index = this.index;
-                if ( prevIndex === void 0 ) prevIndex = this.prevIndex;
-
-                return this.getIndex(index, prevIndex);
-            },
-
-            _show: function(prev, next, force) {
-
-                this._transitioner = this._getTransitioner(
-                    prev,
-                    next,
-                    this.dir,
-                    uikitUtil.assign({
-                        easing: force
-                            ? next.offsetWidth < 600
-                                ? 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' /* easeOutQuad */
-                                : 'cubic-bezier(0.165, 0.84, 0.44, 1)' /* easeOutQuart */
-                            : this.easing
-                    }, this.transitionOptions)
-                );
-
-                if (!force && !prev) {
-                    this._translate(1);
-                    return uikitUtil.Promise.resolve();
-                }
-
-                var ref = this.stack;
-                var length = ref.length;
-                return this._transitioner[length > 1 ? 'forward' : 'show'](length > 1 ? Math.min(this.duration, 75 + 75 / (length - 1)) : this.duration, this.percent);
-
-            },
-
-            _getDistance: function(prev, next) {
-                return this._getTransitioner(prev, prev !== next && next).getDistance();
-            },
-
-            _translate: function(percent, prev, next) {
-                if ( prev === void 0 ) prev = this.prevIndex;
-                if ( next === void 0 ) next = this.index;
-
-                var transitioner = this._getTransitioner(prev !== next ? prev : false, next);
-                transitioner.translate(percent);
-                return transitioner;
-            },
-
-            _getTransitioner: function(prev, next, dir, options) {
-                if ( prev === void 0 ) prev = this.prevIndex;
-                if ( next === void 0 ) next = this.index;
-                if ( dir === void 0 ) dir = this.dir || 1;
-                if ( options === void 0 ) options = this.transitionOptions;
-
-                return new this.Transitioner(
-                    uikitUtil.isNumber(prev) ? this.slides[prev] : prev,
-                    uikitUtil.isNumber(next) ? this.slides[next] : next,
-                    dir * (uikitUtil.isRtl ? -1 : 1),
-                    options
-                );
-            }
-
+        length() {
+          return this.slides.length;
         }
-
+      },
+      watch: {
+        slides(slides, prev) {
+          if (prev) {
+            this.$emit();
+          }
+        }
+      },
+      events: {
+        itemshow({ target }) {
+          util.addClass(target, this.clsEnter, this.clsSlideActive);
+        },
+        itemshown({ target }) {
+          util.removeClass(target, this.clsEnter);
+        },
+        itemhide({ target }) {
+          util.addClass(target, this.clsLeave);
+        },
+        itemhidden({ target }) {
+          util.removeClass(target, this.clsLeave, this.clsSlideActive);
+        }
+      },
+      methods: {
+        async show(index, force = false) {
+          var _a;
+          if (this.dragging || !this.length || this.parallax) {
+            return;
+          }
+          const { stack } = this;
+          const queueIndex = force ? 0 : stack.length;
+          const reset = () => {
+            stack.splice(queueIndex, 1);
+            if (stack.length) {
+              this.show(stack.shift(), true);
+            }
+          };
+          stack[force ? "unshift" : "push"](index);
+          if (!force && stack.length > 1) {
+            if (stack.length === 2) {
+              (_a = this._transitioner) == null ? void 0 : _a.forward(Math.min(this.duration, 200));
+            }
+            return;
+          }
+          const prevIndex = this.getIndex(this.index);
+          const prev = util.hasClass(this.slides, this.clsActive) && this.slides[prevIndex];
+          const nextIndex = this.getIndex(index, this.index);
+          const next = this.slides[nextIndex];
+          if (prev === next) {
+            reset();
+            return;
+          }
+          this.dir = getDirection(index, prevIndex);
+          this.prevIndex = prevIndex;
+          this.index = nextIndex;
+          if (prev && !util.trigger(prev, "beforeitemhide", [this]) || !util.trigger(next, "beforeitemshow", [this, prev])) {
+            this.index = this.prevIndex;
+            reset();
+            return;
+          }
+          prev && util.trigger(prev, "itemhide", [this]);
+          util.trigger(next, "itemshow", [this]);
+          await this._show(prev, next, force);
+          prev && util.trigger(prev, "itemhidden", [this]);
+          util.trigger(next, "itemshown", [this]);
+          stack.shift();
+          this._transitioner = null;
+          if (stack.length) {
+            requestAnimationFrame(() => stack.length && this.show(stack.shift(), true));
+          }
+        },
+        getIndex(index = this.index, prev = this.index) {
+          return util.clamp(
+            util.getIndex(index, this.slides, prev, this.finite),
+            0,
+            Math.max(0, this.maxIndex)
+          );
+        },
+        getValidIndex(index = this.index, prevIndex = this.prevIndex) {
+          return this.getIndex(index, prevIndex);
+        },
+        async _show(prev, next, force) {
+          this._transitioner = this._getTransitioner(prev, next, this.dir, {
+            easing: force ? next.offsetWidth < 600 ? easeOutQuad : easeOutQuart : this.easing,
+            ...this.transitionOptions
+          });
+          if (!force && !prev) {
+            this._translate(1);
+            return;
+          }
+          const { length } = this.stack;
+          return this._transitioner[length > 1 ? "forward" : "show"](
+            length > 1 ? Math.min(this.duration, 75 + 75 / (length - 1)) : this.duration,
+            this.percent
+          );
+        },
+        _translate(percent, prev = this.prevIndex, next = this.index) {
+          const transitioner = this._getTransitioner(prev === next ? false : prev, next);
+          transitioner.translate(percent);
+          return transitioner;
+        },
+        _getTransitioner(prev = this.prevIndex, next = this.index, dir = this.dir || 1, options = this.transitionOptions) {
+          return new this.Transitioner(
+            util.isNumber(prev) ? this.slides[prev] : prev,
+            util.isNumber(next) ? this.slides[next] : next,
+            dir * (util.isRtl ? -1 : 1),
+            options
+          );
+        }
+      }
     };
-
     function getDirection(index, prevIndex) {
-        return index === 'next'
-            ? 1
-            : index === 'previous'
-                ? -1
-                : index < prevIndex
-                    ? -1
-                    : 1;
+      return index === "next" ? 1 : index === "previous" ? -1 : index < prevIndex ? -1 : 1;
+    }
+    function speedUp(x) {
+      return 0.5 * x + 300;
     }
 
-    function speedUp(x) {
-        return .5 * x + 300; // parabola through (400,500; 600,600; 1800,1200)
+    function startsWith(str, search) {
+      var _a;
+      return (_a = str == null ? void 0 : str.startsWith) == null ? void 0 : _a.call(str, search);
+    }
+    const { from: toArray } = Array;
+    function isFunction(obj) {
+      return typeof obj === "function";
+    }
+    function isObject(obj) {
+      return obj !== null && typeof obj === "object";
+    }
+    function isWindow(obj) {
+      return isObject(obj) && obj === obj.window;
+    }
+    function isDocument(obj) {
+      return nodeType(obj) === 9;
+    }
+    function isNode(obj) {
+      return nodeType(obj) >= 1;
+    }
+    function nodeType(obj) {
+      return !isWindow(obj) && isObject(obj) && obj.nodeType;
+    }
+    function isString(value) {
+      return typeof value === "string";
+    }
+    function isUndefined(value) {
+      return value === void 0;
+    }
+    function toNode(element) {
+      return element && toNodes(element)[0];
+    }
+    function toNodes(element) {
+      return isNode(element) ? [element] : Array.from(element || []).filter(isNode);
+    }
+    function memoize(fn) {
+      const cache = /* @__PURE__ */ Object.create(null);
+      return (key, ...args) => cache[key] || (cache[key] = fn(key, ...args));
+    }
+
+    function attr(element, name, value) {
+      var _a;
+      if (isObject(name)) {
+        for (const key in name) {
+          attr(element, key, name[key]);
+        }
+        return;
+      }
+      if (isUndefined(value)) {
+        return (_a = toNode(element)) == null ? void 0 : _a.getAttribute(name);
+      } else {
+        for (const el of toNodes(element)) {
+          if (isFunction(value)) {
+            value = value.call(el, attr(el, name));
+          }
+          if (value === null) {
+            removeAttr(el, name);
+          } else {
+            el.setAttribute(name, value);
+          }
+        }
+      }
+    }
+    function removeAttr(element, name) {
+      toNodes(element).forEach((element2) => element2.removeAttribute(name));
+    }
+
+    const inBrowser = typeof window !== "undefined";
+
+    const isVisibleFn = inBrowser && Element.prototype.checkVisibility || function() {
+      return this.offsetWidth || this.offsetHeight || this.getClientRects().length;
+    };
+    function isVisible(element) {
+      return toNodes(element).some((element2) => isVisibleFn.call(element2));
+    }
+    function parent(element) {
+      var _a;
+      return (_a = toNode(element)) == null ? void 0 : _a.parentElement;
+    }
+    function filter(element, selector) {
+      return toNodes(element).filter((element2) => matches(element2, selector));
+    }
+    function matches(element, selector) {
+      return toNodes(element).some((element2) => element2.matches(selector));
+    }
+    function children(element, selector) {
+      element = toNode(element);
+      const children2 = element ? toArray(element.children) : [];
+      return selector ? filter(children2, selector) : children2;
+    }
+    function index(element, ref) {
+      return children(parent(element)).indexOf(element);
+    }
+
+    function findAll(selector, context) {
+      return toNodes(_query(selector, toNode(context), "querySelectorAll"));
+    }
+    const addStarRe = /([!>+~-])(?=\s+[!>+~-]|\s*$)/g;
+    const splitSelectorRe = /(\([^)]*\)|[^,])+/g;
+    const parseSelector = memoize((selector) => {
+      let isContextSelector = false;
+      if (!selector || !isString(selector)) {
+        return {};
+      }
+      const selectors = [];
+      for (let sel of selector.match(splitSelectorRe)) {
+        sel = sel.trim().replace(addStarRe, "$1 *");
+        isContextSelector || (isContextSelector = ["!", "+", "~", "-", ">"].includes(sel[0]));
+        selectors.push(sel);
+      }
+      return {
+        selector: selectors.join(","),
+        selectors,
+        isContextSelector
+      };
+    });
+    const positionRe = /(\([^)]*\)|\S)*/;
+    const parsePositionSelector = memoize((selector) => {
+      selector = selector.slice(1).trim();
+      const [position] = selector.match(positionRe);
+      return [position, selector.slice(position.length + 1)];
+    });
+    function _query(selector, context = document, queryFn) {
+      const parsed = parseSelector(selector);
+      if (!parsed.isContextSelector) {
+        return parsed.selector ? _doQuery(context, queryFn, parsed.selector) : selector;
+      }
+      selector = "";
+      const isSingle = parsed.selectors.length === 1;
+      for (let sel of parsed.selectors) {
+        let positionSel;
+        let ctx = context;
+        if (sel[0] === "!") {
+          [positionSel, sel] = parsePositionSelector(sel);
+          ctx = context.parentElement.closest(positionSel);
+          if (!sel && isSingle) {
+            return ctx;
+          }
+        }
+        if (ctx && sel[0] === "-") {
+          [positionSel, sel] = parsePositionSelector(sel);
+          ctx = ctx.previousElementSibling;
+          ctx = matches(ctx, positionSel) ? ctx : null;
+          if (!sel && isSingle) {
+            return ctx;
+          }
+        }
+        if (!ctx) {
+          continue;
+        }
+        if (isSingle) {
+          if (sel[0] === "~" || sel[0] === "+") {
+            sel = `:scope > :nth-child(${index(ctx) + 1}) ${sel}`;
+            ctx = ctx.parentElement;
+          } else if (sel[0] === ">") {
+            sel = `:scope ${sel}`;
+          }
+          return _doQuery(ctx, queryFn, sel);
+        }
+        selector += `${selector ? "," : ""}${domPath(ctx)} ${sel}`;
+      }
+      if (!isDocument(context)) {
+        context = context.ownerDocument;
+      }
+      return _doQuery(context, queryFn, selector);
+    }
+    function _doQuery(context, queryFn, selector) {
+      try {
+        return context[queryFn](selector);
+      } catch (e) {
+        return null;
+      }
+    }
+    function domPath(element) {
+      const names = [];
+      while (element.parentNode) {
+        const id = attr(element, "id");
+        if (id) {
+          names.unshift(`#${escape(id)}`);
+          break;
+        } else {
+          let { tagName } = element;
+          if (tagName !== "HTML") {
+            tagName += `:nth-child(${index(element) + 1})`;
+          }
+          names.unshift(tagName);
+          element = element.parentNode;
+        }
+      }
+      return names.join(" > ");
+    }
+    function escape(css) {
+      return isString(css) ? CSS.escape(css) : "";
+    }
+
+    const singleTagRe = /^<(\w+)\s*\/?>(?:<\/\1>)?$/;
+    function fragment(html2) {
+      const matches = singleTagRe.exec(html2);
+      if (matches) {
+        return document.createElement(matches[1]);
+      }
+      const container = document.createElement("template");
+      container.innerHTML = html2.trim();
+      return unwrapSingle(container.content.childNodes);
+    }
+    function unwrapSingle(nodes) {
+      return nodes.length > 1 ? nodes : nodes[0];
+    }
+    function $$(selector, context) {
+      return isHtml(selector) ? toNodes(fragment(selector)) : findAll(selector, context);
+    }
+    function isHtml(str) {
+      return isString(str) && startsWith(str.trim(), "<");
+    }
+
+    function getMaxPathLength(el) {
+      return isVisible(el) ? Math.ceil(
+        Math.max(0, ...$$("[stroke]", el).map((stroke) => {
+          var _a;
+          return ((_a = stroke.getTotalLength) == null ? void 0 : _a.call(stroke)) || 0;
+        }))
+      ) : 0;
+    }
+
+    const props = {
+      x: transformFn,
+      y: transformFn,
+      rotate: transformFn,
+      scale: transformFn,
+      color: colorFn,
+      backgroundColor: colorFn,
+      borderColor: colorFn,
+      blur: filterFn,
+      hue: filterFn,
+      fopacity: filterFn,
+      grayscale: filterFn,
+      invert: filterFn,
+      saturate: filterFn,
+      sepia: filterFn,
+      opacity: cssPropFn,
+      stroke: strokeFn,
+      bgx: backgroundFn,
+      bgy: backgroundFn
+    };
+    const { keys } = Object;
+    ({
+      props: fillObject(keys(props), "list"),
+      data: fillObject(keys(props), void 0)});
+    function transformFn(prop, el, stops) {
+      let unit = getUnit(stops) || { x: "px", y: "px", rotate: "deg" }[prop] || "";
+      let transformFn2;
+      if (prop === "x" || prop === "y") {
+        prop = `translate${util.ucfirst(prop)}`;
+        transformFn2 = (stop) => util.toFloat(util.toFloat(stop).toFixed(unit === "px" ? 0 : 6));
+      } else if (prop === "scale") {
+        unit = "";
+        transformFn2 = (stop) => {
+          var _a;
+          return getUnit([stop]) ? util.toPx(stop, "width", el, true) / el[`offset${((_a = stop.endsWith) == null ? void 0 : _a.call(stop, "vh")) ? "Height" : "Width"}`] : util.toFloat(stop);
+        };
+      }
+      if (stops.length === 1) {
+        stops.unshift(prop === "scale" ? 1 : 0);
+      }
+      stops = parseStops(stops, transformFn2);
+      return (css2, percent) => {
+        css2.transform = `${css2.transform || ""} ${prop}(${getValue(stops, percent)}${unit})`;
+      };
+    }
+    function colorFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(getCssValue(el, prop, ""));
+      }
+      stops = parseStops(stops, (stop) => parseColor(el, stop));
+      return (css2, percent) => {
+        const [start, end, p] = getStop(stops, percent);
+        const value = start.map((value2, i) => {
+          value2 += p * (end[i] - value2);
+          return i === 3 ? util.toFloat(value2) : parseInt(value2, 10);
+        }).join(",");
+        css2[prop] = `rgba(${value})`;
+      };
+    }
+    function parseColor(el, color) {
+      return getCssValue(el, "color", color).split(/[(),]/g).slice(1, -1).concat(1).slice(0, 4).map(util.toFloat);
+    }
+    function filterFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(0);
+      }
+      const unit = getUnit(stops) || { blur: "px", hue: "deg" }[prop] || "%";
+      prop = { fopacity: "opacity", hue: "hue-rotate" }[prop] || prop;
+      stops = parseStops(stops);
+      return (css2, percent) => {
+        const value = getValue(stops, percent);
+        css2.filter = `${css2.filter || ""} ${prop}(${value + unit})`;
+      };
+    }
+    function cssPropFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(getCssValue(el, prop, ""));
+      }
+      stops = parseStops(stops);
+      return (css2, percent) => {
+        css2[prop] = getValue(stops, percent);
+      };
+    }
+    function strokeFn(prop, el, stops) {
+      if (stops.length === 1) {
+        stops.unshift(0);
+      }
+      const unit = getUnit(stops);
+      const length = getMaxPathLength(el);
+      stops = parseStops(stops.reverse(), (stop) => {
+        stop = util.toFloat(stop);
+        return unit === "%" ? stop * length / 100 : stop;
+      });
+      if (!stops.some(([value]) => value)) {
+        return util.noop;
+      }
+      util.css(el, "strokeDasharray", length);
+      return (css2, percent) => {
+        css2.strokeDashoffset = getValue(stops, percent);
+      };
+    }
+    function backgroundFn(prop, el, stops, props2) {
+      if (stops.length === 1) {
+        stops.unshift(0);
+      }
+      const attr = prop === "bgy" ? "height" : "width";
+      props2[prop] = parseStops(stops, (stop) => util.toPx(stop, attr, el));
+      const bgProps = ["bgx", "bgy"].filter((prop2) => prop2 in props2);
+      if (bgProps.length === 2 && prop === "bgx") {
+        return util.noop;
+      }
+      if (getCssValue(el, "backgroundSize", "") === "cover") {
+        return backgroundCoverFn(prop, el, stops, props2);
+      }
+      const positions = {};
+      for (const prop2 of bgProps) {
+        positions[prop2] = getBackgroundPos(el, prop2);
+      }
+      return setBackgroundPosFn(bgProps, positions, props2);
+    }
+    function backgroundCoverFn(prop, el, stops, props2) {
+      const dimImage = getBackgroundImageDimensions(el);
+      if (!dimImage.width) {
+        return util.noop;
+      }
+      const dimEl = {
+        width: el.offsetWidth,
+        height: el.offsetHeight
+      };
+      const bgProps = ["bgx", "bgy"].filter((prop2) => prop2 in props2);
+      const positions = {};
+      for (const prop2 of bgProps) {
+        const values = props2[prop2].map(([value]) => value);
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        const down = values.indexOf(min) < values.indexOf(max);
+        const diff = max - min;
+        positions[prop2] = `${(down ? -diff : 0) - (down ? min : max)}px`;
+        dimEl[prop2 === "bgy" ? "height" : "width"] += diff;
+      }
+      const dim = util.Dimensions.cover(dimImage, dimEl);
+      for (const prop2 of bgProps) {
+        const attr = prop2 === "bgy" ? "height" : "width";
+        const overflow = dim[attr] - dimEl[attr];
+        positions[prop2] = `max(${getBackgroundPos(el, prop2)},-${overflow}px) + ${positions[prop2]}`;
+      }
+      const fn = setBackgroundPosFn(bgProps, positions, props2);
+      return (css2, percent) => {
+        fn(css2, percent);
+        css2.backgroundSize = `${dim.width}px ${dim.height}px`;
+        css2.backgroundRepeat = "no-repeat";
+      };
+    }
+    function getBackgroundPos(el, prop) {
+      return getCssValue(el, `background-position-${prop.slice(-1)}`, "");
+    }
+    function setBackgroundPosFn(bgProps, positions, props2) {
+      return function(css2, percent) {
+        for (const prop of bgProps) {
+          const value = getValue(props2[prop], percent);
+          css2[`background-position-${prop.slice(-1)}`] = `calc(${positions[prop]} + ${value}px)`;
+        }
+      };
+    }
+    const loading = {};
+    const dimensions = {};
+    function getBackgroundImageDimensions(el) {
+      const src = util.css(el, "backgroundImage").replace(/^none|url\(["']?(.+?)["']?\)$/, "$1");
+      if (dimensions[src]) {
+        return dimensions[src];
+      }
+      const image = new Image();
+      if (src) {
+        image.src = src;
+        if (!image.naturalWidth && !loading[src]) {
+          util.once(image, "error load", () => {
+            dimensions[src] = toDimensions(image);
+            util.trigger(el, util.createEvent("load", false));
+          });
+          loading[src] = true;
+          return toDimensions(image);
+        }
+      }
+      return dimensions[src] = toDimensions(image);
+    }
+    function toDimensions(image) {
+      return {
+        width: image.naturalWidth,
+        height: image.naturalHeight
+      };
+    }
+    function parseStops(stops, fn = util.toFloat) {
+      const result = [];
+      const { length } = stops;
+      let nullIndex = 0;
+      for (let i = 0; i < length; i++) {
+        let [value, percent] = util.isString(stops[i]) ? stops[i].trim().split(/ (?![^(]*\))/) : [stops[i]];
+        value = fn(value);
+        percent = percent ? util.toFloat(percent) / 100 : null;
+        if (i === 0) {
+          if (percent === null) {
+            percent = 0;
+          } else if (percent) {
+            result.push([value, 0]);
+          }
+        } else if (i === length - 1) {
+          if (percent === null) {
+            percent = 1;
+          } else if (percent !== 1) {
+            result.push([value, percent]);
+            percent = 1;
+          }
+        }
+        result.push([value, percent]);
+        if (percent === null) {
+          nullIndex++;
+        } else if (nullIndex) {
+          const leftPercent = result[i - nullIndex - 1][1];
+          const p = (percent - leftPercent) / (nullIndex + 1);
+          for (let j = nullIndex; j > 0; j--) {
+            result[i - j][1] = leftPercent + p * (nullIndex - j + 1);
+          }
+          nullIndex = 0;
+        }
+      }
+      return result;
+    }
+    function getStop(stops, percent) {
+      const index = util.findIndex(stops.slice(1), ([, targetPercent]) => percent <= targetPercent) + 1;
+      return [
+        stops[index - 1][0],
+        stops[index][0],
+        (percent - stops[index - 1][1]) / (stops[index][1] - stops[index - 1][1])
+      ];
+    }
+    function getValue(stops, percent) {
+      const [start, end, p] = getStop(stops, percent);
+      return start + Math.abs(start - end) * p * (start < end ? 1 : -1);
+    }
+    const unitRe = /^-?\d+(?:\.\d+)?(\S+)?/;
+    function getUnit(stops, defaultUnit) {
+      var _a;
+      for (const stop of stops) {
+        const match = (_a = stop.match) == null ? void 0 : _a.call(stop, unitRe);
+        if (match) {
+          return match[1];
+        }
+      }
+      return defaultUnit;
+    }
+    function getCssValue(el, prop, value) {
+      const prev = el.style[prop];
+      const val = util.css(util.css(el, prop, value), prop);
+      el.style[prop] = prev;
+      return val;
+    }
+    function fillObject(keys2, value) {
+      return keys2.reduce((data, prop) => {
+        data[prop] = value;
+        return data;
+      }, {});
+    }
+    function ease(percent, easing) {
+      return easing >= 0 ? Math.pow(percent, easing + 1) : 1 - Math.pow(1 - percent, 1 - easing);
+    }
+
+    var SliderParallax = {
+      props: {
+        parallax: Boolean,
+        parallaxTarget: Boolean,
+        parallaxStart: String,
+        parallaxEnd: String,
+        parallaxEasing: Number
+      },
+      data: {
+        parallax: false,
+        parallaxTarget: false,
+        parallaxStart: 0,
+        parallaxEnd: 0,
+        parallaxEasing: 0
+      },
+      observe: [
+        resize({
+          target: ({ $el, parallaxTarget }) => [$el, parallaxTarget],
+          filter: ({ parallax }) => parallax
+        }),
+        scroll({ filter: ({ parallax }) => parallax })
+      ],
+      computed: {
+        parallaxTarget({ parallaxTarget }, $el) {
+          return parallaxTarget && util.query(parallaxTarget, $el) || this.list;
+        }
+      },
+      update: {
+        read() {
+          if (!this.parallax) {
+            return false;
+          }
+          const target = this.parallaxTarget;
+          if (!target) {
+            return false;
+          }
+          const start = util.toPx(this.parallaxStart, "height", target, true);
+          const end = util.toPx(this.parallaxEnd, "height", target, true);
+          const percent = ease(util.scrolledOver(target, start, end), this.parallaxEasing);
+          return { parallax: this.getIndexAt(percent) };
+        },
+        write({ parallax }) {
+          const [prevIndex, slidePercent] = parallax;
+          const nextIndex = this.getValidIndex(prevIndex + Math.ceil(slidePercent));
+          const prev = this.slides[prevIndex];
+          const next = this.slides[nextIndex];
+          const { triggerShow, triggerShown, triggerHide, triggerHidden } = useTriggers(this);
+          if (~this.prevIndex) {
+            for (const i of /* @__PURE__ */ new Set([this.index, this.prevIndex])) {
+              if (!util.includes([nextIndex, prevIndex], i)) {
+                triggerHide(this.slides[i]);
+                triggerHidden(this.slides[i]);
+              }
+            }
+          }
+          const changed = this.prevIndex !== prevIndex || this.index !== nextIndex;
+          this.dir = 1;
+          this.prevIndex = prevIndex;
+          this.index = nextIndex;
+          if (prev !== next) {
+            triggerHide(prev);
+          }
+          triggerShow(next);
+          if (changed) {
+            triggerShown(prev);
+          }
+          this._translate(prev === next ? 1 : slidePercent, prev, next);
+        },
+        events: ["scroll", "resize"]
+      },
+      methods: {
+        getIndexAt(percent) {
+          const index = percent * (this.length - 1);
+          return [Math.floor(index), index % 1];
+        }
+      }
+    };
+    function useTriggers(cmp) {
+      const { clsSlideActive, clsEnter, clsLeave } = cmp;
+      return { triggerShow, triggerShown, triggerHide, triggerHidden };
+      function triggerShow(el) {
+        if (util.hasClass(el, clsLeave)) {
+          triggerHide(el);
+          triggerHidden(el);
+        }
+        if (!util.hasClass(el, clsSlideActive)) {
+          util.trigger(el, "beforeitemshow", [cmp]);
+          util.trigger(el, "itemshow", [cmp]);
+        }
+      }
+      function triggerShown(el) {
+        if (util.hasClass(el, clsEnter)) {
+          util.trigger(el, "itemshown", [cmp]);
+        }
+      }
+      function triggerHide(el) {
+        if (!util.hasClass(el, clsSlideActive)) {
+          triggerShow(el);
+        }
+        if (util.hasClass(el, clsEnter)) {
+          triggerShown(el);
+        }
+        if (!util.hasClass(el, clsLeave)) {
+          util.trigger(el, "beforeitemhide", [cmp]);
+          util.trigger(el, "itemhide", [cmp]);
+        }
+      }
+      function triggerHidden(el) {
+        if (util.hasClass(el, clsLeave)) {
+          util.trigger(el, "itemhidden", [cmp]);
+        }
+      }
     }
 
     var SliderReactive = {
-
-        update: {
-
-            write: function() {
-
-                if (this.stack.length || this.dragging) {
-                    return;
-                }
-
-                var index = this.getValidIndex(this.index);
-
-                if (!~this.prevIndex || this.index !== index) {
-                    this.show(index);
-                }
-
-            },
-
-            events: ['resize']
-
-        }
-
+      update: {
+        write() {
+          if (this.stack.length || this.dragging || this.parallax) {
+            return;
+          }
+          const index = this.getValidIndex();
+          if (!~this.prevIndex || this.index !== index) {
+            this.show(index);
+          } else {
+            this._translate(1);
+          }
+        },
+        events: ["resize"]
+      }
     };
 
-    function translate(value, unit) {
-        if ( value === void 0 ) value = 0;
-        if ( unit === void 0 ) unit = '%';
+    var SliderPreload = {
+      observe: lazyload({
+        target: ({ slides }) => slides,
+        targets: (instance) => instance.getAdjacentSlides()
+      }),
+      methods: {
+        getAdjacentSlides() {
+          return [1, -1].map((i) => this.slides[this.getIndex(this.index + i)]);
+        }
+      }
+    };
 
-        value += value ? unit : '';
-        return uikitUtil.isIE ? ("translateX(" + value + ")") : ("translate3d(" + value + ", 0, 0)"); // currently, not translate3d in IE, translate3d within translate3d does not work while transitioning
-    }
-
-    function Transitioner (prev, next, dir, ref) {
-        var center = ref.center;
-        var easing = ref.easing;
-        var list = ref.list;
-
-
-        var deferred = new uikitUtil.Deferred();
-
-        var from = prev
-            ? getLeft(prev, list, center)
-            : getLeft(next, list, center) + uikitUtil.dimensions(next).width * dir;
-        var to = next
-            ? getLeft(next, list, center)
-            : from + uikitUtil.dimensions(prev).width * dir * (uikitUtil.isRtl ? -1 : 1);
-
-        return {
-
-            dir: dir,
-
-            show: function(duration, percent, linear) {
-                if ( percent === void 0 ) percent = 0;
-
-
-                var timing = linear ? 'linear' : easing;
-                duration -= Math.round(duration * uikitUtil.clamp(percent, -1, 1));
-
-                this.translate(percent);
-
-                percent = prev ? percent : uikitUtil.clamp(percent, 0, 1);
-                triggerUpdate(this.getItemIn(), 'itemin', {percent: percent, duration: duration, timing: timing, dir: dir});
-                prev && triggerUpdate(this.getItemIn(true), 'itemout', {percent: 1 - percent, duration: duration, timing: timing, dir: dir});
-
-                uikitUtil.Transition
-                    .start(list, {transform: translate(-to * (uikitUtil.isRtl ? -1 : 1), 'px')}, duration, timing)
-                    .then(deferred.resolve, uikitUtil.noop);
-
-                return deferred.promise;
-
-            },
-
-            cancel: function() {
-                uikitUtil.Transition.cancel(list);
-            },
-
-            reset: function() {
-                uikitUtil.css(list, 'transform', '');
-            },
-
-            forward: function(duration, percent) {
-                if ( percent === void 0 ) percent = this.percent();
-
-                uikitUtil.Transition.cancel(list);
-                return this.show(duration, percent, true);
-            },
-
-            translate: function(percent) {
-
-                var distance = this.getDistance() * dir * (uikitUtil.isRtl ? -1 : 1);
-
-                uikitUtil.css(list, 'transform', translate(uikitUtil.clamp(
-                    -to + (distance - distance * percent),
-                    -getWidth(list),
-                    uikitUtil.dimensions(list).width
-                ) * (uikitUtil.isRtl ? -1 : 1), 'px'));
-
-                var actives = this.getActives();
-                var itemIn = this.getItemIn();
-                var itemOut = this.getItemIn(true);
-
-                percent = prev ? uikitUtil.clamp(percent, -1, 1) : 0;
-
-                uikitUtil.children(list).forEach(function (slide) {
-                    var isActive = uikitUtil.includes(actives, slide);
-                    var isIn = slide === itemIn;
-                    var isOut = slide === itemOut;
-                    var translateIn = isIn || !isOut && (isActive || dir * (uikitUtil.isRtl ? -1 : 1) === -1 ^ getElLeft(slide, list) > getElLeft(prev || next));
-
-                    triggerUpdate(slide, ("itemtranslate" + (translateIn ? 'in' : 'out')), {
-                        dir: dir,
-                        percent: isOut
-                            ? 1 - percent
-                            : isIn
-                                ? percent
-                                : isActive
-                                    ? 1
-                                    : 0
-                    });
-                });
-
-            },
-
-            percent: function() {
-                return Math.abs((uikitUtil.css(list, 'transform').split(',')[4] * (uikitUtil.isRtl ? -1 : 1) + from) / (to - from));
-            },
-
-            getDistance: function() {
-                return Math.abs(to - from);
-            },
-
-            getItemIn: function(out) {
-                if ( out === void 0 ) out = false;
-
-
-                var actives = this.getActives();
-                var nextActives = inView(list, getLeft(next || prev, list, center));
-
-                if (out) {
-                    var temp = actives;
-                    actives = nextActives;
-                    nextActives = temp;
-                }
-
-                return nextActives[uikitUtil.findIndex(nextActives, function (el) { return !uikitUtil.includes(actives, el); })];
-
-            },
-
-            getActives: function() {
-                return inView(list, getLeft(prev || next, list, center));
-            }
-
-        };
-
-    }
-
-    function getLeft(el, list, center) {
-
-        var left = getElLeft(el, list);
-
-        return center
-            ? left - centerEl(el, list)
-            : Math.min(left, getMax(list));
-
-    }
-
-    function getMax(list) {
-        return Math.max(0, getWidth(list) - uikitUtil.dimensions(list).width);
-    }
-
-    function getWidth(list) {
-        return uikitUtil.children(list).reduce(function (right, el) { return uikitUtil.dimensions(el).width + right; }, 0);
-    }
-
-    function centerEl(el, list) {
-        return uikitUtil.dimensions(list).width / 2 - uikitUtil.dimensions(el).width / 2;
-    }
-
-    function getElLeft(el, list) {
-        return el && (uikitUtil.position(el).left + (uikitUtil.isRtl ? uikitUtil.dimensions(el).width - uikitUtil.dimensions(list).width : 0)) * (uikitUtil.isRtl ? -1 : 1) || 0;
-    }
-
-    function inView(list, listLeft) {
-
-        listLeft -= 1;
-        var listWidth = uikitUtil.dimensions(list).width;
-        var listRight = listLeft + listWidth + 2;
-
-        return uikitUtil.children(list).filter(function (slide) {
-            var slideLeft = getElLeft(slide, list);
-            var slideRight = slideLeft + Math.min(uikitUtil.dimensions(slide).width, listWidth);
-
-            return slideLeft >= listLeft && slideRight <= listRight;
-        });
+    function translate(value = 0, unit = "%") {
+      return value ? `translate3d(${value + unit}, 0, 0)` : "";
     }
 
     function triggerUpdate(el, type, data) {
-        uikitUtil.trigger(el, uikitUtil.createEvent(type, false, false, data));
+      util.trigger(el, util.createEvent(type, false, false, data));
+    }
+    function withResolvers() {
+      let resolve;
+      return { promise: new Promise((res) => resolve = res), resolve };
+    }
+
+    function Transitioner(prev, next, dir, { center, easing, list }) {
+      const from = prev ? getLeft(prev, list, center) : getLeft(next, list, center) + util.dimensions(next).width * dir;
+      const to = next ? getLeft(next, list, center) : from + util.dimensions(prev).width * dir * (util.isRtl ? -1 : 1);
+      const { promise, resolve } = withResolvers();
+      return {
+        dir,
+        show(duration, percent = 0, linear) {
+          const timing = linear ? "linear" : easing;
+          duration -= Math.round(duration * util.clamp(percent, -1, 1));
+          util.css(list, "transitionProperty", "none");
+          this.translate(percent);
+          util.css(list, "transitionProperty", "");
+          percent = prev ? percent : util.clamp(percent, 0, 1);
+          triggerUpdate(this.getItemIn(), "itemin", { percent, duration, timing, dir });
+          prev && triggerUpdate(this.getItemIn(true), "itemout", {
+            percent: 1 - percent,
+            duration,
+            timing,
+            dir
+          });
+          util.Transition.start(
+            list,
+            { transform: translate(-to * (util.isRtl ? -1 : 1), "px") },
+            duration,
+            timing
+          ).then(resolve, util.noop);
+          return promise;
+        },
+        cancel() {
+          return util.Transition.cancel(list);
+        },
+        reset() {
+          util.css(list, "transform", "");
+        },
+        async forward(duration, percent = this.percent()) {
+          await this.cancel();
+          return this.show(duration, percent, true);
+        },
+        translate(percent) {
+          if (percent === this.percent()) {
+            return;
+          }
+          const distance = this.getDistance() * dir * (util.isRtl ? -1 : 1);
+          util.css(
+            list,
+            "transform",
+            translate(
+              util.clamp(
+                -to + (distance - distance * percent),
+                -getWidth(list),
+                util.dimensions(list).width
+              ) * (util.isRtl ? -1 : 1),
+              "px"
+            )
+          );
+          const actives = this.getActives();
+          const itemIn = this.getItemIn();
+          const itemOut = this.getItemIn(true);
+          percent = prev ? util.clamp(percent, -1, 1) : 0;
+          for (const slide of util.children(list)) {
+            const isActive = util.includes(actives, slide);
+            const isIn = slide === itemIn;
+            const isOut = slide === itemOut;
+            const translateIn = isIn || !isOut && (isActive || dir * (util.isRtl ? -1 : 1) === -1 ^ getElLeft(slide, list) > getElLeft(prev || next));
+            triggerUpdate(slide, `itemtranslate${translateIn ? "in" : "out"}`, {
+              dir,
+              percent: isOut ? 1 - percent : isIn ? percent : isActive ? 1 : 0
+            });
+          }
+        },
+        percent() {
+          return Math.abs(
+            (new DOMMatrix(util.css(list, "transform")).m41 * (util.isRtl ? -1 : 1) + from) / (to - from)
+          );
+        },
+        getDistance() {
+          return Math.abs(to - from);
+        },
+        getItemIn(out = false) {
+          let actives = this.getActives();
+          let nextActives = inView(list, getLeft(next || prev, list, center));
+          if (out) {
+            const temp = actives;
+            actives = nextActives;
+            nextActives = temp;
+          }
+          return nextActives[util.findIndex(nextActives, (el) => !util.includes(actives, el))];
+        },
+        getActives() {
+          return inView(list, getLeft(prev || next, list, center));
+        }
+      };
+    }
+    function getLeft(el, list, center) {
+      const left = getElLeft(el, list);
+      return center ? left - centerEl(el, list) : Math.min(left, getMax(list));
+    }
+    function getMax(list) {
+      return Math.max(0, getWidth(list) - util.dimensions(list).width);
+    }
+    function getWidth(list, index) {
+      return util.sumBy(util.children(list).slice(0, index), (el) => util.dimensions(el).width);
+    }
+    function centerEl(el, list) {
+      return util.dimensions(list).width / 2 - util.dimensions(el).width / 2;
+    }
+    function getElLeft(el, list) {
+      return el && (util.position(el).left + (util.isRtl ? util.dimensions(el).width - util.dimensions(list).width : 0)) * (util.isRtl ? -1 : 1) || 0;
+    }
+    function inView(list, listLeft) {
+      listLeft -= 1;
+      const listWidth = util.dimensions(list).width;
+      const listRight = listLeft + listWidth + 2;
+      return util.children(list).filter((slide) => {
+        const slideLeft = getElLeft(slide, list);
+        const slideRight = slideLeft + Math.min(util.dimensions(slide).width, listWidth);
+        return slideLeft >= listLeft && slideRight <= listRight;
+      });
     }
 
     var Component = {
-
-        mixins: [Class, Slider, SliderReactive],
-
-        props: {
-            center: Boolean,
-            sets: Boolean
+      mixins: [Class, Slider, SliderReactive, SliderParallax, SliderPreload],
+      props: {
+        center: Boolean,
+        sets: Boolean,
+        active: String
+      },
+      data: {
+        center: false,
+        sets: false,
+        attrItem: "uk-slider-item",
+        selList: ".uk-slider-items",
+        selNav: ".uk-slider-nav",
+        clsContainer: "uk-slider-container",
+        active: "all",
+        Transitioner
+      },
+      computed: {
+        finite({ finite }) {
+          return finite || isFinite(this.list, this.center);
         },
-
-        data: {
-            center: false,
-            sets: false,
-            attrItem: 'uk-slider-item',
-            selList: '.uk-slider-items',
-            selNav: '.uk-slider-nav',
-            clsContainer: 'uk-slider-container',
-            Transitioner: Transitioner
-        },
-
-        computed: {
-
-            avgWidth: function() {
-                return getWidth(this.list) / this.length;
-            },
-
-            finite: function(ref) {
-                var finite = ref.finite;
-
-                return finite || Math.ceil(getWidth(this.list)) < uikitUtil.dimensions(this.list).width + getMaxElWidth(this.list) + this.center;
-            },
-
-            maxIndex: function() {
-
-                if (!this.finite || this.center && !this.sets) {
-                    return this.length - 1;
-                }
-
-                if (this.center) {
-                    return uikitUtil.last(this.sets);
-                }
-
-                var lft = 0;
-                var max = getMax(this.list);
-                var index = uikitUtil.findIndex(this.slides, function (el) {
-
-                    if (lft >= max) {
-                        return true;
-                    }
-
-                    lft += uikitUtil.dimensions(el).width;
-
-                });
-
-                return ~index ? index : this.length - 1;
-            },
-
-            sets: function(ref) {
-                var this$1$1 = this;
-                var sets = ref.sets;
-
-
-                if (!sets) {
-                    return;
-                }
-
-                var width = uikitUtil.dimensions(this.list).width / (this.center ? 2 : 1);
-
-                var left = 0;
-                var leftCenter = width;
-                var slideLeft = 0;
-
-                sets = uikitUtil.sortBy(this.slides, 'offsetLeft').reduce(function (sets, slide, i) {
-
-                    var slideWidth = uikitUtil.dimensions(slide).width;
-                    var slideRight = slideLeft + slideWidth;
-
-                    if (slideRight > left) {
-
-                        if (!this$1$1.center && i > this$1$1.maxIndex) {
-                            i = this$1$1.maxIndex;
-                        }
-
-                        if (!uikitUtil.includes(sets, i)) {
-
-                            var cmp = this$1$1.slides[i + 1];
-                            if (this$1$1.center && cmp && slideWidth < leftCenter - uikitUtil.dimensions(cmp).width / 2) {
-                                leftCenter -= slideWidth;
-                            } else {
-                                leftCenter = width;
-                                sets.push(i);
-                                left = slideLeft + width + (this$1$1.center ? slideWidth / 2 : 0);
-                            }
-
-                        }
-                    }
-
-                    slideLeft += slideWidth;
-
-                    return sets;
-
-                }, []);
-
-                return !uikitUtil.isEmpty(sets) && sets;
-
-            },
-
-            transitionOptions: function() {
-                return {
-                    center: this.center,
-                    list: this.list
-                };
+        maxIndex() {
+          if (!this.finite || this.center && !this.sets) {
+            return this.length - 1;
+          }
+          if (this.center) {
+            return util.last(this.sets);
+          }
+          let lft = 0;
+          const max = getMax(this.list);
+          const index = util.findIndex(this.slides, (el) => {
+            if (lft >= max - 5e-3) {
+              return true;
             }
-
+            lft += util.dimensions(el).width;
+          });
+          return ~index ? index : this.length - 1;
         },
-
-        connected: function() {
-            uikitUtil.toggleClass(this.$el, this.clsContainer, !uikitUtil.$(("." + (this.clsContainer)), this.$el));
-        },
-
-        update: {
-
-            write: function() {
-                var this$1$1 = this;
-
-                this.navItems.forEach(function (el) {
-                    var index = uikitUtil.toNumber(uikitUtil.data(el, this$1$1.attrItem));
-                    if (index !== false) {
-                        el.hidden = !this$1$1.maxIndex || index > this$1$1.maxIndex || this$1$1.sets && !uikitUtil.includes(this$1$1.sets, index);
-                    }
-                });
-
-                if (this.length && !this.dragging && !this.stack.length) {
-                    this.reorder();
-                    this._translate(1);
-                }
-
-                var actives = this._getTransitioner(this.index).getActives();
-                this.slides.forEach(function (slide) { return uikitUtil.toggleClass(slide, this$1$1.clsActive, uikitUtil.includes(actives, slide)); });
-
-                if (this.clsActivated && (!this.sets || uikitUtil.includes(this.sets, uikitUtil.toFloat(this.index)))) {
-                    this.slides.forEach(function (slide) { return uikitUtil.toggleClass(slide, this$1$1.clsActivated || '', uikitUtil.includes(actives, slide)); });
-                }
-            },
-
-            events: ['resize']
-
-        },
-
-        events: {
-
-            beforeitemshow: function(e) {
-
-                if (!this.dragging && this.sets && this.stack.length < 2 && !uikitUtil.includes(this.sets, this.index)) {
-                    this.index = this.getValidIndex();
-                }
-
-                var diff = Math.abs(
-                    this.index
-                    - this.prevIndex
-                    + (this.dir > 0 && this.index < this.prevIndex || this.dir < 0 && this.index > this.prevIndex ? (this.maxIndex + 1) * this.dir : 0)
-                );
-
-                if (!this.dragging && diff > 1) {
-
-                    for (var i = 0; i < diff; i++) {
-                        this.stack.splice(1, 0, this.dir > 0 ? 'next' : 'previous');
-                    }
-
-                    e.preventDefault();
-                    return;
-                }
-
-                var index = this.dir < 0 || !this.slides[this.prevIndex] ? this.index : this.prevIndex;
-                this.duration = speedUp(this.avgWidth / this.velocity) * (uikitUtil.dimensions(this.slides[index]).width / this.avgWidth);
-
-                this.reorder();
-
-            },
-
-            itemshow: function() {
-                if (~this.prevIndex) {
-                    uikitUtil.addClass(this._getTransitioner().getItemIn(), this.clsActive);
-                }
+        sets({ sets: enabled }) {
+          if (!enabled || this.parallax) {
+            return;
+          }
+          let left = 0;
+          const sets = [];
+          const width = util.dimensions(this.list).width;
+          for (let i = 0; i < this.length; i++) {
+            const slideWidth = util.dimensions(this.slides[i]).width;
+            if (left + slideWidth > width) {
+              left = 0;
             }
-
-        },
-
-        methods: {
-
-            reorder: function() {
-                var this$1$1 = this;
-
-
-                if (this.finite) {
-                    uikitUtil.css(this.slides, 'order', '');
-                    return;
-                }
-
-                var index = this.dir > 0 && this.slides[this.prevIndex] ? this.prevIndex : this.index;
-
-                this.slides.forEach(function (slide, i) { return uikitUtil.css(slide, 'order', this$1$1.dir > 0 && i < index
-                        ? 1
-                        : this$1$1.dir < 0 && i >= this$1$1.index
-                            ? -1
-                            : ''
-                    ); }
-                );
-
-                if (!this.center) {
-                    return;
-                }
-
-                var next = this.slides[index];
-                var width = uikitUtil.dimensions(this.list).width / 2 - uikitUtil.dimensions(next).width / 2;
-                var j = 0;
-
-                while (width > 0) {
-                    var slideIndex = this.getIndex(--j + index, index);
-                    var slide = this.slides[slideIndex];
-
-                    uikitUtil.css(slide, 'order', slideIndex > index ? -2 : -1);
-                    width -= uikitUtil.dimensions(slide).width;
-                }
-
-            },
-
-            getValidIndex: function(index, prevIndex) {
-                if ( index === void 0 ) index = this.index;
-                if ( prevIndex === void 0 ) prevIndex = this.prevIndex;
-
-
-                index = this.getIndex(index, prevIndex);
-
-                if (!this.sets) {
-                    return index;
-                }
-
-                var prev;
-
-                do {
-
-                    if (uikitUtil.includes(this.sets, index)) {
-                        return index;
-                    }
-
-                    prev = index;
-                    index = this.getIndex(index + this.dir, prevIndex);
-
-                } while (index !== prev);
-
-                return index;
+            if (this.center) {
+              if (left < width / 2 && left + slideWidth + util.dimensions(this.slides[util.getIndex(i + 1, this.slides)]).width / 2 > width / 2) {
+                sets.push(i);
+                left = width / 2 - slideWidth / 2;
+              }
+            } else if (left === 0) {
+              sets.push(Math.min(i, this.maxIndex));
             }
-
+            left += slideWidth;
+          }
+          if (sets.length) {
+            return sets;
+          }
+        },
+        transitionOptions() {
+          return {
+            center: this.center,
+            list: this.list
+          };
+        },
+        slides() {
+          return util.children(this.list).filter(util.isVisible);
         }
-
+      },
+      connected() {
+        util.toggleClass(this.$el, this.clsContainer, !util.$(`.${this.clsContainer}`, this.$el));
+      },
+      observe: resize({
+        target: ({ slides, $el }) => [$el, ...slides]
+      }),
+      update: {
+        write() {
+          for (const el of this.navItems) {
+            const index = util.toNumber(util.data(el, this.attrItem));
+            if (index !== false) {
+              el.hidden = !this.maxIndex || index > this.maxIndex || this.sets && !util.includes(this.sets, index);
+            }
+          }
+          this.reorder();
+          if (!this.parallax) {
+            this._translate(1);
+          }
+          this.updateActiveClasses();
+        },
+        events: ["resize"]
+      },
+      events: {
+        beforeitemshow(e) {
+          if (!this.dragging && this.sets && this.stack.length < 2 && !util.includes(this.sets, this.index)) {
+            this.index = this.getValidIndex();
+          }
+          const diff = Math.abs(
+            this.index - this.prevIndex + (this.dir > 0 && this.index < this.prevIndex || this.dir < 0 && this.index > this.prevIndex ? (this.maxIndex + 1) * this.dir : 0)
+          );
+          if (!this.dragging && diff > 1) {
+            for (let i = 0; i < diff; i++) {
+              this.stack.splice(1, 0, this.dir > 0 ? "next" : "previous");
+            }
+            e.preventDefault();
+            return;
+          }
+          const index = this.dir < 0 || !this.slides[this.prevIndex] ? this.index : this.prevIndex;
+          const avgWidth = getWidth(this.list) / this.length;
+          this.duration = speedUp(avgWidth / this.velocity) * (util.dimensions(this.slides[index]).width / avgWidth);
+          this.reorder();
+        },
+        itemshow() {
+          if (~this.prevIndex) {
+            util.addClass(this._getTransitioner().getItemIn(), this.clsActive);
+          }
+          this.updateActiveClasses(this.prevIndex);
+        },
+        itemshown() {
+          this.updateActiveClasses();
+        }
+      },
+      methods: {
+        reorder() {
+          if (this.finite) {
+            util.css(this.slides, "order", "");
+            return;
+          }
+          const index = this.dir > 0 && this.slides[this.prevIndex] ? this.prevIndex : this.index;
+          this.slides.forEach(
+            (slide, i) => util.css(
+              slide,
+              "order",
+              this.dir > 0 && i < index ? 1 : this.dir < 0 && i >= this.index ? -1 : ""
+            )
+          );
+          if (!this.center || !this.length) {
+            return;
+          }
+          const next = this.slides[index];
+          let width = util.dimensions(this.list).width / 2 - util.dimensions(next).width / 2;
+          let j = 0;
+          while (width > 0) {
+            const slideIndex = this.getIndex(--j + index, index);
+            const slide = this.slides[slideIndex];
+            util.css(slide, "order", slideIndex > index ? -2 : -1);
+            width -= util.dimensions(slide).width;
+          }
+        },
+        updateActiveClasses(currentIndex = this.index) {
+          let actives = this._getTransitioner(currentIndex).getActives();
+          if (this.active !== "all") {
+            actives = [this.slides[this.getValidIndex(currentIndex)]];
+          }
+          const activeClasses = [
+            this.clsActive,
+            !this.sets || util.includes(this.sets, util.toFloat(this.index)) ? this.clsActivated : ""
+          ];
+          for (const slide of this.slides) {
+            const active = util.includes(actives, slide);
+            util.toggleClass(slide, activeClasses, active);
+            util.attr(slide, "aria-hidden", !active);
+            for (const focusable of util.$$(util.selFocusable, slide)) {
+              if (!util.hasOwn(focusable, "_tabindex")) {
+                focusable._tabindex = util.attr(focusable, "tabindex");
+              }
+              util.attr(focusable, "tabindex", active ? focusable._tabindex : -1);
+            }
+          }
+        },
+        getValidIndex(index = this.index, prevIndex = this.prevIndex) {
+          index = this.getIndex(index, prevIndex);
+          if (!this.sets) {
+            return index;
+          }
+          let prev;
+          do {
+            if (util.includes(this.sets, index)) {
+              return index;
+            }
+            prev = index;
+            index = this.getIndex(index + this.dir, prevIndex);
+          } while (index !== prev);
+          return index;
+        },
+        getAdjacentSlides() {
+          const { width } = util.dimensions(this.list);
+          const left = -width;
+          const right = width * 2;
+          const slideWidth = util.dimensions(this.slides[this.index]).width;
+          const slideLeft = this.center ? width / 2 - slideWidth / 2 : 0;
+          const slides = /* @__PURE__ */ new Set();
+          for (const i of [-1, 1]) {
+            let currentLeft = slideLeft + (i > 0 ? slideWidth : 0);
+            let j = 0;
+            do {
+              const slide = this.slides[this.getIndex(this.index + i + j++ * i)];
+              currentLeft += util.dimensions(slide).width * i;
+              slides.add(slide);
+            } while (this.length > j && currentLeft > left && currentLeft < right);
+          }
+          return Array.from(slides);
+        },
+        getIndexAt(percent) {
+          let index = -1;
+          const scrollDist = this.center ? getWidth(this.list) - (util.dimensions(this.slides[0]).width / 2 + util.dimensions(util.last(this.slides)).width / 2) : getWidth(this.list, this.maxIndex);
+          let dist = percent * scrollDist;
+          let slidePercent = 0;
+          do {
+            const slideWidth = util.dimensions(this.slides[++index]).width;
+            const slideDist = this.center ? slideWidth / 2 + util.dimensions(this.slides[index + 1]).width / 2 : slideWidth;
+            slidePercent = dist / slideDist % 1;
+            dist -= slideDist;
+          } while (dist >= 0 && index < this.maxIndex);
+          return [index, slidePercent];
+        }
+      }
     };
-
+    function isFinite(list, center) {
+      if (!list || list.length < 2) {
+        return true;
+      }
+      const { width: listWidth } = util.dimensions(list);
+      if (!center) {
+        return Math.ceil(getWidth(list)) < Math.trunc(listWidth + getMaxElWidth(list));
+      }
+      const slides = util.children(list);
+      const listHalf = Math.trunc(listWidth / 2);
+      for (const index in slides) {
+        const slide = slides[index];
+        const slideWidth = util.dimensions(slide).width;
+        const slidesInView = /* @__PURE__ */ new Set([slide]);
+        let diff = 0;
+        for (const i of [-1, 1]) {
+          let left = slideWidth / 2;
+          let j = 0;
+          while (left < listHalf) {
+            const nextSlide = slides[util.getIndex(+index + i + j++ * i, slides)];
+            if (slidesInView.has(nextSlide)) {
+              return true;
+            }
+            left += util.dimensions(nextSlide).width;
+            slidesInView.add(nextSlide);
+          }
+          diff = Math.max(
+            diff,
+            slideWidth / 2 + util.dimensions(slides[util.getIndex(+index + i, slides)]).width / 2 - (left - listHalf)
+          );
+        }
+        if (Math.trunc(diff) > util.sumBy(
+          slides.filter((slide2) => !slidesInView.has(slide2)),
+          (slide2) => util.dimensions(slide2).width
+        )) {
+          return true;
+        }
+      }
+      return false;
+    }
     function getMaxElWidth(list) {
-        return Math.max.apply(Math, [ 0 ].concat( uikitUtil.children(list).map(function (el) { return uikitUtil.dimensions(el).width; }) ));
+      return Math.max(0, ...util.children(list).map((el) => util.dimensions(el).width));
     }
 
-    if (typeof window !== 'undefined' && window.UIkit) {
-        window.UIkit.component('slider', Component);
+    if (typeof window !== "undefined" && window.UIkit) {
+      window.UIkit.component("slider", Component);
     }
 
     return Component;

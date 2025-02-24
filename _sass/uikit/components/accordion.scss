@@ -14,14 +14,8 @@
 // Variables
 // ========================================================================
 
-$accordion-item-margin-top:                     $global-margin !default;
 
-$accordion-title-font-size:                     $global-medium-font-size !default;
-$accordion-title-line-height:                   1.4 !default;
-$accordion-title-color:                         $global-emphasis-color !default;
-$accordion-title-hover-color:                   $global-color !default;
 
-$accordion-content-margin-top:                  $global-margin !default;
 
 
 /* ========================================================================
@@ -38,10 +32,11 @@ $accordion-content-margin-top:                  $global-margin !default;
 /* Item
  ========================================================================== */
 
-.uk-accordion > :nth-child(n+2) {
-    margin-top: $accordion-item-margin-top;
+.uk-accordion > * {
     @if(mixin-exists(hook-accordion-item)) {@include hook-accordion-item();}
 }
+
+.uk-accordion > :nth-child(n+2) { margin-top: $accordion-item-margin-top; }
 
 
 /* Title
@@ -95,8 +90,6 @@ $accordion-content-margin-top:                  $global-margin !default;
 // Inverse
 // ========================================================================
 
-$inverse-accordion-title-color:              $inverse-global-emphasis-color !default;
-$inverse-accordion-title-hover-color:        $inverse-global-color !default;
 
 
 

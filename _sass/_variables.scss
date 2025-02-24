@@ -1,4 +1,5 @@
 // UIkit layout variable overrides
+$global-margin: 20px !default;
 
 // Fonts
 $global-font-family: "Product Sans", "Noto Sans", "Verdana", sans-serif;
@@ -50,12 +51,30 @@ $table-small-cell-padding-vertical: 5px;
 // Lists
 $list-margin-top: 5px;
 
-// Navigation
+// Navigation Bar Adjustment
 $navbar-breakpoint: 1010px;
 $navbar-nav-item-height: 70px;
 $navbar-nav-item-font-size: 1.02rem;
 $nav-primary-font-size: 1.4rem;
-$navbar-nav-item-padding-horizontal: 10px;
+$navbar-nav-item-padding-horizontal: 0.1px;
+
+// adjusted settings from config before update
+$offcanvas-bar-width: 270px;
+$offcanvas-bar-padding-vertical: 20px;
+$offcanvas-bar-padding-horizontal: 20px;
+$offcanvas-close-position: 20px;
+$offcanvas-close-padding: 5px;
+
+$offcanvas-bar-width-s: 270px;
+$offcanvas-bar-padding-vertical-s: 30px;
+$offcanvas-bar-padding-horizontal-s: 30px;
+
+$offcanvas-close-position: 20px;
+$offcanvas-close-padding: 5px;
+
+$offcanvas-close-position-s: 20px;
+
+
 
 // Target / Fragment identifier
 $target-offset: $navbar-nav-item-height + 140px;

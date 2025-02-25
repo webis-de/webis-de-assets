@@ -56,7 +56,7 @@ $navbar-breakpoint: 1010px;
 $navbar-nav-item-height: 70px;
 $navbar-nav-item-font-size: 1.02rem;
 $nav-primary-font-size: 1.4rem;
-$navbar-nav-item-padding-horizontal: 0.1px;
+$navbar-nav-item-padding-horizontal: 0.01px;
 
 // adjusted settings from config before update
 $offcanvas-bar-width: 270px;
@@ -72,7 +72,9 @@ $offcanvas-close-padding: 5px;
 
 $offcanvas-close-position-s: 20px;
 
-
+// control spacing of some items in navbar to form groups
+/// Pople/For Students and  Lecturenotes/Research/Publications and Data/Events/Facilities
+$navbar-group-padding: 40px;
 
 // Target / Fragment identifier
 $target-offset: $navbar-nav-item-height + 140px;

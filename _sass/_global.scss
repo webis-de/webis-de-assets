@@ -94,10 +94,18 @@ svg.text-logo text {
     }
 }
 
+// forming groups on the taskbar
 .desktop-nav {
     // made visible by media query later
     display: none;
+
+    .uk-navbar-nav li:nth-of-type(2),
+    .uk-navbar-nav li:nth-of-type(5) {
+        margin-right: $navbar-group-padding; 
+    }
 }
+
+
 
 .uk-tab {
     line-height: $text-meta-line-height;

@@ -328,7 +328,7 @@ h1 a, h1 a:hover {
     }
 }
 
-@media (min-width: $navbar-breakpoint) {
+@media (min-width: 64em) {
     .mobile-nav {
         display: none;
     }

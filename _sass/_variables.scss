@@ -1,4 +1,7 @@
 // UIkit layout variable overrides
+
+@use "sass:color";
+
 //$global-margin: 20px !default;
 
 // Fonts
@@ -28,7 +31,7 @@ $base-selection-background: #1c79cc;
 $table-header-target-color: #d9e7f7;
 
 $global-secondary-background: #323232;
-$global-secondary-background-lighter: lighten($global-secondary-background, 6);
+$global-secondary-background-lighter: color.adjust($global-secondary-background, $lightness: 6%);
 $global-color: #222;
 $global-muted-color: #666;
 $base-code-color: #454545;

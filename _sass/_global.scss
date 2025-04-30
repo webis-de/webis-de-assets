@@ -1,5 +1,7 @@
 // Global style definitions
 
+@use "sass:color";
+
 // Fix for jumpy scroll position (see https://github.com/uikit/uikit/issues/1379)
 body {
     overflow: hidden;
@@ -51,7 +53,7 @@ svg.text-logo text {
 }
 
 .background-muted-darker {
-    background-color: darken($global-muted-background, 5);
+    background-color: color.adjust($global-muted-background, $lightness: -5%);
 }
 
 .background-muted-striped {
@@ -60,14 +62,14 @@ svg.text-logo text {
     }
 
     &:nth-child(2n) {
-        background-color: darken($global-muted-background, 5);
+        background-color: color.adjust($global-muted-background, $lightness: -5%);
     }
 }
 
 .vertical-inline-divider {
     margin: 0 1rem;
     width: 0;
-    border-left: $global-border-width solid lighten($global-muted-color, 23);
+    border-left: $global-border-width solid color.adjust($global-muted-color, $lightness: 23%);
 }
 
 @media (max-width: $breakpoint-medium) {
@@ -78,7 +80,7 @@ svg.text-logo text {
 }
 
 .global-nav {
-    border-bottom: 1px solid lighten($global-secondary-background, 25);
+    border-bottom: 1px solid color.adjust($global-secondary-background, $lightness: 25%);
 
     .uk-logo {
         height: 1.9rem;

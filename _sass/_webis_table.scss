@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .uk-table {
     th {
         font-weight: bolder;
@@ -9,12 +11,12 @@
     }
 
     tr th {
-        background-color: darken($background-muted-background, 2);
-        border-bottom: 2px solid darken($background-muted-background, 7) !important;
+        background-color: color.adjust($background-muted-background, $lightness: -2%);
+        border-bottom: 2px solid color.adjust($background-muted-background, $lightness: -7%) !important;
     }
 
     thead tr:first-child th {
-        background-color: darken($background-muted-background, 40);
+        background-color: color.adjust($background-muted-background, $lightness: -40%);
         color: $global-inverse-color;
     }
 

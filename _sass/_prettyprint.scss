@@ -1,7 +1,9 @@
 /*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
 
+@use "sass:color";
+
 .prettyprint {
-    background-color: lighten($global-secondary-background, 5);
+    background-color: color.adjust($global-secondary-background, $lightness: 5%);
     break-inside: avoid;
     page-break-inside: avoid;
     color: $global-inverse-color;
@@ -18,7 +20,7 @@
     .linenums {
         margin-top: 0;
         margin-bottom: 0;
-        color: darken($global-inverse-color, 30);
+        color: color.adjust($global-inverse-color, $lightness: -30%);
     }
 
     .L0, .L1, .L2, .L3, .L4, .L5, .L6, .L7, .L8, .L9 {

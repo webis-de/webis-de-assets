@@ -1,3 +1,5 @@
+@use "sass:color";
+
 *:not(.uk-hidden) ~ .webis-list {
     margin-top: 40px;
 }
@@ -10,7 +12,7 @@
     }
 
     .entry {
-        border-top: 1px solid darken($global-border, 15);
+        border-top: 1px solid color.adjust($global-border, $lightness: -15%);
         @extend .uk-padding-small;
     }
 

@@ -32,6 +32,10 @@
         color: $global-color !important;
     }
 
+     tr.clickable {  // when hovering over clickable indicate that it be clicked
+        cursor: pointer;
+    }
+
     .numeric {
         text-align: right;
         padding-right: 12px !important;
@@ -141,3 +145,5 @@ table.targetable td:first-child {
         }
     }
 }
+
+

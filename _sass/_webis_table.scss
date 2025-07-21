@@ -10,6 +10,10 @@
       color: #999;
     }
 
+    th.clickable span {  // when hovering over clickable header indicate that it be clicked
+       cursor: pointer;
+    }
+
     tr th {
         background-color: color.adjust($background-muted-background, $lightness: -2%);
         border-bottom: 2px solid color.adjust($background-muted-background, $lightness: -7%) !important;
@@ -30,6 +34,10 @@
     tr:hover > *[id] ~ * {
         background-color: #ffd !important;
         color: $global-color !important;
+    }
+
+     tr.clickable {  // when hovering over clickable indicate that it be clicked
+        cursor: pointer;
     }
 
     .numeric {
@@ -141,3 +149,5 @@ table.targetable td:first-child {
         }
     }
 }
+
+

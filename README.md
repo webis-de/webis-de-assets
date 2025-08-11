@@ -18,5 +18,9 @@ repository and run
 
     jekyll serve
 
+Yoy can e.g. use `bundle exec jekyll serve --port 5000` for local debugging.
+
 For more build and usage instructions, please refer to the `webis-de.github.io`
 repositories' README file.
+
+

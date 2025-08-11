@@ -84,6 +84,16 @@ function initTableSorting(tables = document.querySelectorAll('table.sortable')) 
     });
   });
 };
+
+function sortTablesByName(tables = document.querySelectorAll('table.sortable')) {
+  tables.forEach(table => {
+    const nameHeader = Array.from(table.querySelectorAll('th.header.clickable'))
+      .find(th => th.textContent.trim() === 'Name');
+    if (nameHeader) {
+      nameHeader.click();
+    }
+  });
+}
   
 // Automatically enable row highlighting if selection.js included
 if (typeof initTableHighlightOnClick === "function") { // selection.js included

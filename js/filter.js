@@ -5,19 +5,24 @@
 const historyNewStateThresholdMs = 1000;
 let lastHistoryChangeMs = new Date().getTime();
 
+// Patch updateUrlQueryParameter to encode '+' as space in the URL
 function updateUrlQueryParameter(query) {
   const url = new URL(document.location.href);
-  if (query.trim() === "") {
+
+  // Build the URL value: every literal "+" is written as a space
+  const queryForUrl = encodeQueryForUrl(query);
+
+  if (queryForUrl.trim() === "") {
     if (!url.searchParams.has("q")) {
       return;
     } else {
       url.searchParams.delete("q");
     }
   } else {
-    if (url.searchParams.has("q") && url.searchParams.get("q") === query) {
+    if (url.searchParams.has("q") && url.searchParams.get("q") === queryForUrl) {
       return;
     } else {
-      url.searchParams.set("q", query);
+      url.searchParams.set("q", queryForUrl);
     }
   }
 
@@ -26,9 +31,9 @@ function updateUrlQueryParameter(query) {
   lastHistoryChangeMs = now;
 
   if (msSinceLastHistoryChange >= historyNewStateThresholdMs) {
-    history.pushState({ query: query }, "", url);
+    history.pushState({ query: queryForUrl }, "", url);
   } else {
-    history.replaceState({ query: query }, "", url);
+    history.replaceState({ query: queryForUrl }, "", url);
   }
 }
 
@@ -218,35 +223,52 @@ function defaultDataAttributesPopulationFunction(node) {
  * filterFunction: a function that takes a filter query and filters the list on the page accordingly
  * filterField: the input field to initialize
  */
+
+// Treat "+" as space for filtering, but keep "+" visible in the input
+function normalizePlusForFiltering(str) {
+  return String(str).replace(/\+/g, " ");
+}
+
+// When writing to the URL, encode "+" as space so the querystring carries spaces
+function encodeQueryForUrl(q) {
+  return String(q).replace(/\+/g, " ");
+}
+
 function initializeFilterField(filterFunction, filterField = document.getElementById("filter-field")) {
   if (filterField !== null) {
     // remove spurious "\"
     if (document.location.search.indexOf("\\") > 0) {
-        document.location.search = document.location.search.replace(/\\/g, "");
+      document.location.search = document.location.search.replace(/\\/g, "");
     }
+
+    // Read initial value from URL (this will already have '+' decoded as spaces by URLSearchParams)
     let params = new URLSearchParams(document.location.search);
-
-    // Set up filter field
-    if ((params.has("q")) && (params.get("q") !== "")) {
-        const query = params.get("q");
-        filterField.value = query;
-    }
-    filterField.addEventListener("input", event => filterFunction(event.target.value));
-    filterFunction(filterField.value);
-    if (document.location.hash === "") { // only focus filterField if no fragment identifier present
-        filterField.focus();
+    if (params.has("q") && params.get("q") !== "") {
+      const qFromUrl = params.get("q");        // may contain spaces, not literal plus
+      filterField.value = qFromUrl;            // show exactly what the URL had (spaces stay spaces)
     }
 
-    // Update if query in URL changed (e.g., browser back button)
-    window.addEventListener("popstate", event => {
+    // While typing: keep "+" visible, but filter with "+" treated as space
+    filterField.addEventListener("input", (event) => {
+      const raw = event.target.value;                // keep as-is (includes any '+')
+      const normalizedForFilter = normalizePlusForFiltering(raw);
+      filterFunction(normalizedForFilter);
+    });
+
+    // First filter run
+    filterFunction(normalizePlusForFiltering(filterField.value));
+
+    if (document.location.hash === "") {
+      filterField.focus();
+    }
+
+    // Back/forward navigation: set field from URL and filter accordingly
+    window.addEventListener("popstate", () => {
       let params = new URL(document.location).searchParams;
-
       if (params.has("q")) {
-        const query = params.get("q");
-        if (query !== filterField.value) {
-          filterField.value = query;
-          filterFunction(query);
-        }
+        const q = params.get("q"); // spaces from URLSearchParams
+        filterField.value = q;
+        filterFunction(normalizePlusForFiltering(q));
       } else {
         filterField.value = "";
         filterFunction("");
@@ -254,7 +276,6 @@ function initializeFilterField(filterFunction, filterField = document.getElement
     });
   }
 }
-
 /*
  * groups: the groups in which the elements should be filtered
  * elementSelector: query selector that specifies each element within a group to be filtered
@@ -314,24 +335,35 @@ function includeList(parentElement, sourceUrl, listSelector, listCallback) {
   request.send();
 };
 
-// update legacy 'filter:' option
-if (document.location.hash.startsWith("#filter:")) {
-    const query = decodeURIComponent(document.location.hash.substr(8));
-    
-    let newUrl = new URL(document.location);
-    newUrl.hash = "";
-    newUrl.searchParams.set("q", query);
-    history.replaceState({ query: query }, document.title, newUrl.href);
+// --- Legacy URL migrations (hash-based) -----------------------------
+
+// Helper: decode old hash payload and normalize "+" to spaces
+function decodeLegacyHashQuery(s) {
+  // decodeURIComponent does NOT convert "+" to space, so we do it explicitly
+  const decoded = decodeURIComponent(s || "");
+  return decoded.replace(/\+/g, " ");
 }
 
-// update legacy '#?q=' option
-if (document.location.hash.startsWith("#?q=")) {
-    const query = decodeURIComponent(document.location.hash.substr(4));
+// update legacy 'filter:' option (e.g., ...#filter:sebastian+heineking)
+if (document.location.hash.startsWith("#filter:")) {
+  const raw = document.location.hash.substr(8);        // after "#filter:"
+  const query = decodeLegacyHashQuery(raw);            // normalize "+" -> " "
 
-    let newUrl = new URL(document.location);
-    newUrl.hash = "";
-    newUrl.searchParams.set("q", query);
-    history.replaceState({ query: query }, document.title, newUrl.href);
+  const newUrl = new URL(document.location);
+  newUrl.hash = "";
+  newUrl.searchParams.set("q", query);                 // writes as space -> "+" in URL
+  history.replaceState({ query }, document.title, newUrl.href);
+}
+
+// update legacy '#?q=' option (e.g., ...#?q=sebastian+heineking)
+if (document.location.hash.startsWith("#?q=")) {
+  const raw = document.location.hash.substr(4);        // after "#?q="
+  const query = decodeLegacyHashQuery(raw);            // normalize "+" -> " "
+
+  const newUrl = new URL(document.location);
+  newUrl.hash = "";
+  newUrl.searchParams.set("q", query);                 // writes as space -> "+" in URL
+  history.replaceState({ query }, document.title, newUrl.href);
 }
 
 ////////////////////////////////////////////////////

@@ -1,0 +1,5509 @@
+{
+ "generated": "2026-09-16",
+ "decisions": "kartei-photo-decisions.txt (rev. 13, final)",
+ "script_sha256": "cf601bc24046111232b334ae94db4382abd3595d978bb6386499042779894a12",
+ "entries": {
+  "achkar": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/achkar.jpg",
+   "blob_sha1": "f3f72e6e3fa65021e5616234effbb09304259d8d",
+   "local_copy": "rescued-hires/achkar.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "3e4c6d5a1621baf43183c4b080b46b89d4d7ac2da3645d1668539a152224fad6",
+   "outputs": {
+    "master": {
+     "file": "people/master/achkar.jpg",
+     "sha256": "cb04122bedce7105692e0e7f46a936515d134b4589fa1728977f0efec586ce8a"
+    },
+    "105x140": {
+     "file": "people/105x140/achkar.jpg",
+     "sha256": "feaa0519f3cf212d9a76215fa9186b539c2734ecbe1b1a900f90010a6a3d0f6a"
+    }
+   }
+  },
+  "adineh": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/adineh.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "123cf4723fd8efc901db12af79816aced9d8daae",
+   "source_sha256": "d726da5257f97dd4fb681568af07c02521536d1489598c13ded05334bac9624d",
+   "outputs": {
+    "master": {
+     "file": "people/master/adineh.jpg",
+     "sha256": "d726da5257f97dd4fb681568af07c02521536d1489598c13ded05334bac9624d"
+    },
+    "105x140": {
+     "file": "people/105x140/adineh.jpg",
+     "sha256": "d726da5257f97dd4fb681568af07c02521536d1489598c13ded05334bac9624d"
+    }
+   }
+  },
+  "ajjour": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/ajjour.jpg",
+   "form": "roh",
+   "flags": null,
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "c8d8b169dc4cdc18eeb5f8595c4bae07fd65fa1c",
+   "source_sha256": "8c99bae02d6ef3ee9679c8a33300c382eefe6d49222542004516477703be7d3d",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/ajjour.jpg",
+     "sha256": "8c99bae02d6ef3ee9679c8a33300c382eefe6d49222542004516477703be7d3d"
+    },
+    "105x140": {
+     "file": "people/105x140/ajjour.jpg",
+     "sha256": "8c99bae02d6ef3ee9679c8a33300c382eefe6d49222542004516477703be7d3d"
+    }
+   }
+  },
+  "akay": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/akay.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "502ea652661707a93c298974e16550085a686ca4",
+   "blob_sha1": "2142fcfa4d62fb496502e0f4a94d187f2c9c2b15",
+   "source_sha256": "48f7a56a108033d850c33ee57f4a0a3b0eac6cc1326473dcd59922190a6aae71",
+   "outputs": {
+    "master": {
+     "file": "people/master/akay.jpg",
+     "sha256": "48f7a56a108033d850c33ee57f4a0a3b0eac6cc1326473dcd59922190a6aae71"
+    },
+    "105x140": {
+     "file": "people/105x140/akay.jpg",
+     "sha256": "48f7a56a108033d850c33ee57f4a0a3b0eac6cc1326473dcd59922190a6aae71"
+    }
+   }
+  },
+  "akiki": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/akiki.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "f6e1eb92afaef4de457c4b1da694f04235b7dbf6",
+   "source_sha256": "1886aa55cc82097867be9d6afa5b9c0e6f52d3812a4b7b289ece9b0b176254b2",
+   "outputs": {
+    "master": {
+     "file": "people/master/akiki.jpg",
+     "sha256": "1886aa55cc82097867be9d6afa5b9c0e6f52d3812a4b7b289ece9b0b176254b2"
+    },
+    "105x140": {
+     "file": "people/105x140/akiki.jpg",
+     "sha256": "1886aa55cc82097867be9d6afa5b9c0e6f52d3812a4b7b289ece9b0b176254b2"
+    }
+   }
+  },
+  "aliannejadi": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/aliannejadi.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "e82ad19fed8dfd6772c2931d00d0faacaaef1e00",
+   "blob_sha1": "78e3bbbbb13632c1e34b767ee80936b2dd323eea",
+   "source_sha256": "9c97ded301af9697939a459da9c5de1edd3ce9e7228c2cfa32aa02937a84c8c5",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/aliannejadi.jpg",
+     "sha256": "9c97ded301af9697939a459da9c5de1edd3ce9e7228c2cfa32aa02937a84c8c5"
+    },
+    "105x140": {
+     "file": "event-people/105x140/aliannejadi.jpg",
+     "sha256": "9c97ded301af9697939a459da9c5de1edd3ce9e7228c2cfa32aa02937a84c8c5"
+    }
+   }
+  },
+  "aljami": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/aljami.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "aa0a6c7963b86c11872424b25b24968dd1e481f4",
+   "blob_sha1": "621d2409668c9859ffc476ae7d613dd09b75be87",
+   "source_sha256": "af605752f7c25db277d038a3d5265f4635ab7a7bb8e25c42b897a831c45d7e38",
+   "outputs": {
+    "master": {
+     "file": "people/master/aljami.jpg",
+     "sha256": "af605752f7c25db277d038a3d5265f4635ab7a7bb8e25c42b897a831c45d7e38"
+    },
+    "105x140": {
+     "file": "people/105x140/aljami.jpg",
+     "sha256": "af605752f7c25db277d038a3d5265f4635ab7a7bb8e25c42b897a831c45d7e38"
+    }
+   }
+  },
+  "alkhatib": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "people/img/alkhatib.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "af4b705be2a47a1ed7558c135743a33a91b89bfc",
+   "blob_sha1": "9d8430091cde0ed7aec62046a13f0faad083e5f8",
+   "source_sha256": "8114f4702123e34c511eaebdbbc3091c90184058753bad11b37ccf2dd18d8dea",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/alkhatib.jpg",
+     "sha256": "8114f4702123e34c511eaebdbbc3091c90184058753bad11b37ccf2dd18d8dea"
+    },
+    "105x140": {
+     "file": "people/105x140/alkhatib.jpg",
+     "sha256": "8114f4702123e34c511eaebdbbc3091c90184058753bad11b37ccf2dd18d8dea"
+    }
+   }
+  },
+  "alshomary": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/alshomary.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "773a8214768badeaa6bf8494cff5486d74888a11",
+   "blob_sha1": "92910535162f28974b7199fcf144266646e33cbc",
+   "source_sha256": "172a6ed509842b51f68b7e83165c3930dee2cc3df6512defdd6da5065796b021",
+   "outputs": {
+    "master": {
+     "file": "people/master/alshomary.jpg",
+     "sha256": "172a6ed509842b51f68b7e83165c3930dee2cc3df6512defdd6da5065796b021"
+    },
+    "105x140": {
+     "file": "people/105x140/alshomary.jpg",
+     "sha256": "172a6ed509842b51f68b7e83165c3930dee2cc3df6512defdd6da5065796b021"
+    }
+   }
+  },
+  "anderka": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/anderka.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "1066fd1438ebd0d2ceedc2369d97ca9ce5ff6e72",
+   "source_sha256": "b9735977587135ea1cf316a5e0f880cbca5cf532861c1abae3ca6b9e133bf902",
+   "outputs": {
+    "master": {
+     "file": "people/master/anderka.jpg",
+     "sha256": "b9735977587135ea1cf316a5e0f880cbca5cf532861c1abae3ca6b9e133bf902"
+    },
+    "105x140": {
+     "file": "people/105x140/anderka.jpg",
+     "sha256": "b9735977587135ea1cf316a5e0f880cbca5cf532861c1abae3ca6b9e133bf902"
+    }
+   }
+  },
+  "anifowose": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/anifowose.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "3b726e191a8f5f3dfeeb39ea73a65e04e415b5c6",
+   "source_sha256": "b00e1ed70df7c20153046e65a7e9fc6430314a4eb9d20039f81478d0e128862a",
+   "outputs": {
+    "master": {
+     "file": "people/master/anifowose.jpg",
+     "sha256": "b00e1ed70df7c20153046e65a7e9fc6430314a4eb9d20039f81478d0e128862a"
+    },
+    "105x140": {
+     "file": "people/105x140/anifowose.jpg",
+     "sha256": "b00e1ed70df7c20153046e65a7e9fc6430314a4eb9d20039f81478d0e128862a"
+    }
+   }
+  },
+  "argamon": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/argamon.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "666e2a9049792bd8f7bf410c5275998f17527c05",
+   "blob_sha1": "f0a37aae606bd91a4f0186c26a4764acb927100b",
+   "source_sha256": "acf24a86c0d02aef54f187eac098b5a704589f4cb7ccd99365e0eeac525aca84",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/argamon.jpg",
+     "sha256": "8809045eb3734279849aa6297e9fe52cc33e7c0df2e92d68da15a3d44c46f72d"
+    },
+    "105x140": {
+     "file": "event-people/105x140/argamon.jpg",
+     "sha256": "57de4353fd230ed5b77d4df92c69f787bfbaa8938e79aaecc64a80b051e1478b"
+    }
+   }
+  },
+  "ashley": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/ashley.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "1eb0a98d226ecb0f9c78c1cff4d0ad5ca7d8519f",
+   "source_sha256": "c47ecd6740839de1f92de1be9d4da325b14a6c3f28a069e9aaa8eb0981dd318d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/ashley.jpg",
+     "sha256": "5ea2f6ca35bbd52e59de7d9193ff62937f9a0effec00c9627cef28c3882eaf8e"
+    },
+    "105x140": {
+     "file": "event-people/105x140/ashley.jpg",
+     "sha256": "eb085e0f13bf7c58653d3b891310574b4ed95d454a70c254b7f28a7631710547"
+    }
+   }
+  },
+  "avatar": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/avatar.jpg",
+   "form": "roh",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "16e7c36ff36e913e06285fa22c80e0d143b37995",
+   "blob_sha1": "76d2577b05186d458c7894a437f9520106991756",
+   "source_sha256": "db80d6172a0153699fb94e37a702be05f1608c2aeb3f9c5b1c87eca0d94e7ad8",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/avatar.jpg",
+     "sha256": "db80d6172a0153699fb94e37a702be05f1608c2aeb3f9c5b1c87eca0d94e7ad8"
+    },
+    "105x140": {
+     "file": "event-people/105x140/avatar.jpg",
+     "sha256": "db80d6172a0153699fb94e37a702be05f1608c2aeb3f9c5b1c87eca0d94e7ad8"
+    }
+   }
+  },
+  "babakov": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/babakov.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "7f37d9b836336a5f48c9b1f9ccced2509853a120",
+   "blob_sha1": "9a66137ef3f3ef5c10f13f4f9976d5300d927677",
+   "source_sha256": "4bb70a7b5b2065bc5956f114ada65ddb8c6250cd3ba6b9b3777988e9d66dae08",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/babakov.jpg",
+     "sha256": "62b5dab24ef88a0bb480014dc9169363a8636271f742a343d126a362bc756b7b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/babakov.jpg",
+     "sha256": "5b1ea053a03c5a15f675dc1a9ae4a3e72da04583355c5a0204c47eb08891ac34"
+    }
+   }
+  },
+  "bakhda": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/bakhda.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "0080cedd99ef4470272ac1fb83c809dcd4a2105e",
+   "blob_sha1": "9aeaf9b7e9293fce01eb424844a949bd405bdbce",
+   "source_sha256": "b333ffbfd8dd9cfbf9ead626557b015ecddd232f788317c04606de85a6c21274",
+   "outputs": {
+    "master": {
+     "file": "people/master/bakhda.jpg",
+     "sha256": "b333ffbfd8dd9cfbf9ead626557b015ecddd232f788317c04606de85a6c21274"
+    },
+    "105x140": {
+     "file": "people/105x140/bakhda.jpg",
+     "sha256": "b333ffbfd8dd9cfbf9ead626557b015ecddd232f788317c04606de85a6c21274"
+    }
+   }
+  },
+  "balzer": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/balzer.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "6389d630d6c34bf3dba924a99a3c55c04596fe27",
+   "source_sha256": "ccb2eee1dcd3b600cef1d579b0ca7467072f69ee6f47105edf0c22574ed15bde",
+   "outputs": {
+    "master": {
+     "file": "people/master/balzer.jpg",
+     "sha256": "ccb2eee1dcd3b600cef1d579b0ca7467072f69ee6f47105edf0c22574ed15bde"
+    },
+    "105x140": {
+     "file": "people/105x140/balzer.jpg",
+     "sha256": "ccb2eee1dcd3b600cef1d579b0ca7467072f69ee6f47105edf0c22574ed15bde"
+    }
+   }
+  },
+  "banchs": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/banchs.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "f922de2af8d3668b3b88a8b5b922c237796ff9cc",
+   "blob_sha1": "12ff8011865b274aa08e27ee0c4f87c04bf2d960",
+   "source_sha256": "f8577a339e74cbfab6f2126fbbeca30f264a47d9cd87481123da175cde992c7a",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/banchs.jpg",
+     "sha256": "6f533d09c17f1e15b67ebd576e45a525dbfd6e7a417e2f75a4598086348aeec0"
+    },
+    "105x140": {
+     "file": "event-people/105x140/banchs.jpg",
+     "sha256": "3ffd9d0753c83eeda22b6efbdcc8ad8de74b0ada1ad48d90c2ee21f74dcc153a"
+    }
+   }
+  },
+  "barriere": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/barriere.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "5dd6b29b1a146c7cb50076ade2930f1b0babd9a7",
+   "blob_sha1": "b1464bde0d0dfd17528032cdd7953d54f1b673b8",
+   "source_sha256": "7530b3ceaef003ad38292e30d70fd15c83edf09af6e6d74970039592ddada30f",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/barriere.jpg",
+     "sha256": "9ad9f749e7b37d54d1280f1eb8639ac4b3f3c3da64a60ec6c12e8ca8d1ca101f"
+    },
+    "105x140": {
+     "file": "event-people/105x140/barriere.jpg",
+     "sha256": "b507ea1cbe3476b5b536132d06eb378dcec352bfb0607157908d676035a093f4"
+    }
+   }
+  },
+  "barron-cedeno": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/barron-cedeno.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "1fe58128173b8a5a0d825130c73b8ebee6ef437e",
+   "blob_sha1": "1eb1a3951f23cf7260c56436a9f4d17549d8c26e",
+   "source_sha256": "1b5c328d79e0550c9264066d0ddbaeaad0655007f2bd271f2a25208e82087e48",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/barron-cedeno.jpg",
+     "sha256": "1b5c328d79e0550c9264066d0ddbaeaad0655007f2bd271f2a25208e82087e48"
+    },
+    "105x140": {
+     "file": "people/105x140/barron-cedeno.jpg",
+     "sha256": "1b5c328d79e0550c9264066d0ddbaeaad0655007f2bd271f2a25208e82087e48"
+    }
+   }
+  },
+  "becker-heike": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/becker-heike.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "6170c719ee5eced8bc19ce8570519490279e4161",
+   "source_sha256": "236e0d5f0159edfb0d42081393f7cbf35c573819e01e80b6077a4488aa6f00b6",
+   "outputs": {
+    "master": {
+     "file": "people/master/becker-heike.jpg",
+     "sha256": "236e0d5f0159edfb0d42081393f7cbf35c573819e01e80b6077a4488aa6f00b6"
+    },
+    "105x140": {
+     "file": "people/105x140/becker-heike.jpg",
+     "sha256": "236e0d5f0159edfb0d42081393f7cbf35c573819e01e80b6077a4488aa6f00b6"
+    }
+   }
+  },
+  "becker-steffen": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/becker-steffen.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "7639d6c423ba7d53f102ddcb043f230e0d527311",
+   "source_sha256": "0a888d9b97759c82ee83cf08a2dbbb960ac431b7c1528946558c236e9f06e61b",
+   "outputs": {
+    "master": {
+     "file": "people/master/becker-steffen.jpg",
+     "sha256": "0a888d9b97759c82ee83cf08a2dbbb960ac431b7c1528946558c236e9f06e61b"
+    },
+    "105x140": {
+     "file": "people/105x140/becker-steffen.jpg",
+     "sha256": "0a888d9b97759c82ee83cf08a2dbbb960ac431b7c1528946558c236e9f06e61b"
+    }
+   }
+  },
+  "beloucif": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/beloucif.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "f9ffd79fb24b250266e77507ecd55f8fe324b85e",
+   "source_sha256": "5f9e44a16a0f12463f21ddf4cfe101f8d8add7d517b3e380e9aa8bc4f164f300",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/beloucif.jpg",
+     "sha256": "b912edcdee99b2158cff84d1847a15de51d8e843cb54f381946f27f9b1a65ac9"
+    },
+    "105x140": {
+     "file": "event-people/105x140/beloucif.jpg",
+     "sha256": "c24fd11cc6471f9287e644b73d35efadada4481bc1eca7af0328382c32253696"
+    }
+   }
+  },
+  "bevendorff": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/bevendorff.jpg",
+   "form": "roh",
+   "flags": null,
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "c287d2586d683daa32292a99230054dfdc076649",
+   "source_sha256": "c5e6a781d8ffbd93bed47c57f6ffe4236bda4b5f46b347f6e44034d2031639c3",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/bevendorff.jpg",
+     "sha256": "c5e6a781d8ffbd93bed47c57f6ffe4236bda4b5f46b347f6e44034d2031639c3"
+    },
+    "105x140": {
+     "file": "people/105x140/bevendorff.jpg",
+     "sha256": "c5e6a781d8ffbd93bed47c57f6ffe4236bda4b5f46b347f6e44034d2031639c3"
+    }
+   }
+  },
+  "beyer": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/beyer.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "0986e0cb65dee669f2b2900180c8dcdc43a6397d",
+   "source_sha256": "5691df9e9785aa04678b85b1ca36749e6f1b74e8a541b66117b3ca06de01833e",
+   "outputs": {
+    "master": {
+     "file": "people/master/beyer.jpg",
+     "sha256": "5691df9e9785aa04678b85b1ca36749e6f1b74e8a541b66117b3ca06de01833e"
+    },
+    "105x140": {
+     "file": "people/105x140/beyer.jpg",
+     "sha256": "5691df9e9785aa04678b85b1ca36749e6f1b74e8a541b66117b3ca06de01833e"
+    }
+   }
+  },
+  "biemann": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/biemann.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "dd033b6206b5b31b4421dd68e3523126202fd451",
+   "source_sha256": "2de908ecbbbaa5382f98f12e1668d209576c7ac02e18d65a9d36eb6038c77ea1",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/biemann.jpg",
+     "sha256": "d1c0419c213ca9c20500f5e21f9bfa2caa7a1adc1d620e771943c8062ced0f4f"
+    },
+    "105x140": {
+     "file": "event-people/105x140/biemann.jpg",
+     "sha256": "ffbe1ab6e89484cdfbaf1e75de28a692fc95769e339b97401b41f8e040d92243"
+    }
+   }
+  },
+  "bischoff": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/bischoff.jpg",
+   "blob_sha1": "c58a4739b2550d2137cc53aadc494f6beb9b5b4f",
+   "local_copy": "rescued-hires/bischoff.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "5b62fcc1b5d4e34833c0fac24a2912e41765bb471afec7ff76e5704ac5e9e670",
+   "outputs": {
+    "master": {
+     "file": "people/master/bischoff.jpg",
+     "sha256": "9c92784b0c3b0bb05fd7bb5304614372e5e747e4059ef4ed001e770e32833edc"
+    },
+    "105x140": {
+     "file": "people/105x140/bischoff.jpg",
+     "sha256": "d3b134f39a10f80e5a99b6f3bd1f8206561eb3d2b2a01bbd539fa1c095240af2"
+    }
+   }
+  },
+  "boland": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/boland.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "03b22356a94e5e3c7e4ac9e9447e509fcfd225a7",
+   "source_sha256": "caae76ceb2b2555a406c3c913f591e7f916651082a7bbbf836fd7ddb25581f5f",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/boland.jpg",
+     "sha256": "caae76ceb2b2555a406c3c913f591e7f916651082a7bbbf836fd7ddb25581f5f"
+    },
+    "105x140": {
+     "file": "event-people/105x140/boland.jpg",
+     "sha256": "caae76ceb2b2555a406c3c913f591e7f916651082a7bbbf836fd7ddb25581f5f"
+    }
+   }
+  },
+  "bondarenko": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/bondarenko.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "a3fecc0b9ac61ccf0f73debe8e7d6dbf135f858c",
+   "source_sha256": "66bea2ec3d2ce22fcf55df32004e10aed84784486c99bbb8688d5924240776fc",
+   "outputs": {
+    "master": {
+     "file": "people/master/bondarenko.jpg",
+     "sha256": "c36df10e35c03034119c86d1c48491be50e632728dec77c0a6d60f42b872a6d8"
+    },
+    "105x140": {
+     "file": "people/105x140/bondarenko.jpg",
+     "sha256": "f4c4325e71785001d2c086afde9f8de223dbd1d42b2d2cb3c26bb2b4eafe4cf5"
+    }
+   }
+  },
+  "bonet": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/bonet.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "199b21c73f3bf3e19dd523694c0884d838482791",
+   "blob_sha1": "c2410707084d39f7beefd92beae0c9a278796e8c",
+   "source_sha256": "431fa367dc7043cb1ad7bb8da67dd5e8d94446beaf1785fca7b7bca7aff88c79",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/bonet.jpg",
+     "sha256": "8c8287c9953e0c763dd257bf0e72bb69580c5dc3e3d544f8a20044aab801ef89"
+    },
+    "105x140": {
+     "file": "event-people/105x140/bonet.jpg",
+     "sha256": "2267e35e75909f9f745b4563be7d72c90a503cd0b3a2ed18433bdd032ac05a72"
+    }
+   }
+  },
+  "borchardt": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/borchardt.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "894de4f1e4114a12e232321ef7906b39ce390c48",
+   "source_sha256": "b8ca23b02fcc505bff1276c7fa58dbfb752211df8d0ecb9e81ac06875352e054",
+   "outputs": {
+    "master": {
+     "file": "people/master/borchardt.jpg",
+     "sha256": "b8ca23b02fcc505bff1276c7fa58dbfb752211df8d0ecb9e81ac06875352e054"
+    },
+    "105x140": {
+     "file": "people/105x140/borchardt.jpg",
+     "sha256": "b8ca23b02fcc505bff1276c7fa58dbfb752211df8d0ecb9e81ac06875352e054"
+    }
+   }
+  },
+  "borregoobrador": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/borregoobrador.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "3bca60f3949454eace051dbaed049059b74359a0",
+   "blob_sha1": "06acd72a4c4c0af511138242861c94fab018565a",
+   "source_sha256": "f6657e01ca152be1f99c04b7dcca1534cda6dda7d5733a055c1c424fe84d3256",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/borregoobrador.jpg",
+     "sha256": "447b6ab35bebba6c6e68c12c2468755cf823dc4895c7a3097fe0a144387ae05b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/borregoobrador.jpg",
+     "sha256": "75e8bb27db1e02d6a7c88e7a1778f4cee4d5b59aac2f6b62592d7723b00ea914"
+    }
+   }
+  },
+  "braeutigam": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/braeutigam.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "ef8ed4ac757f8d9e6a5c695186c5cd70484c1359",
+   "source_sha256": "3502f0f842178b2fec889ac0e80176af5290ab506005f74142b4b8da8a8ba21b",
+   "outputs": {
+    "master": {
+     "file": "people/master/braeutigam.jpg",
+     "sha256": "3502f0f842178b2fec889ac0e80176af5290ab506005f74142b4b8da8a8ba21b"
+    },
+    "105x140": {
+     "file": "people/105x140/braeutigam.jpg",
+     "sha256": "3502f0f842178b2fec889ac0e80176af5290ab506005f74142b4b8da8a8ba21b"
+    }
+   }
+  },
+  "braslavski": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/braslavski.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "1fe58128173b8a5a0d825130c73b8ebee6ef437e",
+   "blob_sha1": "09ff8de1294b698f1ed1eba8ee9c8fe86d515e58",
+   "source_sha256": "e62e5bc9fed6041ea77e833c9a2f0bed8ce3e0e25a1d61aab22c72c9241b6062",
+   "outputs": {
+    "master": {
+     "file": "people/master/braslavski.jpg",
+     "sha256": "e62e5bc9fed6041ea77e833c9a2f0bed8ce3e0e25a1d61aab22c72c9241b6062"
+    },
+    "105x140": {
+     "file": "people/105x140/braslavski.jpg",
+     "sha256": "e62e5bc9fed6041ea77e833c9a2f0bed8ce3e0e25a1d61aab22c72c9241b6062"
+    }
+   }
+  },
+  "brun": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/brun.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "5ecb2f8844a3e22fa88e3cbba59c62d8069da999",
+   "blob_sha1": "2c6d3ff4f6d5244b87a23a6d40d51f5eac3741ca",
+   "source_sha256": "cf5d6f884135315fde64eaed6c9252e7a52a192e20c0e7a9b4db8173f04df71d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/brun.jpg",
+     "sha256": "c065cf1a8919cad135848e56c902c3e60e40aa8ab96074040c5b3f86259f9c53"
+    },
+    "105x140": {
+     "file": "event-people/105x140/brun.jpg",
+     "sha256": "dc2872797536257b0062b2df5589e1680eb5ea1d415d5f33842736c7407e603b"
+    }
+   }
+  },
+  "buergl": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/buergl.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "116d1b4fde6c906358c5c671bea6e80ef62d932f",
+   "source_sha256": "0f79edada1fbe3a5b94c7bcf3393e7b09d73d8c1245aa7c9d33c1a17a746bb1f",
+   "outputs": {
+    "master": {
+     "file": "people/master/buergl.jpg",
+     "sha256": "0f79edada1fbe3a5b94c7bcf3393e7b09d73d8c1245aa7c9d33c1a17a746bb1f"
+    },
+    "105x140": {
+     "file": "people/105x140/buergl.jpg",
+     "sha256": "0f79edada1fbe3a5b94c7bcf3393e7b09d73d8c1245aa7c9d33c1a17a746bb1f"
+    }
+   }
+  },
+  "bunte": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/bunte.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "1fe58128173b8a5a0d825130c73b8ebee6ef437e",
+   "blob_sha1": "24fa8651669a9ec375bba409cf14dfffd4c8d187",
+   "source_sha256": "71b536c87e1bbecb0b456b36eb1c47aa05de2d09b530ef0a59831ac8a57af8a6",
+   "outputs": {
+    "master": {
+     "file": "people/master/bunte.jpg",
+     "sha256": "71b536c87e1bbecb0b456b36eb1c47aa05de2d09b530ef0a59831ac8a57af8a6"
+    },
+    "105x140": {
+     "file": "people/105x140/bunte.jpg",
+     "sha256": "71b536c87e1bbecb0b456b36eb1c47aa05de2d09b530ef0a59831ac8a57af8a6"
+    }
+   }
+  },
+  "burrows": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/burrows.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "1e988493bcaec823c1122ce04b288ddbedd8ea45",
+   "source_sha256": "607777fd297747b9c6e31a9f2a00c862866a7a6e4bc440714975e9f43f867959",
+   "outputs": {
+    "master": {
+     "file": "people/master/burrows.jpg",
+     "sha256": "607777fd297747b9c6e31a9f2a00c862866a7a6e4bc440714975e9f43f867959"
+    },
+    "105x140": {
+     "file": "people/105x140/burrows.jpg",
+     "sha256": "607777fd297747b9c6e31a9f2a00c862866a7a6e4bc440714975e9f43f867959"
+    }
+   }
+  },
+  "busse": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/busse.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "15c66dfb9bcd45cd3f48014a34bce8770a55ccc4",
+   "source_sha256": "d75ddc8f3adbfdae79308d3bf31be60d5ad09c978e9c2ef40904f445dd5fb0f0",
+   "outputs": {
+    "master": {
+     "file": "people/master/busse.jpg",
+     "sha256": "d75ddc8f3adbfdae79308d3bf31be60d5ad09c978e9c2ef40904f445dd5fb0f0"
+    },
+    "105x140": {
+     "file": "people/105x140/busse.jpg",
+     "sha256": "d75ddc8f3adbfdae79308d3bf31be60d5ad09c978e9c2ef40904f445dd5fb0f0"
+    }
+   }
+  },
+  "cai": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/cai.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "0080cedd99ef4470272ac1fb83c809dcd4a2105e",
+   "blob_sha1": "a11f96c6b993677b6e960df81767b49e915d3e19",
+   "source_sha256": "7055c69ccfac8ff5689b56999c228da1e03f42a2e8b4ba53f75ee4e68efe1664",
+   "outputs": {
+    "master": {
+     "file": "people/master/cai.jpg",
+     "sha256": "7055c69ccfac8ff5689b56999c228da1e03f42a2e8b4ba53f75ee4e68efe1664"
+    },
+    "105x140": {
+     "file": "people/105x140/cai.jpg",
+     "sha256": "7055c69ccfac8ff5689b56999c228da1e03f42a2e8b4ba53f75ee4e68efe1664"
+    }
+   }
+  },
+  "cardie": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/cardie.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "f4251ac1fa6fc653b96dcbf3938964340d3d33e9",
+   "source_sha256": "40611adf37ba429da1768d68e5a79d30f831eb9209b503423fd34b26f445d102",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/cardie.jpg",
+     "sha256": "df9469156dda194c8947fc58c701f2903f59d4aeca9751e0a67fbc513066eaa0"
+    },
+    "105x140": {
+     "file": "event-people/105x140/cardie.jpg",
+     "sha256": "ec551405ad43f5343e88585b55f3e256814cb47900c1dc52314821f90f549403"
+    }
+   }
+  },
+  "carrillo-de-albornzo": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/carrillo-de-albornzo.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "41ae7c432e0cc8d40f0eaa11197db0fa940b7ad5",
+   "blob_sha1": "6836c534990b7dbb178b90839aee1782132850f3",
+   "source_sha256": "1bc157c0f7e469c197f93b2702952b14dc01e2dd30afbba82c54698e9229fd59",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/carrillo-de-albornzo.jpg",
+     "sha256": "03a3025f7750be916f4e29358c1c2bddc2e3efbb8e70f5772de2d37f9e3b19a7"
+    },
+    "105x140": {
+     "file": "event-people/105x140/carrillo-de-albornzo.jpg",
+     "sha256": "b7d4b765d90206006c6cbcff5bf9c6a1ba64c92d0ff0276b54266f20026ea2cc"
+    }
+   }
+  },
+  "celano": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/celano.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "e5dcbef3dab740610fa9bc010b37ee3fbac0ad0a",
+   "source_sha256": "cccf7e2908ef8d7e99370763a5be9d3933df2a650dffc2ce6fc2427ccd1e776d",
+   "outputs": {
+    "master": {
+     "file": "people/master/celano.jpg",
+     "sha256": "cccf7e2908ef8d7e99370763a5be9d3933df2a650dffc2ce6fc2427ccd1e776d"
+    },
+    "105x140": {
+     "file": "people/105x140/celano.jpg",
+     "sha256": "cccf7e2908ef8d7e99370763a5be9d3933df2a650dffc2ce6fc2427ccd1e776d"
+    }
+   }
+  },
+  "celli": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/celli.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "926a7192cc8fef244acd5d0671e8f1195ee93e2c",
+   "blob_sha1": "a92714cd54b92b1bad96bb0dc24579c81736ab21",
+   "source_sha256": "3ebb9ee967011ef3d7a41bb814136586545ab1907d1e1dad8793b4cf0f01b9b5",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/celli.jpg",
+     "sha256": "04a508bcf4d0718c95879b894513788194430943f868d2010d3e974d01466e9a"
+    },
+    "105x140": {
+     "file": "event-people/105x140/celli.jpg",
+     "sha256": "25598b71ad4457afb520d3de4967d19cd3bb8eb9dd6534578b6309dee2963002"
+    }
+   }
+  },
+  "chen": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/chen.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "91ca361636bf72345b2842bb10232c217f43c3b9",
+   "blob_sha1": "3ef8cbb52df037e87d1b9072c37e89c46a36542c",
+   "source_sha256": "c35c411b0cfc59faccabf547c11b23d1aafa0f60825e30a995c67fb4b54c4b2a",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/chen.jpg",
+     "sha256": "0a26415ecf25639cdb69fceb36f88af716e6c8a3ae51b10649399703832f6370"
+    },
+    "105x140": {
+     "file": "people/105x140/chen.jpg",
+     "sha256": "0759557b53aebb0e7f48f480937b7d9af0ad0ae2f43078b54658aa94414c2cf3"
+    }
+   }
+  },
+  "chinearios": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/chinearios.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "c70e2a1ef3479a6b3575324f1841802b2c5aace8",
+   "blob_sha1": "5b8e48584d3c6867da5bf29efc33a26798ccdf9b",
+   "source_sha256": "e4eb78ac8f60b471489121c790eac042d0ff805c5faf1fea29bdebf4e0b84f57",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/chinearios.jpg",
+     "sha256": "08e49f56d85764b4eeaabd8c05a73bc4dea79028bd9b013da514547983143ca0"
+    },
+    "105x140": {
+     "file": "event-people/105x140/chinearios.jpg",
+     "sha256": "d2fb2093738edf22a0fd0e6ef5a150b9c043ef477d6d6fe59936462206c4c4df"
+    }
+   }
+  },
+  "chirkova": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/chirkova.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "5ecb2f8844a3e22fa88e3cbba59c62d8069da999",
+   "blob_sha1": "ff47336a771faec7db4ca4c09565f0cd5a2cecef",
+   "source_sha256": "6f127d465bee5c6762559449fe0d5efd3d676dd07a5428542436aae868b6cfae",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/chirkova.jpg",
+     "sha256": "0f3fed51ebc3d7853a7321cae46aec613c54dd01920250c00d9197ab00579852"
+    },
+    "105x140": {
+     "file": "event-people/105x140/chirkova.jpg",
+     "sha256": "44e1a152c76bcbe336d08e5ced3425ae6bf20f11ecb1bc71e7c0cc5cacc3fa7b"
+    }
+   }
+  },
+  "chugur": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/chugur.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "41ae7c432e0cc8d40f0eaa11197db0fa940b7ad5",
+   "blob_sha1": "787eff619f33506a47054967de12e6ce4762a418",
+   "source_sha256": "ee04f48cf6bbbd464ac92c5bcb8366804e009ede5448dcfe8a287f155384b807",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/chugur.jpg",
+     "sha256": "9967365aa32e6c798a6d3994d835fda17fcadd55618bbc593263c7032d2354a7"
+    },
+    "105x140": {
+     "file": "event-people/105x140/chugur.jpg",
+     "sha256": "3d1f93dd7bb454ae08b995ee7a43da0134af15f805d41ccc611cff93035f9f8a"
+    }
+   }
+  },
+  "chulvi": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/chulvi.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "4e51a17749a3801ded909bbd49375b29db545d2c",
+   "blob_sha1": "8c03cc7f3c1dd479de90b88d202fc0069418ee24",
+   "source_sha256": "c35edfbfe68b4f9fac27cfa3eae830f4cd97aeec1cb047d1f4395cd6e9a899b6",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/chulvi.jpg",
+     "sha256": "eef249f8796866a1d81a0fece6dae19dc5e48266d1acae0df66b8c63220bb058"
+    },
+    "105x140": {
+     "file": "event-people/105x140/chulvi.jpg",
+     "sha256": "587d85b080fb8cc39980f7ea3296d5e7cdf4cf5142eab0df3e8bc400df00de9f"
+    }
+   }
+  },
+  "cimiano": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/cimiano.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "fe89da938785af2b09b7bdc6433aa3952f6f9009",
+   "source_sha256": "025d7ace6bca6e81eec292a87f6cf02792b548e4c4cbc7978a6bcd6a1c8b2dae",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/cimiano.jpg",
+     "sha256": "4b200c89f7ce11b035affcb81d40b6a61a99f95397b0cf87b69f173e2368dee9"
+    },
+    "105x140": {
+     "file": "event-people/105x140/cimiano.jpg",
+     "sha256": "2c74b4dde4666b5dd5414ac5b5074afb6063e217561dc5304051c62e1d8ae609"
+    }
+   }
+  },
+  "clough": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/clough.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "f922de2af8d3668b3b88a8b5b922c237796ff9cc",
+   "blob_sha1": "3acded58bfa8278b8c7df725ea8e525703211a93",
+   "source_sha256": "c69bc59f54b83703bced4768bb95669d926107087eb5aaa4d5ccb5ed28b41f05",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/clough.jpg",
+     "sha256": "a54adea7b2c8389c81f72794f25a3d4806a9043dd8a189f333cad5a1a6d735d3"
+    },
+    "105x140": {
+     "file": "event-people/105x140/clough.jpg",
+     "sha256": "f4d6396066bd4428f34c8e73921aa72d41b73260ddeb0b7215ff956f8ae06fd7"
+    }
+   }
+  },
+  "corney": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/corney.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "ba1bf7bf4c138dec07a5fa5002eea20298436ca7",
+   "source_sha256": "f5926e73ccd5ddbabea881ced244867fc085d2583a202f57081f82828eafeb05",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/corney.jpg",
+     "sha256": "f5926e73ccd5ddbabea881ced244867fc085d2583a202f57081f82828eafeb05"
+    },
+    "105x140": {
+     "file": "event-people/105x140/corney.jpg",
+     "sha256": "f5926e73ccd5ddbabea881ced244867fc085d2583a202f57081f82828eafeb05"
+    }
+   }
+  },
+  "crestani": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/crestani.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "41ae7c432e0cc8d40f0eaa11197db0fa940b7ad5",
+   "blob_sha1": "3aea20d9dcfdd3c2a72b7954ebfeac227d362e68",
+   "source_sha256": "f1ef6abb683e23748579d7d42bd8b0d3bc5ee5aedcf9aec862711713b6374f31",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/crestani.jpg",
+     "sha256": "a98edefbed6fdfc3113cc5389d74cc3b167742560692b2986b9bb9e7a299bdd4"
+    },
+    "105x140": {
+     "file": "event-people/105x140/crestani.jpg",
+     "sha256": "f1a7630f533818e451578942f9d312bab186ea6b1f175300940002c47fa76514"
+    }
+   }
+  },
+  "daelemans": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/daelemans.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "d90e7f7ce97d72c736fc8dc6eb07b3546d20c3e2",
+   "source_sha256": "a468b03b9daecc3503c497e1710813c1aea4a7e977549affc75567f737f52ced",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/daelemans.jpg",
+     "sha256": "06115d328bfa8fe6c11a28459c154a1b1725ff3c5917b0179b88a1526fbb1ff8"
+    },
+    "105x140": {
+     "file": "event-people/105x140/daelemans.jpg",
+     "sha256": "238f7b2644fc7002aec78efb6b598496838cfb2aa68053a5ada68497a1b0a2ed"
+    }
+   }
+  },
+  "de-longueville": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/de-longueville.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "97e15457f8c7d97e6964a4adc32c20dcd8922a32",
+   "blob_sha1": "52c6aa6860b623112fe3a5c2a0bec303b8cd56e4",
+   "source_sha256": "422d9d725831a813150ab4bbc337447169582a60b6d3e98fd9c44c2a7e0f5da4",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/de-longueville.jpg",
+     "sha256": "422d9d725831a813150ab4bbc337447169582a60b6d3e98fd9c44c2a7e0f5da4"
+    },
+    "105x140": {
+     "file": "event-people/105x140/de-longueville.jpg",
+     "sha256": "422d9d725831a813150ab4bbc337447169582a60b6d3e98fd9c44c2a7e0f5da4"
+    }
+   }
+  },
+  "deckers": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/deckers.jpg",
+   "blob_sha1": "ce952742486e01e1f66d4ccc6051105b83e61b53",
+   "local_copy": "rescued-hires/deckers.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "be0b9e75c9d6e91642410bee60c9132b9c51abef00394f253ec8e5856fd66ea2",
+   "outputs": {
+    "master": {
+     "file": "people/master/deckers.jpg",
+     "sha256": "63b08b8616582ded0c279369d0964ef7ed0cd9fab172518072d65073eb8265ae"
+    },
+    "105x140": {
+     "file": "people/105x140/deckers.jpg",
+     "sha256": "12b824ceed6fd142f4ac8cd362a3900a2da6e5201596f9ce2a0beea9471a8ebe"
+    }
+   }
+  },
+  "dementieva": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/dementieva.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "8aa37c89fa15821b3c5abe8f8d8fb12c948d3e73",
+   "blob_sha1": "3b40ea0ed7998f7f0097e0cb7f77d5282c59e5f3",
+   "source_sha256": "107b34e1c843b367c571ce0e5608810ef708deae7811d134a1d5c32eff3ca07f",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/dementieva.jpg",
+     "sha256": "2b0448cc9e5750938ced2197e29149bda4d5aa4af1bd2ccdc60fdf82f0b9bf7c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/dementieva.jpg",
+     "sha256": "5dcc1ae382c4c4fe5b4b7c8ea4dea5385643e2ae888231c7654e0204696a1d3e"
+    }
+   }
+  },
+  "dietze": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/dietze.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "1597eb128d8340290f2f3a5c9dcc286d6f7b8141",
+   "source_sha256": "7f873c1633dc5528ff936c1de9497457dc912be77f50908575f0b0f8e59b5204",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/dietze.jpg",
+     "sha256": "7f873c1633dc5528ff936c1de9497457dc912be77f50908575f0b0f8e59b5204"
+    },
+    "105x140": {
+     "file": "event-people/105x140/dietze.jpg",
+     "sha256": "7f873c1633dc5528ff936c1de9497457dc912be77f50908575f0b0f8e59b5204"
+    }
+   }
+  },
+  "dorsch": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/dorsch.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "23c876261881d31a97d25a585dd6e0aebc1bd9d2",
+   "blob_sha1": "eb66a8d93973ce5a911f23ad0ceee8ef4fb84590",
+   "source_sha256": "b7b8e1afedf16d6fde738411765fe76e92748fffa41388213a3c10e22f5edc49",
+   "outputs": {
+    "master": {
+     "file": "people/master/dorsch.jpg",
+     "sha256": "b7b8e1afedf16d6fde738411765fe76e92748fffa41388213a3c10e22f5edc49"
+    },
+    "105x140": {
+     "file": "people/105x140/dorsch.jpg",
+     "sha256": "b7b8e1afedf16d6fde738411765fe76e92748fffa41388213a3c10e22f5edc49"
+    }
+   }
+  },
+  "dunkel": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/dunkel.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "1aa661dbccbdda99fd84909aebfa4af06ffce40f",
+   "blob_sha1": "39991eb20066c0fe5d2586d239cd6bbcd98e93ef",
+   "source_sha256": "e804373ccef6d8a117a7eb23f4b01b6797e1e4e8cf76ee620f143c8b600a032a",
+   "outputs": {
+    "master": {
+     "file": "people/master/dunkel.jpg",
+     "sha256": "e804373ccef6d8a117a7eb23f4b01b6797e1e4e8cf76ee620f143c8b600a032a"
+    },
+    "105x140": {
+     "file": "people/105x140/dunkel.jpg",
+     "sha256": "e804373ccef6d8a117a7eb23f4b01b6797e1e4e8cf76ee620f143c8b600a032a"
+    }
+   }
+  },
+  "efer": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/efer.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "4b5f41caecd446fecd11642e5c744540fc81616d",
+   "source_sha256": "cea10159450ba35c846999fafeb85a0a4f2a9e50b0a0881c50dbf924c05b0ead",
+   "outputs": {
+    "master": {
+     "file": "people/master/efer.jpg",
+     "sha256": "cea10159450ba35c846999fafeb85a0a4f2a9e50b0a0881c50dbf924c05b0ead"
+    },
+    "105x140": {
+     "file": "people/105x140/efer.jpg",
+     "sha256": "cea10159450ba35c846999fafeb85a0a4f2a9e50b0a0881c50dbf924c05b0ead"
+    }
+   }
+  },
+  "eiselt": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/eiselt.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "beac111b322ad8e8e64438002f1e3f1be59f4dfd",
+   "source_sha256": "df2a5a1f4be36489b5b1258c12ea9d828a9763185dc8ea503d532531922907a8",
+   "outputs": {
+    "master": {
+     "file": "people/master/eiselt.jpg",
+     "sha256": "df2a5a1f4be36489b5b1258c12ea9d828a9763185dc8ea503d532531922907a8"
+    },
+    "105x140": {
+     "file": "people/105x140/eiselt.jpg",
+     "sha256": "df2a5a1f4be36489b5b1258c12ea9d828a9763185dc8ea503d532531922907a8"
+    }
+   }
+  },
+  "elbaff": {
+   "origin": "git-history",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/elbaff.jpg",
+   "blob_sha1": "7f2f143829fc646d8285cb149a15bd091de45475",
+   "local_copy": "rescued-hires/elbaff.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "4fa0dc0eb4a4a9e0ae913e578b38ee0f6f1c0c24b48f2a8f2dfc3c2259dd5e80",
+   "outputs": {
+    "master": {
+     "file": "people/master/elbaff.jpg",
+     "sha256": "65daf778a7b035fe08ac7d8292644e37618118962cff698c662c32a0a8229e4b"
+    },
+    "105x140": {
+     "file": "people/105x140/elbaff.jpg",
+     "sha256": "2a21786e681835c9848166f23b904b1403a2dc4155305fb0b49cafb430bc17a8"
+    }
+   }
+  },
+  "ell": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/ell.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "bba780dbee1bd587eaabcc9ec342c50e1e4e4f72",
+   "source_sha256": "3263c5e64665bae12b713b25be757ea05637aff3935b4c1e447fe315f446161f",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/ell.jpg",
+     "sha256": "ad00531dfa5e8327c3fadf4bc8dba8cb39d9a7ffbe40e58275521dd561bb72b0"
+    },
+    "105x140": {
+     "file": "event-people/105x140/ell.jpg",
+     "sha256": "480bfd208a1958a933c41d1c4cdfe3112ce2eb10124c1d986b7ccbbd1c64c76b"
+    }
+   }
+  },
+  "elnagar": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/elnagar.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "a3a936e80b175eb9535dd2935cc38c343c6f3e55",
+   "blob_sha1": "78be5ca9d8b51154156f0e01d2556fedd0e80ff2",
+   "source_sha256": "2e1fb6fb33274bae7d0bbcad4fd356f61a1bc05283f2c6822b10f42d95b0fe07",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/elnagar.jpg",
+     "sha256": "4f2fbc1b634541b83ef44b39e6b0bbf28e52a904d5b2312e3b41785bb97be48b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/elnagar.jpg",
+     "sha256": "18cbf03e29a71443fc676ea77f322be95a568899575bf113ed49e913cacf83f8"
+    }
+   }
+  },
+  "elstner": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/elstner.jpg",
+   "blob_sha1": "f95368e631d38cfd66683a84175dc1a86fd17829",
+   "local_copy": "rescued-hires/elstner.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "06690a8ea42615963af2f27b5512b8a0bdf5ebeb21420ddcefabc69024ac0b2a",
+   "outputs": {
+    "master": {
+     "file": "people/master/elstner.jpg",
+     "sha256": "cee76159d139db54d1aef44e916f0cd8337d842d73a5feee886b348f6e73f2ba"
+    },
+    "105x140": {
+     "file": "people/105x140/elstner.jpg",
+     "sha256": "47b4c8469189a910cefcb405e41fe2c66bbc6a32b00b42ce15e327bd2af44e5e"
+    }
+   }
+  },
+  "erjavec": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/erjavec.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "a15116a40d637a8af0c42a682af098fa2248b904",
+   "source_sha256": "2220974cb95b77676b939452f059a76e8403ad783816aaa4973c54cc7e5e143c",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/erjavec.jpg",
+     "sha256": "2220974cb95b77676b939452f059a76e8403ad783816aaa4973c54cc7e5e143c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/erjavec.jpg",
+     "sha256": "2220974cb95b77676b939452f059a76e8403ad783816aaa4973c54cc7e5e143c"
+    }
+   }
+  },
+  "fatehifar": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/fatehifar.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "011ef8fb7d01cadf5f3c11ae81bcb189a0a24126",
+   "source_sha256": "fbb52a80f7dcf2e9ef78bd179464ebeb0fb78042e77c094a6b0fb19ee54d714a",
+   "outputs": {
+    "master": {
+     "file": "people/master/fatehifar.jpg",
+     "sha256": "fbb52a80f7dcf2e9ef78bd179464ebeb0fb78042e77c094a6b0fb19ee54d714a"
+    },
+    "105x140": {
+     "file": "people/105x140/fatehifar.jpg",
+     "sha256": "fbb52a80f7dcf2e9ef78bd179464ebeb0fb78042e77c094a6b0fb19ee54d714a"
+    }
+   }
+  },
+  "feger": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/feger.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "4c4292e1cc18925796365c7387da2d1d5928e887",
+   "source_sha256": "e21a96a44c6c2233d22d5501fa0abd8d09ab64c72ffa2e505f228e97ec9da264",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/feger.jpg",
+     "sha256": "e21a96a44c6c2233d22d5501fa0abd8d09ab64c72ffa2e505f228e97ec9da264"
+    },
+    "105x140": {
+     "file": "event-people/105x140/feger.jpg",
+     "sha256": "e21a96a44c6c2233d22d5501fa0abd8d09ab64c72ffa2e505f228e97ec9da264"
+    }
+   }
+  },
+  "ferretti": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/ferretti.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "1fe58128173b8a5a0d825130c73b8ebee6ef437e",
+   "blob_sha1": "f955bd4419c96f56e1d2a6d894b04ce0c129af6d",
+   "source_sha256": "4ebac8c7a49f7ac2135a8d8ce387fead7829a458f828a240143d9469787480b6",
+   "outputs": {
+    "master": {
+     "file": "people/master/ferretti.jpg",
+     "sha256": "4ebac8c7a49f7ac2135a8d8ce387fead7829a458f828a240143d9469787480b6"
+    },
+    "105x140": {
+     "file": "people/105x140/ferretti.jpg",
+     "sha256": "4ebac8c7a49f7ac2135a8d8ce387fead7829a458f828a240143d9469787480b6"
+    }
+   }
+  },
+  "fersini": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/fersini.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "548932dc642da8e13c3aa0bd233e38b1020ec709",
+   "blob_sha1": "6fdeb3f85d22b1e4c5f953ae13531f5d62f1df83",
+   "source_sha256": "b52ce707354f191bb6f65998db5f246d542644c241f57476808dd8cfd5f2a3b8",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/fersini.jpg",
+     "sha256": "fbf82b8fefc15ace97d2cf5424294a2b1bb18134310ba441a77cd749d587cd4c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/fersini.jpg",
+     "sha256": "af8f45d204344c1156ddd28b8e89b956472c42de2d44caa5b27b18de130da83d"
+    }
+   }
+  },
+  "fichtl": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/fichtl.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "979375334027222cd236ede7ef3778d1b601ec4e",
+   "source_sha256": "06b4440b2406c4e51b29760f77d173e76a4b88f6805ec18621dfb2de182f418b",
+   "outputs": {
+    "master": {
+     "file": "people/master/fichtl.jpg",
+     "sha256": "06b4440b2406c4e51b29760f77d173e76a4b88f6805ec18621dfb2de182f418b"
+    },
+    "105x140": {
+     "file": "people/105x140/fichtl.jpg",
+     "sha256": "06b4440b2406c4e51b29760f77d173e76a4b88f6805ec18621dfb2de182f418b"
+    }
+   }
+  },
+  "flores": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/flores.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "16e7c36ff36e913e06285fa22c80e0d143b37995",
+   "blob_sha1": "efd7b0656a64abbdbde44c5aa1d7ac17dd9894ec",
+   "source_sha256": "a3a6880ff946a44781d21bfa777dba75e1d01f0bf99159d3079c4006f08315fc",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/flores.jpg",
+     "sha256": "7a616baf7ef4c9aeae76dd48c36ae0f598ef2a581efd24666eb299812ff2c43c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/flores.jpg",
+     "sha256": "3a359f8e5f89279cf5cedcaa39324fa105ce6c270aa449c058a20726bcbb2889"
+    }
+   }
+  },
+  "francosalvador": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/francosalvador.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "7b9d421fe52a6a2b7a103b1c7fde98957491745b",
+   "blob_sha1": "eb13aa89cb294971b9a036364efcd46d5d475a10",
+   "source_sha256": "5b3dc336953abcf33f82df82ef78e846b30d87691dfdfbc3efe3202fc020b0ce",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/francosalvador.jpg",
+     "sha256": "a14d4d607ff028f1bb78b8ca321b915be7aa177041b36baaced0337fa4ff9008"
+    },
+    "105x140": {
+     "file": "event-people/105x140/francosalvador.jpg",
+     "sha256": "745a513e5505125081dbcd25b786b4c08f9b6490f9cc5eed7b7a36f84933b004"
+    }
+   }
+  },
+  "frey": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/frey.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "f912c4f0da46f7476ecefdf58b1403582c162f8e",
+   "source_sha256": "435336962163f95ab9d26289a86646921a3f7dd7cbfd4138bd4c012e12a572b1",
+   "outputs": {
+    "master": {
+     "file": "people/master/frey.jpg",
+     "sha256": "435336962163f95ab9d26289a86646921a3f7dd7cbfd4138bd4c012e12a572b1"
+    },
+    "105x140": {
+     "file": "people/105x140/frey.jpg",
+     "sha256": "435336962163f95ab9d26289a86646921a3f7dd7cbfd4138bd4c012e12a572b1"
+    }
+   }
+  },
+  "fricke": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/fricke.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "1791eb85429b9586778f25faf23be0f33e2f5231",
+   "source_sha256": "bbf210959ff5e5661127ff95bc00aca7fd3d8ac8115ea406dc74381eef261f59",
+   "outputs": {
+    "master": {
+     "file": "people/master/fricke.jpg",
+     "sha256": "bbf210959ff5e5661127ff95bc00aca7fd3d8ac8115ea406dc74381eef261f59"
+    },
+    "105x140": {
+     "file": "people/105x140/fricke.jpg",
+     "sha256": "bbf210959ff5e5661127ff95bc00aca7fd3d8ac8115ea406dc74381eef261f59"
+    }
+   }
+  },
+  "froebe": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/froebe.png",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "539fccffe4b72bfd23f86cf2646114490ff0263e",
+   "blob_sha1": "9e5c56b05cc99ba21170b0311dde3f804696892c",
+   "source_sha256": "002afecdb2389a37529246e20abfa9543eb922113aa817441882575608a5d3f0",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/froebe.jpg",
+     "sha256": "1f671721e6d0d8aea380b21ef02fde1676bb8534edc556fc4cc8a876fe59860c"
+    },
+    "105x140": {
+     "file": "people/105x140/froebe.jpg",
+     "sha256": "fb8f20121c4405730f0f47cf79f6a1cb783573f3279e3f1ae275bc5f982f1b93"
+    }
+   }
+  },
+  "genc": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/genc.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "1e99605e78d0c8a0bb2e44f4c6639a35684049dd",
+   "source_sha256": "df6e206b589b5f2bf5bf1c197ef1e5110ffae09cdb6f0df820a2927d97f93e4f",
+   "outputs": {
+    "master": {
+     "file": "people/master/genc.jpg",
+     "sha256": "df6e206b589b5f2bf5bf1c197ef1e5110ffae09cdb6f0df820a2927d97f93e4f"
+    },
+    "105x140": {
+     "file": "people/105x140/genc.jpg",
+     "sha256": "df6e206b589b5f2bf5bf1c197ef1e5110ffae09cdb6f0df820a2927d97f93e4f"
+    }
+   }
+  },
+  "gerhards": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/gerhards.jpg",
+   "blob_sha1": "61505724f7c3be08a52964b4888d53aab88a7ae2",
+   "local_copy": "rescued-hires/gerhards.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "9f0da9689431972240a8c132b9025dc336091c34ae41150d6c8b338c995afa30",
+   "outputs": {
+    "master": {
+     "file": "people/master/gerhards.jpg",
+     "sha256": "2f65a0a300594e1fe240561af072e534d7249963d62becca3634571126b049a1"
+    },
+    "105x140": {
+     "file": "people/105x140/gerhards.jpg",
+     "sha256": "4a713543d91dc926c1ac30260ac82d3c112181d6ffa1a075e536fe6e92887895"
+    }
+   }
+  },
+  "ghanem": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/ghanem.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "3398fc71b2fe9d543d41dee4d7ef0eb74e80721d",
+   "blob_sha1": "6c303f5465c5f0faccd627e5294e1662b141d743",
+   "source_sha256": "da0d773194a3805054331049a6d8ab1f58086356767eb14cc2f6f9ff995cdea9",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/ghanem.jpg",
+     "sha256": "73b80100daeb619d7bbb2c3a72d016b97a7f9c9af68e4c3be683ec02fbc3be96"
+    },
+    "105x140": {
+     "file": "event-people/105x140/ghanem.jpg",
+     "sha256": "497feb259a8f5830362b16bb89aaabce62d68d739b38a1e34f0a049c710d76a3"
+    }
+   }
+  },
+  "giachanou": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/giachanou.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "43b9850ea22ad99bc2f6910ee74f11f6550ff775",
+   "blob_sha1": "70701f1e6a0d3bec950ddc8080a682950b58aa75",
+   "source_sha256": "4cd66e81d081133b49e80bf6c1f0ab5246b5fde6b7689db76005be9a705e6dbc",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/giachanou.jpg",
+     "sha256": "9c6504ca6acdc87abdeb94aa3a655a0b032135ef276f3ad39d8156b3dd62a49b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/giachanou.jpg",
+     "sha256": "f897a281bb4b9f34ab2dd2dc57082f607effc306bbee7c83769f39830f5dd0d3"
+    }
+   }
+  },
+  "gienapp": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/gienapp.jpg",
+   "blob_sha1": "2ab89e18d133a3aa2e278616d5edcec2affcf956",
+   "local_copy": "rescued-hires/gienapp.jpg",
+   "form": "skript",
+   "flags": null,
+   "source_sha256": "f6d2a99478a82490d51c51c9dc69114ae74a3f8884ea2157bbaa61f6677b68f3",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/gienapp.jpg",
+     "sha256": "db72cfece0d32c9408eff17915621ea0efa07f9ac16201cc7bf1ca1e0e12e818"
+    },
+    "105x140": {
+     "file": "people/105x140/gienapp.jpg",
+     "sha256": "7775e5746ee8d7d2ad2c700bb51a38a3a6c107e3c31d9451908c7c4d4e5ca4f6"
+    }
+   }
+  },
+  "gipp": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/gipp.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "1a7efc18d6a99e39cd4fda18d570aba68d1c9ff1",
+   "blob_sha1": "453d1501eb1a4c664a12ae35aef5a3a099c025e5",
+   "source_sha256": "6b49cabe255196c872b8a164dd3e86bcce4e1c41d65a910c83dc5a3817fa1aa3",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/gipp.jpg",
+     "sha256": "2faf269c830cbd837aa60f5f89a4fce1167eb0a798db6c5ac822a331e41aaafb"
+    },
+    "105x140": {
+     "file": "event-people/105x140/gipp.jpg",
+     "sha256": "d1df020a14ac83493eac355cf1a31973cbb1fc56d99c72721b2fd65e5b1bc757"
+    }
+   }
+  },
+  "glaser": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/glaser.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "ab822887a9d09ff94f526262f2877eaffc11ea3c",
+   "blob_sha1": "f4df02aeb67145feaa4ffb9e2fc5ae77738a3d42",
+   "source_sha256": "0a5a9d8eb193a3266f2805cf18dc2553fa1f7ab1e5de30a505da1631c801639f",
+   "outputs": {
+    "master": {
+     "file": "people/master/glaser.jpg",
+     "sha256": "0a5a9d8eb193a3266f2805cf18dc2553fa1f7ab1e5de30a505da1631c801639f"
+    },
+    "105x140": {
+     "file": "people/105x140/glaser.jpg",
+     "sha256": "0a5a9d8eb193a3266f2805cf18dc2553fa1f7ab1e5de30a505da1631c801639f"
+    }
+   }
+  },
+  "goering": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/goering.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "050e90fef68203f5f71aafc6ea6bd559442d1aaa",
+   "source_sha256": "5082b856dbd23de45f15b63b99f6d73ac5fa4585042d4c4027c5ea66193d9789",
+   "outputs": {
+    "master": {
+     "file": "people/master/goering.jpg",
+     "sha256": "5082b856dbd23de45f15b63b99f6d73ac5fa4585042d4c4027c5ea66193d9789"
+    },
+    "105x140": {
+     "file": "people/105x140/goering.jpg",
+     "sha256": "5082b856dbd23de45f15b63b99f6d73ac5fa4585042d4c4027c5ea66193d9789"
+    }
+   }
+  },
+  "goetze": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/goetze.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "c468f298e05eab2b15937afb026ebb97ab5262a0",
+   "source_sha256": "304a5caa41754b0777e5c763c7caa387473511fa4957456dc4a6cdf57d812301",
+   "outputs": {
+    "master": {
+     "file": "people/master/goetze.jpg",
+     "sha256": "304a5caa41754b0777e5c763c7caa387473511fa4957456dc4a6cdf57d812301"
+    },
+    "105x140": {
+     "file": "people/105x140/goetze.jpg",
+     "sha256": "304a5caa41754b0777e5c763c7caa387473511fa4957456dc4a6cdf57d812301"
+    }
+   }
+  },
+  "gohsen": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/gohsen.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "0f6896ad367ddf646fbe1e7f6d913bd974b41eb8",
+   "blob_sha1": "2311013ca8a2acb6698deb786d31e7da6a19f22f",
+   "source_sha256": "7c8bce13a67b598d90bc3430e1c928f526b153df2576c0e6e1fa270ed3ef00c3",
+   "outputs": {
+    "master": {
+     "file": "people/master/gohsen.jpg",
+     "sha256": "7c8bce13a67b598d90bc3430e1c928f526b153df2576c0e6e1fa270ed3ef00c3"
+    },
+    "105x140": {
+     "file": "people/105x140/gohsen.jpg",
+     "sha256": "7c8bce13a67b598d90bc3430e1c928f526b153df2576c0e6e1fa270ed3ef00c3"
+    }
+   }
+  },
+  "gollub": {
+   "origin": "git-history",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/gollub.jpg",
+   "blob_sha1": "3dc8f76218d8d03a2530fdfd3012afe7ad6e5c4c",
+   "local_copy": "rescued-hires/gollub.jpg",
+   "form": "skript",
+   "flags": "--min-headroom 0.6",
+   "source_sha256": "b157ccf616095d83866f45ea868fcaf60d58da90fcac8b496e54477c5c5bd0ac",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/gollub.jpg",
+     "sha256": "0b3b5de693ce0ce7623da829ecaf7d20a0ec2f70bfe8e1a75e1620ce2d05ef5f"
+    },
+    "105x140": {
+     "file": "people/105x140/gollub.jpg",
+     "sha256": "a1349f0b50af29e915913f650727565079916f147c251519f469c868a56d0ed7"
+    }
+   }
+  },
+  "gonzalo": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/gonzalo.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "41ae7c432e0cc8d40f0eaa11197db0fa940b7ad5",
+   "blob_sha1": "ca988cb65110afcf7f6b4d40a0376d3d438bab51",
+   "source_sha256": "74ce23b887e5ffd2d5121bda121bc6f7327a88cc13f596946765c9a9d66775fa",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/gonzalo.jpg",
+     "sha256": "b3d55eb34bd5d2e69b9e3fb9a0153af50750edb9640a124555fd3639ef85a66f"
+    },
+    "105x140": {
+     "file": "event-people/105x140/gonzalo.jpg",
+     "sha256": "fbee9b8da4de252f59188a89bf2212cb9a29c08276a664b5c442e8bac123000a"
+    }
+   }
+  },
+  "grassegger": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/grassegger.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "84973f7400d0cc07f97fab655152855121f97bc0",
+   "source_sha256": "12c8b10b2efd077225711cd9468f34a042f6fc6dce8f32a16326efa08608cb35",
+   "outputs": {
+    "master": {
+     "file": "people/master/grassegger.jpg",
+     "sha256": "12c8b10b2efd077225711cd9468f34a042f6fc6dce8f32a16326efa08608cb35"
+    },
+    "105x140": {
+     "file": "people/105x140/grassegger.jpg",
+     "sha256": "12c8b10b2efd077225711cd9468f34a042f6fc6dce8f32a16326efa08608cb35"
+    }
+   }
+  },
+  "green": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/green.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "b715b1468104864fd7d1103b182d7f9f711fc7b4",
+   "source_sha256": "a6b883a96358a54edf8b1eabb21eb402c2f1b9702b05a9344a242a0a3169fa47",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/green.jpg",
+     "sha256": "f2ab5cbab9b4bdf19be5a5dae1794e4277d02217ec6bd7c7c354f68bf89148f3"
+    },
+    "105x140": {
+     "file": "event-people/105x140/green.jpg",
+     "sha256": "8d910b9ddee99fd4716ea4ee9676d8c81301c1880208c16a91faed6d1cf171a6"
+    }
+   }
+  },
+  "greinerpetter": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/greinerpetter.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "1a7efc18d6a99e39cd4fda18d570aba68d1c9ff1",
+   "blob_sha1": "cc3210f6898b8d0dfe05e3dc86c9926c00755744",
+   "source_sha256": "f2fb6990d3570f356239b695482ca497b109341f0f4fd1fca2365a2c6b6258e3",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/greinerpetter.jpg",
+     "sha256": "854156d86526bb1c7ecfe5f9430a46cb9c933f8e6350dd4fcd53dbafb5cbd11c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/greinerpetter.jpg",
+     "sha256": "d778ed43a0c21bbf86a97923d973a60325921ec6019e921fa72a52c27f0138df"
+    }
+   }
+  },
+  "grosch": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/grosch.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "5b35e939953c3d57f1f1f82138c69c7bcc72fa0a",
+   "source_sha256": "af648528d1128eb63b2e57628505d2a431933a08144543397cac5779205b9a9a",
+   "outputs": {
+    "master": {
+     "file": "people/master/grosch.jpg",
+     "sha256": "af648528d1128eb63b2e57628505d2a431933a08144543397cac5779205b9a9a"
+    },
+    "105x140": {
+     "file": "people/105x140/grosch.jpg",
+     "sha256": "af648528d1128eb63b2e57628505d2a431933a08144543397cac5779205b9a9a"
+    }
+   }
+  },
+  "gupta": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/gupta.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "666e2a9049792bd8f7bf410c5275998f17527c05",
+   "blob_sha1": "0a6551c079ba5c13f27ce4373afc7635f666b70f",
+   "source_sha256": "c8713ba24138af6e1249703697caa714e009888c68717c0f9cb47cc9170a52f5",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/gupta.jpg",
+     "sha256": "fa0344f7e69e8f57e140d7c1b8c1313a64238b1c9783ba4358b7f9e96bc1840d"
+    },
+    "105x140": {
+     "file": "event-people/105x140/gupta.jpg",
+     "sha256": "ad7ba255b6a8c6796d0f67c08475aa4df874bb7191664a450e8013f845890bf3"
+    }
+   }
+  },
+  "gurcke": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/gurcke.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "83b080e8bf46c5c180c82d18e774dc56e49038e7",
+   "blob_sha1": "13a1a6aaf7f8368d3fd7041489bc6da5f43f35b5",
+   "source_sha256": "d8acaef9c3be5ed7f3c8a7bf9b0e8f3ac8dc8fd53d5a05767013a6bbf6a51c2a",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/gurcke.jpg",
+     "sha256": "65bb8f2bf52088de3e43f1e9f2782e87660b4d97936ff59f85e19eac36ca77c5"
+    },
+    "105x140": {
+     "file": "event-people/105x140/gurcke.jpg",
+     "sha256": "b34e6e08d13049b2f10fb6a7bf29e1b645b7fdf82e58114ba8947c9ca299cc70"
+    }
+   }
+  },
+  "gurevych": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/gurevych.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "3deb2d7cb0fda0609052be8f0c5dbd02e5470fc0",
+   "blob_sha1": "d8b7f395c9a26b7f7c582cc6378a3426763d9a85",
+   "source_sha256": "4adf6b4b9803b07e06359b7dd4785c02d9d11dcee8d215c5ceefcad6141e0c88",
+   "namespace": "event-people",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/gurevych.jpg",
+     "sha256": "1bd71d140f272b6c39b00da7bafe38d1e8eb8bda6feec91c965257149dc6b480"
+    },
+    "105x140": {
+     "file": "event-people/105x140/gurevych.jpg",
+     "sha256": "ce4f4054f66b3fe9b23623e6b1841170ed1343d5f79d220efdb87b1ec4a4fb49"
+    }
+   }
+  },
+  "gutekunst": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/gutekunst.jpg",
+   "blob_sha1": "8a39f6a1156f1be85320d96fd5651a79cccad1dd",
+   "local_copy": "rescued-hires/gutekunst.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "5e82e272f625addc3fae194297b1c8101b9f065717c6c37f2259f82983d40da0",
+   "outputs": {
+    "master": {
+     "file": "people/master/gutekunst.jpg",
+     "sha256": "4da1bff3d836a6d2335788327ac58bec5a61fd456539680b9fab988ecf46b6b3"
+    },
+    "105x140": {
+     "file": "people/105x140/gutekunst.jpg",
+     "sha256": "ee707ff6b365e4078c4c54ed4a086b8b677e03b95cc1dbb093909a9741632839"
+    }
+   }
+  },
+  "habernal": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/habernal.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "212f539e8be5132857e3cc5276919d54ed9a48b7",
+   "source_sha256": "9752a1491a5707b8b1bca274a85970e633adced909d36723d477d63dbb9ff528",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/habernal.jpg",
+     "sha256": "1b65fc1d943250f150b7e8d1c4e930d1637e857aecf5f3974bff66e65f7e728d"
+    },
+    "105x140": {
+     "file": "event-people/105x140/habernal.jpg",
+     "sha256": "167ecb770a6234281085b212245a3e4e24e1234b41782326f0a5a4457b45197a"
+    }
+   }
+  },
+  "hagen": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "people/img/hagen.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "0bfb79eb6ec18848d5154ff4ccf0f5b9c215cd9c",
+   "blob_sha1": "850c0be052475f22a5da67bcad9093b54b53d46a",
+   "source_sha256": "70f12e71c38ef594b115c2f3d2bce3efa48ba06b1cbe92db0cfe3b4752cf7ab6",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/hagen.jpg",
+     "sha256": "70f12e71c38ef594b115c2f3d2bce3efa48ba06b1cbe92db0cfe3b4752cf7ab6"
+    },
+    "105x140": {
+     "file": "people/105x140/hagen.jpg",
+     "sha256": "70f12e71c38ef594b115c2f3d2bce3efa48ba06b1cbe92db0cfe3b4752cf7ab6"
+    }
+   }
+  },
+  "hagen-tim": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/hagen-tim.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "d7dcfb4c681578c91a3b0e25b90175edba30b719",
+   "source_sha256": "f8687c7b47fa00b42d37155333ecd79495d76c818bd808b55092d09d09c2262b",
+   "outputs": {
+    "master": {
+     "file": "people/master/hagen-tim.jpg",
+     "sha256": "f8687c7b47fa00b42d37155333ecd79495d76c818bd808b55092d09d09c2262b"
+    },
+    "105x140": {
+     "file": "people/105x140/hagen-tim.jpg",
+     "sha256": "f8687c7b47fa00b42d37155333ecd79495d76c818bd808b55092d09d09c2262b"
+    }
+   }
+  },
+  "handke": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/handke.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "eb3f6c02fcfd2c9b893ffc7cb180ecd744b9381f",
+   "blob_sha1": "f31f6ed4850225ca58021ee5833f6f7b04b3e2e5",
+   "source_sha256": "15dfcc0a94c96283d44c40de1b6b86392e34b09efad3dff071e64177ec32926c",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/handke.jpg",
+     "sha256": "15dfcc0a94c96283d44c40de1b6b86392e34b09efad3dff071e64177ec32926c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/handke.jpg",
+     "sha256": "15dfcc0a94c96283d44c40de1b6b86392e34b09efad3dff071e64177ec32926c"
+    }
+   }
+  },
+  "hansens": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/hansens.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "797223d39b6facb0cf64e10690af3ca3f60592a5",
+   "source_sha256": "7117861c375fc52c1ea120b639ca96d14e6802a4ad6a136255177fcb7959d2a7",
+   "outputs": {
+    "master": {
+     "file": "people/master/hansens.jpg",
+     "sha256": "7117861c375fc52c1ea120b639ca96d14e6802a4ad6a136255177fcb7959d2a7"
+    },
+    "105x140": {
+     "file": "people/105x140/hansens.jpg",
+     "sha256": "7117861c375fc52c1ea120b639ca96d14e6802a4ad6a136255177fcb7959d2a7"
+    }
+   }
+  },
+  "heindorf": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/heindorf.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "711bce625f2dec4e4ee0a7f58549b87cee0c6c65",
+   "source_sha256": "f51d9f7803c767a12196ade1fcecbbd63324328e88fab4f4528424b3aba10b76",
+   "outputs": {
+    "master": {
+     "file": "people/master/heindorf.jpg",
+     "sha256": "f51d9f7803c767a12196ade1fcecbbd63324328e88fab4f4528424b3aba10b76"
+    },
+    "105x140": {
+     "file": "people/105x140/heindorf.jpg",
+     "sha256": "f51d9f7803c767a12196ade1fcecbbd63324328e88fab4f4528424b3aba10b76"
+    }
+   }
+  },
+  "heineking": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/heineking.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "0e76a56590cc22cd4db2e6debe06d77999791f13",
+   "source_sha256": "7060749b35ce105cf8b656fb3c1b22824d61e3ee850a27c7c5575cbe1b2e4714",
+   "outputs": {
+    "master": {
+     "file": "people/master/heineking.jpg",
+     "sha256": "7060749b35ce105cf8b656fb3c1b22824d61e3ee850a27c7c5575cbe1b2e4714"
+    },
+    "105x140": {
+     "file": "people/105x140/heineking.jpg",
+     "sha256": "7060749b35ce105cf8b656fb3c1b22824d61e3ee850a27c7c5575cbe1b2e4714"
+    }
+   }
+  },
+  "heini": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/heini.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "699c274f45e6680a2ca1ffe9f85fa2f230afdea0",
+   "blob_sha1": "fc6dcb95aaf425122e5c31874ae5739c4e26cf72",
+   "source_sha256": "a873325c4cfb7f10ea55aace641e8dac7bb2888dbc5348905e286a12984e1c62",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/heini.jpg",
+     "sha256": "757f28ac6675e4a7d66af43b629a2a4e47ed4d0c31d8c45e66caadd5c27a4e8c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/heini.jpg",
+     "sha256": "fc76637a6cf82490ffac13a5091c93d91091c28363867e50ad25f91781090285"
+    }
+   }
+  },
+  "heinrich": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/heinrich.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "7232757f290697f12f759e8c2d588942f66cd111",
+   "blob_sha1": "40142ee9c5cd8482386f2d1cd3c1a275cfeb05b4",
+   "source_sha256": "3481a014ddd7119a26a7562bbcbbe83b3192fc8bde753f72095144887d59f38d",
+   "outputs": {
+    "master": {
+     "file": "people/master/heinrich.jpg",
+     "sha256": "3481a014ddd7119a26a7562bbcbbe83b3192fc8bde753f72095144887d59f38d"
+    },
+    "105x140": {
+     "file": "people/105x140/heinrich.jpg",
+     "sha256": "3481a014ddd7119a26a7562bbcbbe83b3192fc8bde753f72095144887d59f38d"
+    }
+   }
+  },
+  "heinz": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/heinz.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "6e02fb6a9f715c185ee2cf95b8a4aa9cc0e3b2fd",
+   "source_sha256": "69fefd0e20dbac7caf3e3bc4934d8e1056f20ee21d172a74e6f92eda78f4026d",
+   "outputs": {
+    "master": {
+     "file": "people/master/heinz.jpg",
+     "sha256": "69fefd0e20dbac7caf3e3bc4934d8e1056f20ee21d172a74e6f92eda78f4026d"
+    },
+    "105x140": {
+     "file": "people/105x140/heinz.jpg",
+     "sha256": "69fefd0e20dbac7caf3e3bc4934d8e1056f20ee21d172a74e6f92eda78f4026d"
+    }
+   }
+  },
+  "hemamou": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/hemamou.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "3bee00a82d53f4e962281ac9a35772170a12c5c3",
+   "source_sha256": "ee17bc18410df9a3a8f28e28526e3a3076bb8e23392550c574ad1b15d3891224",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/hemamou.jpg",
+     "sha256": "ee17bc18410df9a3a8f28e28526e3a3076bb8e23392550c574ad1b15d3891224"
+    },
+    "105x140": {
+     "file": "event-people/105x140/hemamou.jpg",
+     "sha256": "ee17bc18410df9a3a8f28e28526e3a3076bb8e23392550c574ad1b15d3891224"
+    }
+   }
+  },
+  "herr": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/herr.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "471fb118e93c4eb72ff7ac255d7ef34ac35976b4",
+   "source_sha256": "8b279c18f5cbd4b8ed9f80d1c05f94e4561305dfb8bbe11e2b70dd57bf204b77",
+   "outputs": {
+    "master": {
+     "file": "people/master/herr.jpg",
+     "sha256": "8b279c18f5cbd4b8ed9f80d1c05f94e4561305dfb8bbe11e2b70dd57bf204b77"
+    },
+    "105x140": {
+     "file": "people/105x140/herr.jpg",
+     "sha256": "8b279c18f5cbd4b8ed9f80d1c05f94e4561305dfb8bbe11e2b70dd57bf204b77"
+    }
+   }
+  },
+  "hoegemann": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/hoegemann.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "278133a2511ef49638a05367f892d5c3429143af",
+   "source_sha256": "e1870fec0da0538f8f32a38e1a85a4247351f34424c8f3b3dbff4c6bb0910e9c",
+   "outputs": {
+    "master": {
+     "file": "people/master/hoegemann.jpg",
+     "sha256": "e1870fec0da0538f8f32a38e1a85a4247351f34424c8f3b3dbff4c6bb0910e9c"
+    },
+    "105x140": {
+     "file": "people/105x140/hoegemann.jpg",
+     "sha256": "e1870fec0da0538f8f32a38e1a85a4247351f34424c8f3b3dbff4c6bb0910e9c"
+    }
+   }
+  },
+  "holfeld": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/holfeld.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "58ace0374ce6b595a20be90f6752fa56b2994df3",
+   "source_sha256": "2817a70a7b700de47663d7dede270589b44a182057a39540a1812834b79a743a",
+   "outputs": {
+    "master": {
+     "file": "people/master/holfeld.jpg",
+     "sha256": "2817a70a7b700de47663d7dede270589b44a182057a39540a1812834b79a743a"
+    },
+    "105x140": {
+     "file": "people/105x140/holfeld.jpg",
+     "sha256": "2817a70a7b700de47663d7dede270589b44a182057a39540a1812834b79a743a"
+    }
+   }
+  },
+  "hoppe": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/hoppe.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "5b71bef15b74492d4ae093633c8abefbf6305129",
+   "source_sha256": "e53a39eb93102684eb9f18e798d7b9762c1a338c8c55577fcdad5ff2d4b889b8",
+   "outputs": {
+    "master": {
+     "file": "people/master/hoppe.jpg",
+     "sha256": "e53a39eb93102684eb9f18e798d7b9762c1a338c8c55577fcdad5ff2d4b889b8"
+    },
+    "105x140": {
+     "file": "people/105x140/hoppe.jpg",
+     "sha256": "e53a39eb93102684eb9f18e798d7b9762c1a338c8c55577fcdad5ff2d4b889b8"
+    }
+   }
+  },
+  "hubricht": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/hubricht.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "a6c70cd0f3b8707cd9155248384ea820de26b7d1",
+   "source_sha256": "68ff3c124bec4d0b779a326d0a7286af16a13e6480165a2e48606b0ad4a0b73f",
+   "outputs": {
+    "master": {
+     "file": "people/master/hubricht.jpg",
+     "sha256": "68ff3c124bec4d0b779a326d0a7286af16a13e6480165a2e48606b0ad4a0b73f"
+    },
+    "105x140": {
+     "file": "people/105x140/hubricht.jpg",
+     "sha256": "68ff3c124bec4d0b779a326d0a7286af16a13e6480165a2e48606b0ad4a0b73f"
+    }
+   }
+  },
+  "inches": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/inches.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "41ae7c432e0cc8d40f0eaa11197db0fa940b7ad5",
+   "blob_sha1": "e26e74c423639eb1534c0d2cf4d43ea0a4ba5fd6",
+   "source_sha256": "c928e10176e76aa7d09a1eead27bea137a1a8dfdadee5cb84cd43f0d77867636",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/inches.jpg",
+     "sha256": "e51f203e58168cf82b69aec2a6ed6682d3fa0c8c49c8c258788b3a101d374908"
+    },
+    "105x140": {
+     "file": "event-people/105x140/inches.jpg",
+     "sha256": "9542f630b2e2da8b597c064e4811d2745bd3fa20e06e7edb45261ca7cbbf5d7e"
+    }
+   }
+  },
+  "jablonska": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/jablonska.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "64947b7b3181053c450a2d744b1c0e83d8a0e984",
+   "source_sha256": "51b23e4c372a59dc3f02b2fff8df27ba5203f559aa7bc28ae95f707bb76f2cae",
+   "outputs": {
+    "master": {
+     "file": "people/master/jablonska.jpg",
+     "sha256": "51b23e4c372a59dc3f02b2fff8df27ba5203f559aa7bc28ae95f707bb76f2cae"
+    },
+    "105x140": {
+     "file": "people/105x140/jablonska.jpg",
+     "sha256": "51b23e4c372a59dc3f02b2fff8df27ba5203f559aa7bc28ae95f707bb76f2cae"
+    }
+   }
+  },
+  "jakoby": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/jakoby.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "c2a9ed070192e8c77343a7ee56aaef5cd27734a1",
+   "blob_sha1": "396d4e02b5fdfacf00c72ec5e211aa66aef12f1d",
+   "source_sha256": "ceb232dcab2f119e133021ee857136c9a1d06d576acd61ca54aaa75a27b4f219",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/jakoby.jpg",
+     "sha256": "ceb232dcab2f119e133021ee857136c9a1d06d576acd61ca54aaa75a27b4f219"
+    },
+    "105x140": {
+     "file": "event-people/105x140/jakoby.jpg",
+     "sha256": "ceb232dcab2f119e133021ee857136c9a1d06d576acd61ca54aaa75a27b4f219"
+    }
+   }
+  },
+  "juerges": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/juerges.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "683edb224119047b4e464ffbdea002f56b522676",
+   "source_sha256": "cf2470ce249f5f292000d6e2b46e5470473edcee57aeadea6efbe248dd45fe86",
+   "outputs": {
+    "master": {
+     "file": "people/master/juerges.jpg",
+     "sha256": "cf2470ce249f5f292000d6e2b46e5470473edcee57aeadea6efbe248dd45fe86"
+    },
+    "105x140": {
+     "file": "people/105x140/juerges.jpg",
+     "sha256": "cf2470ce249f5f292000d6e2b46e5470473edcee57aeadea6efbe248dd45fe86"
+    }
+   }
+  },
+  "juola": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/juola.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "0e3d5f907e0e602de0896f8261d444e043ff4b76",
+   "blob_sha1": "2e87d5026ea34b46056d3f0a000669c0228e2f7a",
+   "source_sha256": "eedd5c23e7af9e2b300026c11109d089192c3b096ecf6bd28e29b67342dc8b09",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/juola.jpg",
+     "sha256": "852718c8681706e765a67f2fb26173f2256bca86b8f213892e29a2648245c11b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/juola.jpg",
+     "sha256": "6333c7ecc651942cc5cb435fcf14d15b2c23f39e321566e088dcf1d5c2a9f529"
+    }
+   }
+  },
+  "kaiyang": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/kaiyang.jpeg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "f6d41c6ec793a1ade73df51f3f84b4e05a7ddfba",
+   "blob_sha1": "eb2dcb8892867a1aae230961c90cd6256628a52b",
+   "source_sha256": "6bc1d081f40e330626f50d2e0b4af03a169382e2280e83604861d313f4a83c9d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/kaiyang.jpg",
+     "sha256": "78ca6d8b21c2ccf482217f850c9ab5fe98dc2dd385c5fe4bbe50ebaacecb5b3e"
+    },
+    "105x140": {
+     "file": "event-people/105x140/kaiyang.jpg",
+     "sha256": "a9546570159802f7d9ad9047ad029c482d821bbaf40b71b6cc6c63a12bcd8632"
+    }
+   }
+  },
+  "kanadan": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/kanadan.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "72cdc4005e21c01c60532235fbd2d02f12ba7152",
+   "blob_sha1": "3acd7e948c39c2e088535f9d6bb7287c8cac9dbf",
+   "source_sha256": "403f2acb036391049df774c9bcfd95a1ccb788665bb72ed39a338de1382a2991",
+   "outputs": {
+    "master": {
+     "file": "people/master/kanadan.jpg",
+     "sha256": "1a37b4de30454abf2672486a17fbede1375e15fb7feb801b5eb69aa53563733f"
+    },
+    "105x140": {
+     "file": "people/105x140/kanadan.jpg",
+     "sha256": "35bf61a75002e9e8f0cc83266a4711323b669ac345d1cea7381327e3e3f313b2"
+    }
+   }
+  },
+  "karge": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/karge.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "37570217b21ba58a7d80e952b94c29e883dd5e8d",
+   "source_sha256": "0f4d8512c60e8ad7689b30d93186c73088a6cb22b0e75b8f93dbdd355166d3fa",
+   "outputs": {
+    "master": {
+     "file": "people/master/karge.jpg",
+     "sha256": "0f4d8512c60e8ad7689b30d93186c73088a6cb22b0e75b8f93dbdd355166d3fa"
+    },
+    "105x140": {
+     "file": "people/105x140/karge.jpg",
+     "sha256": "0f4d8512c60e8ad7689b30d93186c73088a6cb22b0e75b8f93dbdd355166d3fa"
+    }
+   }
+  },
+  "keil": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/keil.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "24628fbf4706e39d9f28351e023f965aca266975",
+   "source_sha256": "f70e1c56f9b59f16ebb8f27f367fdeba5b40b4644bf05f29eced088b916f99ba",
+   "outputs": {
+    "master": {
+     "file": "people/master/keil.jpg",
+     "sha256": "f70e1c56f9b59f16ebb8f27f367fdeba5b40b4644bf05f29eced088b916f99ba"
+    },
+    "105x140": {
+     "file": "people/105x140/keil.jpg",
+     "sha256": "f70e1c56f9b59f16ebb8f27f367fdeba5b40b4644bf05f29eced088b916f99ba"
+    }
+   }
+  },
+  "kestemont": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/kestemont.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "3762a15a1a1a7981fd7726d79001c9f79d38ec04",
+   "source_sha256": "fcbc6f6cd93931019ccc81012a70c0e150f75112940e683c5eb148ea0506e61b",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/kestemont.jpg",
+     "sha256": "e1d67a9119ac75b48ad3da85e82977a8d3e566ea9fd0bac0d99314f70e3bed43"
+    },
+    "105x140": {
+     "file": "event-people/105x140/kestemont.jpg",
+     "sha256": "1ab8ababfebf7acaf5cf9fe0fa131d0f497b41f775a0acc1400fc9da2838b457"
+    }
+   }
+  },
+  "khan": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/khan.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "aca45136e76cb5ffb4073b5e199758172ba2db57",
+   "blob_sha1": "3998c28127bff654263b0d705250468bf26843a2",
+   "source_sha256": "df72c5da5fc4707086e39d8503602e8038ba094b5571b61a08f68abdc952372e",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/khan.jpg",
+     "sha256": "903beecdadf67654e4b2f1dadd2efe7c15057ea03fc6d57e82bd42e74881ff96"
+    },
+    "105x140": {
+     "file": "event-people/105x140/khan.jpg",
+     "sha256": "58342afa8492474f33f442ef5baca380cd5962ca9d1059207c3227da2a20a92f"
+    }
+   }
+  },
+  "kiesel": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/kiesel.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6f76b067d2ed86d989b7c1c9410360f88d3f9e8a",
+   "blob_sha1": "901d5cc8e994bffd76208d93e48dc83479c806b8",
+   "source_sha256": "31374574ba0b201ad7eb178632518390aa23933f0d2ca46604c3f4d4b120c307",
+   "outputs": {
+    "master": {
+     "file": "people/master/kiesel.jpg",
+     "sha256": "31374574ba0b201ad7eb178632518390aa23933f0d2ca46604c3f4d4b120c307"
+    },
+    "105x140": {
+     "file": "people/105x140/kiesel.jpg",
+     "sha256": "31374574ba0b201ad7eb178632518390aa23933f0d2ca46604c3f4d4b120c307"
+    }
+   }
+  },
+  "kim": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/kim.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "5e968c5ce8e2fa993d9dc7de98f312d07c619c01",
+   "blob_sha1": "c1e833d8ea22f337a37ff86fa3d43020b14aa02b",
+   "source_sha256": "d7ab9425d55cea05b39159d3f66e45a9a34fdf9a9aa72207ddb2a3331d015732",
+   "outputs": {
+    "master": {
+     "file": "people/master/kim.jpg",
+     "sha256": "d7ab9425d55cea05b39159d3f66e45a9a34fdf9a9aa72207ddb2a3331d015732"
+    },
+    "105x140": {
+     "file": "people/105x140/kim.jpg",
+     "sha256": "d7ab9425d55cea05b39159d3f66e45a9a34fdf9a9aa72207ddb2a3331d015732"
+    }
+   }
+  },
+  "kircheis": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/kircheis.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "2e2139d99d703cff8243ef0deb6065751f7618a2",
+   "source_sha256": "198c939791c4269bc6f978601e9b5739658f3d454aef953f1ab682cde125285e",
+   "outputs": {
+    "master": {
+     "file": "people/master/kircheis.jpg",
+     "sha256": "198c939791c4269bc6f978601e9b5739658f3d454aef953f1ab682cde125285e"
+    },
+    "105x140": {
+     "file": "people/105x140/kircheis.jpg",
+     "sha256": "198c939791c4269bc6f978601e9b5739658f3d454aef953f1ab682cde125285e"
+    }
+   }
+  },
+  "kitamura": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/kitamura.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "c225c37e540affb6804d7fd32de86797dc246294",
+   "blob_sha1": "6d489af5f71c8bc722ae2116578864e0d9605ed9",
+   "source_sha256": "954ea90f27c6058cc6b1bfe1fa4be1a5eafee97b8ea664a0c1a1ef563f5ed33c",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/kitamura.jpg",
+     "sha256": "71972ad822212fe0edebb9e4d0cfb8b253563e7f628a517b603431185c109bfe"
+    },
+    "105x140": {
+     "file": "event-people/105x140/kitamura.jpg",
+     "sha256": "c331a3c646fd71ff16317dfdec5e032bac7cef3d2f39a86238809f7eb8149eff"
+    }
+   }
+  },
+  "kneist": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/kneist.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "52f95e73b6a59fb1a6b531c84790e4cce4cd9ded",
+   "blob_sha1": "417fe351e7fcab480877d7b85bc4fa4e3d96046a",
+   "source_sha256": "62962c2c9bb82c83156ea2d61706f8489500d54d74ff89da71f1beeb2ccf24f4",
+   "outputs": {
+    "master": {
+     "file": "people/master/kneist.jpg",
+     "sha256": "62962c2c9bb82c83156ea2d61706f8489500d54d74ff89da71f1beeb2ccf24f4"
+    },
+    "105x140": {
+     "file": "people/105x140/kneist.jpg",
+     "sha256": "62962c2c9bb82c83156ea2d61706f8489500d54d74ff89da71f1beeb2ccf24f4"
+    }
+   }
+  },
+  "koehler": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/koehler.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "3246c2fffcf02759be43176cfdf4498c42943a4f",
+   "source_sha256": "0d0eb9782b4e77a67a9a282015a44b4b865ba127fe50ef71e12b28366877456f",
+   "outputs": {
+    "master": {
+     "file": "people/master/koehler.jpg",
+     "sha256": "0d0eb9782b4e77a67a9a282015a44b4b865ba127fe50ef71e12b28366877456f"
+    },
+    "105x140": {
+     "file": "people/105x140/koehler.jpg",
+     "sha256": "0d0eb9782b4e77a67a9a282015a44b4b865ba127fe50ef71e12b28366877456f"
+    }
+   }
+  },
+  "koerner": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/koerner.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6a50d4641496e6b6a35570588649da90fcd76923",
+   "blob_sha1": "1796f06f0b36a411833882fcb62d70aa9544b4f8",
+   "source_sha256": "45395d3510df82226907f7d350582d294e6f786b30c38bf89f3d8905c71361c3",
+   "outputs": {
+    "master": {
+     "file": "people/master/koerner.jpg",
+     "sha256": "45395d3510df82226907f7d350582d294e6f786b30c38bf89f3d8905c71361c3"
+    },
+    "105x140": {
+     "file": "people/105x140/koerner.jpg",
+     "sha256": "45395d3510df82226907f7d350582d294e6f786b30c38bf89f3d8905c71361c3"
+    }
+   }
+  },
+  "kolyada": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/kolyada.jpg",
+   "form": "roh",
+   "flags": null,
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "a88d18bd9da487dc89ff70b7b6f73c11bfcd0006",
+   "source_sha256": "b1f6ecb4d8d3d59218d04dc89d48174310d5565338f6e9257831e3bd6e714641",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/kolyada.jpg",
+     "sha256": "b1f6ecb4d8d3d59218d04dc89d48174310d5565338f6e9257831e3bd6e714641"
+    },
+    "105x140": {
+     "file": "people/105x140/kolyada.jpg",
+     "sha256": "b1f6ecb4d8d3d59218d04dc89d48174310d5565338f6e9257831e3bd6e714641"
+    }
+   }
+  },
+  "komlossy": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/komlossy.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "19b629952627987a50fa9033fbce81c439d2b277",
+   "blob_sha1": "817dca480ec34e17b67be8173f1cf49ebd30bec1",
+   "source_sha256": "8e84efbf431df6c39c86e896d5031af1c14d833e91c832ac720bb6170aafa785",
+   "outputs": {
+    "master": {
+     "file": "people/master/komlossy.jpg",
+     "sha256": "8e84efbf431df6c39c86e896d5031af1c14d833e91c832ac720bb6170aafa785"
+    },
+    "105x140": {
+     "file": "people/105x140/komlossy.jpg",
+     "sha256": "8e84efbf431df6c39c86e896d5031af1c14d833e91c832ac720bb6170aafa785"
+    }
+   }
+  },
+  "koppel": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/koppel.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "666e2a9049792bd8f7bf410c5275998f17527c05",
+   "blob_sha1": "3ea9dec12c425369facb34620233fc5a3f46e384",
+   "source_sha256": "741f30ca192dede036af19d3d54cc222d7d6042518afcde2b50104a5ba56561d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/koppel.jpg",
+     "sha256": "741f30ca192dede036af19d3d54cc222d7d6042518afcde2b50104a5ba56561d"
+    },
+    "105x140": {
+     "file": "event-people/105x140/koppel.jpg",
+     "sha256": "741f30ca192dede036af19d3d54cc222d7d6042518afcde2b50104a5ba56561d"
+    }
+   }
+  },
+  "korencic": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/korencic.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "199b21c73f3bf3e19dd523694c0884d838482791",
+   "blob_sha1": "67482996182655063119d05e678399b99609867e",
+   "source_sha256": "b8bd7130f1f906b51e26f3765df55e178f9f2ab3c5f85e5c5fce19acb4af7271",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/korencic.jpg",
+     "sha256": "4be1ae54c29c84d2aba5e5dee7c5d3b5872ec0c682791af3006c228ba1f96240"
+    },
+    "105x140": {
+     "file": "event-people/105x140/korencic.jpg",
+     "sha256": "ee9349bdfba2b8c14ba3a9d68df37aba90127cb65068b80fc93f6e5d48945b21"
+    }
+   }
+  },
+  "kredens": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/kredens.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "370e24d4b0c54830792a2f8984d37ff149ad91af",
+   "blob_sha1": "5428683ff191304fcbc72936edf75ef92d86182e",
+   "source_sha256": "0be5ffdbaab4cae4aa05f77361be789b62d6cb5022c44a82d3d1a6f8d457fd84",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/kredens.jpg",
+     "sha256": "a75254623b076dcd02c5caeb1edcf22cfdc9b771a5d83aa5deffda85768da15f"
+    },
+    "105x140": {
+     "file": "event-people/105x140/kredens.jpg",
+     "sha256": "4141ff3bed00d5d471f1beaeb7bb4eff63e826ed33dcc0a547ac727b125c94cc"
+    }
+   }
+  },
+  "kuehr": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/kuehr.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "e471e706e769c0016600b88c8c4d76a13eecc9d3",
+   "blob_sha1": "643901f1eb540d83f171c558c6af87ae55b818c2",
+   "source_sha256": "c0b9e2d945f933ace67dbc6aa877b2fb90ca4aa329dc53d76963e64b98c7ec68",
+   "outputs": {
+    "master": {
+     "file": "people/master/kuehr.jpg",
+     "sha256": "c0b9e2d945f933ace67dbc6aa877b2fb90ca4aa329dc53d76963e64b98c7ec68"
+    },
+    "105x140": {
+     "file": "people/105x140/kuehr.jpg",
+     "sha256": "c0b9e2d945f933ace67dbc6aa877b2fb90ca4aa329dc53d76963e64b98c7ec68"
+    }
+   }
+  },
+  "kuemmel": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/kuemmel.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "9533ae710bee2148d0a026c630c811e853909f11",
+   "source_sha256": "2d339990e1f115cf961016240c726df42d8eb3bab02ddff227a8dee5a4a5cfe3",
+   "outputs": {
+    "master": {
+     "file": "people/master/kuemmel.jpg",
+     "sha256": "2d339990e1f115cf961016240c726df42d8eb3bab02ddff227a8dee5a4a5cfe3"
+    },
+    "105x140": {
+     "file": "people/105x140/kuemmel.jpg",
+     "sha256": "2d339990e1f115cf961016240c726df42d8eb3bab02ddff227a8dee5a4a5cfe3"
+    }
+   }
+  },
+  "lang": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/lang.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "616067d5405e99fa31e8fcbf5335ae8d6f3cc313",
+   "source_sha256": "fb50b21876ce864cbfea7ef6873cae981d17e2731285efb4d585c575b2225784",
+   "outputs": {
+    "master": {
+     "file": "people/master/lang.jpg",
+     "sha256": "fb50b21876ce864cbfea7ef6873cae981d17e2731285efb4d585c575b2225784"
+    },
+    "105x140": {
+     "file": "people/105x140/lang.jpg",
+     "sha256": "fb50b21876ce864cbfea7ef6873cae981d17e2731285efb4d585c575b2225784"
+    }
+   }
+  },
+  "leuther": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/leuther.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "fc22f77ad0da2990fcbb3792e74f1b0002ad3700",
+   "blob_sha1": "5a1236e3a1b16f39ea98c8ce440786e0cf69eebf",
+   "source_sha256": "2bb9441f844b5f191ccefbbd9d48dc19d2f7e90bb654f013a8dab11864c42705",
+   "outputs": {
+    "master": {
+     "file": "people/master/leuther.jpg",
+     "sha256": "2bb9441f844b5f191ccefbbd9d48dc19d2f7e90bb654f013a8dab11864c42705"
+    },
+    "105x140": {
+     "file": "people/105x140/leuther.jpg",
+     "sha256": "2bb9441f844b5f191ccefbbd9d48dc19d2f7e90bb654f013a8dab11864c42705"
+    }
+   }
+  },
+  "liebeskind": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/liebeskind.JPG",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "813c1253a829cb7567f2f56f2c9e8faed1e5fe8f",
+   "blob_sha1": "821bf53ff5b1cfd5452f29767add8fb8739edf61",
+   "source_sha256": "49494e4a67541a11b8a026a644716401e3be97c14761b38027ff7489531e71cd",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/liebeskind.jpg",
+     "sha256": "1e973ee9dd772af62180e44522b01c8394284d3f0df0e9d418f63ecadd0d4b22"
+    },
+    "105x140": {
+     "file": "event-people/105x140/liebeskind.jpg",
+     "sha256": "dad1a913a99211c54583d72355ae7e5903c3012817b4390f020d98138bb9c2db"
+    }
+   }
+  },
+  "lipka": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/lipka.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "7a90b4d6ab7e8a518207f8ed1803264838bd7825",
+   "source_sha256": "4af38dffe301902e9af397d9c37ead1be3bc1ac01f62f5df421121bdd24899e5",
+   "outputs": {
+    "master": {
+     "file": "people/master/lipka.jpg",
+     "sha256": "4af38dffe301902e9af397d9c37ead1be3bc1ac01f62f5df421121bdd24899e5"
+    },
+    "105x140": {
+     "file": "people/105x140/lipka.jpg",
+     "sha256": "4af38dffe301902e9af397d9c37ead1be3bc1ac01f62f5df421121bdd24899e5"
+    }
+   }
+  },
+  "lippi": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/lippi.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "2ff769153737eda73673898652521f008182f9f2",
+   "source_sha256": "c00f5580da9581d7cecf4b04a18c6632b6acb1d846409175626a67a5136b57f4",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/lippi.jpg",
+     "sha256": "9041dbc5e69248400973b422e93ef4f3e1e14dc6005e31c87ffa6bb457d927a2"
+    },
+    "105x140": {
+     "file": "event-people/105x140/lippi.jpg",
+     "sha256": "80164d736332012635800cbef27a5a9e6961a73fb5e9ac39df26b1bbeef866a1"
+    }
+   }
+  },
+  "litman": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/litman.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "7e41c8226fd76f8e5cae1bd8f1a31491256bcedc",
+   "source_sha256": "60746546a32eeba22b1facd33c0f4b4febe43d4e308a18923fded2c369d13722",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/litman.jpg",
+     "sha256": "5a8d8173dd1b3ea676fc2564d0da0e7dd97bc18f67980748e6e2d3d16cd5cfb1"
+    },
+    "105x140": {
+     "file": "event-people/105x140/litman.jpg",
+     "sha256": "6abac87c164f6dbd1baae99346652697f6a9808112883d96c47de03b2f6608ee"
+    }
+   }
+  },
+  "liz": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/liz.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "2bb2371dbc36babfbb011f3025cd7826526f57b8",
+   "blob_sha1": "90a140ae0944e9597032a20469edaf9f2b53d651",
+   "source_sha256": "3faecc7c9fb074f6a422d5b4fcdc147b8631c8bef59e50c6e70c7c4a0eff3bf2",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/liz.jpg",
+     "sha256": "c2b5ce48b00d8607b478b5d2ba955a7e55513b7237e8f28dafd9b51a6dd3fbff"
+    },
+    "105x140": {
+     "file": "event-people/105x140/liz.jpg",
+     "sha256": "fb575444d0fb2e5079d36978bf1e72f375a69cfd8f85d4efee31f8f2e1b95e2c"
+    }
+   }
+  },
+  "loebe": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/loebe.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "5701455d64f880451d89af83446fa1dde373ab34",
+   "source_sha256": "c4a6f7da269b0148224f767749d4ca436acb6f8902494c16a802bf1dde6dd244",
+   "outputs": {
+    "master": {
+     "file": "people/master/loebe.jpg",
+     "sha256": "c4a6f7da269b0148224f767749d4ca436acb6f8902494c16a802bf1dde6dd244"
+    },
+    "105x140": {
+     "file": "people/105x140/loebe.jpg",
+     "sha256": "c4a6f7da269b0148224f767749d4ca436acb6f8902494c16a802bf1dde6dd244"
+    }
+   }
+  },
+  "loose": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/loose.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "004e03db003672851fc02996626709d78ace4f29",
+   "source_sha256": "06d4764c6aef4aa259fd398aec6309e49ce1fa03795b03e92a24cd2d80e6a007",
+   "outputs": {
+    "master": {
+     "file": "people/master/loose.jpg",
+     "sha256": "06d4764c6aef4aa259fd398aec6309e49ce1fa03795b03e92a24cd2d80e6a007"
+    },
+    "105x140": {
+     "file": "people/105x140/loose.jpg",
+     "sha256": "06d4764c6aef4aa259fd398aec6309e49ce1fa03795b03e92a24cd2d80e6a007"
+    }
+   }
+  },
+  "lopez": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/lopez.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "926a7192cc8fef244acd5d0671e8f1195ee93e2c",
+   "blob_sha1": "b93baa456077c67222bc5865d5dacf2f78e02fac",
+   "source_sha256": "d4c0f8115a2e9c3e1f3217764d473512f2dfd4f3c97e04e3cb711720d66c0a8c",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/lopez.jpg",
+     "sha256": "31afafc784a5ca8f3014c4e424ce9beb6b73ab99c7e76a75a55976626ba0390f"
+    },
+    "105x140": {
+     "file": "event-people/105x140/lopez.jpg",
+     "sha256": "7405b0ff2aa436528802e2162b70c3acf91356d7023f8cce0a1d688f3e0391e0"
+    }
+   }
+  },
+  "lorenz": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/lorenz.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "744dcac6734afa3f3b73b079fc64334ab66ded9e",
+   "blob_sha1": "bee6e44bf7cd991141b8c2bb961052af92786be4",
+   "source_sha256": "471f9e06ae745018e6b4552f42586bedde319b0653da95c0d8357fe87ca98adf",
+   "outputs": {
+    "master": {
+     "file": "people/master/lorenz.jpg",
+     "sha256": "471f9e06ae745018e6b4552f42586bedde319b0653da95c0d8357fe87ca98adf"
+    },
+    "105x140": {
+     "file": "people/105x140/lorenz.jpg",
+     "sha256": "471f9e06ae745018e6b4552f42586bedde319b0653da95c0d8357fe87ca98adf"
+    }
+   }
+  },
+  "luck": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/luck.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "aea89d6e90422c9519353261f56ff82a753c121e",
+   "source_sha256": "bab0780681f906517f9df269404002f59298ea9567fde7db5e24dad756d306e0",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/luck.jpg",
+     "sha256": "bab0780681f906517f9df269404002f59298ea9567fde7db5e24dad756d306e0"
+    },
+    "105x140": {
+     "file": "event-people/105x140/luck.jpg",
+     "sha256": "bab0780681f906517f9df269404002f59298ea9567fde7db5e24dad756d306e0"
+    }
+   }
+  },
+  "manjavacas": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/manjavacas.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "4c2913c482afa57bea348ae87acbfa07ff45a52d",
+   "blob_sha1": "cc73b46fd0984e1a7c671d41d79d9e39877bf999",
+   "source_sha256": "468d2d620342f243e4433c4340d939991a6daaff4125031037171420c99a0578",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/manjavacas.jpg",
+     "sha256": "d25ce77bc3d242d58e1addfb0f502baf00ed57e9055a52a2001c1364d79fea01"
+    },
+    "105x140": {
+     "file": "event-people/105x140/manjavacas.jpg",
+     "sha256": "dc6e5943349f5491fbdf284967758a12198350f0ad646fad3abeab28f7381a08"
+    }
+   }
+  },
+  "mansurov": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/mansurov.jpeg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "a765bfda1bc07e237eba7cb091317847e4a4fb9e",
+   "blob_sha1": "711e7b2fbd6295f0f9717119828ebb7ed17faa3e",
+   "source_sha256": "890081cf6853ea57bd9a29c0d5fdf35bed482e6ba8818d0ae7b522c3db095171",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/mansurov.jpg",
+     "sha256": "050222d5bf55006907098a683b12d52af2021fdd55f72ccd1ea468aee1f92ee2"
+    },
+    "105x140": {
+     "file": "event-people/105x140/mansurov.jpg",
+     "sha256": "20a75639a3701130d480a23127aad995c491c79b6ead7c822365571db0e6bda7"
+    }
+   }
+  },
+  "mao": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/mao.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "075eafe8e3e5da1671e8c22c38aa8a70e935d44c",
+   "source_sha256": "956a947aad4344a881bd62ad9e29fcefe24526696669d533bf46ca85bffd8ceb",
+   "outputs": {
+    "master": {
+     "file": "people/master/mao.jpg",
+     "sha256": "956a947aad4344a881bd62ad9e29fcefe24526696669d533bf46ca85bffd8ceb"
+    },
+    "105x140": {
+     "file": "people/105x140/mao.jpg",
+     "sha256": "956a947aad4344a881bd62ad9e29fcefe24526696669d533bf46ca85bffd8ceb"
+    }
+   }
+  },
+  "mathews": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/mathews.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "09914d0541e9606091b054e8a2c3ce0365d35279",
+   "blob_sha1": "7446651acf0df4afb49de07a8c508f0766239995",
+   "source_sha256": "e6090042cdf6b94be34a340585698d843378dcbeee1830d4ef300c3b6acbcc99",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/mathews.jpg",
+     "sha256": "e6090042cdf6b94be34a340585698d843378dcbeee1830d4ef300c3b6acbcc99"
+    },
+    "105x140": {
+     "file": "event-people/105x140/mathews.jpg",
+     "sha256": "e6090042cdf6b94be34a340585698d843378dcbeee1830d4ef300c3b6acbcc99"
+    }
+   }
+  },
+  "mayerl": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/mayerl.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "b0424ae7d239f739f7af5eac191ea9045a7fe8d8",
+   "blob_sha1": "7490c1e4ed28378010384b05835a814653e32fc3",
+   "source_sha256": "a72876ce929eb0e03a20b84a1561e97d503c1218a0c83707baa2a0f9afa5d9e4",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/mayerl.jpg",
+     "sha256": "50039a62b5f31685e199b033f113f7acf45242f66e7d068f06cb95ebce329415"
+    },
+    "105x140": {
+     "file": "event-people/105x140/mayerl.jpg",
+     "sha256": "7b00cbfb214abba0131c4f45a511d321552fd8528e036f7ac57cb45012de0df8"
+    }
+   }
+  },
+  "meden": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/meden.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "c2afdf44fa47fde170f5e5666be221831d61bdf4",
+   "blob_sha1": "6aeddc7de19e2d7d5a208c6c858b7bd80df1748a",
+   "source_sha256": "2e2fe788b1417313cb308b308b7fb7930f11f40dbd719aa5e2265711f858a85e",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/meden.jpg",
+     "sha256": "1e24679ff5458524f2a47cf23dd9ac40ba757f55937b30136061e7a51ca56d4b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/meden.jpg",
+     "sha256": "e6b1114ea8142799e3b2405b4672de0e421a1f50709bf116be78bca42a6b2f00"
+    }
+   }
+  },
+  "mestre": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/mestre.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "f912af45c9e9069683973217320b9dc8be88554c",
+   "source_sha256": "e2e8bf8b70ca6ec45fa80c52584cc07cbea897983bd4bc8366ae32c475a7f1db",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/mestre.jpg",
+     "sha256": "e2e8bf8b70ca6ec45fa80c52584cc07cbea897983bd4bc8366ae32c475a7f1db"
+    },
+    "105x140": {
+     "file": "event-people/105x140/mestre.jpg",
+     "sha256": "e2e8bf8b70ca6ec45fa80c52584cc07cbea897983bd4bc8366ae32c475a7f1db"
+    }
+   }
+  },
+  "meyer": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/meyer.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "ead0fbc0cbd6f3a85affb8a45d1cffb00d2d2804",
+   "blob_sha1": "f40c8d3780cfa42450aadd1621b4cd34f81d21bb",
+   "source_sha256": "d9ad920ad8ef57e363b00947b22929c9f8f1bff0dbd1a90c4bcff35f17011913",
+   "outputs": {
+    "master": {
+     "file": "people/master/meyer.jpg",
+     "sha256": "d9ad920ad8ef57e363b00947b22929c9f8f1bff0dbd1a90c4bcff35f17011913"
+    },
+    "105x140": {
+     "file": "people/105x140/meyer.jpg",
+     "sha256": "d9ad920ad8ef57e363b00947b22929c9f8f1bff0dbd1a90c4bcff35f17011913"
+    }
+   }
+  },
+  "meyer-zu-eissen": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/meyer-zu-eissen.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "2fcaacc4cf92c2a17f39bf5f630184a44b2d7ddf",
+   "source_sha256": "a80915634a1109bc79f7b65f975598744a72a58534bc9e0ed19e385bf8394a3b",
+   "outputs": {
+    "master": {
+     "file": "people/master/meyer-zu-eissen.jpg",
+     "sha256": "a80915634a1109bc79f7b65f975598744a72a58534bc9e0ed19e385bf8394a3b"
+    },
+    "105x140": {
+     "file": "people/105x140/meyer-zu-eissen.jpg",
+     "sha256": "a80915634a1109bc79f7b65f975598744a72a58534bc9e0ed19e385bf8394a3b"
+    }
+   }
+  },
+  "michel": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/michel.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "a8d2758bb2aeb3a7113416fa9efed60200620b6a",
+   "source_sha256": "1e7787d4837a5e43c94bac42002c4fded504e29948617ca9be7a7a8140402c95",
+   "outputs": {
+    "master": {
+     "file": "people/master/michel.jpg",
+     "sha256": "1e7787d4837a5e43c94bac42002c4fded504e29948617ca9be7a7a8140402c95"
+    },
+    "105x140": {
+     "file": "people/105x140/michel.jpg",
+     "sha256": "1e7787d4837a5e43c94bac42002c4fded504e29948617ca9be7a7a8140402c95"
+    }
+   }
+  },
+  "minh": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/minh.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "f6d41c6ec793a1ade73df51f3f84b4e05a7ddfba",
+   "blob_sha1": "77e5ffb3693ae8f5600027ea8035a22a6fe850c3",
+   "source_sha256": "4c2cb029d2dcd0400bb9571b221c5efc8a81f4ae60c411f260f547da91363f76",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/minh.jpg",
+     "sha256": "2f8a76c93ab6af4d102b0cd73a823cb76cd4784863bfc85cb317665259f98a6c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/minh.jpg",
+     "sha256": "c259b71a05410a76d1db234adbdd82c18fde3aecf262ec5363a8985b872de765"
+    }
+   }
+  },
+  "mirzakhmedova": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/mirzakhmedova.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "71e7e6906d646ed70b07b6f4391abd5b99b4a6c4",
+   "blob_sha1": "6ebd9ca46ef548a0ea7f166ca00073fefee72b77",
+   "source_sha256": "9f1ac9e3eef347bcbbe14a8458f56b4fe762123f9c747588dbd3a2aefd28d78b",
+   "outputs": {
+    "master": {
+     "file": "people/master/mirzakhmedova.jpg",
+     "sha256": "9f1ac9e3eef347bcbbe14a8458f56b4fe762123f9c747588dbd3a2aefd28d78b"
+    },
+    "105x140": {
+     "file": "people/105x140/mirzakhmedova.jpg",
+     "sha256": "9f1ac9e3eef347bcbbe14a8458f56b4fe762123f9c747588dbd3a2aefd28d78b"
+    }
+   }
+  },
+  "monroy": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/monroy.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "7bf98950eac483705d9d0769e843b24a4b72aa5a",
+   "blob_sha1": "50b4e15cd40232a85c6b338b68af259afa21c90e",
+   "source_sha256": "a7c4fee463686b0dfa38eccd5008d979ceceb26de031ee2d2d639f3cd64f6af9",
+   "outputs": {
+    "master": {
+     "file": "people/master/monroy.jpg",
+     "sha256": "a7c4fee463686b0dfa38eccd5008d979ceceb26de031ee2d2d639f3cd64f6af9"
+    },
+    "105x140": {
+     "file": "people/105x140/monroy.jpg",
+     "sha256": "a7c4fee463686b0dfa38eccd5008d979ceceb26de031ee2d2d639f3cd64f6af9"
+    }
+   }
+  },
+  "montes": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/montes.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "6a7637c450d28c8326adf28a20b95f669951e696",
+   "source_sha256": "87000e9b39ed18f2b0bf45dd051d0cce41cb08e15032f84c15b5a680f67fcdd9",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/montes.jpg",
+     "sha256": "beebb30c4f82fade1e39623347ee60b0f9cdf15c09522601b6e376f683a94cfa"
+    },
+    "105x140": {
+     "file": "event-people/105x140/montes.jpg",
+     "sha256": "4a8a0719942e740c4af8e86978b5c8670daef9b1081e62081a204c4698f9accb"
+    }
+   }
+  },
+  "moreno": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/moreno.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "16e7c36ff36e913e06285fa22c80e0d143b37995",
+   "blob_sha1": "1f4dc45de2e3f56b945b242728125b9bd1ecaf09",
+   "source_sha256": "89b13cc0101168eb4f5ea5b0e6e2e70564a733a5e4049d71edcfc5343bc51bf3",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/moreno.jpg",
+     "sha256": "7433294dc755089d3972f1123c011b585c3bac7e90bf31e73e0843e052d789c0"
+    },
+    "105x140": {
+     "file": "event-people/105x140/moreno.jpg",
+     "sha256": "e50f85fd3dd99c1be004d52af81e8e822778b50b065a93f334d839b3f38307d5"
+    }
+   }
+  },
+  "morkevicius": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/morkevicius.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "c2afdf44fa47fde170f5e5666be221831d61bdf4",
+   "blob_sha1": "8e000af4dbf75245361f18532298d87c399d139d",
+   "source_sha256": "52c862bd53617e097d1f3f4f065638489350e66e416278f84a36bfd0215adf77",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/morkevicius.jpg",
+     "sha256": "1d1e6040ea409f2bc0c25d93994a7f4c24ec7cfb63721361dae47f0235948d58"
+    },
+    "105x140": {
+     "file": "event-people/105x140/morkevicius.jpg",
+     "sha256": "bf5d895772543cb62f909abbe2adea5b5449a086908c7b9f47bb76cd7873220f"
+    }
+   }
+  },
+  "moskovskiy": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/moskovskiy.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "8bf6860efcbc48463e7c4e024c0eb429dfc956ed",
+   "blob_sha1": "f3f096f22b5699ddf4c94704e5d009fa9f6b07d7",
+   "source_sha256": "63692b3a4c8e380fcc01b43ada22a49c18dc1c3b9648282f882693e119107515",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/moskovskiy.jpg",
+     "sha256": "454d968a8aa42785e8c359f3d8c07a59ca724d889f671c0d2d07c5685225ba50"
+    },
+    "105x140": {
+     "file": "event-people/105x140/moskovskiy.jpg",
+     "sha256": "48c8abce2cd855d5eca6e723b7a221616dd8538043ffa764ed920bf5da9884f3"
+    }
+   }
+  },
+  "mueller": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/mueller.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "baf5553f2bd1ff6cda7edb95eecc8f54bd87d1cd",
+   "source_sha256": "46514df202a28e806d345b3bdb9de09dc59320730f2d6cb3509a86c86cfa8f15",
+   "outputs": {
+    "master": {
+     "file": "people/master/mueller.jpg",
+     "sha256": "46514df202a28e806d345b3bdb9de09dc59320730f2d6cb3509a86c86cfa8f15"
+    },
+    "105x140": {
+     "file": "people/105x140/mueller.jpg",
+     "sha256": "46514df202a28e806d345b3bdb9de09dc59320730f2d6cb3509a86c86cfa8f15"
+    }
+   }
+  },
+  "muench": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/muench.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "aca45136e76cb5ffb4073b5e199758172ba2db57",
+   "blob_sha1": "319e2cd64e37e6abf6f8391ed05129adb184082e",
+   "source_sha256": "249d8c3e9fe7368d9a11dfa53afe7c7be64b1a20344ce191419161395d8e8a78",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/muench.jpg",
+     "sha256": "88c078a2b9929dd248fe17eb0d1a1599dbbc6aecdea3a88789ac0e710b9b7f72"
+    },
+    "105x140": {
+     "file": "event-people/105x140/muench.jpg",
+     "sha256": "3b375767731708bf1853b972f9efc4fcb7417c30c975086f8775a932775b3e89"
+    }
+   }
+  },
+  "muti": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/muti.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "5ecb2f8844a3e22fa88e3cbba59c62d8069da999",
+   "blob_sha1": "65063093f499f4e056c6c9fbdc75c9c78fe2ab1c",
+   "source_sha256": "d20185fc31ab01d4e27e23006d623ce95a8f1a819514a4946369b75460412023",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/muti.jpg",
+     "sha256": "f6f625b82c973e0bf740187afd507d3648cfe0e244ad74003c84260d0943f2b9"
+    },
+    "105x140": {
+     "file": "event-people/105x140/muti.jpg",
+     "sha256": "a07d4c75f994c41080e414b3d554ab1672c8b73f088c186d51d384ee93b6e928"
+    }
+   }
+  },
+  "nakov": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/nakov.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "3deb2d7cb0fda0609052be8f0c5dbd02e5470fc0",
+   "blob_sha1": "dcb8456d7ea0b9b76aa491bddf51240711bf8d78",
+   "source_sha256": "2dadf77310fd5f35280e3dd5725647d39e450e53782956525fc2e728d136778a",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/nakov.jpg",
+     "sha256": "6f15c9cd6bfe1d1f384a545b1272159b4bf50ea8da78ebdc1cf2a298c4bf45f1"
+    },
+    "105x140": {
+     "file": "event-people/105x140/nakov.jpg",
+     "sha256": "d8f49cb8cabcf1cd39eb0b6b13e5a46e3363e13cdc70476d56fdfc021a237039"
+    }
+   }
+  },
+  "niekler": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/niekler.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "73694379ebe71fd0ab9c6da35af21570a39340db",
+   "source_sha256": "ce98095204ceda030ef889387c2e093a351880b369226ce493ada0e12aa0b8d6",
+   "outputs": {
+    "master": {
+     "file": "people/master/niekler.jpg",
+     "sha256": "ce98095204ceda030ef889387c2e093a351880b369226ce493ada0e12aa0b8d6"
+    },
+    "105x140": {
+     "file": "people/105x140/niekler.jpg",
+     "sha256": "ce98095204ceda030ef889387c2e093a351880b369226ce493ada0e12aa0b8d6"
+    }
+   }
+  },
+  "nljubesi2": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/nljubesi2.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "c48d65ebf194b4c90dd8baeb75ebfd29d23bd676",
+   "source_sha256": "f10b5aff42a4e78dc8be5d5d8b964ca46eb858575b0c27409d1d0f44bc6540a2",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/nljubesi2.jpg",
+     "sha256": "f10b5aff42a4e78dc8be5d5d8b964ca46eb858575b0c27409d1d0f44bc6540a2"
+    },
+    "105x140": {
+     "file": "event-people/105x140/nljubesi2.jpg",
+     "sha256": "f10b5aff42a4e78dc8be5d5d8b964ca46eb858575b0c27409d1d0f44bc6540a2"
+    }
+   }
+  },
+  "no-portrait": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/no-portrait.png",
+   "form": "roh",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "5a3f0a37bd4976819066b50a9904c0a315fcf036",
+   "blob_sha1": "20fc5bf573dc0c13eebd3a6a19ad460028db6fea",
+   "source_sha256": "f7f8a9a385f43ebaf5ae2ebcb6e51df269f9730bd296b430061a43a9810d4aef",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/no-portrait.png",
+     "sha256": "f7f8a9a385f43ebaf5ae2ebcb6e51df269f9730bd296b430061a43a9810d4aef"
+    },
+    "105x140": {
+     "file": "event-people/105x140/no-portrait.png",
+     "sha256": "f7f8a9a385f43ebaf5ae2ebcb6e51df269f9730bd296b430061a43a9810d4aef"
+    }
+   }
+  },
+  "nozza": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/nozza.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "5ecb2f8844a3e22fa88e3cbba59c62d8069da999",
+   "blob_sha1": "6791a85085d14e56f84839e75a4dfc05830b1efd",
+   "source_sha256": "28a260630cbe24ef936b1a39ac4315972aab485d178e4fa020d9fc849ada2973",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/nozza.jpg",
+     "sha256": "9d95d4d96ff4e022a1cb224f0ad3423f2663db9fa427d22a9e3cb9550b641f48"
+    },
+    "105x140": {
+     "file": "event-people/105x140/nozza.jpg",
+     "sha256": "647e6994623d712bb6d59107085c3c5b6a8117bb3a2bec577ed00799b8ad31a2"
+    }
+   }
+  },
+  "oberlaender": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/oberlaender.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "d84b246e5dac207f3e3ad227517326a06cc28b05",
+   "source_sha256": "09a67ba77b43db5ab0efe3ea3aaf37445c4a519884b61e1e3faaed00c0f11f71",
+   "outputs": {
+    "master": {
+     "file": "people/master/oberlaender.jpg",
+     "sha256": "09a67ba77b43db5ab0efe3ea3aaf37445c4a519884b61e1e3faaed00c0f11f71"
+    },
+    "105x140": {
+     "file": "people/105x140/oberlaender.jpg",
+     "sha256": "09a67ba77b43db5ab0efe3ea3aaf37445c4a519884b61e1e3faaed00c0f11f71"
+    }
+   }
+  },
+  "oehmichen": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/oehmichen.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "da6ff906da82382be3a5f7d73c2a608ba2210410",
+   "source_sha256": "b38ae4754aae5b1efa82e3506a2afb47328dfdc23055474c0d4e347d6c60be14",
+   "outputs": {
+    "master": {
+     "file": "people/master/oehmichen.jpg",
+     "sha256": "b38ae4754aae5b1efa82e3506a2afb47328dfdc23055474c0d4e347d6c60be14"
+    },
+    "105x140": {
+     "file": "people/105x140/oehmichen.jpg",
+     "sha256": "b38ae4754aae5b1efa82e3506a2afb47328dfdc23055474c0d4e347d6c60be14"
+    }
+   }
+  },
+  "othman": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/othman.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "65ba73b8cd53e0987a17d6b6effaa68d43bb5cfc",
+   "source_sha256": "3f3bd975800bca38d05371d10cc251e089d93b307df9d1da8fabd08871c821fb",
+   "outputs": {
+    "master": {
+     "file": "people/master/othman.jpg",
+     "sha256": "3f3bd975800bca38d05371d10cc251e089d93b307df9d1da8fabd08871c821fb"
+    },
+    "105x140": {
+     "file": "people/105x140/othman.jpg",
+     "sha256": "3f3bd975800bca38d05371d10cc251e089d93b307df9d1da8fabd08871c821fb"
+    }
+   }
+  },
+  "palakarska": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/palakarska.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "97b2c15fc4b24bbf97bafa559550c56c95b72cf1",
+   "source_sha256": "d618ee6cb8b4ddb8bb519b02d92a2d1d526f0a092897ff48e41fbe48111f13af",
+   "outputs": {
+    "master": {
+     "file": "people/master/palakarska.jpg",
+     "sha256": "d618ee6cb8b4ddb8bb519b02d92a2d1d526f0a092897ff48e41fbe48111f13af"
+    },
+    "105x140": {
+     "file": "people/105x140/palakarska.jpg",
+     "sha256": "d618ee6cb8b4ddb8bb519b02d92a2d1d526f0a092897ff48e41fbe48111f13af"
+    }
+   }
+  },
+  "palomino": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/palomino.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "17e9f88f62d524914c12342e0f94d49945d65b54",
+   "source_sha256": "97a7bf4a4925405ac952ad9ec3784e51c4282e391de0bbec4aff368482ea5ad1",
+   "outputs": {
+    "master": {
+     "file": "people/master/palomino.jpg",
+     "sha256": "97a7bf4a4925405ac952ad9ec3784e51c4282e391de0bbec4aff368482ea5ad1"
+    },
+    "105x140": {
+     "file": "people/105x140/palomino.jpg",
+     "sha256": "97a7bf4a4925405ac952ad9ec3784e51c4282e391de0bbec4aff368482ea5ad1"
+    }
+   }
+  },
+  "panchenko": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/panchenko.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "87d9afc40de3bdc0f8cb541ba6eb7e256edc6f5a",
+   "source_sha256": "a6298db6b6fa92712213a535ea3aad388655a37b4d305c7ec7fe451764ec95fd",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/panchenko.jpg",
+     "sha256": "3524ec9f473fe0afeeeecf0fdd4af89f4d17f95aee9f3ddfa33fa5f2857b2568"
+    },
+    "105x140": {
+     "file": "event-people/105x140/panchenko.jpg",
+     "sha256": "2cf5d4d746641c0ef5193add7783fe6ec7fa486f7102e01ee06d2a4a52a6a899"
+    }
+   }
+  },
+  "parry": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/parry.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "23e3f9b6c89ee5da22becd13e234b59bb0d8271a",
+   "blob_sha1": "a5c6450ae9bb725fe3b30349a61c45991b8c88e6",
+   "source_sha256": "15e9f0b33b8f0b4a4690977bc875321f5be22523bf0568c78beba1d7f1d6cd6b",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/parry.jpg",
+     "sha256": "74d0fbf5709ae6994997bf822dd5471047c412ccb9d9bbc0c567d3eac4b593e9"
+    },
+    "105x140": {
+     "file": "event-people/105x140/parry.jpg",
+     "sha256": "84d3c4cbc262be38f547b462d9adaf19ad91dc406c7e3ddfbf9639a644a8a4ec"
+    }
+   }
+  },
+  "patrick": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/patrick.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "2e87d5026ea34b46056d3f0a000669c0228e2f7a",
+   "source_sha256": "eedd5c23e7af9e2b300026c11109d089192c3b096ecf6bd28e29b67342dc8b09",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/patrick.jpg",
+     "sha256": "852718c8681706e765a67f2fb26173f2256bca86b8f213892e29a2648245c11b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/patrick.jpg",
+     "sha256": "6333c7ecc651942cc5cb435fcf14d15b2c23f39e321566e088dcf1d5c2a9f529"
+    }
+   }
+  },
+  "pertsch": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/pertsch.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "9cd1fef2712d781f6659d52a4a0558ad68915d2a",
+   "blob_sha1": "26d486d4fde3cb44dee3a400f9532ea6b492672d",
+   "source_sha256": "b366034d84e3aacbf7ab097485788e754c52d63deb85c44c329c770cb094b785",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/pertsch.jpg",
+     "sha256": "3c5031030af8ea945e11c797d9fef01f10225fbef0fc0f373284f4ed261d3a5c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/pertsch.jpg",
+     "sha256": "4d610c75157580699821efde8aad0801e85c4f8572c283fc3600bcdb2bfb9cae"
+    }
+   }
+  },
+  "petasis": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/petasis.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "625494f8323eb46b40c7e8b499c2256b919ca592",
+   "source_sha256": "b067bbf145ffd41b7c4667dd43a19a7e442393f5bdde16eeb766c1d218ec495c",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/petasis.jpg",
+     "sha256": "da1d7af8cd5a193cd342a8408c079dca27146758276d0e25db40c4ddb72f427e"
+    },
+    "105x140": {
+     "file": "event-people/105x140/petasis.jpg",
+     "sha256": "8ab85837abea84a50783f5769c7bd0db8c4ea4403661daf691cd237269ecbaff"
+    }
+   }
+  },
+  "peter": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/peter.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "4555049f1d5ba89a8fbd3e9f6c4a4fa3439dc5fb",
+   "blob_sha1": "29b102774f345f5434a41c41c362b4736d845f04",
+   "source_sha256": "83a3691543b0dc99603de3fe5b02a1c0f7d4ff405cb24825a5806b0cfddef0c5",
+   "outputs": {
+    "master": {
+     "file": "people/master/peter.jpg",
+     "sha256": "83a3691543b0dc99603de3fe5b02a1c0f7d4ff405cb24825a5806b0cfddef0c5"
+    },
+    "105x140": {
+     "file": "people/105x140/peter.jpg",
+     "sha256": "83a3691543b0dc99603de3fe5b02a1c0f7d4ff405cb24825a5806b0cfddef0c5"
+    }
+   }
+  },
+  "pezik": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/pezik.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "f961f0107f3e5e561797002b682b1ad08d6ecae0",
+   "blob_sha1": "e33cfa59b6697e33f3a95673174f4eee596aa0c8",
+   "source_sha256": "5470199e452ecd76da6fa421b49edbbfcbc46476bffb9d519f7b54cbff310d40",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/pezik.jpg",
+     "sha256": "27ffea9cb4296397c4f4c2aa272885d9bf60dbb80e85c7ca404ed5d9aa31c485"
+    },
+    "105x140": {
+     "file": "event-people/105x140/pezik.jpg",
+     "sha256": "a94168804ee80ad0c152fdc87e3701935bc53b87a42d14b3c909483d22d19df3"
+    }
+   }
+  },
+  "philipwahle": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/philipwahle.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "2cce19e3c841127db69bebce93455c4806fcf37a",
+   "blob_sha1": "d77cdd8fd685db2d9d47fd0d7c73a6296a17a2ec",
+   "source_sha256": "a0d6fce14c35f5fa15f762c9e524b8662d6983057eb1f48ef4cd207142ee21ee",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/philipwahle.jpg",
+     "sha256": "cd2c9781fc6650fad92d81a35381f979fbb6d6b691297249dfdaf34873d2c529"
+    },
+    "105x140": {
+     "file": "event-people/105x140/philipwahle.jpg",
+     "sha256": "3188cfecdb2e4e3a6033fd416b6654227e357406a7658fd424fd813bc8fbf138"
+    }
+   }
+  },
+  "plutz": {
+   "origin": "git-history",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/plutz.jpg",
+   "blob_sha1": "86ad6417910f310b63a5e4523a7ea0009d8e4973",
+   "local_copy": "rescued-hires/plutz.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "4f2c965029c538259c52b10844b0a93963820518327145894638e3e50125edc3",
+   "outputs": {
+    "master": {
+     "file": "people/master/plutz.jpg",
+     "sha256": "c950f4a3ed446a4f0461cd0861872a1ba726ae387a98c1cf5888d96145dc7059"
+    },
+    "105x140": {
+     "file": "people/105x140/plutz.jpg",
+     "sha256": "c0acaee3a1c8902fe2c3f2a7b5fb2c112de08c3ee0ced52c6e8db337cf11a73e"
+    }
+   }
+  },
+  "podrecca": {
+   "origin": "git-history",
+   "repo": "temir-org.github.io",
+   "path": "people/img/podrecca.jpg",
+   "blob_sha1": "9fdee37f643d114cd0b2771752ed73ea170fbaee",
+   "local_copy": "rescued-hires/podrecca.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "a425de415e0c224efce96fcd3c59b137ad7c35659b1c5c694b27f8b8dc80af78",
+   "outputs": {
+    "master": {
+     "file": "people/master/podrecca.jpg",
+     "sha256": "78b4b3f3ed352ec903925606d038ae260fad97de72874fbafcaaf2149eff5ac0"
+    },
+    "105x140": {
+     "file": "people/105x140/podrecca.jpg",
+     "sha256": "ed4d67286efe04f2028d5b48350485ea5417589972bf5ec49c01c25766bfb653"
+    }
+   }
+  },
+  "potthast": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/potthast.jpg",
+   "form": "roh",
+   "flags": null,
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "8b3c767c39fd8504e827b0e6ebe94115db7c0a47",
+   "source_sha256": "eae7a27ba0474beda12730148cd1594a2921b744028c79eb83dde06308cc393c",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/potthast.jpg",
+     "sha256": "eae7a27ba0474beda12730148cd1594a2921b744028c79eb83dde06308cc393c"
+    },
+    "105x140": {
+     "file": "people/105x140/potthast.jpg",
+     "sha256": "eae7a27ba0474beda12730148cd1594a2921b744028c79eb83dde06308cc393c"
+    }
+   }
+  },
+  "prettenhofer": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/prettenhofer.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "0ed7ef91bab737021d7c687cba6af211b09e0427",
+   "source_sha256": "51b29dce443f5c046719a41bd591d3f47b46a239f7b51e821d850f3f270d7d13",
+   "outputs": {
+    "master": {
+     "file": "people/master/prettenhofer.jpg",
+     "sha256": "51b29dce443f5c046719a41bd591d3f47b46a239f7b51e821d850f3f270d7d13"
+    },
+    "105x140": {
+     "file": "people/105x140/prettenhofer.jpg",
+     "sha256": "51b29dce443f5c046719a41bd591d3f47b46a239f7b51e821d850f3f270d7d13"
+    }
+   }
+  },
+  "rangel": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/rangel.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "5faa52dcf84414e0ac45eee36e65e6a07052b517",
+   "source_sha256": "1fb9d739ca87bbf2b6b06865427d5a319c40e9b226fbf24b1c5a0c55f2454070",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/rangel.jpg",
+     "sha256": "d6603b96d5fd527a4f9a8e9186b49a31c828c948bc892b3658006bc8fb85ca6e"
+    },
+    "105x140": {
+     "file": "event-people/105x140/rangel.jpg",
+     "sha256": "acfbceb7904549af2689cd9a0d9dc61d0d3b3b701475623709647661486037e2"
+    }
+   }
+  },
+  "ravenet": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/ravenet.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "4c39cba93e8aa67ded0fc9eac6809d9ff0a13ba1",
+   "source_sha256": "caa5dab1dbdf7a1048c51c30b41a6fde15da438b223f797a836ea93d422af7c9",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/ravenet.jpg",
+     "sha256": "caa5dab1dbdf7a1048c51c30b41a6fde15da438b223f797a836ea93d422af7c9"
+    },
+    "105x140": {
+     "file": "event-people/105x140/ravenet.jpg",
+     "sha256": "caa5dab1dbdf7a1048c51c30b41a6fde15da438b223f797a836ea93d422af7c9"
+    }
+   }
+  },
+  "reed": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/reed.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "b8b5e9a519622e1ab849b02f36856542fc2eb11c",
+   "source_sha256": "5479cd64e44b7374952498cf6c157c17fcaba50b28cd4559f6d62cecee987db8",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/reed.jpg",
+     "sha256": "05f5dfe37c567d6ae96bec1d8ab89be35f6cefd2ae1a4697ca321fd0b055fefe"
+    },
+    "105x140": {
+     "file": "event-people/105x140/reed.jpg",
+     "sha256": "d6f19017280653b8b100f345b43a42454cb022d88330f7234b1cf540e8a27272"
+    }
+   }
+  },
+  "reibert": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/reibert.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "8f2a7f431b5cad3b141f6cf9165d2b6e823c6fc5",
+   "source_sha256": "04d92bb72d23d983db30a78d55a19a99cf741b8de79a20dff0a54880e098e089",
+   "outputs": {
+    "master": {
+     "file": "people/master/reibert.jpg",
+     "sha256": "04d92bb72d23d983db30a78d55a19a99cf741b8de79a20dff0a54880e098e089"
+    },
+    "105x140": {
+     "file": "people/105x140/reibert.jpg",
+     "sha256": "04d92bb72d23d983db30a78d55a19a99cf741b8de79a20dff0a54880e098e089"
+    }
+   }
+  },
+  "reimer": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/reimer.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "fb25098edb8168498309686359b01497cbe1954d",
+   "source_sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/reimer.jpg",
+     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
+    },
+    "105x140": {
+     "file": "event-people/105x140/reimer.jpg",
+     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
+    }
+   }
+  },
+  "reitis-muenstermann": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/reitis-muenstermann.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10ebc8590f75138210c72bf293a4c00a00988f99",
+   "blob_sha1": "cdde805abf36a15c9d63f4909b399828aa4c9d82",
+   "source_sha256": "3f90651c17c722849d423dc8151757e4457986035651414f49ee361c6a730160",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/reitis-muenstermann.jpg",
+     "sha256": "3f90651c17c722849d423dc8151757e4457986035651414f49ee361c6a730160"
+    },
+    "105x140": {
+     "file": "event-people/105x140/reitis-muenstermann.jpg",
+     "sha256": "3f90651c17c722849d423dc8151757e4457986035651414f49ee361c6a730160"
+    }
+   }
+  },
+  "resch": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/resch.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "cc649e38e0b1ce7f3ff8ab337ee7a2c698132dd2",
+   "source_sha256": "d9a3324bd6bcd9bb1b525b880d517a599f9f2dca9756f261bd298eb1358bfea8",
+   "outputs": {
+    "master": {
+     "file": "people/master/resch.jpg",
+     "sha256": "d9a3324bd6bcd9bb1b525b880d517a599f9f2dca9756f261bd298eb1358bfea8"
+    },
+    "105x140": {
+     "file": "people/105x140/resch.jpg",
+     "sha256": "d9a3324bd6bcd9bb1b525b880d517a599f9f2dca9756f261bd298eb1358bfea8"
+    }
+   }
+  },
+  "reynier": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/reynier.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "26910c36c38382f563534663b5ee4ac81744d04e",
+   "blob_sha1": "26205ee973e706f6df2155827c42eaa2a8a661fd",
+   "source_sha256": "3d266c5d6e53f19bfb17efac75a01c5e166ce61a6c5d6228705240d7622cbb4f",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/reynier.jpg",
+     "sha256": "eb236dc393014f066b2699a0da7b7b6cb4a7e0b5c2e5bea8d4b48c6e6ca1ca68"
+    },
+    "105x140": {
+     "file": "event-people/105x140/reynier.jpg",
+     "sha256": "bc0fc8946602bda74793c23657ac10c2b283933c177825c461c81c0e870917ca"
+    }
+   }
+  },
+  "richter": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/richter.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "116329fbddee8617419e8e7b44e8fbc080b00328",
+   "blob_sha1": "6412fc00ca3d6f926730e2fcd4406d2c90a2c5bc",
+   "source_sha256": "99a87dac26554311939f12db0e01e0d0ee8266935454cf55619ea1be8050d8a8",
+   "outputs": {
+    "master": {
+     "file": "people/master/richter.jpg",
+     "sha256": "99a87dac26554311939f12db0e01e0d0ee8266935454cf55619ea1be8050d8a8"
+    },
+    "105x140": {
+     "file": "people/105x140/richter.jpg",
+     "sha256": "99a87dac26554311939f12db0e01e0d0ee8266935454cf55619ea1be8050d8a8"
+    }
+   }
+  },
+  "rios": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/rios.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "f383548422db2801bc72f262bed84791d7e5f8cd",
+   "blob_sha1": "b85c3e903218c953fe70633d6ef768aab9601921",
+   "source_sha256": "182adc8b7762c8d946deb685801b77c570999dfacefffde2e98f6a8c06211abf",
+   "outputs": {
+    "master": {
+     "file": "people/master/rios.jpg",
+     "sha256": "182adc8b7762c8d946deb685801b77c570999dfacefffde2e98f6a8c06211abf"
+    },
+    "105x140": {
+     "file": "people/105x140/rios.jpg",
+     "sha256": "182adc8b7762c8d946deb685801b77c570999dfacefffde2e98f6a8c06211abf"
+    }
+   }
+  },
+  "rizwan": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/rizwan.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "02c79ff558be6d26b39b62fda2812388d1c83d25",
+   "blob_sha1": "6eb918c1ff36978a5547757b545d4909f2e455fb",
+   "source_sha256": "ddc0cc85f745473d6d0e1d2c3c8b58d4ee5f62503bcf8ec9e8132cab5f431e87",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/rizwan.jpg",
+     "sha256": "5ce0eb645a570061dba8e7587cdbdd21f5bffba784a84a568c7a64e7cf92bec5"
+    },
+    "105x140": {
+     "file": "event-people/105x140/rizwan.jpg",
+     "sha256": "eae07ff8579ee3c2e36ec0b034cdd13fac9dda7b2180720517f828f013a9f191"
+    }
+   }
+  },
+  "romberg": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/romberg.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
+   "blob_sha1": "6ed80df986baa30451e9e0aeb3880d8b16d6a88b",
+   "source_sha256": "366cffb0d5ec5886067814240e54bf4119f41f5c545bd9881ac8eccb21052f00",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/romberg.jpg",
+     "sha256": "366cffb0d5ec5886067814240e54bf4119f41f5c545bd9881ac8eccb21052f00"
+    },
+    "105x140": {
+     "file": "event-people/105x140/romberg.jpg",
+     "sha256": "366cffb0d5ec5886067814240e54bf4119f41f5c545bd9881ac8eccb21052f00"
+    }
+   }
+  },
+  "rosso": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/rosso.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "0415f8d708f6de5b1183a3209bc3a23043dcd6b8",
+   "blob_sha1": "26f9ff23244c83d9f06c95579458c0d36e11ef30",
+   "source_sha256": "65592a7df8c8e93100cc2b77370e97e8cea39d0d835b2ac3cb67e05f1ce42b96",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/rosso.jpg",
+     "sha256": "65592a7df8c8e93100cc2b77370e97e8cea39d0d835b2ac3cb67e05f1ce42b96"
+    },
+    "105x140": {
+     "file": "people/105x140/rosso.jpg",
+     "sha256": "65592a7df8c8e93100cc2b77370e97e8cea39d0d835b2ac3cb67e05f1ce42b96"
+    }
+   }
+  },
+  "ruas": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/ruas.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "acf264645e17961a4a12db0470d47e1d584f373c",
+   "blob_sha1": "17d6f66b277fc8e026e5a8dabcadb69407c33128",
+   "source_sha256": "d16dca0bc65bd66f5bd01c00efcdceec367bd26a21b3b8f9956089eee5a0c905",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/ruas.jpg",
+     "sha256": "c516cc720db3bd8aabe3466ad6a652875364f6beac6f9657cf9837d5b0edbad1"
+    },
+    "105x140": {
+     "file": "event-people/105x140/ruas.jpg",
+     "sha256": "555385930303b8efc8195313a687a9383580bdd69dfae391d4e57c5592233d10"
+    }
+   }
+  },
+  "rudloff": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/rudloff.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "088fd3c958c6039125e6129db0cf3c0d8a9822f0",
+   "blob_sha1": "f12fb1224b3a2978fbdb72ca4a7f1245cbcdad6c",
+   "source_sha256": "924c54ebc828c76b195d36c88c0ebd3b88ef5f88a5a47218377dd90a8992f741",
+   "outputs": {
+    "master": {
+     "file": "people/master/rudloff.jpg",
+     "sha256": "924c54ebc828c76b195d36c88c0ebd3b88ef5f88a5a47218377dd90a8992f741"
+    },
+    "105x140": {
+     "file": "people/105x140/rudloff.jpg",
+     "sha256": "924c54ebc828c76b195d36c88c0ebd3b88ef5f88a5a47218377dd90a8992f741"
+    }
+   }
+  },
+  "ruth": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/ruth.jpg",
+   "form": "roh",
+   "flags": null,
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "98d31711593991ed15187f370c3d34309ffabb2b",
+   "source_sha256": "69c7ec461c1e0b47a871d946146775ba80825b7862313f6ac8697524573db200",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/ruth.jpg",
+     "sha256": "69c7ec461c1e0b47a871d946146775ba80825b7862313f6ac8697524573db200"
+    },
+    "105x140": {
+     "file": "people/105x140/ruth.jpg",
+     "sha256": "69c7ec461c1e0b47a871d946146775ba80825b7862313f6ac8697524573db200"
+    }
+   }
+  },
+  "saad": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/saad.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "e7a05cf69dcb3de4b308b21ae1349835d7cb8924",
+   "source_sha256": "13b46b4aa68702d9d6fc0bc801524650cf8762762d1ad5e5e4ecd76a31c63363",
+   "outputs": {
+    "master": {
+     "file": "people/master/saad.jpg",
+     "sha256": "13b46b4aa68702d9d6fc0bc801524650cf8762762d1ad5e5e4ecd76a31c63363"
+    },
+    "105x140": {
+     "file": "people/105x140/saad.jpg",
+     "sha256": "13b46b4aa68702d9d6fc0bc801524650cf8762762d1ad5e5e4ecd76a31c63363"
+    }
+   }
+  },
+  "sanchez-perez": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/sanchez-perez.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "41ae7c432e0cc8d40f0eaa11197db0fa940b7ad5",
+   "blob_sha1": "36c77799d1c81294216b76284a77e2e7dbba2b2d",
+   "source_sha256": "0a422ec9fd56f37762a6e2a4c68f37db0ebea6a39b860d77d8ceaadac97187f5",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/sanchez-perez.jpg",
+     "sha256": "0a422ec9fd56f37762a6e2a4c68f37db0ebea6a39b860d77d8ceaadac97187f5"
+    },
+    "105x140": {
+     "file": "event-people/105x140/sanchez-perez.jpg",
+     "sha256": "0a422ec9fd56f37762a6e2a4c68f37db0ebea6a39b860d77d8ceaadac97187f5"
+    }
+   }
+  },
+  "sartor": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/sartor.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "21377c26f5c03965496a0e6be323c47e092dfd34",
+   "source_sha256": "0156641aa14a057fc47a059272fd0dbb16ce7b221c5f9c5b0856e44b57e1a04d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/sartor.jpg",
+     "sha256": "90952d6377c0fd94969f5dc2c9b28897efff1b5a83773dcc68ff4ffbbd18c7b4"
+    },
+    "105x140": {
+     "file": "event-people/105x140/sartor.jpg",
+     "sha256": "c58e8dbea4fcb1e814b852b153c114de2ebf4be0d876d3de20fb7b41038f1eef"
+    }
+   }
+  },
+  "scells": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/scells.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "446d835285628a4c92f7ed1242ab03d919e2d010",
+   "blob_sha1": "92593ec363a2f4c79c5e1a415f4fbe74349fb8f5",
+   "source_sha256": "b6ced8790062ac100f258252b63a7b90e58ec9713916ad6b792fac947b4d04f7",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/scells.jpg",
+     "sha256": "b6ced8790062ac100f258252b63a7b90e58ec9713916ad6b792fac947b4d04f7"
+    },
+    "105x140": {
+     "file": "people/105x140/scells.jpg",
+     "sha256": "b6ced8790062ac100f258252b63a7b90e58ec9713916ad6b792fac947b4d04f7"
+    }
+   }
+  },
+  "scharfbillig": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/scharfbillig.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "97e15457f8c7d97e6964a4adc32c20dcd8922a32",
+   "blob_sha1": "b45fb7a74dfb0572737205364554b44cb0c5d17a",
+   "source_sha256": "0760c9398515419a55c7183d42434a188059fdf55f8f0f3fb746bfe32772adb8",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/scharfbillig.jpg",
+     "sha256": "0760c9398515419a55c7183d42434a188059fdf55f8f0f3fb746bfe32772adb8"
+    },
+    "105x140": {
+     "file": "event-people/105x140/scharfbillig.jpg",
+     "sha256": "0760c9398515419a55c7183d42434a188059fdf55f8f0f3fb746bfe32772adb8"
+    }
+   }
+  },
+  "schlatt": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/schlatt.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "015eeb629adfb5428ade23798ca986c8abe93eee",
+   "blob_sha1": "c788c151d26f44104c7c8091bc3ecb2dbfd13ada",
+   "source_sha256": "aff47055d97a4c8e3f86ea4b83fc82e2d0dfe8f01d6cb24bb68e0710d742efd1",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/schlatt.jpg",
+     "sha256": "8e374cf0384d7b2b3ffe222ef5aef3a0235c2788f6d3a68d32972622d009109a"
+    },
+    "105x140": {
+     "file": "event-people/105x140/schlatt.jpg",
+     "sha256": "c1ab38968fc58cef6b9195f83e67949d769dc63a633fd217d1753498f09a9a43"
+    }
+   }
+  },
+  "schneider": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/schneider.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "6759a3a5ea042f89342e88fd4c0fe0f7137cd25e",
+   "blob_sha1": "81614f303ced755e5394256fb1cfcaedcf22bf7f",
+   "source_sha256": "d0ab7987352728efce7d904c5463275f875b6b3079ce34561288d655943cebb1",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/schneider.jpg",
+     "sha256": "b0feb96013d9c4024a8169c7ac1f558becfd31951d540911fef1cdf35689ed35"
+    },
+    "105x140": {
+     "file": "event-people/105x140/schneider.jpg",
+     "sha256": "0598a04d55bbe70f4fa54241d9c594805d3f145e348d82844f957560c49522a2"
+    }
+   }
+  },
+  "schroeder": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/schroeder.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "f71253691f47e176592e5964c70e6fd8d67e4d2a",
+   "source_sha256": "493824a0b1a66266c4d86fe2d3ea51a911f639eab911fe38a4eabb3fe6a352f5",
+   "outputs": {
+    "master": {
+     "file": "people/master/schroeder.jpg",
+     "sha256": "493824a0b1a66266c4d86fe2d3ea51a911f639eab911fe38a4eabb3fe6a352f5"
+    },
+    "105x140": {
+     "file": "people/105x140/schroeder.jpg",
+     "sha256": "493824a0b1a66266c4d86fe2d3ea51a911f639eab911fe38a4eabb3fe6a352f5"
+    }
+   }
+  },
+  "schuetze": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/schuetze.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "936142e04861061b93ef1e00ea02158da5ec9d2c",
+   "source_sha256": "65037cae23b6118ae50c70b35be533522e69517e51854a13f7de08e04eb490d2",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/schuetze.jpg",
+     "sha256": "65037cae23b6118ae50c70b35be533522e69517e51854a13f7de08e04eb490d2"
+    },
+    "105x140": {
+     "file": "event-people/105x140/schuetze.jpg",
+     "sha256": "65037cae23b6118ae50c70b35be533522e69517e51854a13f7de08e04eb490d2"
+    }
+   }
+  },
+  "shelmanov": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/shelmanov.jpeg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "3deb2d7cb0fda0609052be8f0c5dbd02e5470fc0",
+   "blob_sha1": "70a4d65ce42a9d1717c0f429258e5f307472b810",
+   "source_sha256": "d8bee97da1ea0bf86d613a67f9406b5f16c0d82bbb09206562dc6480cf5b53dc",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/shelmanov.jpg",
+     "sha256": "9fb13a6249534b28f2c67a18a70602a5461c4d97c0a79d1898041eca26989031"
+    },
+    "105x140": {
+     "file": "event-people/105x140/shelmanov.jpg",
+     "sha256": "ec9e1423b4b09e3e1ab8579fce4581174a35a4dd37dd64528e5517842e9832bc"
+    }
+   }
+  },
+  "shukla": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/shukla.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "f01f9b758976f523ef7f3deea6896724c86d0889",
+   "source_sha256": "3ddf3fc226c008e4e28cb238d284d463a8bfe06bf52a86552afa8c91f3d5ff33",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/shukla.jpg",
+     "sha256": "3ddf3fc226c008e4e28cb238d284d463a8bfe06bf52a86552afa8c91f3d5ff33"
+    },
+    "105x140": {
+     "file": "event-people/105x140/shukla.jpg",
+     "sha256": "3ddf3fc226c008e4e28cb238d284d463a8bfe06bf52a86552afa8c91f3d5ff33"
+    }
+   }
+  },
+  "silhouette-female": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/silhouette-female.jpg",
+   "form": "roh",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "b85c3e903218c953fe70633d6ef768aab9601921",
+   "source_sha256": "182adc8b7762c8d946deb685801b77c570999dfacefffde2e98f6a8c06211abf",
+   "outputs": {
+    "master": {
+     "file": "people/master/silhouette-female.jpg",
+     "sha256": "182adc8b7762c8d946deb685801b77c570999dfacefffde2e98f6a8c06211abf"
+    },
+    "105x140": {
+     "file": "people/105x140/silhouette-female.jpg",
+     "sha256": "182adc8b7762c8d946deb685801b77c570999dfacefffde2e98f6a8c06211abf"
+    }
+   }
+  },
+  "silhouette-male": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/silhouette-male.jpg",
+   "form": "roh",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "03951dc7c277e38592ff3ef6e03625bf6adf1dfa",
+   "source_sha256": "063220c037b45ff0770f02243e5ea94834978df239769dbf05ed490679251ef6",
+   "outputs": {
+    "master": {
+     "file": "people/master/silhouette-male.jpg",
+     "sha256": "063220c037b45ff0770f02243e5ea94834978df239769dbf05ed490679251ef6"
+    },
+    "105x140": {
+     "file": "people/105x140/silhouette-male.jpg",
+     "sha256": "063220c037b45ff0770f02243e5ea94834978df239769dbf05ed490679251ef6"
+    }
+   }
+  },
+  "slonim": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/slonim.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "05f7da07ad3768574b925d51a01fe09a2e5d907f",
+   "source_sha256": "04f7f39e8c1f4d21886f021ed357c2a3a8adbca70e41126f5f1e00f10881d1e3",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/slonim.jpg",
+     "sha256": "601398058209e1470bdaf94aeb4a858bdac7c2fdc9a560eef9264a8a4fff9ad7"
+    },
+    "105x140": {
+     "file": "event-people/105x140/slonim.jpg",
+     "sha256": "149fe081aa0c7a396406b657222184c75a281a02f13128168c5a6e81786d870f"
+    }
+   }
+  },
+  "smirnova": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/smirnova.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "e1dd56eee853d88a540040d6838d7871f7de8364",
+   "blob_sha1": "10650b96d16d60bac9d1ce41b8a794c16f772337",
+   "source_sha256": "b393eb8ca4a1b596b2a59761ba6ef8a2a5b8191b275e9dc89eeec995e34f19a1",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/smirnova.jpg",
+     "sha256": "d7eeddfed1d59143728434d4dc7e722b17eee89302142acc1c515092a5143226"
+    },
+    "105x140": {
+     "file": "event-people/105x140/smirnova.jpg",
+     "sha256": "079b198df5398237521784733499a3655d09da1aa50875e15dda6a143c65ea39"
+    }
+   }
+  },
+  "sotaro": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/sotaro.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "02c79ff558be6d26b39b62fda2812388d1c83d25",
+   "blob_sha1": "75432ccbc39a56f565ebab29840a6c2d2dcc7f6a",
+   "source_sha256": "fced6d1a0d9828a0b30ed2cf3963241f3f7a019b1ab73fc2d9091b8ca9d2f085",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/sotaro.jpg",
+     "sha256": "3be47f580246f7ee46bfae3af3db12b45e51dd311c5a98f516a4c3e75bcea6ea"
+    },
+    "105x140": {
+     "file": "event-people/105x140/sotaro.jpg",
+     "sha256": "11b6e8a9ecc069a0d2569ebe3be89addc6200f720ec891984cad4b7f8456ecbc"
+    }
+   }
+  },
+  "specht": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/specht.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "ec93521590336f08ef4ac3d12b710596b60ce6d9",
+   "source_sha256": "e267d45446769e038c399641ef2fe8c4fd51281350332d0519e3ab10bf5c86f6",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/specht.jpg",
+     "sha256": "1a47c8b2947af92b5d0f361614db5d75d582059e485923cf14be0a10a04e2724"
+    },
+    "105x140": {
+     "file": "event-people/105x140/specht.jpg",
+     "sha256": "750b27695ba2b663633010108903acd907b1a948eaf1bbad4706b1fb0c05e427"
+    }
+   }
+  },
+  "spina": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/spina.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "41ae7c432e0cc8d40f0eaa11197db0fa940b7ad5",
+   "blob_sha1": "41d37792bfd7f3f111ae62e8e1d1b320718dc0b3",
+   "source_sha256": "b19f1179336f646c2e93bfd35a384e1dff7c23775d175a73df8d369a657a1c5d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/spina.jpg",
+     "sha256": "59552e8860155e3b2768f48e634c7072c57d4fd3bb0507638bdc9723869aa4ab"
+    },
+    "105x140": {
+     "file": "event-people/105x140/spina.jpg",
+     "sha256": "f2e3dfe83ae5a466ae4c12577dbf3b7b718386587d0da462ca9fc56e4d5afcbe"
+    }
+   }
+  },
+  "stakovskii": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/stakovskii.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "2c94f87cc6c107a27b52d791636519d79b72d211",
+   "blob_sha1": "7abe93e93d1155466104c9a59a44c245efb61742",
+   "source_sha256": "34c640e9b65c3e48215167cc7377cb38aa62414c6ad1bf3279ae9300f6372a7c",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/stakovskii.jpg",
+     "sha256": "333310ee3fd70b8bef507dc8e1e1f794a78068a2510a9026998c1c17a39984ca"
+    },
+    "105x140": {
+     "file": "event-people/105x140/stakovskii.jpg",
+     "sha256": "846cb5f262954c986aa347d733e521612e1f0e260ebfea5fbdc07f4e081aa940"
+    }
+   }
+  },
+  "stamatatos": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/stamatatos.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "7b52781808499e43ccb2e8e4649bdc5d08f04b12",
+   "source_sha256": "afd5170a562b37a3bb1be8823149ad3737f86788c61f96f7f0c5536a0fc44a2f",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/stamatatos.jpg",
+     "sha256": "41bf797597b6294c15bc55b970ab94dfb4ca67370845d8802cdf416efe036d6c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/stamatatos.jpg",
+     "sha256": "7069d4546eb3841c2bf88774a5f2075db22c93126e1b386addd36d4a0d39323b"
+    }
+   }
+  },
+  "stein": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "people/img/stein.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "53071768faef4063b076453a44ae52c8d1222dd1",
+   "blob_sha1": "823d25849606bd2fc6fadffca678f62839c0ac1d",
+   "source_sha256": "e403f30105abcd38cf03db741c985375694ce0cd8f26ea8cb836d2a4eab6a3aa",
+   "outputs": {
+    "master": {
+     "file": "people/master/stein.jpg",
+     "sha256": "e403f30105abcd38cf03db741c985375694ce0cd8f26ea8cb836d2a4eab6a3aa"
+    },
+    "105x140": {
+     "file": "people/105x140/stein.jpg",
+     "sha256": "e403f30105abcd38cf03db741c985375694ce0cd8f26ea8cb836d2a4eab6a3aa"
+    }
+   }
+  },
+  "stevenson": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/stevenson.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "f922de2af8d3668b3b88a8b5b922c237796ff9cc",
+   "blob_sha1": "844a53394d3545ea052cc7738a3da1cb839052ba",
+   "source_sha256": "b63363dfa2e92dee4c8f4bd4b07878248bfdf926aa90c6fe4c86d08a5aab4eb4",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/stevenson.jpg",
+     "sha256": "4050926da57c8d7019ff9290600066b041da2cc1e39f1dc687d33603468d9d1c"
+    },
+    "105x140": {
+     "file": "event-people/105x140/stevenson.jpg",
+     "sha256": "5e22bca71a446892ae42960df40261aa845d8d4950435c63cbcdb666afb21365"
+    }
+   }
+  },
+  "syed": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/syed.jpg",
+   "form": "roh",
+   "flags": null,
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "3f50e80b6b68e95b48f6e35bc210699bc3c61ea5",
+   "source_sha256": "a03963a6f1364fc244281d7715160fa6d6057e772b7c64bab0362dad456ca56e",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/syed.jpg",
+     "sha256": "a03963a6f1364fc244281d7715160fa6d6057e772b7c64bab0362dad456ca56e"
+    },
+    "105x140": {
+     "file": "people/105x140/syed.jpg",
+     "sha256": "a03963a6f1364fc244281d7715160fa6d6057e772b7c64bab0362dad456ca56e"
+    }
+   }
+  },
+  "taule": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/taule.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "199b21c73f3bf3e19dd523694c0884d838482791",
+   "blob_sha1": "af66fcc4b07c7196997db767eada713cc95d6218",
+   "source_sha256": "b76e3c58bda436bf4793543aa6f8c366f31bca64488ce6cf47b3edbb61f2f495",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/taule.jpg",
+     "sha256": "62bf4feddf53242dc1f9e1ef828fe68ef9da023ef1a9e90508a87b2ee8ce5cee"
+    },
+    "105x140": {
+     "file": "event-people/105x140/taule.jpg",
+     "sha256": "ae30de5afba010e57a57f57e2fc87149ad8528e760455d82e3486585b0115332"
+    }
+   }
+  },
+  "thielken": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/thielken.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "812844db587ee722f1a4ca9d631fdac0f5f65822",
+   "blob_sha1": "190ff6ff9bf3805f911de6fcf2f9f7b802dc60ef",
+   "source_sha256": "acf5f0d4bb6ace58ae727bc984b87d07cb31afbb6fef1a0b6a5c5c308387a8ee",
+   "outputs": {
+    "master": {
+     "file": "people/master/thielken.jpg",
+     "sha256": "acf5f0d4bb6ace58ae727bc984b87d07cb31afbb6fef1a0b6a5c5c308387a8ee"
+    },
+    "105x140": {
+     "file": "people/105x140/thielken.jpg",
+     "sha256": "acf5f0d4bb6ace58ae727bc984b87d07cb31afbb6fef1a0b6a5c5c308387a8ee"
+    }
+   }
+  },
+  "tippmann": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/tippmann.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "366f4417ffa4790e2fd9c6e90c0af1858e8b7943",
+   "source_sha256": "98837d6f1244bb4cd4bd01bdadcb133ce5148c560e2df49d0d650b890ffe9b73",
+   "outputs": {
+    "master": {
+     "file": "people/master/tippmann.jpg",
+     "sha256": "98837d6f1244bb4cd4bd01bdadcb133ce5148c560e2df49d0d650b890ffe9b73"
+    },
+    "105x140": {
+     "file": "people/105x140/tippmann.jpg",
+     "sha256": "98837d6f1244bb4cd4bd01bdadcb133ce5148c560e2df49d0d650b890ffe9b73"
+    }
+   }
+  },
+  "trautner": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/trautner.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "7fc25c2fc8a4e76c2b3fcdbfc1df9bf200c7c4a6",
+   "blob_sha1": "05d798b5fef3445c6a5fb50f0aae0340d0a39d29",
+   "source_sha256": "4aaa02378d453ec161f0ac11a9ee3d4219326e3db5393b144adbc48ed0c6c1ce",
+   "outputs": {
+    "master": {
+     "file": "people/master/trautner.jpg",
+     "sha256": "4aaa02378d453ec161f0ac11a9ee3d4219326e3db5393b144adbc48ed0c6c1ce"
+    },
+    "105x140": {
+     "file": "people/105x140/trautner.jpg",
+     "sha256": "4aaa02378d453ec161f0ac11a9ee3d4219326e3db5393b144adbc48ed0c6c1ce"
+    }
+   }
+  },
+  "trenkmann": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/trenkmann.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "ed78b5e60c525acde1c1a21595204429512cc411",
+   "source_sha256": "5bde0cfb0fb73df53cd01b06ef78ef320f70f6aa937621e8dba7a6827ed05398",
+   "outputs": {
+    "master": {
+     "file": "people/master/trenkmann.jpg",
+     "sha256": "5bde0cfb0fb73df53cd01b06ef78ef320f70f6aa937621e8dba7a6827ed05398"
+    },
+    "105x140": {
+     "file": "people/105x140/trenkmann.jpg",
+     "sha256": "5bde0cfb0fb73df53cd01b06ef78ef320f70f6aa937621e8dba7a6827ed05398"
+    }
+   }
+  },
+  "tschuggnall": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/tschuggnall.png",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "a4b32bf84f14032cffc32c0633dc34df00b37eed",
+   "source_sha256": "83dce7082aae2d7870f5f4cf159038733a969e9cb5909c33ca82a153863fabea",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/tschuggnall.jpg",
+     "sha256": "4243ef85eb8ffb9fe6a53f1d15f6fe45e853db2e181c216983ee96d118efaf00"
+    },
+    "105x140": {
+     "file": "event-people/105x140/tschuggnall.jpg",
+     "sha256": "49f30d14aefec47eaf5f35857848ea75417e8caca3f49a71af3389fa65bc2429"
+    }
+   }
+  },
+  "tsvigun": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/tsvigun.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "a765bfda1bc07e237eba7cb091317847e4a4fb9e",
+   "blob_sha1": "3716e27a653b048a82ee30f2b5d800e9dd8ecfca",
+   "source_sha256": "3c3797ffe13964c070c3317714e63084139bad462223e055b684a4b4ac4ea9a4",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/tsvigun.jpg",
+     "sha256": "94e4a6d2bb97cf07d1c745310e21210fc65564246ff8e87e1485242484a659eb"
+    },
+    "105x140": {
+     "file": "event-people/105x140/tsvigun.jpg",
+     "sha256": "7b6f58b79c61cda05ab1a6f16cdce6895e6a2f295707fe6fa740f8d37777127e"
+    }
+   }
+  },
+  "ustalov": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/ustalov.jpeg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "e1dd56eee853d88a540040d6838d7871f7de8364",
+   "blob_sha1": "85a9efdea192dba6fc6eee526764609204a05f9c",
+   "source_sha256": "d36c6efc7ce70fbfcd098178e7d9b3c33841366abde7e0f1d6390c73207b44f3",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/ustalov.jpg",
+     "sha256": "ab83c08007d1f0a009c12bf188ae958282000a6ccad92d0a6490625e908ac6ec"
+    },
+    "105x140": {
+     "file": "event-people/105x140/ustalov.jpg",
+     "sha256": "4b6dfb332630bafb06d712dc7f7cd3344657ad3ff3c1ccf31ca014a58d22ee51"
+    }
+   }
+  },
+  "verhoeven": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/verhoeven.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ccdaf7082c5f22ff8724fc0153a72abf77013acb",
+   "blob_sha1": "d64657374ea967a79eb09583d803a74cae6c626d",
+   "source_sha256": "9c53a11384c415b49b014eb504513f09820d0fd2b4195d408931aa3420afd629",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/verhoeven.jpg",
+     "sha256": "52fd6da67c96f7b056df9c7d8e7b4a0971c7978eb30073e8cfc3405082af2da5"
+    },
+    "105x140": {
+     "file": "event-people/105x140/verhoeven.jpg",
+     "sha256": "1044bc4d7c268b2dadb0b750ae31b39523247788332d24bd9af48de6fa77ee2b"
+    }
+   }
+  },
+  "villatoro-tello": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/villatoro-tello.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "16e7c36ff36e913e06285fa22c80e0d143b37995",
+   "blob_sha1": "7a9aee13d20802b2db60184b1eb5849f74dc8486",
+   "source_sha256": "5bbc996362c1d38e56aa3c4f4b3cd58ff918e4fae089b757c20c7c1d468da77b",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/villatoro-tello.jpg",
+     "sha256": "151382c3cbdd0ec8397bf77a98d37e1c64d380de9cc87fbb4662da0f30d5094f"
+    },
+    "105x140": {
+     "file": "event-people/105x140/villatoro-tello.jpg",
+     "sha256": "615dd3afbcb0f6c5830c39010804317ca0d507cf7b0e3ce7524c48acdcf512db"
+    }
+   }
+  },
+  "vincent": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/vincent.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "ea7c3913407ec15e2deb24f7554638b4eef77d14",
+   "blob_sha1": "dd3b2bad9ef806f210968589fdffa7288ff8569d",
+   "source_sha256": "31eaf20c280d8ef97c65e2d28853e1906edc8c45b9d07e4e734b0c4c35434e2b",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/vincent.jpg",
+     "sha256": "31eaf20c280d8ef97c65e2d28853e1906edc8c45b9d07e4e734b0c4c35434e2b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/vincent.jpg",
+     "sha256": "31eaf20c280d8ef97c65e2d28853e1906edc8c45b9d07e4e734b0c4c35434e2b"
+    }
+   }
+  },
+  "voelske": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/voelske.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "86201fff029556ee4b6fd2cc99005b04493b470e",
+   "blob_sha1": "9ec321c712e169cc4ccfefe08df6884eece98091",
+   "source_sha256": "d07192a8c01c23267ab3c2a64e75b2e4185dc2ca63fa71523ba80bd0e3fed72e",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/voelske.jpg",
+     "sha256": "321465b28a6365c09b812679e5e153152390320e9a285bdafadfc8d05320298f"
+    },
+    "105x140": {
+     "file": "people/105x140/voelske.jpg",
+     "sha256": "461ef287d984d7587959953128181dbdc4dcf8c4db9ae055b5a6598c366d20eb"
+    }
+   }
+  },
+  "wachsmuth": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "people/img/wachsmuth.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "d19de568c84ca0eef6b68bd9adb3f8e8e669e5e1",
+   "blob_sha1": "3cf9043fc2bfe86fcc523d260d1778bf5402f00e",
+   "source_sha256": "addeab0b3ec23f1c2ecd00e6ebc28925ad3c9f8db048e569190b4cd77b3b9f33",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/wachsmuth.jpg",
+     "sha256": "addeab0b3ec23f1c2ecd00e6ebc28925ad3c9f8db048e569190b4cd77b3b9f33"
+    },
+    "105x140": {
+     "file": "people/105x140/wachsmuth.jpg",
+     "sha256": "addeab0b3ec23f1c2ecd00e6ebc28925ad3c9f8db048e569190b4cd77b3b9f33"
+    }
+   }
+  },
+  "walker": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "img/people/walker.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
+   "blob_sha1": "46bfadcade797a58365fc329668cc71126860ab7",
+   "source_sha256": "10e6831c1e1a3758f2bcc469fc77ea7b5f1af541df11c99d1f7b1d93c6caf86e",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/walker.jpg",
+     "sha256": "305a023b8ad0df11fb77c5b2db1281eb842aa47bce0bdc3786306de69e72ee4a"
+    },
+    "105x140": {
+     "file": "event-people/105x140/walker.jpg",
+     "sha256": "8962cb7875a890f5b613a5b4935798a32ca4bb713c9551b9e6a5650efbaf0479"
+    }
+   }
+  },
+  "wang": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/wang.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "5b31057f094edebc014b660e430c7dfb527b1059",
+   "source_sha256": "29d229048d92cff97c166458d257e0b2ae743acc578bb7aac6ea910f89faa41a",
+   "outputs": {
+    "master": {
+     "file": "people/master/wang.jpg",
+     "sha256": "29d229048d92cff97c166458d257e0b2ae743acc578bb7aac6ea910f89faa41a"
+    },
+    "105x140": {
+     "file": "people/105x140/wang.jpg",
+     "sha256": "29d229048d92cff97c166458d257e0b2ae743acc578bb7aac6ea910f89faa41a"
+    }
+   }
+  },
+  "wang-xintong": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/wang-xintong.jpeg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "",
+   "blob_sha1": "HEAD:img/people/wang-xintong.jpeg",
+   "source_sha256": "d5766294dc18aa04f6fa08ad9aaee56141d4ccb7abcd72e9a8029fe98af2b1fe",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/wang-xintong.jpg",
+     "sha256": "a2e83973fcb2551a352eafcfa990b465d28db4a59b7a6c38310fd5dee925fb27"
+    },
+    "105x140": {
+     "file": "event-people/105x140/wang-xintong.jpg",
+     "sha256": "0caae4ac346ed7986f999899e7eaad5113eaf738ed6ccfb8553e3d8e77b72133"
+    }
+   }
+  },
+  "wang-yuxia": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/wang-yuxia.jpeg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "",
+   "blob_sha1": "HEAD:img/people/wang-yuxia.jpeg",
+   "source_sha256": "1ded9a66384fdf7d2085059bf8ddf30fc683e688797a00f53b999099365a89ad",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/wang-yuxia.jpg",
+     "sha256": "3eefe17d43b6d4bfe9a84e41996967145b0f1e869ef629760d5d3e4a68117f8b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/wang-yuxia.jpg",
+     "sha256": "9b0235f49010b7b3018e50f495aac8f6912fb3961a62ed6b1842875d267f1097"
+    }
+   }
+  },
+  "warren": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/warren.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "62822f5642deb6c0ed29184899308bc515059bc3",
+   "blob_sha1": "67e12c66ff21cdb24b2dedc0d3a6f509f6a8997c",
+   "source_sha256": "987033d69bcf956ba745360cd5166c594254758ff4d43a09fcd095e4b9806b97",
+   "outputs": {
+    "master": {
+     "file": "people/master/warren.jpg",
+     "sha256": "987033d69bcf956ba745360cd5166c594254758ff4d43a09fcd095e4b9806b97"
+    },
+    "105x140": {
+     "file": "people/105x140/warren.jpg",
+     "sha256": "987033d69bcf956ba745360cd5166c594254758ff4d43a09fcd095e4b9806b97"
+    }
+   }
+  },
+  "weber": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/weber.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "1d5a31e3c327a0cd58c40504c172575e2ed95446",
+   "source_sha256": "f6c314484147fff08cfe4c924d397a4e098e861633ab7718db311e5039fdef07",
+   "outputs": {
+    "master": {
+     "file": "people/master/weber.jpg",
+     "sha256": "f6c314484147fff08cfe4c924d397a4e098e861633ab7718db311e5039fdef07"
+    },
+    "105x140": {
+     "file": "people/105x140/weber.jpg",
+     "sha256": "f6c314484147fff08cfe4c924d397a4e098e861633ab7718db311e5039fdef07"
+    }
+   }
+  },
+  "welsch": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/welsch.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "5a3842c848f51ca7dcb1ef854101deff0214afc8",
+   "source_sha256": "36e429edab8d0428b27049ceebd5981265b8814c34531c83aadbd61197ca43a9",
+   "outputs": {
+    "master": {
+     "file": "people/master/welsch.jpg",
+     "sha256": "36e429edab8d0428b27049ceebd5981265b8814c34531c83aadbd61197ca43a9"
+    },
+    "105x140": {
+     "file": "people/105x140/welsch.jpg",
+     "sha256": "36e429edab8d0428b27049ceebd5981265b8814c34531c83aadbd61197ca43a9"
+    }
+   }
+  },
+  "wiegmann": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/wiegmann.jpg",
+   "form": "skript",
+   "flags": null,
+   "last_commit": "a567aa488006c34ffcd95a477a6a8c619722a6cb",
+   "blob_sha1": "6f6293aa969ba9ff2bb2416997ae1639f1c98679",
+   "source_sha256": "b438b014b044f4b549f3483fed9ebcfc81d7ebe00cd150adb8617fbb74793e08",
+   "namespace": "people",
+   "outputs": {
+    "master": {
+     "file": "people/master/wiegmann.jpg",
+     "sha256": "b438b014b044f4b549f3483fed9ebcfc81d7ebe00cd150adb8617fbb74793e08"
+    },
+    "105x140": {
+     "file": "people/105x140/wiegmann.jpg",
+     "sha256": "b438b014b044f4b549f3483fed9ebcfc81d7ebe00cd150adb8617fbb74793e08"
+    }
+   }
+  },
+  "wiesner": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/wiesner.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "c9f90adaef435f917fd1e668c505fd9b4e90875c",
+   "source_sha256": "e81d070c371407818078954c367b46439ba1683544890f7f04fb317bbbf24f00",
+   "outputs": {
+    "master": {
+     "file": "people/master/wiesner.jpg",
+     "sha256": "e81d070c371407818078954c367b46439ba1683544890f7f04fb317bbbf24f00"
+    },
+    "105x140": {
+     "file": "people/105x140/wiesner.jpg",
+     "sha256": "e81d070c371407818078954c367b46439ba1683544890f7f04fb317bbbf24f00"
+    }
+   }
+  },
+  "wolska": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/wolska.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "cbba1a31cd4b93fea18f070c61f8f766d260cd7e",
+   "blob_sha1": "8dbfdec0937a9664dbd20f87565c6200e82c92bc",
+   "source_sha256": "d429d16fea9ba45d5db816c6189ed71b6c38bb16d876b981f82add41a881b943",
+   "outputs": {
+    "master": {
+     "file": "people/master/wolska.jpg",
+     "sha256": "d429d16fea9ba45d5db816c6189ed71b6c38bb16d876b981f82add41a881b943"
+    },
+    "105x140": {
+     "file": "people/105x140/wolska.jpg",
+     "sha256": "d429d16fea9ba45d5db816c6189ed71b6c38bb16d876b981f82add41a881b943"
+    }
+   }
+  },
+  "wolter": {
+   "origin": "worktree",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/wolter.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "00a161e32f8959a2c3adf116429e1c9edd0da23d",
+   "blob_sha1": "7837f63c229557beb4a1fab966faca30ed360a30",
+   "source_sha256": "a0f927950474921414ca977dcaab7fa6c7262e2395b80e49c901da6f02b9132d",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/wolter.jpg",
+     "sha256": "a0f927950474921414ca977dcaab7fa6c7262e2395b80e49c901da6f02b9132d"
+    },
+    "105x140": {
+     "file": "event-people/105x140/wolter.jpg",
+     "sha256": "a0f927950474921414ca977dcaab7fa6c7262e2395b80e49c901da6f02b9132d"
+    }
+   }
+  },
+  "wookim": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/wookim.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "c225c37e540affb6804d7fd32de86797dc246294",
+   "blob_sha1": "75635d4c63087e77da0fc53ccb183d6f31a121df",
+   "source_sha256": "7405ef8054d6348156948d9d64b4908da441bb2a3aec1702ffbe94045758c7a9",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/wookim.jpg",
+     "sha256": "51cf156b1e68fd3607b81f6f337e296ae6ad5162b0d9a1acc5e3550607412f0b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/wookim.jpg",
+     "sha256": "7921ea6a78bcac5eaba9d884b5fd0f95e5d6e1e4e8fbe6c07dbf52ff73a0625c"
+    }
+   }
+  },
+  "wu": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/wu.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "c225c37e540affb6804d7fd32de86797dc246294",
+   "blob_sha1": "9a1bdc2aa546cccc9836996c09bf18f04231187d",
+   "source_sha256": "2c0372f3c6561409c452ed9fe16d08ea7a8e4c646ccf8082299f34d5433e5d04",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/wu.jpg",
+     "sha256": "9b631b39fd97146e42bf3f2379703fa45cd217207219b17de0aec9aee07bba28"
+    },
+    "105x140": {
+     "file": "event-people/105x140/wu.jpg",
+     "sha256": "2f45709a16ffbc9422139a42bd46e06620009fa405147b40c6dbdf939626dfa2"
+    }
+   }
+  },
+  "yimam": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/yimam.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "6759a3a5ea042f89342e88fd4c0fe0f7137cd25e",
+   "blob_sha1": "a6ee86c72a7a10a67e325b29b54d5a672a08d127",
+   "source_sha256": "1201ee92f5a6a60a2f25153d95dcdab9f29130b3146b74514afc70897c3e260e",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/yimam.jpg",
+     "sha256": "9f387f5e37b3d966f6d39e157d4432716a7d30ad47a46bbe08f664436b1e18ec"
+    },
+    "105x140": {
+     "file": "event-people/105x140/yimam.jpg",
+     "sha256": "224a2b7ba1eca88b98aad6e559d7fcf951a271428b54070c45921ce314b19f86"
+    }
+   }
+  },
+  "yunis": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/yunis.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "d836bf24ca8693d90719407c99c7fe59aab60a68",
+   "blob_sha1": "186288cfb583d336d02f4ad91b34f03b4ce1d703",
+   "source_sha256": "07b8862ac8292a5f6847e00b884aa9f3221c6e014c5f596dcf3fd3317532dd8a",
+   "outputs": {
+    "master": {
+     "file": "people/master/yunis.jpg",
+     "sha256": "07b8862ac8292a5f6847e00b884aa9f3221c6e014c5f596dcf3fd3317532dd8a"
+    },
+    "105x140": {
+     "file": "people/105x140/yunis.jpg",
+     "sha256": "07b8862ac8292a5f6847e00b884aa9f3221c6e014c5f596dcf3fd3317532dd8a"
+    }
+   }
+  },
+  "zangerle": {
+   "origin": "worktree",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/zangerle.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "38e343b62e8d8fd6d4c60f2e5bb6a800586e308f",
+   "blob_sha1": "f2365c2cc71969206725964e716add9d2118d816",
+   "source_sha256": "df76723abc169ad8701a6d3ba064271e5d00c8b29466728a722c5569a52df4cc",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/zangerle.jpg",
+     "sha256": "adf7e912b4bd913a2df93e8036d08867a8614683ddc3757614c13e029c2a466b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/zangerle.jpg",
+     "sha256": "48e689462c30243fcd26ad1d53ca5f055df2037612f27bf80f9ca3d881cd2248"
+    }
+   }
+  },
+  "zelch": {
+   "origin": "worktree",
+   "repo": "temir-org.github.io",
+   "path": "people/img/zelch.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
+   "blob_sha1": "b634d39f8f5da5a98a645d2bc5a1fd7284eb5f12",
+   "source_sha256": "ad7a8ea7d62076f7d0e45d7fe9593d91d19b9bb8085b866cf5c1bf530d44778d",
+   "outputs": {
+    "master": {
+     "file": "people/master/zelch.jpg",
+     "sha256": "ad7a8ea7d62076f7d0e45d7fe9593d91d19b9bb8085b866cf5c1bf530d44778d"
+    },
+    "105x140": {
+     "file": "people/105x140/zelch.jpg",
+     "sha256": "ad7a8ea7d62076f7d0e45d7fe9593d91d19b9bb8085b866cf5c1bf530d44778d"
+    }
+   }
+  },
+  "zendel": {
+   "origin": "worktree",
+   "repo": "webis-de.github.io",
+   "path": "weimar/people/img/zendel.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "7c4f3319a5b8ca975eb864d98c0f16dbe4d09908",
+   "blob_sha1": "c2eaa94b7213b4e1a3201003dade754296391cc2",
+   "source_sha256": "eb1a7cab5569b5ca050573c1663545da204397533c65265c987639c72d0faac9",
+   "outputs": {
+    "master": {
+     "file": "people/master/zendel.jpg",
+     "sha256": "eb1a7cab5569b5ca050573c1663545da204397533c65265c987639c72d0faac9"
+    },
+    "105x140": {
+     "file": "people/105x140/zendel.jpg",
+     "sha256": "eb1a7cab5569b5ca050573c1663545da204397533c65265c987639c72d0faac9"
+    }
+   }
+  }
+ }
+}

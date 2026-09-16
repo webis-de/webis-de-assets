@@ -3852,17 +3852,17 @@
    "path": "img/people/pertsch.jpg",
    "form": "skript",
    "flags": null,
-   "namespace": "event-people",
+   "namespace": "people",
    "last_commit": "9cd1fef2712d781f6659d52a4a0558ad68915d2a",
    "blob_sha1": "26d486d4fde3cb44dee3a400f9532ea6b492672d",
    "source_sha256": "b366034d84e3aacbf7ab097485788e754c52d63deb85c44c329c770cb094b785",
    "outputs": {
     "master": {
-     "file": "event-people/master/pertsch.jpg",
+     "file": "people/master/pertsch.jpg",
      "sha256": "3c5031030af8ea945e11c797d9fef01f10225fbef0fc0f373284f4ed261d3a5c"
     },
     "105x140": {
-     "file": "event-people/105x140/pertsch.jpg",
+     "file": "people/105x140/pertsch.jpg",
      "sha256": "4d610c75157580699821efde8aad0801e85c4f8572c283fc3600bcdb2bfb9cae"
     }
    }
@@ -4482,17 +4482,17 @@
    "path": "img/people/schlatt.jpg",
    "form": "skript",
    "flags": null,
-   "namespace": "event-people",
+   "namespace": "people",
    "last_commit": "015eeb629adfb5428ade23798ca986c8abe93eee",
    "blob_sha1": "c788c151d26f44104c7c8091bc3ecb2dbfd13ada",
    "source_sha256": "aff47055d97a4c8e3f86ea4b83fc82e2d0dfe8f01d6cb24bb68e0710d742efd1",
    "outputs": {
     "master": {
-     "file": "event-people/master/schlatt.jpg",
+     "file": "people/master/schlatt.jpg",
      "sha256": "8e374cf0384d7b2b3ffe222ef5aef3a0235c2788f6d3a68d32972622d009109a"
     },
     "105x140": {
-     "file": "event-people/105x140/schlatt.jpg",
+     "file": "people/105x140/schlatt.jpg",
      "sha256": "c1ab38968fc58cef6b9195f83e67949d769dc63a633fd217d1753498f09a9a43"
     }
    }

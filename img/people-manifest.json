@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-16",
- "decisions": "kartei-photo-decisions.txt (rev. 13, final)",
+ "generated": "2026-09-17",
+ "decisions": "kartei-photo-decisions.txt (rev. 14, final)",
  "script_sha256": "cf601bc24046111232b334ae94db4382abd3595d978bb6386499042779894a12",
  "entries": {
   "achkar": {
@@ -3785,22 +3785,22 @@
   },
   "panchenko": {
    "origin": "worktree",
-   "repo": "webis-de.github.io",
-   "path": "img/people/panchenko.jpg",
+   "repo": "pan-webis-de.github.io",
+   "path": "img/people/panchenko.png",
    "form": "skript",
    "flags": null,
    "namespace": "event-people",
-   "last_commit": "89c87620fad2304350e0a9ba800b401508ec34b2",
-   "blob_sha1": "87d9afc40de3bdc0f8cb541ba6eb7e256edc6f5a",
-   "source_sha256": "a6298db6b6fa92712213a535ea3aad388655a37b4d305c7ec7fe451764ec95fd",
+   "last_commit": "e1dd56eee853d88a540040d6838d7871f7de8364",
+   "blob_sha1": "1ecf48e5b55c0893327baabac3a9179ea214300c",
+   "source_sha256": "5d6e1f25c21e9c4d7783203a1cee12d0e291ef65d6da9fffbd57515cd5b49490",
    "outputs": {
     "master": {
      "file": "event-people/master/panchenko.jpg",
-     "sha256": "3524ec9f473fe0afeeeecf0fdd4af89f4d17f95aee9f3ddfa33fa5f2857b2568"
+     "sha256": "af33640c3d6aae50d58fd46f4d64e0b0ae34db39b4f4f09923c51b8fedf1e231"
     },
     "105x140": {
      "file": "event-people/105x140/panchenko.jpg",
-     "sha256": "2cf5d4d746641c0ef5193add7783fe6ec7fa486f7102e01ee06d2a4a52a6a899"
+     "sha256": "ecac6434b3aaf6931e5550413a009d99191a24ad65b9b13325a2876eefb17ddc"
     }
    }
   },

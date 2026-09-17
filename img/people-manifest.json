@@ -1,6 +1,6 @@
 {
  "generated": "2026-09-17",
- "decisions": "kartei-photo-decisions.txt (rev. 14, final)",
+ "decisions": "kartei-photo-decisions.txt (rev. 15, final)",
  "script_sha256": "cf601bc24046111232b334ae94db4382abd3595d978bb6386499042779894a12",
  "entries": {
   "achkar": {
@@ -5467,7 +5467,7 @@
    "origin": "worktree",
    "repo": "temir-org.github.io",
    "path": "people/img/zelch.jpg",
-   "form": "skript",
+   "form": "roh",
    "flags": null,
    "namespace": "people",
    "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",

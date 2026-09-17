@@ -1,0 +1,124 @@
+{
+ "generated": "2026-09-17",
+ "entries": {
+  "adobe-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/adobe-logo.png",
+   "sha256": "120f19dce0e5f59b05e52c5c8156f1dbe05c79afea52db074b815531cf894c89",
+   "blob_sha1": "84421a6ff6e76ab10bc2d8140999e264d92f1955"
+  },
+  "bmbf-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/bmbf-logo.png",
+   "sha256": "2d39a57a16169f1368d2ec7e915c1f60fd9e49a67af3c80e7fcf2c4c79735c54",
+   "blob_sha1": "a352287ff3e7989a52e4b8d10f544ff61d27666c",
+   "also_in": "temir-org.github.io/research/img/bmbf-logo.png"
+  },
+  "bmbf-logo.svg": {
+   "source": "webis-de.github.io/weimar/research/img/bmbf-logo.svg",
+   "sha256": "1dee2adb606062187cfe119c9ab414f9953b63cd84eaf7fc91cd745eaeb2a50e",
+   "blob_sha1": "11db92ee9be2ff5b433168f873c99571bc7262f8"
+  },
+  "bmftr-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/bmftr-logo.png",
+   "sha256": "f1645cac606f21dd57c92baa9c289412ced745bef9be86454b9c2b9d27946087",
+   "blob_sha1": "dcea534fd7491a55cc631f51d1b2070ec7200a01",
+   "also_in": "temir-org.github.io/research/img/bmftr-logo.png"
+  },
+  "bmwi-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/bmwi-logo.png",
+   "sha256": "3ef6fcb2f51a873e7d1909eaa5fd59ca789bcb605c4ffa68310d2266a0aa1c4f",
+   "blob_sha1": "0dd5fd2052d5c8a2e5e7394fe5f48e6ca5abfde3",
+   "also_in": "temir-org.github.io/research/img/bmwi-logo.png"
+  },
+  "bmwi-logo.svg": {
+   "source": "webis-de.github.io/weimar/research/img/bmwi-logo.svg",
+   "sha256": "2595cd36160369e1afbf49c8782fc0c7d6e430192766973f90414b2967ce62b0",
+   "blob_sha1": "0b73aa396b7487d6d8a52a4c0f6cc0997f7eeb6b"
+  },
+  "daad-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/daad-logo.png",
+   "sha256": "4a27be1f9a1aabdd5d3f7cc743712fa66b8283a4c5959aae8aca4a986fe52abe",
+   "blob_sha1": "0dd1e089e7049b7690aa31d909b95d70284ca512",
+   "also_in": "temir-org.github.io/research/img/daad-logo.png"
+  },
+  "dfg-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/dfg-logo.png",
+   "sha256": "640c81fce65053aa6c9791e90a251bc60a3485b74c68a708886669e5a1896d22",
+   "blob_sha1": "04f989d28e578afdaae7c2e1ab2f9a1f0d7124ae",
+   "also_in": "temir-org.github.io/research/img/dfg-logo.png"
+  },
+  "dlr-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/dlr-logo.png",
+   "sha256": "cfc63b5d195e76355ce6d559e2252dea220830216ea5000304d46cac67c7da55",
+   "blob_sha1": "aab4f0aff08f2877db731bfc26b9fb0152931006",
+   "also_in": "temir-org.github.io/research/img/dlr-logo.png"
+  },
+  "dspace-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/dspace-logo.png",
+   "sha256": "c97665c6bce672bb7938fc4cd9e1789451c1fc6fff369171a485146cfd05bc91",
+   "blob_sha1": "6db6816772e194ae274e59fd3f090caf51edb12f"
+  },
+  "esf-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/esf-logo.png",
+   "sha256": "060df94d9d28e2130112dada7a8c84be1a7270f2ad2b4319c29a02112bc148c3",
+   "blob_sha1": "e63b8c0a1ad0135d6f36ec693e4c94e705e3a1f4",
+   "also_in": "temir-org.github.io/research/img/esf-logo.png"
+  },
+  "eu-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/eu-logo.png",
+   "sha256": "980538a7a1974471e7f8b9c77cfb4f297a9de0029188f5bc296544b6455e43ec",
+   "blob_sha1": "b1834dece7c78e9e5e97736b702e62f913395ab8",
+   "also_in": "temir-org.github.io/research/img/eu-logo.png"
+  },
+  "google-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/google-logo.png",
+   "sha256": "4f9004b9c3e3e2308a9024d2ec7acf8aa97f0167950846ad2549880a67bb56b6",
+   "blob_sha1": "3fc96aeb9d5e34f90313e3ac97d7e7abd2f12ea2",
+   "also_in": "temir-org.github.io/research/img/google-logo.png"
+  },
+  "iarpa-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/iarpa-logo.png",
+   "sha256": "41f432012fadfad3cc2c0c79c53f6f7758dcaaa6f6a8c9a4c9d804656b1c1841",
+   "blob_sha1": "b7e28237ae417d16110f4f6c610432b4bf958796"
+  },
+  "ibm-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/ibm-logo.png",
+   "sha256": "c6052023519776e61c8cefee3c988e3befab0c86b47d5742a3f153fc31e1e0b5",
+   "blob_sha1": "47d8e487c288dc46f167ad9e07161b0436ffd026"
+  },
+  "tab-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/tab-logo.png",
+   "sha256": "0b2c029daeaeffcf5b853ff4d185eee9e0a704d4d06527fb148c3f630693ef3d",
+   "blob_sha1": "c134b21022cf67a3f5be566d9f0da160c0cdf552"
+  },
+  "thuringia-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/thuringia-logo.png",
+   "sha256": "9b33c4b399f15a361831e34908ffcc238df57b0a24fa43d16a0bcd06cf4b1542",
+   "blob_sha1": "6d7d9abc8cd1d4a37bd58aa8831ebb014e285980"
+  },
+  "wr-dfg-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/wr-dfg-logo.png",
+   "sha256": "167e0ba100cefd3a4c46d94dd0385d14c5620805b34087bd9653a711b356ad60",
+   "blob_sha1": "b99b7f64bba771c5a4a8556a274aadd75d234228"
+  },
+  "wr-logo.png": {
+   "source": "webis-de.github.io/weimar/research/img/wr-logo.png",
+   "sha256": "98d076d2cefe128745f38a109ad417df89f9f7fceb74bcf38a69bbf013c1a939",
+   "blob_sha1": "98f17761a9e126b97b173f122d34411fc5472e8f"
+  },
+  "avh-logo.png": {
+   "source": "temir-org.github.io/research/img/avh-logo.png",
+   "sha256": "dfc38598e750461725a91b91df24c9f4ed30ff11a540c37b22f5a3c63839b6dd",
+   "blob_sha1": "a26666e8dd3903079c9c194ca1a57b10d9a17bed"
+  },
+  "bmbf-saxony-logo.png": {
+   "source": "temir-org.github.io/research/img/bmbf-saxony-logo.png",
+   "sha256": "9078dcc9ebd60ce61b26f886757fbdfd2e534fdfa0945626e1f3e995a0b8d502",
+   "blob_sha1": "8e71753d125b59f13e11165591b380266c434aa0"
+  },
+  "hessian.ai-logo.png": {
+   "source": "temir-org.github.io/research/img/hessian.ai-logo.png",
+   "sha256": "d91695308a72cd9b143b307238a7b6359849aa7e289c5aca31a6366eb0e6bd0c",
+   "blob_sha1": "6592b3301a68845967f3f70c48c4ae23155c3b48"
+  }
+ }
+}

@@ -1,6 +1,6 @@
 {
  "generated": "2026-09-20",
- "decisions": "kartei-photo-decisions.txt (rev. 16, final)",
+ "decisions": "kartei-photo-decisions.txt (rev. 17, final)",
  "script_sha256": "cf601bc24046111232b334ae94db4382abd3595d978bb6386499042779894a12",
  "entries": {
   "achkar": {
@@ -420,6 +420,29 @@
     "105x140": {
      "file": "people/105x140/barron-cedeno.jpg",
      "sha256": "1b5c328d79e0550c9264066d0ddbaeaad0655007f2bd271f2a25208e82087e48"
+    }
+   }
+  },
+  "barron-cedeno_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-barron-cedeno.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "1e89dc1b844f1cfc41a00a56618fb1b6973d211f",
+   "source_sha256": "2354027214b8f86e144bee2de804c9062aca461465358410dbe4f372f76a6707",
+   "variant_of": "barron-cedeno",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/barron-cedeno_2.jpg",
+     "sha256": "80fda14208234d473ccdfe378223f9f72adab64afa9d23cb3c8daa3579445da1"
+    },
+    "105x140": {
+     "file": "people/105x140/barron-cedeno_2.jpg",
+     "sha256": "d008b5da168b40927ef5125ddc86607e4f11384caaa974b65dfb02c5884ab7c9"
     }
    }
   },
@@ -1179,6 +1202,29 @@
     }
    }
   },
+  "deckers_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-deckers.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
+   "blob_sha1": "ce952742486e01e1f66d4ccc6051105b83e61b53",
+   "source_sha256": "be0b9e75c9d6e91642410bee60c9132b9c51abef00394f253ec8e5856fd66ea2",
+   "variant_of": "deckers",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/deckers_2.jpg",
+     "sha256": "63b08b8616582ded0c279369d0964ef7ed0cd9fab172518072d65073eb8265ae"
+    },
+    "105x140": {
+     "file": "people/105x140/deckers_2.jpg",
+     "sha256": "12b824ceed6fd142f4ac8cd362a3900a2da6e5201596f9ce2a0beea9471a8ebe"
+    }
+   }
+  },
   "dementieva": {
    "origin": "worktree",
    "repo": "pan-webis-de.github.io",
@@ -1369,15 +1415,16 @@
    }
   },
   "elstner": {
-   "origin": "git-history",
-   "repo": "temir-org.github.io",
-   "path": "people/img/elstner.jpg",
-   "blob_sha1": "f95368e631d38cfd66683a84175dc1a86fd17829",
-   "local_copy": "rescued-hires/elstner.jpg",
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-elstner.jpg",
    "form": "skript",
    "flags": null,
    "namespace": "people",
-   "source_sha256": "06690a8ea42615963af2f27b5512b8a0bdf5ebeb21420ddcefabc69024ac0b2a",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
+   "blob_sha1": "fcaef6312cd3aa4ef462cd39227392e21fe9f3f2",
+   "source_sha256": "e9760b3fce175ad6c51a3fd66a36962486a0e72b4e962653034ae1e1411a2ace",
+   "note": "Upgraded master from the CLEF 2026 site (same photo, higher resolution); previous source: temir-org.github.io/people/img/elstner.jpg",
    "outputs": {
     "master": {
      "file": "people/master/elstner.jpg",
@@ -1515,6 +1562,27 @@
     }
    }
   },
+  "flek": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-speakers-flek.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "1f7ff81a80c9e3a927d1c157312e039e2494beaf",
+   "blob_sha1": "a2b7c5c2a86ddd9bdd2f0233525393c2f9fd0d9e",
+   "source_sha256": "9c3167ae9e0d7f0a41d87b1e2404971a183f1eb13fef1bc6de20e9690cd6187a",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/flek.jpg",
+     "sha256": "cb281d343124460385774e7bec997722dc2119cc70a025f73c463bda4db18545"
+    },
+    "105x140": {
+     "file": "event-people/105x140/flek.jpg",
+     "sha256": "c0c85f770d5d07e0de1692abff18468cc458d1713843abbca45f1ac543e34a66"
+    }
+   }
+  },
   "flores": {
    "origin": "worktree",
    "repo": "pan-webis-de.github.io",
@@ -1617,6 +1685,29 @@
     "105x140": {
      "file": "people/105x140/froebe.jpg",
      "sha256": "fb8f20121c4405730f0f47cf79f6a1cb783573f3279e3f1ae275bc5f982f1b93"
+    }
+   }
+  },
+  "froebe_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-froebe.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
+   "blob_sha1": "c5c3d53b4b57c4dbc71bf13c33fc1e19dbb4fb83",
+   "source_sha256": "d90ac70555bc83e9c642b11c10af39bd75417b8d7ed1c08e9aa72137286309a3",
+   "variant_of": "froebe",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/froebe_2.jpg",
+     "sha256": "c83535cbce05e489758ef76f3da0d10f93ce00097a65bd4fe1342a333d8d21e8"
+    },
+    "105x140": {
+     "file": "people/105x140/froebe_2.jpg",
+     "sha256": "898c88f7838a77e4fd08bb09bb4d1cd0e17603223ead595f75ce71cdeafab9f9"
     }
    }
   },
@@ -1725,6 +1816,29 @@
     }
    }
   },
+  "gienapp_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-gienapp.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "2ab89e18d133a3aa2e278616d5edcec2affcf956",
+   "source_sha256": "f6d2a99478a82490d51c51c9dc69114ae74a3f8884ea2157bbaa61f6677b68f3",
+   "variant_of": "gienapp",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/gienapp_2.jpg",
+     "sha256": "db72cfece0d32c9408eff17915621ea0efa07f9ac16201cc7bf1ca1e0e12e818"
+    },
+    "105x140": {
+     "file": "people/105x140/gienapp_2.jpg",
+     "sha256": "7775e5746ee8d7d2ad2c700bb51a38a3a6c107e3c31d9451908c7c4d4e5ca4f6"
+    }
+   }
+  },
   "gipp": {
    "origin": "worktree",
    "repo": "pan-webis-de.github.io",
@@ -1827,6 +1941,29 @@
     "105x140": {
      "file": "people/105x140/gohsen.jpg",
      "sha256": "7c8bce13a67b598d90bc3430e1c928f526b153df2576c0e6e1fa270ed3ef00c3"
+    }
+   }
+  },
+  "gohsen_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-gohsen.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
+   "blob_sha1": "ddee2c58b6be3df4ffa1c9d79154299a94ea2848",
+   "source_sha256": "a13fdc12e707faebd5362dde6acf35daff64237a345285135ce5c3f344ee1542",
+   "variant_of": "gohsen",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/gohsen_2.jpg",
+     "sha256": "5e852c219326d9c55ad13c9b720037afebc3329db7318716360183e0e828cd63"
+    },
+    "105x140": {
+     "file": "people/105x140/gohsen_2.jpg",
+     "sha256": "7f4ca3d5be5061b16dc2482b0672b8234e960968dd95edcc6cbbc7af221bf85e"
     }
    }
   },
@@ -2040,6 +2177,29 @@
     }
    }
   },
+  "gutekunst_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-gutekunst.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
+   "blob_sha1": "8a39f6a1156f1be85320d96fd5651a79cccad1dd",
+   "source_sha256": "5e82e272f625addc3fae194297b1c8101b9f065717c6c37f2259f82983d40da0",
+   "variant_of": "gutekunst",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/gutekunst_2.jpg",
+     "sha256": "4da1bff3d836a6d2335788327ac58bec5a61fd456539680b9fab988ecf46b6b3"
+    },
+    "105x140": {
+     "file": "people/105x140/gutekunst_2.jpg",
+     "sha256": "ee707ff6b365e4078c4c54ed4a086b8b677e03b95cc1dbb093909a9741632839"
+    }
+   }
+  },
   "habernal": {
    "origin": "worktree",
    "repo": "webis-de.github.io",
@@ -2100,6 +2260,29 @@
     "105x140": {
      "file": "people/105x140/hagen-tim.jpg",
      "sha256": "f8687c7b47fa00b42d37155333ecd79495d76c818bd808b55092d09d09c2262b"
+    }
+   }
+  },
+  "hagen_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-hagen.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "26ef6e494e62e7220186944c2162cc91a381eee9",
+   "source_sha256": "cf376f9f0c29847a9651e134b835817ade8f2f852ce3f9b5a00be6636a72bf4e",
+   "variant_of": "hagen",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/hagen_2.jpg",
+     "sha256": "3d27014ce20b6f6a09553da763cc184373285b36816e5c175a65f00b4df748ef"
+    },
+    "105x140": {
+     "file": "people/105x140/hagen_2.jpg",
+     "sha256": "2fee8c061b25dd512a8bc31d5b6646220e3f8038aa8de36888d707436a036228"
     }
    }
   },
@@ -2184,6 +2367,29 @@
     "105x140": {
      "file": "people/105x140/heineking.jpg",
      "sha256": "7060749b35ce105cf8b656fb3c1b22824d61e3ee850a27c7c5575cbe1b2e4714"
+    }
+   }
+  },
+  "heineking_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-heineking.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
+   "blob_sha1": "f053253b6768a5eb05783854d731b02b919631ce",
+   "source_sha256": "b7769344e2176f33542705d772ebdc83019bf2843908cde13abcc98424733fc6",
+   "variant_of": "heineking",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/heineking_2.jpg",
+     "sha256": "a9b6fa9ac0b315695bc4b67293626771e786e408f6006514c088dbf15d5dd2e0"
+    },
+    "105x140": {
+     "file": "people/105x140/heineking_2.jpg",
+     "sha256": "84b2d1dca24c4f6b864bc8e23089344094e154601dc78fe3637e1aa3870c8240"
     }
    }
   },
@@ -2504,14 +2710,15 @@
   },
   "kanadan": {
    "origin": "worktree",
-   "repo": "webis-de.github.io",
-   "path": "weimar/people/img/kanadan.jpg",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-kanadan.jpg",
    "form": "skript",
    "flags": null,
    "namespace": "people",
-   "last_commit": "72cdc4005e21c01c60532235fbd2d02f12ba7152",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
    "blob_sha1": "3acd7e948c39c2e088535f9d6bb7287c8cac9dbf",
    "source_sha256": "403f2acb036391049df774c9bcfd95a1ccb788665bb72ed39a338de1382a2991",
+   "note": "Upgraded master from the CLEF 2026 site (same photo, higher resolution); previous source: webis-de.github.io/weimar/people/img/kanadan.jpg",
    "outputs": {
     "master": {
      "file": "people/master/kanadan.jpg",
@@ -3153,6 +3360,27 @@
     }
    }
   },
+  "macavaney": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-macavaney.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "83fcfaa7e5b66042236699146977641aaeb64053",
+   "source_sha256": "6c0b56521b4286f5844ff1b0d9785cd8ff1623cf87c51dc6a90d2a10af269a83",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/macavaney.jpg",
+     "sha256": "23030f89a5db381a20e0be24819954e028b8ad55c6001afa294ccf31c8542c0d"
+    },
+    "105x140": {
+     "file": "event-people/105x140/macavaney.jpg",
+     "sha256": "5b7bcd3eb6fabc43021029402b49d6141bc2284a858442d72344a550057f2cba"
+    }
+   }
+  },
   "manjavacas": {
    "origin": "worktree",
    "repo": "pan-webis-de.github.io",
@@ -3280,25 +3508,24 @@
    }
   },
   "merker": {
-   "origin": "git-history",
-   "repo": "touche-webis-de.github.io",
-   "path": "img/people/reimer.jpg",
-   "blob_sha1": "fb25098edb8168498309686359b01497cbe1954d",
-   "local_copy": "rescued-hires/merker.jpg",
-   "form": "roh",
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-merker.jpg",
+   "form": "skript",
    "flags": null,
    "namespace": "people",
-   "source_sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d",
-   "former_key": "reimer",
-   "note": "Unified key for Jan Heinrich Merker (formerly Reimer); photo from his Touche organizer days. Historical pages keep displaying the former name, but reference this single key.",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "272f5a7cb5c73cabf450e08205d17ea67b5eebd3",
+   "source_sha256": "5fbd4c4297d7045a9df76d32079ce6395ed8a0e27ff30d7fc4cc56aee0b1073d",
+   "note": "Upgraded master from the CLEF 2026 site (same photo, higher resolution); previous source: touche-webis-de.github.io/img/people/reimer.jpg",
    "outputs": {
     "master": {
      "file": "people/master/merker.jpg",
-     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
+     "sha256": "32123d27971d6b2661d6e9c71cf2275548896d211a8ebec64e095336e619d257"
     },
     "105x140": {
      "file": "people/105x140/merker.jpg",
-     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
+     "sha256": "5e60791392e7d2b896f7ccad8274d1fb1651865679f8b47792cf5cb3f91f8047"
     }
    }
   },
@@ -3890,6 +4117,29 @@
     }
    }
   },
+  "pertsch_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-pertsch.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6aa26fbcae1a2d124eb7f0a9819315aa9d59349f",
+   "blob_sha1": "23329286cdb4faffa7114ab3402f7274257f2100",
+   "source_sha256": "f0b526f8884b809bc03c4dc6b3ad632ea128f17031105ea9af18f2027b642235",
+   "variant_of": "pertsch",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/pertsch_2.jpg",
+     "sha256": "a2aeac56540fe1637644b5f928a7721a3151d9be34d6f8c0efb409cf9b33fa2a"
+    },
+    "105x140": {
+     "file": "people/105x140/pertsch_2.jpg",
+     "sha256": "74d3b1a8c5a3a29299c1315bf5d2bcab9c2fe313afdef4e06ca0584303c672bf"
+    }
+   }
+  },
   "petasis": {
    "origin": "worktree",
    "repo": "webis-de.github.io",
@@ -4018,22 +4268,23 @@
   },
   "potthast": {
    "origin": "worktree",
-   "repo": "temir-org.github.io",
-   "path": "people/img/potthast.jpg",
-   "form": "roh",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-potthast.jpg",
+   "form": "skript",
    "flags": null,
-   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
-   "blob_sha1": "8b3c767c39fd8504e827b0e6ebe94115db7c0a47",
-   "source_sha256": "eae7a27ba0474beda12730148cd1594a2921b744028c79eb83dde06308cc393c",
    "namespace": "people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "99ccd933c6dac0aec36c4aaf98a44b1f9c2d37c6",
+   "source_sha256": "4185e6eaf4d49fd9455c8a19d17e66347aa348aa226966f1dbd292607fa38f05",
+   "note": "Upgraded master from the CLEF 2026 site (same photo, higher resolution); previous source: temir-org.github.io/people/img/potthast.jpg",
    "outputs": {
     "master": {
      "file": "people/master/potthast.jpg",
-     "sha256": "eae7a27ba0474beda12730148cd1594a2921b744028c79eb83dde06308cc393c"
+     "sha256": "9f163f470685c67f1554d143efae7a0080904e9f1617015c21aef40896b570ba"
     },
     "105x140": {
      "file": "people/105x140/potthast.jpg",
-     "sha256": "eae7a27ba0474beda12730148cd1594a2921b744028c79eb83dde06308cc393c"
+     "sha256": "c67f93ec4414a45120cc0f28b6a19774884a20bab6b9041125c8f4b5af603d15"
     }
    }
   },
@@ -4373,6 +4624,29 @@
     }
    }
   },
+  "ruth_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-ruth.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6aa26fbcae1a2d124eb7f0a9819315aa9d59349f",
+   "blob_sha1": "25729c4efc4733de26b049b58ceed8fbd491e9a1",
+   "source_sha256": "e614b87bdfe77234a99c328b55e09f003aed0f57be6b3e370c5d1bf3b7afb306",
+   "variant_of": "ruth",
+   "note": "New photo from the CLEF 2026 site, offered as variation; canonical key unchanged until decided",
+   "outputs": {
+    "master": {
+     "file": "people/master/ruth_2.jpg",
+     "sha256": "308a1daedb19977c46f18cef6742797d5d6dcbc649daee079f2d3aaa9e9bc7f7"
+    },
+    "105x140": {
+     "file": "people/105x140/ruth_2.jpg",
+     "sha256": "17d68d89b70e6d22538defe0b05987f7f26e5d4c08df24a9c117382e0e3c8af1"
+    }
+   }
+  },
   "saad": {
    "origin": "worktree",
    "repo": "webis-de.github.io",
@@ -4415,6 +4689,27 @@
     }
    }
   },
+  "sanchez-salido": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-sanchez-salido.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "ed55d0b3639ed03c7e51dfc8bfd470fcbafee3d9",
+   "source_sha256": "b6cee30c4b4e662b97c2709c4ccef8953539ba07ebf60d092a5b5c4da20b24c0",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/sanchez-salido.jpg",
+     "sha256": "2cd0fdf957cc943e1a61a15e14481f482bb010d5bdf0d35f138779281bbf03a5"
+    },
+    "105x140": {
+     "file": "event-people/105x140/sanchez-salido.jpg",
+     "sha256": "58241a746475261b822718041d032e2e65a560595657096df4773f67e95cca6b"
+    }
+   }
+  },
   "sartor": {
    "origin": "worktree",
    "repo": "webis-de.github.io",
@@ -4454,6 +4749,27 @@
     "105x140": {
      "file": "people/105x140/scells.jpg",
      "sha256": "b6ced8790062ac100f258252b63a7b90e58ec9713916ad6b792fac947b4d04f7"
+    }
+   }
+  },
+  "schaer": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-schaer.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "5e1ed02196e0086739a73a13d4da258f75b57d51",
+   "source_sha256": "5a99aafa2a05d78b798926642ed25f679a919079744f5c4e39d849d42013afdb",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/schaer.jpg",
+     "sha256": "bab710acfdc9f8ae64fc3200f38ef299eb245cfc237a713b3842848ab1550ca9"
+    },
+    "105x140": {
+     "file": "event-people/105x140/schaer.jpg",
+     "sha256": "bce3f4f32a86575497b31fa1284be3113473fdfca9c879972ca860028b13b957"
     }
    }
   },
@@ -4559,6 +4875,27 @@
     "105x140": {
      "file": "event-people/105x140/schuetze.jpg",
      "sha256": "65037cae23b6118ae50c70b35be533522e69517e51854a13f7de08e04eb490d2"
+    }
+   }
+  },
+  "seco-de-herrera": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-seco-de-herrera.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "23871542b665144d7eb34c4d9dd34c3f43160393",
+   "source_sha256": "2606fb79a8a71ded9b39721784c8a46c6ad4960b44d196c0438e3e55285c5f0e",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/seco-de-herrera.jpg",
+     "sha256": "41d78700f66aa817773c1ae07534bf5ae94f0b9170ae191f8a752312d40b373b"
+    },
+    "105x140": {
+     "file": "event-people/105x140/seco-de-herrera.jpg",
+     "sha256": "66fddbe81db9879517e116c150e1b515390def7c2304e1aa68077490f8f463cf"
     }
    }
   },
@@ -4795,22 +5132,23 @@
   },
   "stein": {
    "origin": "worktree",
-   "repo": "webis-de.github.io",
-   "path": "people/img/stein.jpg",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-stein.jpg",
    "form": "skript",
    "flags": null,
    "namespace": "people",
-   "last_commit": "53071768faef4063b076453a44ae52c8d1222dd1",
-   "blob_sha1": "823d25849606bd2fc6fadffca678f62839c0ac1d",
-   "source_sha256": "e403f30105abcd38cf03db741c985375694ce0cd8f26ea8cb836d2a4eab6a3aa",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "ba611b0b8e22adc4202353afca362b6e851dbe26",
+   "source_sha256": "db5797f32ec8562a899ae9694b770b11a7ba057957a518991de80f4bbdb3fb4e",
+   "note": "Upgraded master from the CLEF 2026 site (same photo, higher resolution); previous source: webis-de.github.io/people/img/stein.jpg",
    "outputs": {
     "master": {
      "file": "people/master/stein.jpg",
-     "sha256": "e403f30105abcd38cf03db741c985375694ce0cd8f26ea8cb836d2a4eab6a3aa"
+     "sha256": "d7a105c4eeb0b09e93752055017df0fd67b6a7c57ee6c4208e3f479ace5af3bf"
     },
     "105x140": {
      "file": "people/105x140/stein.jpg",
-     "sha256": "e403f30105abcd38cf03db741c985375694ce0cd8f26ea8cb836d2a4eab6a3aa"
+     "sha256": "5cedc005304d16632ce5a5ad44680a12ba5595eac1764c4928b7b85eb2a16187"
     }
    }
   },
@@ -4832,6 +5170,28 @@
     "105x140": {
      "file": "event-people/105x140/stevenson.jpg",
      "sha256": "5e22bca71a446892ae42960df40261aa845d8d4950435c63cbcdb666afb21365"
+    }
+   }
+  },
+  "struss": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-struß.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "d0b80481ca0813d76bc5c8eb0ae438c8865aa508",
+   "source_sha256": "32d7666b30c37cab4dd5c7aa597ffd2c8baf663038a33f9730661f02e3d231a2",
+   "note": "Source file name contains an eszett (struß); key transliterated per house convention",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/struss.jpg",
+     "sha256": "619436b5fa858c36b58fb6ce21528ba7c0952739716c940b2a466511ce812be1"
+    },
+    "105x140": {
+     "file": "event-people/105x140/struss.jpg",
+     "sha256": "efbafeabdc4e92d243638715c2eec838baf742d09af55fc8a6d65a77b4bb8b15"
     }
    }
   },
@@ -5021,6 +5381,28 @@
     "105x140": {
      "file": "event-people/105x140/ustalov.jpg",
      "sha256": "4b6dfb332630bafb06d712dc7f7cd3344657ad3ff3c1ccf31ca014a58d22ee51"
+    }
+   }
+  },
+  "verberne": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-speakers-verbene.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "event-people",
+   "last_commit": "1f7ff81a80c9e3a927d1c157312e039e2494beaf",
+   "blob_sha1": "625a9ed95388475925cb27a2d0e2193bac5504bb",
+   "source_sha256": "034ce5453d8e2639b2571c6f2cc0152e3aea48cb86e17dd412b44dc4efe7c9bc",
+   "note": "Source file is misspelled clef26-speakers-verbene.jpg (Suzan Verberne)",
+   "outputs": {
+    "master": {
+     "file": "event-people/master/verberne.jpg",
+     "sha256": "bd6d9e738df0726326025631fd645e5c1aa9146980888ac30be9d152b2dbeb38"
+    },
+    "105x140": {
+     "file": "event-people/105x140/verberne.jpg",
+     "sha256": "6ac1ae17396b62b77b97f43dd85429799563be77f115c4d65b14021d30afc4a0"
     }
    }
   },
@@ -5446,43 +5828,45 @@
   },
   "zangerle": {
    "origin": "worktree",
-   "repo": "pan-webis-de.github.io",
-   "path": "img/people/zangerle.jpg",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-chair-zangerle.jpg",
    "form": "skript",
    "flags": null,
    "namespace": "event-people",
-   "last_commit": "38e343b62e8d8fd6d4c60f2e5bb6a800586e308f",
-   "blob_sha1": "f2365c2cc71969206725964e716add9d2118d816",
-   "source_sha256": "df76723abc169ad8701a6d3ba064271e5d00c8b29466728a722c5569a52df4cc",
+   "last_commit": "6ff4907dcbe0bc72034a65a023450454e55917d0",
+   "blob_sha1": "056309ca13e4ce01a4b6b72ec1d75d4ef54dade9",
+   "source_sha256": "4e4468c5b467e4544d293f6b6a22462f920dc0934c65099741f208ca780a4b4a",
+   "note": "Updated to the (slightly larger) CLEF 2026 version",
    "outputs": {
     "master": {
      "file": "event-people/master/zangerle.jpg",
-     "sha256": "adf7e912b4bd913a2df93e8036d08867a8614683ddc3757614c13e029c2a466b"
+     "sha256": "1afed068ed4835547d9d4fbcc6934286e5186867da522a5441e40025b5183efa"
     },
     "105x140": {
      "file": "event-people/105x140/zangerle.jpg",
-     "sha256": "48e689462c30243fcd26ad1d53ca5f055df2037612f27bf80f9ca3d881cd2248"
+     "sha256": "148d0e130bbb3012dbb96f5ab888b615ad4d7ceea97284eaa4fb08ad663f16dc"
     }
    }
   },
   "zelch": {
    "origin": "worktree",
-   "repo": "temir-org.github.io",
-   "path": "people/img/zelch.jpg",
-   "form": "roh",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-zelch.jpg",
+   "form": "skript",
    "flags": null,
    "namespace": "people",
-   "last_commit": "3fcb3efe6fe8bbbf3b252ef4fd35f0fa403a3f66",
-   "blob_sha1": "b634d39f8f5da5a98a645d2bc5a1fd7284eb5f12",
-   "source_sha256": "ad7a8ea7d62076f7d0e45d7fe9593d91d19b9bb8085b866cf5c1bf530d44778d",
+   "last_commit": "b0b600ea0ed4898a89bafee2fb62b47fe84960b0",
+   "blob_sha1": "347b93d39adb7c88ac4d611a8205feae9e6e8bc5",
+   "source_sha256": "e5c99787f377212598eb6e0e4a4b4d8594e4bb9239b9d98002b602704d928f0f",
+   "note": "Upgraded master from the CLEF 2026 site (same photo, higher resolution); previous source: temir-org.github.io/people/img/zelch.jpg",
    "outputs": {
     "master": {
      "file": "people/master/zelch.jpg",
-     "sha256": "ad7a8ea7d62076f7d0e45d7fe9593d91d19b9bb8085b866cf5c1bf530d44778d"
+     "sha256": "49bdaddeeec4f1120a155c9af09b60226c50f4872e9701eeee0d2b2f75dc3fcd"
     },
     "105x140": {
      "file": "people/105x140/zelch.jpg",
-     "sha256": "ad7a8ea7d62076f7d0e45d7fe9593d91d19b9bb8085b866cf5c1bf530d44778d"
+     "sha256": "0d6db341bd9e0f38af1ad60e7123c98558a25e11a1ca03419ad7901b31f82df9"
     }
    }
   },

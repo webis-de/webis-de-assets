@@ -2263,6 +2263,29 @@
     }
    }
   },
+  "hagen-tim_2": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-hagen.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "variant_of": "hagen-tim",
+   "last_commit": "5fff63006ea1ff1900a705a342cb1f830c56481b",
+   "blob_sha1": "2149a5198348a270781310c148e5804c59b9d07b",
+   "source_sha256": "f52a41228c4c8273657dbe1664af8de0edd6f069cd3cacd24709019c61f794f4",
+   "note": "The CLEF file says 'hagen' but shows Tim Hagen per its alt text - variant for hagen-tim, not for hagen",
+   "outputs": {
+    "master": {
+     "file": "people/master/hagen-tim_2.jpg",
+     "sha256": "6498bc609b33f25e7b040398a4bc8d1f033726099ee745f4448bc87cc6f5eb43"
+    },
+    "105x140": {
+     "file": "people/105x140/hagen-tim_2.jpg",
+     "sha256": "f551a2e76a603a2cb5496f029e45597d47bb6f86ca618de5c3d9eec852b3e768"
+    }
+   }
+  },
   "hagen_2": {
    "origin": "worktree",
    "repo": "clef2026.github.io",

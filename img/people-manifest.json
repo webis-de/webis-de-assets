@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-17",
- "decisions": "kartei-photo-decisions.txt (rev. 15, final)",
+ "generated": "2026-09-20",
+ "decisions": "kartei-photo-decisions.txt (rev. 16, final)",
  "script_sha256": "cf601bc24046111232b334ae94db4382abd3595d978bb6386499042779894a12",
  "entries": {
   "achkar": {
@@ -3279,6 +3279,29 @@
     }
    }
   },
+  "merker": {
+   "origin": "git-history",
+   "repo": "touche-webis-de.github.io",
+   "path": "img/people/reimer.jpg",
+   "blob_sha1": "fb25098edb8168498309686359b01497cbe1954d",
+   "local_copy": "rescued-hires/merker.jpg",
+   "form": "roh",
+   "flags": null,
+   "namespace": "people",
+   "source_sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d",
+   "former_key": "reimer",
+   "note": "Unified key for Jan Heinrich Merker (formerly Reimer); photo from his Touche organizer days. Historical pages keep displaying the former name, but reference this single key.",
+   "outputs": {
+    "master": {
+     "file": "people/master/merker.jpg",
+     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
+    },
+    "105x140": {
+     "file": "people/105x140/merker.jpg",
+     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
+    }
+   }
+  },
   "mestre": {
    "origin": "worktree",
    "repo": "pan-webis-de.github.io",
@@ -4116,27 +4139,6 @@
     "105x140": {
      "file": "people/105x140/reibert.jpg",
      "sha256": "04d92bb72d23d983db30a78d55a19a99cf741b8de79a20dff0a54880e098e089"
-    }
-   }
-  },
-  "reimer": {
-   "origin": "worktree",
-   "repo": "touche-webis-de.github.io",
-   "path": "img/people/reimer.jpg",
-   "form": "skript",
-   "flags": null,
-   "namespace": "event-people",
-   "last_commit": "10a8053f6cc3c55e23dba3a411f22ea26282bfb4",
-   "blob_sha1": "fb25098edb8168498309686359b01497cbe1954d",
-   "source_sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d",
-   "outputs": {
-    "master": {
-     "file": "event-people/master/reimer.jpg",
-     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
-    },
-    "105x140": {
-     "file": "event-people/105x140/reimer.jpg",
-     "sha256": "907b01f81f91354f979e7c80cb8cb74a32aaba420bd074f3b4074a3af8bb894d"
     }
    }
   },
@@ -5176,8 +5178,8 @@
    "form": "skript",
    "flags": null,
    "namespace": "event-people",
-   "last_commit": "",
-   "blob_sha1": "HEAD:img/people/wang-xintong.jpeg",
+   "last_commit": "00cf765a2d8917270b3ed8e5f9c48cd2539571fb",
+   "blob_sha1": "2b60e5b8bc97b337cd050a139f2cdc13936098a0",
    "source_sha256": "d5766294dc18aa04f6fa08ad9aaee56141d4ccb7abcd72e9a8029fe98af2b1fe",
    "outputs": {
     "master": {
@@ -5197,8 +5199,8 @@
    "form": "skript",
    "flags": null,
    "namespace": "event-people",
-   "last_commit": "",
-   "blob_sha1": "HEAD:img/people/wang-yuxia.jpeg",
+   "last_commit": "00cf765a2d8917270b3ed8e5f9c48cd2539571fb",
+   "blob_sha1": "4dacc207996cd5b05d814a844841f7d945601f90",
    "source_sha256": "1ded9a66384fdf7d2085059bf8ddf30fc683e688797a00f53b999099365a89ad",
    "outputs": {
     "master": {

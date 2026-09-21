@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-20",
- "decisions": "kartei-photo-decisions.txt (rev. 17, final)",
+ "generated": "2026-09-21",
+ "decisions": "kartei-photo-decisions.txt (rev. 18, final)",
  "script_sha256": "cf601bc24046111232b334ae94db4382abd3595d978bb6386499042779894a12",
  "entries": {
   "achkar": {
@@ -4835,6 +4835,28 @@
     "105x140": {
      "file": "people/105x140/schlatt.jpg",
      "sha256": "c1ab38968fc58cef6b9195f83e67949d769dc63a633fd217d1753498f09a9a43"
+    }
+   }
+  },
+  "schmidt": {
+   "origin": "worktree",
+   "repo": "clef2026.github.io",
+   "path": "assets/img/clef26-support-schmidt.jpg",
+   "form": "skript",
+   "flags": null,
+   "namespace": "people",
+   "last_commit": "6ecac82f4b1440755c38ae3ab78cdb8b71f9a5a7",
+   "blob_sha1": "58f5184a6ddb41a54ccca0d528b19c29654d920c",
+   "source_sha256": "f4c7b7c0bc0bb679533f39b276981b25780ca46bf57407a3aa17ca5000148bb2",
+   "note": "Eric Schmidt, FSU Jena (new member 2026). The historical temir schmidt.jpg was Sebastian Schmidt, renamed to heineking in 2024 - no key conflict.",
+   "outputs": {
+    "master": {
+     "file": "people/master/schmidt.jpg",
+     "sha256": "b41b657f50965613b52a3a1eee7e9bac0abb30e4677e893d74de917fec10db54"
+    },
+    "105x140": {
+     "file": "people/105x140/schmidt.jpg",
+     "sha256": "cec7d33d5a8ba4f8723e9179d908af9a4e1d814340272af071a70fc54dd00c9a"
     }
    }
   },

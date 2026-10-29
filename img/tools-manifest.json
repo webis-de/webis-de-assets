@@ -1,0 +1,40 @@
+{
+ "generated": "2026-10-29",
+ "entries": {
+  "args-logo.png": {
+   "source": "webis-de.github.io/research/img/args-logo.png",
+   "sha256": "d454d525c536ebb82fb7f9a052aae9d7f754fa681bfd573f6a620a8da4594e76",
+   "blob_sha1": "cf317a33280a5fd98e518b75be339404546dbbb4"
+  },
+  "chatnoir-logo.png": {
+   "source": "webis-de.github.io/research/img/chatnoir-logo.png",
+   "sha256": "59653806723376378ed6ba9832ce111f48f841b04e6eaf1f610fcbdb695a1611",
+   "blob_sha1": "ca451d8e91f750ca0d8deaaef3411e88114086b0"
+  },
+  "chatnoir-logo.svg": {
+   "source": "webis-de.github.io/research/img/chatnoir-logo.svg",
+   "sha256": "ff81fefa7c4888191336481fc21603e9aa1564fdc2bd5bab3f33ca2be00c92b3",
+   "blob_sha1": "a041e5c612e158af71b268cbdb2d7a70dc02c3db"
+  },
+  "ir-anthology-logo.png": {
+   "source": "webis-de.github.io/research/img/ir-anthology-logo.png",
+   "sha256": "caad62f43152199c04f8dde674b63573df490ff280490d01a2d88c3fbe407459",
+   "blob_sha1": "9fe0f21cdfcfe2426d4088bb6b7d3f0235cad89b"
+  },
+  "netspeak-logo.png": {
+   "source": "webis-de.github.io/research/img/netspeak-logo.png",
+   "sha256": "183402f43a757c128c682eb8d493da6f59c374f6f5ca3e67602127ae82ea8a3f",
+   "blob_sha1": "2284363daaa6e1e0e119dde95a926ed3bbc5fa7b"
+  },
+  "picapica-logo.png": {
+   "source": "webis-de.github.io/research/img/picapica-logo.png",
+   "sha256": "12bc2b489966eaee7c9c9afd6354117cb3493977602f1da512996c0f3d399f62",
+   "blob_sha1": "b055983b8fba39bda5f35c74c9f39780292c05fc"
+  },
+  "tira-logo.png": {
+   "source": "webis-de.github.io/research/img/tira-logo.png",
+   "sha256": "307d92673bb5e0c31cfdb0fdf50bc07a144cceff27afcd08867b6bde1d97f33a",
+   "blob_sha1": "3506a4ba04b3082a5e276c87e60ee135923c3c11"
+  }
+ }
+}

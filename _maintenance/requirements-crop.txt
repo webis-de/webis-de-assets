@@ -1,0 +1,2 @@
+Pillow>=10
+pyobjc-framework-Vision>=10
